@@ -136,11 +136,16 @@ def render_page(page: PageSpec) -> str:
   <link rel="stylesheet" href="{css_href}">
 </head>
 <body>
+  <div id="searchOverlay" class="search-overlay" hidden>
+    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
+      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
+      <div id="searchResults" class="search-results" hidden></div>
+    </section>
+  </div>
   <div class="site-shell">
     <aside class="sidebar">
-      <a class="brand" href="{home_href}">AIMT GUIDE</a>
-      <label class="search-box"><span>문서 검색</span><input id="guideSearch" type="search" placeholder="검색어 입력"></label>
-      <div id="searchResults" class="search-results" hidden></div>
+      <div class="brand-row"><a class="brand" href="{home_href}">AIMT GUIDE</a><button id="searchOpen" class="search-open" type="button" aria-label="문서 검색" title="문서 검색">⌕</button></div>
       <nav class="nav-list" aria-label="문서 목록">
 {nav}
       </nav>
@@ -182,7 +187,7 @@ def write_static_assets() -> None:
     write_text(
         STATIC_ROOT / "styles.css",
         """
-:root{--bg:#f4f6fb;--panel:#fff;--ink:#172033;--muted:#6b7280;--line:#dce2ef;--accent:#315bef;--soft:#eef3ff;--code:#101828}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}.site-shell{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;background:#fff;border-right:1px solid var(--line)}.brand{display:block;margin-bottom:18px;color:var(--ink);font-weight:900;text-decoration:none;letter-spacing:.03em}.search-box{display:block;margin-bottom:14px;font-size:12px;color:var(--muted)}.search-box input{width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:12px}.search-results{margin:0 0 16px;padding:8px;border:1px solid var(--line);border-radius:14px;background:#fbfcff}.search-results a{display:block;padding:7px 8px;border-radius:10px;color:var(--ink);text-decoration:none}.search-results a:hover{background:var(--soft)}.nav-list{font-size:14px}.nav-link{display:block;margin:2px 0;padding:7px 9px;border-radius:10px;color:#26324a;text-decoration:none}.nav-link:hover,.nav-link[aria-current="page"]{background:var(--soft);color:var(--accent)}.nav-group>summary{list-style:none;cursor:pointer}.nav-group>summary::-webkit-details-marker{display:none}.nav-group>summary:before{content:"▸";display:inline-block;width:1.2em;color:var(--muted)}.nav-group[open]>summary:before{content:"▾"}.nav-children{margin-left:12px;padding-left:8px;border-left:1px solid var(--line)}.content-shell{padding:42px min(7vw,72px)}.guide-content{max-width:980px;margin:0 auto;padding:42px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 45px rgba(31,41,55,.08)}h1{font-size:34px;line-height:1.2;margin:0 0 6px}h2{margin-top:38px;border-bottom:1px solid var(--line);padding-bottom:6px}.doc-version{margin:0 0 28px;color:var(--muted);font-size:13px}code{padding:.12em .35em;border-radius:6px;background:#eef2ff;color:#243b8f}pre{padding:16px;overflow:auto;border-radius:16px;background:var(--code);color:#e5e7eb}blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid var(--line);padding:8px 10px}img{max-width:100%;height:auto;border-radius:12px}.image-marker{padding:10px 12px;border:1px dashed var(--accent);background:var(--soft);border-radius:12px;color:#1d3ed6;font-weight:700}@media(max-width:900px){.site-shell{display:block}.sidebar{position:relative;height:auto}.content-shell{padding:18px}.guide-content{padding:24px;border-radius:18px}}
+:root{--bg:#f4f6fb;--panel:#fff;--ink:#172033;--muted:#6b7280;--line:#dce2ef;--accent:#315bef;--soft:#eef3ff;--code:#101828}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}.site-shell{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 18px;background:#fff;border-right:1px solid var(--line)}.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}.brand{min-width:0;flex:1;color:var(--ink);font-weight:900;text-decoration:none;letter-spacing:.03em}.search-open,.search-close{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--muted);font:700 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.search-open:hover,.search-close:hover{background:var(--soft);color:var(--accent)}.search-overlay{position:fixed;inset:0;z-index:80;display:grid;place-items:start center;padding:72px 20px 24px;background:rgba(15,20,32,.42)}.search-overlay[hidden]{display:none}.search-dialog{width:min(760px,100%);max-height:min(760px,calc(100vh - 96px));display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 24px 80px rgba(0,0,0,.24)}.search-header{display:flex;align-items:center;gap:12px;padding:18px 18px 12px;border-bottom:1px solid var(--line)}.search-header h2{flex:1;margin:0;border:0;padding:0;font-size:18px}.search-input{width:calc(100% - 36px);margin:16px 18px 10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px}.search-results{display:block;overflow:auto;margin:0;padding:8px 18px 18px}.search-results a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 10px;margin:4px 0;padding:10px 12px;border-radius:12px;color:var(--ink);text-decoration:none}.search-results a:hover{background:var(--soft)}.search-badge{display:inline-flex;align-items:center;height:22px;padding:0 7px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;font-weight:700}.search-empty{padding:28px 8px;color:var(--muted);text-align:center}.nav-list{font-size:14px}.nav-link{display:block;margin:2px 0;padding:7px 9px;border-radius:10px;color:#26324a;text-decoration:none}.nav-link:hover,.nav-link[aria-current="page"]{background:var(--soft);color:var(--accent)}.nav-group>summary{list-style:none;cursor:pointer}.nav-group>summary::-webkit-details-marker{display:none}.nav-group>summary:before{content:"▸";display:inline-block;width:1.2em;color:var(--muted)}.nav-group[open]>summary:before{content:"▾"}.nav-children{margin-left:12px;padding-left:8px;border-left:1px solid var(--line)}.content-shell{padding:42px min(7vw,72px)}.guide-content{max-width:980px;margin:0 auto;padding:42px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 45px rgba(31,41,55,.08)}h1{font-size:34px;line-height:1.2;margin:0 0 6px}h2{margin-top:38px;border-bottom:1px solid var(--line);padding-bottom:6px}.doc-version{margin:0 0 28px;color:var(--muted);font-size:13px}code{padding:.12em .35em;border-radius:6px;background:#eef2ff;color:#243b8f}pre{padding:16px;overflow:auto;border-radius:16px;background:var(--code);color:#e5e7eb}blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid var(--line);padding:8px 10px}img{max-width:100%;height:auto;border-radius:12px}.image-marker{padding:10px 12px;border:1px dashed var(--accent);background:var(--soft);border-radius:12px;color:#1d3ed6;font-weight:700}@media(max-width:900px){.site-shell{display:block}.sidebar{position:relative;height:auto}.content-shell{padding:18px}.guide-content{padding:24px;border-radius:18px}}
 """.strip(),
     )
     write_text(
@@ -203,37 +208,48 @@ def write_static_assets() -> None:
     });
   }
   async function setupSearch(){
+    const openButton = document.getElementById("searchOpen");
+    const overlay = document.getElementById("searchOverlay");
+    const closeButton = document.getElementById("searchClose");
     const input = document.getElementById("guideSearch");
     const results = document.getElementById("searchResults");
     const script = document.currentScript;
-    if (!input || !results || !script) return;
+    if (!openButton || !overlay || !closeButton || !input || !results || !script) return;
     let index = [];
     try { index = await fetch(new URL("../search-index.json", script.src)).then((res) => res.json()); } catch (_) { return; }
-    input.addEventListener("input", () => {
+    function closeSearch(){ overlay.hidden = true; openButton.focus(); }
+    function openSearch(){ overlay.hidden = false; input.focus(); input.select(); renderSearchResults(); }
+    function badge(text){ const node = document.createElement("span"); node.className = "search-badge"; node.textContent = text; return node; }
+    function renderSearchResults(){
       const query = normalize(input.value);
       const compactQuery = compact(input.value);
       results.innerHTML = "";
-      if (!query) { results.hidden = true; return; }
+      if (!query) { const empty = document.createElement("div"); empty.className = "search-empty"; empty.textContent = "검색어를 입력하세요."; results.appendChild(empty); return; }
       const tokens = query.split(" ").filter(Boolean);
       const matches = index.map((item) => {
-        const haystack = normalize([item.title, item.path, item.body].join(" "));
-        const tight = compact([item.title, item.path, item.body].join(" "));
-        let score = 0;
-        if (haystack.includes(query)) score += 8;
-        if (tight.includes(compactQuery)) score += 6;
-        score += tokens.filter((token) => haystack.includes(token) || tight.includes(token.replace(/ /g, ""))).length;
-        return {item, score};
-      }).filter((row) => row.score > 0).sort((a,b) => b.score - a.score).slice(0, 12);
-      results.hidden = matches.length === 0;
+        const title = normalize(item.title), body = normalize(item.body), tightTitle = compact(item.title), tightBody = compact(item.body);
+        const titleMatched = title.includes(query) || tightTitle.includes(compactQuery) || tokens.some((token) => title.includes(token) || tightTitle.includes(token));
+        const bodyMatched = body.includes(query) || tightBody.includes(compactQuery) || tokens.some((token) => body.includes(token) || tightBody.includes(token));
+        return {item, titleMatched, bodyMatched, score: (titleMatched ? 10 : 0) + (bodyMatched ? 4 : 0)};
+      }).filter((row) => row.score > 0).sort((a,b) => b.score - a.score).slice(0, 20);
+      if (!matches.length) { const empty = document.createElement("div"); empty.className = "search-empty"; empty.textContent = "검색 결과가 없습니다."; results.appendChild(empty); return; }
       for (const row of matches) {
         const a = document.createElement("a");
         a.href = new URL(row.item.url, new URL("..", script.src)).toString();
-        a.textContent = row.item.title;
+        a.append(document.createTextNode(row.item.title));
+        const badges = document.createElement("span");
+        if (row.titleMatched) badges.appendChild(badge("제목"));
+        if (row.bodyMatched) badges.appendChild(badge("내용"));
+        a.appendChild(badges);
         results.appendChild(a);
       }
-    });
-  }
-  markCurrent();
+    }
+    openButton.addEventListener("click", openSearch);
+    closeButton.addEventListener("click", closeSearch);
+    overlay.addEventListener("click", (event) => { if (event.target === overlay) closeSearch(); });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !overlay.hidden) closeSearch(); });
+    input.addEventListener("input", renderSearchResults);
+  }  markCurrent();
   setupSearch();
 })();
 """.strip(),

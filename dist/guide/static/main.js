@@ -169,37 +169,117 @@
     });
   }
   async function setupSearch(){
+    const openButton = document.getElementById("searchOpen");
+    const overlay = document.getElementById("searchOverlay");
+    const dialog = overlay ? overlay.querySelector(".search-dialog") : null;
+    const closeButton = document.getElementById("searchClose");
     const input = document.getElementById("guideSearch");
     const results = document.getElementById("searchResults");
     const script = document.currentScript;
-    if (!input || !results || !script) return;
+    if (!openButton || !overlay || !dialog || !closeButton || !input || !results || !script) return;
     let index = [];
     try { index = await fetch(new URL("../search-index.json", script.src)).then((res) => res.json()); } catch (_) { return; }
-    input.addEventListener("input", () => {
+    function closeSearch(){
+      overlay.hidden = true;
+      document.body.classList.remove("is-search-open");
+      openButton.focus();
+    }
+    function openSearch(){
+      overlay.hidden = false;
+      document.body.classList.add("is-search-open");
+      input.focus();
+      input.select();
+      renderSearchResults();
+    }
+    function makeBadge(text){
+      const badge = document.createElement("span");
+      badge.className = "search-badge";
+      badge.textContent = text;
+      return badge;
+    }
+    function makeSnippet(item, query){
+      const body = String(item.body || "").replace(/\s+/g, " ").trim();
+      if (!body) return "";
+      const source = normalize(body);
+      const offset = source.indexOf(query);
+      if (offset < 0) return body.slice(0, 120);
+      return body.slice(Math.max(0, offset - 36), offset + 96);
+    }
+    function scoreItem(item, query, compactQuery, tokens){
+      const title = normalize(item.title);
+      const tightTitle = compact(item.title);
+      const body = normalize(item.body);
+      const tightBody = compact(item.body);
+      const titleMatched = Boolean(query) && (title.includes(query) || tightTitle.includes(compactQuery) || tokens.some((token) => title.includes(token) || tightTitle.includes(token)));
+      const bodyMatched = Boolean(query) && (body.includes(query) || tightBody.includes(compactQuery) || tokens.some((token) => body.includes(token) || tightBody.includes(token)));
+      let score = 0;
+      if (title.includes(query)) score += 16;
+      if (tightTitle.includes(compactQuery)) score += 12;
+      if (body.includes(query)) score += 8;
+      if (tightBody.includes(compactQuery)) score += 6;
+      score += tokens.filter((token) => title.includes(token) || tightTitle.includes(token)).length * 4;
+      score += tokens.filter((token) => body.includes(token) || tightBody.includes(token)).length;
+      return {item, score, titleMatched, bodyMatched};
+    }
+    function renderSearchResults(){
       const query = normalize(input.value);
       const compactQuery = compact(input.value);
       results.innerHTML = "";
-      if (!query) { results.hidden = true; return; }
+      if (!query) {
+        results.hidden = false;
+        const empty = document.createElement("div");
+        empty.className = "search-empty";
+        empty.textContent = "검색어를 입력하세요.";
+        results.appendChild(empty);
+        return;
+      }
       const tokens = query.split(" ").filter(Boolean);
-      const matches = index.map((item) => {
-        const haystack = normalize([item.title, item.path, item.body].join(" "));
-        const tight = compact([item.title, item.path, item.body].join(" "));
-        let score = 0;
-        if (haystack.includes(query)) score += 8;
-        if (tight.includes(compactQuery)) score += 6;
-        score += tokens.filter((token) => haystack.includes(token) || tight.includes(token.replace(/ /g, ""))).length;
-        return {item, score};
-      }).filter((row) => row.score > 0).sort((a,b) => b.score - a.score).slice(0, 12);
-      results.hidden = matches.length === 0;
+      const matches = index.map((item) => scoreItem(item, query, compactQuery, tokens))
+        .filter((row) => row.score > 0 && (row.titleMatched || row.bodyMatched))
+        .sort((a,b) => b.score - a.score)
+        .slice(0, 20);
+      results.hidden = false;
+      if (!matches.length) {
+        const empty = document.createElement("div");
+        empty.className = "search-empty";
+        empty.textContent = "검색 결과가 없습니다.";
+        results.appendChild(empty);
+        return;
+      }
       for (const row of matches) {
         const a = document.createElement("a");
         a.href = new URL(row.item.url, new URL("..", script.src)).toString();
-        a.textContent = row.item.title;
+        const title = document.createElement("span");
+        title.className = "search-result-title";
+        title.textContent = row.item.title;
+        const badges = document.createElement("span");
+        badges.className = "search-badges";
+        if (row.titleMatched) badges.appendChild(makeBadge("제목"));
+        if (row.bodyMatched) badges.appendChild(makeBadge("내용"));
+        const snippetText = row.bodyMatched && !row.titleMatched ? makeSnippet(row.item, query) : "";
+        a.append(title, badges);
+        if (snippetText) {
+          const snippet = document.createElement("span");
+          snippet.className = "search-snippet";
+          snippet.textContent = snippetText;
+          a.appendChild(snippet);
+        }
         results.appendChild(a);
       }
+    }
+    openButton.addEventListener("click", openSearch);
+    closeButton.addEventListener("click", closeSearch);
+    overlay.addEventListener("click", (event) => { if (event.target === overlay) closeSearch(); });
+    dialog.addEventListener("click", (event) => event.stopPropagation());
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey) {
+        const tag = document.activeElement ? document.activeElement.tagName : "";
+        if (tag !== "INPUT" && tag !== "TEXTAREA") { event.preventDefault(); openSearch(); }
+      }
+      if (event.key === "Escape" && !overlay.hidden) closeSearch();
     });
-  }
-  setupThemeToggle();
+    input.addEventListener("input", renderSearchResults);
+  }  setupThemeToggle();
   setupSidebarCollapse();
   setupSidebarResize();
   setupNavGroups();

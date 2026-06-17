@@ -315,11 +315,17 @@ def render_page(page: Page, pages: list[Page], body: str) -> str:
 </head>
 <body>
   <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div id="searchOverlay" class="search-overlay" hidden>
+    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
+      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
+      <div id="searchResults" class="search-results" hidden></div>
+    </section>
+  </div>
   <div class="site-shell">
     <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="{home_href}">AIMT GUIDE</a><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <label class="search-box"><span>문서 검색</span><input id="guideSearch" type="search" placeholder="검색어 입력"></label>
-      <div id="searchResults" class="search-results" hidden></div>
+      <div class="brand-row"><a class="brand" href="{home_href}">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      
       <nav class="nav-list" aria-label="문서 목록">
 {make_nav(pages, page.output_path)}
       </nav>
@@ -360,7 +366,7 @@ def write_static_assets() -> None:
     write_text(
         STATIC_ROOT / "styles.css",
         """
-:root{color-scheme:light;--sidebar-width:310px;--sidebar-toggle-top:22px;--sidebar-toggle-left:18px;--bg:#f4f6fb;--panel:#fff;--sidebar:#fff;--field:#fff;--search-panel:#fbfcff;--ink:#172033;--nav-ink:#26324a;--muted:#6b7280;--line:#dce2ef;--accent:#315bef;--soft:#eef3ff;--hover:#f8faff;--code:#101828;--pre-ink:#e5e7eb;--inline-code-bg:#eef2ff;--inline-code-ink:#243b8f;--shadow:rgba(31,41,55,.08);--scroll:rgba(49,91,239,.30);--scroll-hover:rgba(49,91,239,.48)}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1420;--panel:#151b27;--sidebar:#111722;--field:#0f1520;--search-panel:#121a28;--ink:#e5eaf3;--nav-ink:#d8deea;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--hover:#182235;--code:#090d16;--pre-ink:#e8edf7;--inline-code-bg:#1d2942;--inline-code-ink:#c8d4ff;--shadow:rgba(0,0,0,.32);--scroll:rgba(142,162,255,.34);--scroll-hover:rgba(142,162,255,.58)}}:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1420;--panel:#151b27;--sidebar:#111722;--field:#0f1520;--search-panel:#121a28;--ink:#e5eaf3;--nav-ink:#d8deea;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--hover:#182235;--code:#090d16;--pre-ink:#e8edf7;--inline-code-bg:#1d2942;--inline-code-ink:#c8d4ff;--shadow:rgba(0,0,0,.32);--scroll:rgba(142,162,255,.34);--scroll-hover:rgba(142,162,255,.58)}:root[data-theme="light"]{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}.site-shell{display:grid;grid-template-columns:var(--sidebar-width) 8px minmax(0,1fr);min-height:100vh;transition:grid-template-columns .18s ease}:root[data-sidebar="collapsed"] .site-shell{grid-template-columns:0 0 minmax(0,1fr)}.sidebar{grid-column:1;min-width:0;position:sticky;top:0;height:100vh;overflow-y:scroll;overflow-x:hidden;padding:22px 18px;background:var(--sidebar);border-right:1px solid var(--line);scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--scroll) transparent;transition:padding .18s ease,border-color .18s ease,visibility .18s ease}:root[data-sidebar="collapsed"] .sidebar{visibility:hidden;overflow:hidden;padding:0;border-right:0}.sidebar-resizer{grid-column:2;position:sticky;top:0;height:100vh;cursor:col-resize;background:linear-gradient(90deg,transparent 0 3px,var(--line) 3px 4px,transparent 4px);touch-action:none}:root[data-sidebar="collapsed"] .sidebar-resizer{display:none}.sidebar-resizer:hover,.sidebar-resizer:focus{background:linear-gradient(90deg,transparent 0 2px,var(--accent) 2px 5px,transparent 5px);outline:none}body.is-resizing-sidebar{cursor:col-resize;user-select:none}.sidebar::-webkit-scrollbar{width:8px;height:8px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--scroll);background-clip:content-box;border:2px solid transparent;border-radius:999px}.sidebar::-webkit-scrollbar-thumb:hover{background:var(--scroll-hover);background-clip:content-box}.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}.brand{min-width:0;flex:1;color:var(--ink);font-weight:900;text-decoration:none;letter-spacing:.03em}.theme-toggle,.sidebar-toggle{display:grid;place-items:center;width:32px;height:32px;flex:0 0 auto;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--muted);font:700 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.theme-toggle:hover,.sidebar-toggle:hover{background:var(--soft);color:var(--accent)}.sidebar-expand{position:fixed;left:var(--sidebar-toggle-left);top:var(--sidebar-toggle-top);z-index:50;display:none;box-shadow:0 10px 24px var(--shadow)}:root[data-sidebar="collapsed"] .sidebar-expand{display:grid}.search-box{display:block;margin-bottom:14px;font-size:12px;color:var(--muted)}.search-box input{width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--field);color:var(--ink)}.search-results{margin:0 0 16px;padding:8px;border:1px solid var(--line);border-radius:14px;background:var(--search-panel)}.search-results a{display:block;padding:7px 8px;border-radius:10px;color:var(--ink);text-decoration:none}.search-results a:hover{background:var(--soft)}.nav-list{font-size:14px}.nav-link{display:block;margin:2px 0;padding:7px 9px;border-radius:10px;color:var(--nav-ink);text-decoration:none}.nav-link:hover,.nav-link[aria-current="page"]{background:var(--soft);color:var(--accent)}.nav-group>summary{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;margin:2px 0;border-radius:10px;list-style:none;cursor:pointer}.nav-group>summary:hover{background:var(--hover)}.nav-group>summary::-webkit-details-marker{display:none}.nav-group>summary .nav-link{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis}.nav-group>summary .nav-link:hover{background:transparent}.nav-caret{display:grid;place-items:center;width:24px;height:32px;border-radius:8px;color:var(--muted);transition:transform .16s ease,background-color .16s ease,color .16s ease}.nav-caret:before{content:"▸";font-size:12px;line-height:1}.nav-group[open]>summary .nav-caret{transform:rotate(90deg);color:var(--accent)}.nav-group>summary:hover .nav-caret{background:var(--soft)}.nav-children{margin-left:12px;padding-left:8px;border-left:1px solid var(--line)}.content-shell{grid-column:3;min-width:0;padding:42px min(7vw,72px);transition:padding .18s ease}.guide-content{width:100%;max-width:980px;margin:0 auto;padding:42px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 45px var(--shadow);transition:max-width .18s ease}:root[data-sidebar="collapsed"] .content-shell{padding-left:max(72px,5vw);padding-right:max(42px,4vw)}:root[data-sidebar="collapsed"] .guide-content{max-width:1400px}h1{font-size:34px;line-height:1.2;margin:0 0 6px}h2{margin-top:38px;border-bottom:1px solid var(--line);padding-bottom:6px}.doc-version{margin:0 0 28px;color:var(--muted);font-size:13px}code{padding:.12em .35em;border-radius:6px;background:var(--inline-code-bg);color:var(--inline-code-ink)}pre,.code{padding:16px;overflow:auto;border-radius:16px;background:var(--code);color:var(--pre-ink);white-space:pre-wrap}blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid var(--line);padding:8px 10px}img{max-width:100%;height:auto;border-radius:12px}.image{border:none;margin:1.5em 0;padding:0;text-align:center}.column-list{display:flex;gap:32px}.column{min-width:0;overflow:hidden}.link-to-page{margin:1em 0;padding:0;border:none;font-weight:700}.link-to-page a:before{content:"› ";color:var(--accent)}.callout{border-radius:12px;padding:1rem;background:var(--soft)}.bookmark{display:flex;width:100%;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none}.bookmark-info{padding:12px 14px}.bookmark-image{width:33%;object-fit:cover}.selected-value{display:inline-block;padding:0 .5em;background:var(--soft);border-radius:3px;margin:.3em .5em .3em 0}.table_of_contents-item{display:block;font-size:.875rem;line-height:1.3;padding:.125rem}.table_of_contents-indent-1{margin-left:1.5rem}.table_of_contents-indent-2{margin-left:3rem}.table_of_contents-indent-3{margin-left:4.5rem}@media(max-width:900px){.site-shell{display:block}.sidebar{position:relative;height:auto}.sidebar-resizer{display:none}:root[data-sidebar="collapsed"] .sidebar{display:none}.sidebar-expand{left:18px;top:18px}.content-shell{padding:18px}.guide-content{padding:24px;border-radius:18px}:root[data-sidebar="collapsed"] .content-shell{padding:64px 18px 18px}.column-list{display:block}}
+:root{color-scheme:light;--sidebar-width:310px;--sidebar-toggle-top:22px;--sidebar-toggle-left:18px;--bg:#f4f6fb;--panel:#fff;--sidebar:#fff;--field:#fff;--search-panel:#fbfcff;--ink:#172033;--nav-ink:#26324a;--muted:#6b7280;--line:#dce2ef;--accent:#315bef;--soft:#eef3ff;--hover:#f8faff;--code:#101828;--pre-ink:#e5e7eb;--inline-code-bg:#eef2ff;--inline-code-ink:#243b8f;--shadow:rgba(31,41,55,.08);--scroll:rgba(49,91,239,.30);--scroll-hover:rgba(49,91,239,.48)}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1420;--panel:#151b27;--sidebar:#111722;--field:#0f1520;--search-panel:#121a28;--ink:#e5eaf3;--nav-ink:#d8deea;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--hover:#182235;--code:#090d16;--pre-ink:#e8edf7;--inline-code-bg:#1d2942;--inline-code-ink:#c8d4ff;--shadow:rgba(0,0,0,.32);--scroll:rgba(142,162,255,.34);--scroll-hover:rgba(142,162,255,.58)}}:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1420;--panel:#151b27;--sidebar:#111722;--field:#0f1520;--search-panel:#121a28;--ink:#e5eaf3;--nav-ink:#d8deea;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--hover:#182235;--code:#090d16;--pre-ink:#e8edf7;--inline-code-bg:#1d2942;--inline-code-ink:#c8d4ff;--shadow:rgba(0,0,0,.32);--scroll:rgba(142,162,255,.34);--scroll-hover:rgba(142,162,255,.58)}:root[data-theme="light"]{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}.site-shell{display:grid;grid-template-columns:var(--sidebar-width) 8px minmax(0,1fr);min-height:100vh;transition:grid-template-columns .18s ease}:root[data-sidebar="collapsed"] .site-shell{grid-template-columns:0 0 minmax(0,1fr)}.sidebar{grid-column:1;min-width:0;position:sticky;top:0;height:100vh;overflow-y:scroll;overflow-x:hidden;padding:22px 18px;background:var(--sidebar);border-right:1px solid var(--line);scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--scroll) transparent;transition:padding .18s ease,border-color .18s ease,visibility .18s ease}:root[data-sidebar="collapsed"] .sidebar{visibility:hidden;overflow:hidden;padding:0;border-right:0}.sidebar-resizer{grid-column:2;position:sticky;top:0;height:100vh;cursor:col-resize;background:linear-gradient(90deg,transparent 0 3px,var(--line) 3px 4px,transparent 4px);touch-action:none}:root[data-sidebar="collapsed"] .sidebar-resizer{display:none}.sidebar-resizer:hover,.sidebar-resizer:focus{background:linear-gradient(90deg,transparent 0 2px,var(--accent) 2px 5px,transparent 5px);outline:none}body.is-resizing-sidebar{cursor:col-resize;user-select:none}.sidebar::-webkit-scrollbar{width:8px;height:8px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--scroll);background-clip:content-box;border:2px solid transparent;border-radius:999px}.sidebar::-webkit-scrollbar-thumb:hover{background:var(--scroll-hover);background-clip:content-box}.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}.brand{min-width:0;flex:1;color:var(--ink);font-weight:900;text-decoration:none;letter-spacing:.03em}.theme-toggle,.sidebar-toggle{display:grid;place-items:center;width:32px;height:32px;flex:0 0 auto;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--muted);font:700 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.theme-toggle:hover,.sidebar-toggle:hover{background:var(--soft);color:var(--accent)}.sidebar-expand{position:fixed;left:var(--sidebar-toggle-left);top:var(--sidebar-toggle-top);z-index:50;display:none;box-shadow:0 10px 24px var(--shadow)}:root[data-sidebar="collapsed"] .sidebar-expand{display:grid}.nav-list{font-size:14px}.nav-link{display:block;margin:2px 0;padding:7px 9px;border-radius:10px;color:var(--nav-ink);text-decoration:none}.nav-link:hover,.nav-link[aria-current="page"]{background:var(--soft);color:var(--accent)}.nav-group>summary{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;margin:2px 0;border-radius:10px;list-style:none;cursor:pointer}.nav-group>summary:hover{background:var(--hover)}.nav-group>summary::-webkit-details-marker{display:none}.nav-group>summary .nav-link{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis}.nav-group>summary .nav-link:hover{background:transparent}.nav-caret{display:grid;place-items:center;width:24px;height:32px;border-radius:8px;color:var(--muted);transition:transform .16s ease,background-color .16s ease,color .16s ease}.nav-caret:before{content:"▸";font-size:12px;line-height:1}.nav-group[open]>summary .nav-caret{transform:rotate(90deg);color:var(--accent)}.nav-group>summary:hover .nav-caret{background:var(--soft)}.nav-children{margin-left:12px;padding-left:8px;border-left:1px solid var(--line)}.content-shell{grid-column:3;min-width:0;padding:42px min(7vw,72px);transition:padding .18s ease}.guide-content{width:100%;max-width:980px;margin:0 auto;padding:42px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 45px var(--shadow);transition:max-width .18s ease}:root[data-sidebar="collapsed"] .content-shell{padding-left:max(72px,5vw);padding-right:max(42px,4vw)}:root[data-sidebar="collapsed"] .guide-content{max-width:1400px}h1{font-size:34px;line-height:1.2;margin:0 0 6px}h2{margin-top:38px;border-bottom:1px solid var(--line);padding-bottom:6px}.doc-version{margin:0 0 28px;color:var(--muted);font-size:13px}code{padding:.12em .35em;border-radius:6px;background:var(--inline-code-bg);color:var(--inline-code-ink)}pre,.code{padding:16px;overflow:auto;border-radius:16px;background:var(--code);color:var(--pre-ink);white-space:pre-wrap}blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid var(--line);padding:8px 10px}img{max-width:100%;height:auto;border-radius:12px}.image{border:none;margin:1.5em 0;padding:0;text-align:center}.column-list{display:flex;gap:32px}.column{min-width:0;overflow:hidden}.link-to-page{margin:1em 0;padding:0;border:none;font-weight:700}.link-to-page a:before{content:"› ";color:var(--accent)}.callout{border-radius:12px;padding:1rem;background:var(--soft)}.bookmark{display:flex;width:100%;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none}.bookmark-info{padding:12px 14px}.bookmark-image{width:33%;object-fit:cover}.selected-value{display:inline-block;padding:0 .5em;background:var(--soft);border-radius:3px;margin:.3em .5em .3em 0}.table_of_contents-item{display:block;font-size:.875rem;line-height:1.3;padding:.125rem}.table_of_contents-indent-1{margin-left:1.5rem}.table_of_contents-indent-2{margin-left:3rem}.table_of_contents-indent-3{margin-left:4.5rem}body.is-search-open{overflow:hidden}.search-overlay{position:fixed;inset:0;z-index:80;display:grid;place-items:start center;padding:72px 20px 24px;background:rgba(15,20,32,.42);backdrop-filter:blur(6px)}.search-overlay[hidden]{display:none}.search-dialog{width:min(760px,100%);max-height:min(760px,calc(100vh - 96px));display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 24px 80px rgba(0,0,0,.24)}.search-header{display:flex;align-items:center;gap:12px;padding:18px 18px 12px;border-bottom:1px solid var(--line)}.search-header h2{flex:1;margin:0;border:0;padding:0;font-size:18px;line-height:1.2}.search-close{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--muted);font:700 18px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.search-close:hover{background:var(--soft);color:var(--accent)}.search-input{width:calc(100% - 36px);margin:16px 18px 10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--field);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.search-overlay .search-results{display:block;min-height:120px;overflow:auto;margin:0;padding:8px 18px 18px;border:0;border-radius:0;background:transparent}.search-overlay .search-results[hidden]{display:none}.search-overlay .search-results a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 10px;margin:4px 0;padding:10px 12px;border:1px solid transparent;border-radius:12px;color:var(--ink);text-decoration:none}.search-overlay .search-results a:hover{border-color:var(--line);background:var(--soft)}.search-result-title{min-width:0;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-badges{display:flex;gap:5px;align-items:center}.search-badge{display:inline-flex;align-items:center;height:22px;padding:0 7px;border:1px solid var(--line);border-radius:999px;background:var(--field);color:var(--muted);font-size:12px;font-weight:700}.search-snippet{grid-column:1/-1;color:var(--muted);font-size:13px;line-height:1.45}.search-empty{padding:28px 8px;color:var(--muted);text-align:center}@media(max-width:900px){.search-overlay{padding:64px 12px 12px}.search-dialog{max-height:calc(100vh - 76px);border-radius:14px}.search-result-title{white-space:normal}}@media(max-width:900px){.site-shell{display:block}.sidebar{position:relative;height:auto}.sidebar-resizer{display:none}:root[data-sidebar="collapsed"] .sidebar{display:none}.sidebar-expand{left:18px;top:18px}.content-shell{padding:18px}.guide-content{padding:24px;border-radius:18px}:root[data-sidebar="collapsed"] .content-shell{padding:64px 18px 18px}.column-list{display:block}}
 """.strip(),
     )
     write_text(
@@ -537,37 +543,117 @@ def write_static_assets() -> None:
     });
   }
   async function setupSearch(){
+    const openButton = document.getElementById("searchOpen");
+    const overlay = document.getElementById("searchOverlay");
+    const dialog = overlay ? overlay.querySelector(".search-dialog") : null;
+    const closeButton = document.getElementById("searchClose");
     const input = document.getElementById("guideSearch");
     const results = document.getElementById("searchResults");
     const script = document.currentScript;
-    if (!input || !results || !script) return;
+    if (!openButton || !overlay || !dialog || !closeButton || !input || !results || !script) return;
     let index = [];
     try { index = await fetch(new URL("../search-index.json", script.src)).then((res) => res.json()); } catch (_) { return; }
-    input.addEventListener("input", () => {
+    function closeSearch(){
+      overlay.hidden = true;
+      document.body.classList.remove("is-search-open");
+      openButton.focus();
+    }
+    function openSearch(){
+      overlay.hidden = false;
+      document.body.classList.add("is-search-open");
+      input.focus();
+      input.select();
+      renderSearchResults();
+    }
+    function makeBadge(text){
+      const badge = document.createElement("span");
+      badge.className = "search-badge";
+      badge.textContent = text;
+      return badge;
+    }
+    function makeSnippet(item, query){
+      const body = String(item.body || "").replace(/\\s+/g, " ").trim();
+      if (!body) return "";
+      const source = normalize(body);
+      const offset = source.indexOf(query);
+      if (offset < 0) return body.slice(0, 120);
+      return body.slice(Math.max(0, offset - 36), offset + 96);
+    }
+    function scoreItem(item, query, compactQuery, tokens){
+      const title = normalize(item.title);
+      const tightTitle = compact(item.title);
+      const body = normalize(item.body);
+      const tightBody = compact(item.body);
+      const titleMatched = Boolean(query) && (title.includes(query) || tightTitle.includes(compactQuery) || tokens.some((token) => title.includes(token) || tightTitle.includes(token)));
+      const bodyMatched = Boolean(query) && (body.includes(query) || tightBody.includes(compactQuery) || tokens.some((token) => body.includes(token) || tightBody.includes(token)));
+      let score = 0;
+      if (title.includes(query)) score += 16;
+      if (tightTitle.includes(compactQuery)) score += 12;
+      if (body.includes(query)) score += 8;
+      if (tightBody.includes(compactQuery)) score += 6;
+      score += tokens.filter((token) => title.includes(token) || tightTitle.includes(token)).length * 4;
+      score += tokens.filter((token) => body.includes(token) || tightBody.includes(token)).length;
+      return {item, score, titleMatched, bodyMatched};
+    }
+    function renderSearchResults(){
       const query = normalize(input.value);
       const compactQuery = compact(input.value);
       results.innerHTML = "";
-      if (!query) { results.hidden = true; return; }
+      if (!query) {
+        results.hidden = false;
+        const empty = document.createElement("div");
+        empty.className = "search-empty";
+        empty.textContent = "검색어를 입력하세요.";
+        results.appendChild(empty);
+        return;
+      }
       const tokens = query.split(" ").filter(Boolean);
-      const matches = index.map((item) => {
-        const haystack = normalize([item.title, item.path, item.body].join(" "));
-        const tight = compact([item.title, item.path, item.body].join(" "));
-        let score = 0;
-        if (haystack.includes(query)) score += 8;
-        if (tight.includes(compactQuery)) score += 6;
-        score += tokens.filter((token) => haystack.includes(token) || tight.includes(token.replace(/ /g, ""))).length;
-        return {item, score};
-      }).filter((row) => row.score > 0).sort((a,b) => b.score - a.score).slice(0, 12);
-      results.hidden = matches.length === 0;
+      const matches = index.map((item) => scoreItem(item, query, compactQuery, tokens))
+        .filter((row) => row.score > 0 && (row.titleMatched || row.bodyMatched))
+        .sort((a,b) => b.score - a.score)
+        .slice(0, 20);
+      results.hidden = false;
+      if (!matches.length) {
+        const empty = document.createElement("div");
+        empty.className = "search-empty";
+        empty.textContent = "검색 결과가 없습니다.";
+        results.appendChild(empty);
+        return;
+      }
       for (const row of matches) {
         const a = document.createElement("a");
         a.href = new URL(row.item.url, new URL("..", script.src)).toString();
-        a.textContent = row.item.title;
+        const title = document.createElement("span");
+        title.className = "search-result-title";
+        title.textContent = row.item.title;
+        const badges = document.createElement("span");
+        badges.className = "search-badges";
+        if (row.titleMatched) badges.appendChild(makeBadge("제목"));
+        if (row.bodyMatched) badges.appendChild(makeBadge("내용"));
+        const snippetText = row.bodyMatched && !row.titleMatched ? makeSnippet(row.item, query) : "";
+        a.append(title, badges);
+        if (snippetText) {
+          const snippet = document.createElement("span");
+          snippet.className = "search-snippet";
+          snippet.textContent = snippetText;
+          a.appendChild(snippet);
+        }
         results.appendChild(a);
       }
+    }
+    openButton.addEventListener("click", openSearch);
+    closeButton.addEventListener("click", closeSearch);
+    overlay.addEventListener("click", (event) => { if (event.target === overlay) closeSearch(); });
+    dialog.addEventListener("click", (event) => event.stopPropagation());
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey) {
+        const tag = document.activeElement ? document.activeElement.tagName : "";
+        if (tag !== "INPUT" && tag !== "TEXTAREA") { event.preventDefault(); openSearch(); }
+      }
+      if (event.key === "Escape" && !overlay.hidden) closeSearch();
     });
-  }
-  setupThemeToggle();
+    input.addEventListener("input", renderSearchResults);
+  }  setupThemeToggle();
   setupSidebarCollapse();
   setupSidebarResize();
   setupNavGroups();
@@ -591,11 +677,17 @@ def write_404(pages: list[Page]) -> None:
 </head>
 <body>
   <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div id="searchOverlay" class="search-overlay" hidden>
+    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
+      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
+      <div id="searchResults" class="search-results" hidden></div>
+    </section>
+  </div>
   <div class="site-shell">
     <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="guide/index.html">AIMT GUIDE</a><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <label class="search-box"><span>문서 검색</span><input id="guideSearch" type="search" placeholder="검색어 입력"></label>
-      <div id="searchResults" class="search-results" hidden></div>
+      <div class="brand-row"><a class="brand" href="guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      
       <nav class="nav-list" aria-label="문서 목록">
 {make_nav(pages, DIST_ROOT / "404.html")}
       </nav>
