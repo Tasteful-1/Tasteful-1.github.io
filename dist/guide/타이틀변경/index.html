@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>타이틀변경 · AIMT Guide</title>
+  <script>(function(){try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <link rel="stylesheet" href="../../guide/static/styles.css">
+</head>
+<body>
+  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      <label class="search-box"><span>문서 검색</span><input id="guideSearch" type="search" placeholder="검색어 입력"></label>
+      <div id="searchResults" class="search-results" hidden></div>
+      <nav class="nav-list" aria-label="문서 목록">
+<details class="nav-group" data-depth="0" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT GUIDE - KR</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER MVMZ (개정1)</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER VXVXA (개정1)</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="1">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv-%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%84%E3%82%AF%E3%83%BC%E3%83%AB-mv/index.html" data-depth="1">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="1">ClickTeam Fusion ( Multimedia Fusion )(작성예정)</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%83%81%EB%8B%A8%EB%B6%80/index.html" data-depth="1">상단부</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/%ED%8C%8C%EC%9D%BC%EB%AA%A9%EB%A1%9D-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8/index.html" data-depth="2">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="2">프롬프트</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD/index.html" data-depth="2">빠른번역</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="3">테마</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">추출정규식</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="3">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">언어패턴설정</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="3">번역 설정</a>
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="3">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="3">API KEY 설정</a>
+<a class="nav-link" href="../../guide/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">치환용어설정</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="3">기본폰트설정</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="3">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="3">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="3">Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="3">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="3">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="3">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="3">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="3">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="3">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="3">401 Block Unit for Consistency/Duplicate</a>
+<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="3">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="3">Cmd 122 2차 추출 중복처리</a>
+<a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="3">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="3">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">로그 관리</a>
+<a class="nav-link" href="../../guide/%EB%B0%B1%EC%97%85-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">백업 관리</a>
+<a class="nav-link" href="../../guide/%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">캐시 관리</a>
+<a class="nav-link" href="../../guide/%EB%8F%84%EC%9B%80%EB%A7%90/index.html" data-depth="3">도움말</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%ED%83%80/index.html" data-depth="3">기타</a>
+</div></details>
+<a class="nav-link" href="../../guide/cmd/index.html" data-depth="2">CMD</a>
+<a class="nav-link" href="../../guide/view/index.html" data-depth="2">VIEW</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%A4%91%EB%8B%A8%EB%B6%80/index.html" data-depth="1">중단부</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%95%98%EB%8B%A8%EB%B6%80/index.html" data-depth="1">하단부</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%8F%84%EA%B5%AC/index.html" data-depth="2">도구</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html" data-depth="3">빈칸채우기</a>
+<a class="nav-link" href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html" data-depth="3">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html" data-depth="3">적용취소</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="3">번역일관성</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html" data-depth="3">추출 중복</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html" data-depth="3">이스케이프</a>
+<a class="nav-link" href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html" data-depth="3">일본어체크</a>
+<a class="nav-link" href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html" data-depth="3">받침정리</a>
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="3">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="3">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/winmerge-check/index.html" data-depth="3">WINMERGE CHECK</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="3">APPDATA</a>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/mvmz/index.html" data-depth="3">MVMZ</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/index.html" data-depth="4">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/index.html" data-depth="4">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-%EB%8F%99%EA%B8%B0%ED%99%94/index.html" data-depth="4">402 동기화</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EB%A6%84-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">이름 일관성</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">통합 일관성</a>
+<a class="nav-link" href="../../guide/%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%9B%90/index.html" data-depth="4">코드 복원</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html" data-depth="4">번역 가져오기</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-data/index.html" data-depth="4">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="4">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="4">Data 복호화</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="4">프로젝트 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/vxvxa/index.html" data-depth="3">VXVXA</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="4">언팩</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀변경</a>
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4-2948edda/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%EC%A0%84%EC%9A%A9%EC%B6%94%EC%B6%9C/index.html" data-depth="4">전용추출</a>
+<a class="nav-link" href="../../guide/imbook%ED%8C%A8%EC%B9%98-bbtext%ED%8C%A8%EC%B9%98-missions%ED%8C%A8%EC%B9%98/index.html" data-depth="4">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv%EB%B3%80%ED%99%98/index.html" data-depth="4">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/wolf/index.html" data-depth="3">WOLF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9-%EB%A6%AC%ED%8C%A9/index.html" data-depth="4">언팩/리팩</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%B9%98%ED%99%98/index.html" data-depth="4">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-%ED%8C%A8%EC%B9%98/index.html" data-depth="4">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%B9%98%ED%99%98/index.html" data-depth="4">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/ctf/index.html" data-depth="3">CTF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%ED%83%80%EC%A0%95%EB%B3%B4-%ED%99%95%EC%9D%B8/index.html" data-depth="4">메타정보 확인</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀 변경</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">언어 변경</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/tyrano/index.html" data-depth="3">Tyrano</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-47c728f5/index.html" data-depth="4">ASAR</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD-2ccdb6d4/index.html" data-depth="4">타이틀 변경</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/kirikiri/index.html" data-depth="3">Kirikiri</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-%EB%B3%80%ED%99%98/index.html" data-depth="4">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/pgmmv/index.html" data-depth="3">PGMMV</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-16cf2cb1/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/electron/index.html" data-depth="3">Electron</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="4">ASAR</a>
+</div></details>
+<a class="nav-link" href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html" data-depth="3">TTC 빌드</a>
+<a class="nav-link" href="../../guide/%EC%84%B8%EC%9D%B4%EB%B8%8C-%EC%97%90%EB%94%94%ED%84%B0/index.html" data-depth="3">세이브 에디터</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="3">llama-server</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="2">추출</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="2">번역</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="2">적용과 즉시적용</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="3">메모장</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD-77499184/index.html" data-depth="3">빠른번역</a>
+<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="3">용어사전</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="1">RPGMAKER 명령코드 정리(작성 예정)</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/code-101-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A8%B8%EB%A6%BF%EA%B8%80-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%9C%EB%A0%A5%EC%9D%98-%EC%84%A4%EC%A0%95%EB%B6%80/index.html" data-depth="2">code:101 텍스트 머릿글 - 텍스트 출력의 설정부</a>
+<a class="nav-link" href="../../guide/code-401-%ED%85%8D%EC%8A%A4%ED%8A%B8-%ED%91%9C%EC%8B%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:401 텍스트 표시 - 텍스트의 내용</a>
+<a class="nav-link" href="../../guide/code-102-%EC%84%A0%ED%83%9D%EC%A7%80-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:102 선택지 표시</a>
+<a class="nav-link" href="../../guide/code-402-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:402 선택지 내용</a>
+<a class="nav-link" href="../../guide/code-403-%EC%B7%A8%EC%86%8C%ED%95%A0-%EB%95%8C/index.html" data-depth="2">code:403 취소할 때</a>
+<a class="nav-link" href="../../guide/code-404-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:404 선택지 분기 종료</a>
+<a class="nav-link" href="../../guide/code-103-%EC%88%AB%EC%9E%90-%EC%9E%85%EB%A0%A5-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 숫자 입력 처리</a>
+<a class="nav-link" href="../../guide/code-103-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A0%ED%83%9D-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 아이템 선택 처리</a>
+<a class="nav-link" href="../../guide/code-105-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C-%ED%97%A4%EB%8D%94/index.html" data-depth="2">code:105 텍스트의 스크롤 표시 헤더</a>
+<a class="nav-link" href="../../guide/code-405-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:405 텍스트의 스크롤 표시</a>
+<a class="nav-link" href="../../guide/code-121-%EC%8A%A4%EC%9C%84%EC%B9%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:121 스위치 조작</a>
+<a class="nav-link" href="../../guide/code-122-%EB%B3%80%EC%88%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:122 변수 조작</a>
+<a class="nav-link" href="../../guide/code-123-%EC%85%80%ED%94%84-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:123 셀프 스위치의 조작</a>
+<a class="nav-link" href="../../guide/code-124-%ED%83%80%EC%9D%B4%EB%A8%B8-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:124 타이머 조작</a>
+<a class="nav-link" href="../../guide/code-111-%EC%A1%B0%EA%B1%B4-%EB%B6%84%EA%B8%B0/index.html" data-depth="2">code:111 조건 분기</a>
+<a class="nav-link" href="../../guide/code-411-%EA%B7%B8-%EC%9D%B4%EC%99%B8%EC%9D%98-%EA%B2%BD%EC%9A%B0%EC%9D%BC-%EB%95%8C/index.html" data-depth="2">code:411 그 이외의 경우일 때</a>
+<a class="nav-link" href="../../guide/code-412-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:412 분기 종료</a>
+<a class="nav-link" href="../../guide/code-112-%EB%A3%A8%ED%94%84/index.html" data-depth="2">code:112 루프</a>
+<a class="nav-link" href="../../guide/code-413-%EC%83%81%EA%B8%B0%EB%82%B4%EC%9A%A9-%EB%B0%98%EB%B3%B5/index.html" data-depth="2">code:413 상기내용 반복</a>
+<a class="nav-link" href="../../guide/code-113-%EB%A3%A8%ED%94%84-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:113 루프 중단</a>
+<a class="nav-link" href="../../guide/code-115-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B2%98%EB%A6%AC%EC%9D%98-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:115 이벤트 처리의 중단</a>
+<a class="nav-link" href="../../guide/code-117-%EA%B3%B5%ED%86%B5%EC%9D%B4%EB%B2%A4%ED%8A%B8/index.html" data-depth="2">code:117 공통이벤트</a>
+<a class="nav-link" href="../../guide/code-118-%EB%9D%BC%EB%B2%A8/index.html" data-depth="2">code:118 라벨</a>
+<a class="nav-link" href="../../guide/code-119-%EB%9D%BC%EB%B2%A8%EC%A0%90%ED%94%84/index.html" data-depth="2">code:119 라벨점프</a>
+<a class="nav-link" href="../../guide/code-108-%EC%84%A4%EB%AA%85-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:108 설명 머릿글</a>
+<a class="nav-link" href="../../guide/code-408-%EC%84%A4%EB%AA%85-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:408 설명 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-125-%EC%86%8C%EC%A7%80-%EA%B8%88%EC%95%A1-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:125 소지 금액 증감</a>
+<a class="nav-link" href="../../guide/code-126-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:126 아이템 증감</a>
+<a class="nav-link" href="../../guide/code-127-%EB%AC%B4%EA%B8%B0-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:127 무기 증감</a>
+<a class="nav-link" href="../../guide/code-128-%EB%B0%A9%EC%96%B4%EA%B5%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:128 방어구 증감</a>
+<a class="nav-link" href="../../guide/code-129-%ED%8C%8C%ED%8B%B0%EC%9B%90-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:129 파티원 변경</a>
+<a class="nav-link" href="../../guide/code-311-hp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:311 HP 증감</a>
+<a class="nav-link" href="../../guide/code-312-mp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:312 MP 증감</a>
+<a class="nav-link" href="../../guide/code-326-tp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:326 TP 증감</a>
+<a class="nav-link" href="../../guide/code-313-%EC%83%81%ED%83%9C-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:313 상태 변경</a>
+<a class="nav-link" href="../../guide/code-314-%EB%AA%A8%EB%91%90-%ED%9A%8C%EB%B3%B5/index.html" data-depth="2">code:314 모두 회복</a>
+<a class="nav-link" href="../../guide/code-315-exp-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:315 EXP 변경</a>
+<a class="nav-link" href="../../guide/code-316-%EB%A0%88%EB%B2%A8-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:316 레벨 증감</a>
+<a class="nav-link" href="../../guide/code-317-%EB%8A%A5%EB%A0%A5%EC%B9%98-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:317 능력치 증감</a>
+<a class="nav-link" href="../../guide/code-318-%EC%8A%A4%ED%82%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:318 스킬 증감</a>
+<a class="nav-link" href="../../guide/code-319-%EC%9E%A5%EB%B9%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:319 장비 변경</a>
+<a class="nav-link" href="../../guide/code-320-%EC%9D%B4%EB%A6%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:320 이름 변경</a>
+<a class="nav-link" href="../../guide/code-321-%EC%A7%81%EC%97%85-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:321 직업 변경</a>
+<a class="nav-link" href="../../guide/code-324-%EB%8B%89%EB%84%A4%EC%9E%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:324 닉네임 변경</a>
+<a class="nav-link" href="../../guide/code-325-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:325 프로필 변경</a>
+<a class="nav-link" href="../../guide/code-355-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:355 스크립트 명령 머릿글</a>
+<a class="nav-link" href="../../guide/code-655-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:655 스크립트 명령 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-356-mv-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:356 MV 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-357-mz-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:357 MZ 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-657-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9-%EC%83%81%EC%84%B8/index.html" data-depth="2">code:657 플러그인 명령 상세</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="1">추출 파일별 설명</a>
+<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="1">같이 쓰면 좋은 도구들</a>
+<a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="1">자주 나오는 질문</a>
+</div></details>
+      </nav>
+    </aside>
+    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
+    <main class="content-shell">
+      <article class="guide-content">
+        <h1>타이틀변경</h1>
+        <p class="doc-version">작성 당시 버전: 1.14.0.0<br>최종 편집 일시: 2026년 5월 3일 오후 7:11</p>
+<div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80c6-a50d-f58bbc573a0b">이 기능은 무엇인가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8091-aae5-cc72a88f234f"><code>VXVXA 타이틀변경</code>은 현재 프로젝트의 <code>Game.ini</code> 안 <code>[Game]</code> 섹션 <code>Title=</code> 값을 바꾸는 도구입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80c2-91d3-e0d1f52f0e85">즉, 프로젝트 제목을 <code>설정용 파일 기준으로 직접 수정</code>하는 기능입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80c0-9646-e84ac03aaba0">중요한 점은 이 기능이:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8090-b5aa-e8ff8986d942"><li style="list-style-type:disc">번역 JSON을 다시 만드는 기능도 아니고</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-807f-944b-f11a58221bd5"><li style="list-style-type:disc">적용 단계에서 나중에 반영되는 예약 설정도 아니라</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-802b-a3c6-d3922c3822a9"><li style="list-style-type:disc"><code>Game.ini</code>를 바로 수정하는 도구</li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-809e-a2d0-f38eb508dfdc">라는 점입니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-8067-a1aa-f6524dce5f61">무엇을 바꾸나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80c6-bdd7-eef686fb2819">현재 코드 기준으로는 프로젝트의 <code>Game.ini</code> 안 <code>[Game]</code> 섹션의 <code>Title=</code> 줄만 바꿉니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80e0-803d-d3f99094c180"><code>[Game]</code> 섹션이 없으면 새로 만들고, <code>[Game]</code>은 있지만 <code>Title=</code> 줄이 없으면 그 줄만 추가합니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-8068-82ef-f28a6a00b727">어떻게 쓰나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8046-a849-c4c9191938a9">도구 모달의 <code>VXVXA</code> 탭에서 <code>타이틀변경</code>을 누르면 입력 모달이 열립니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80d9-8c96-c068adb4158f">현재 코드 기준으로는 이 모달이 아래 순서로 동작합니다.</p></div><div dir="auto" style="display:contents"><ol class="numbered-list" id="34834c3a-003e-804c-b4e2-fe8a781bda2a" start="1" type="1"><li>현재 <code>Game.ini</code> 제목을 읽어 와서 라벨에 보여 줌</li></ol></div><div dir="auto" style="display:contents"><ol class="numbered-list" id="34834c3a-003e-8025-befe-c934ec080d3c" start="2" type="1"><li>새 제목을 입력</li></ol></div><div dir="auto" style="display:contents"><ol class="numbered-list" id="34834c3a-003e-8059-92b4-e41c6440031e" start="3" type="1"><li>필요하면 <code>읽기 기준</code>, <code>쓰기 기준</code>을 고름</li></ol></div><div dir="auto" style="display:contents"><ol class="numbered-list" id="34834c3a-003e-80e9-93a4-e0408df59408" start="4" type="1"><li>저장</li></ol></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-806f-8b83-f1c7d6995f6a">즉, 빈칸에 바로 덮어쓰는 형태라기보다 <code>현재 제목 확인 + 새 제목 입력</code> 구조라고 보면 됩니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-8059-ac32-f1aadd8abbe4">읽기 기준과 쓰기 기준은 무엇인가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-808b-a12e-f88d5f791bf6">이 도구는 <code>읽기 기준</code>과 <code>쓰기 기준</code>을 따로 둡니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-807e-a198-dd941ef778a4">현재 UI 기준 라벨은 프로필 형태입니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-805a-a73b-c62f6c60234f"><li style="list-style-type:disc"><code>자동</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8009-a668-e0882562980b"><li style="list-style-type:disc"><code>한국어</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8098-b10d-fd9aad527f92"><li style="list-style-type:disc"><code>일본어</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80c9-8b06-c2e6028fe6de"><li style="list-style-type:disc"><code>중국어</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8046-9cc3-ff83f98238e1"><li style="list-style-type:disc"><code>유니코드</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80ae-abbd-eb48a7f3c426">읽기 기준은 현재 모달에서 <code>지금 제목을 어떻게 읽어 보여 줄지</code> 정하는 쪽이고, 쓰기 기준은 저장할 때 <code>Game.ini</code>를 어떤 프로필 기준으로 다시 쓸지 정하는 쪽입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8023-9a93-e3f4c5cbd22f">중요한 점은 현재 코드 기준으로 <code>읽기 기준</code>은 현재 제목 확인용에만 쓰이고, 실제 저장은 이 값을 그대로 따라가지 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80d8-ba97-f8213fcc61d6">즉, 저장할 때는 사용자가 고른 <code>쓰기 기준</code>으로 파일을 다시 쓰며, 읽기 기준은 <code>미리보기용</code>에 가깝습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-800a-91ed-c5da38fcfcab">현재 코드 기준으로 <code>쓰기 기준</code> 기본값은 <code>한국어</code>입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-800b-808a-f64978f666ee">즉, 읽기 결과가 일본어처럼 보여도 사용자가 따로 바꾸지 않으면 저장은 기본적으로 <code>한국어</code> 프로필 기준으로 시도합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80fd-a497-e00633a9bc04">또 <code>자동</code>이나 현재 표시된 <code>읽기 기준</code>은 <code>원본 Game.ini가 실제로 저장된 인코딩을 확정해서 보여 주는 값</code>으로 보면 과합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-801b-a751-fa9fd24f7903">현재 코드는 읽기 후보 중 <code>처음 성공한 쪽</code>을 채택하는 방식이라, ASCII만 있거나 여러 인코딩에서 겹쳐 읽히는 구간은 표시 프로필이 실제 원본과 다를 수 있습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80cd-b090-eebf20b86e23">저장은 언제 반영되나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-808c-a01a-db840c1cf1d8">이 기능은 저장하면 바로 <code>Game.ini</code>에 반영됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8060-bec9-f4b61a5f141d">즉:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-800d-b2aa-cab634b99bbb"><li style="list-style-type:disc"><code>추출</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80d9-bdb3-df28ab19c6e2"><li style="list-style-type:disc"><code>번역</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-801e-b4b1-db64cdae5dd4"><li style="list-style-type:disc"><code>적용</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80d7-bdcb-d583fa9b3158">을 다시 해야만 제목이 바뀌는 구조가 아닙니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80bb-92eb-d40e1cfb54b1">물론 실제 게임이나 외부 툴에서 제목 변화를 체감하려면 그쪽에서 파일을 다시 읽어야 할 수는 있지만, 코드 기준 저장 자체는 즉시입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8075-921a-fc0bdc95268d">다만 현재 코드 기준으로는 <code>Title=</code> 줄만 논리적으로 바꾸더라도, 저장 자체는 <code>Game.ini</code> 전체를 선택한 쓰기 기준 인코딩으로 다시 쓰는 방식입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-804b-99f7-c7a9e8160727">즉, 제목 한 줄만 따로 부분 수정하는 방식으로 이해하면 차이가 있습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80bd-8e44-f2a821bd3544">실패하면 원본 파일은 어떻게 되나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8075-b9d9-c6012d1284d3">현재 구현은 바뀐 <code>Title=</code>를 포함한 <code>Game.ini</code> 전체 내용을 선택한 쓰기 인코딩으로 실제 저장 가능한지 확인한 뒤 파일을 씁니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80a3-b430-f4a1e1cfb535">그래서 새 제목뿐 아니라 기존 <code>Game.ini</code> 안 다른 내용까지 포함해, 선택한 저장 인코딩으로 표현할 수 없으면 실패 메시지를 내고 끝나며, 원본 <code>Game.ini</code>가 중간에 깨진 상태로 저장되지 않도록 막는 쪽입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-800b-a514-c8361e44257a">예를 들어:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80cf-9d0d-c6f70c63a386"><li style="list-style-type:disc">이모지</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8038-8820-da268fc295f5"><li style="list-style-type:disc">선택한 프로필에서 표현 불가능한 문자</li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-806f-acb1-f374244d9c87">같은 값은 저장 실패가 날 수 있습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80cf-97e1-c486628eb4ce">자주 헷갈리는 점</h2></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-8089-8680-d214e2a43aab">제목 전체를 어디까지 바꾸나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8081-a15f-dcaf0d691117">현재 코드 기준으로는 <code>Game.ini</code>의 <code>[Game]</code> 섹션 <code>Title=</code>만 바꿉니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8030-9a72-c8420b82be47">프로젝트 안에 다른 파일에도 제목 비슷한 문구가 있어도 같이 바뀌는 기능은 아닙니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-808b-a946-fcbb093ab504">저장하면 바로 끝인가요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-809d-a884-c6b694e370e3">파일 수정 자체는 바로 끝납니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8018-8fe2-efb4b8c0036a">즉, <code>적용</code> 단계까지 기다리는 기능은 아닙니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80da-ab77-d90c6933019f">다만 실제 게임 실행 화면이나 외부 도구에서 바로 안 보이면 그쪽이 아직 파일을 다시 안 읽은 것일 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80d7-bdb1-f99741d23c86">읽기 기준이랑 쓰기 기준은 왜 따로 있나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8047-8888-c6f6a9a9618c">현재 제목을 확인할 때 읽는 기준과, 저장할 때 파일 전체를 어떤 프로필로 다시 쓸지는 다를 수 있기 때문입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-804c-a13d-f91b6be7dceb">현재 구현은 이 둘을 분리해서 사용자가 직접 바꿀 수 있게 해 둔 상태입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80b6-93ba-ff26c5ec7ac3">다만 <code>읽기 기준</code>을 바꿨다고 저장 때 그 기준으로 다시 읽어 주는 것은 아닙니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-805d-a09e-dd652b743938">왜 쓰기 기준 기본값이 <code>한국어</code>인가요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80b9-9a9a-d58fad9d908b">현재 코드 기준 정책이 그렇습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8047-a9f1-df6a1ea4dfe7">즉, 읽기 결과를 자동으로 따라가는 구조가 아니라 <code>사용자가 직접 바꾸지 않은 쓰기 기준은 한국어</code>로 시작합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80f3-ad57-e0e925f33674">빈 제목으로 저장할 수 있나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-809d-9e4c-f3a62feb6e2c">아닙니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80da-832d-ca7a4528ee7c">현재 UI와 백엔드 모두 빈 문자열은 막습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-8091-a551-fd9b15d867c9"><code>Game.ini</code>가 없으면 어떻게 되나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8008-a08c-c3e6e826f63d">실패합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-802e-ae4f-cf0e64ec6a6e">이 기능은 현재 프로젝트 루트의 <code>Game.ini</code>를 전제로 동작합니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80c1-bb6d-c53c464e9756">알아둘 점</h2></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8004-851d-e7e0ab6de21a"><li style="list-style-type:disc"><code>VXVXA 타이틀변경</code>은 현재 프로젝트 <code>Game.ini</code>의 <code>[Game] -&gt; Title=</code>만 바꾸는 도구입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8005-a84a-d2089301af7b"><li style="list-style-type:disc">저장하면 바로 파일에 반영됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8050-a802-cdcd0d2c74d8"><li style="list-style-type:disc">저장 시에는 <code>Game.ini</code> 전체를 선택한 쓰기 기준 인코딩으로 다시 씁니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8021-9170-cb1345928789"><li style="list-style-type:disc">읽기 기준과 쓰기 기준은 따로 고를 수 있고, 쓰기 기본값은 현재 코드 기준 <code>한국어</code>입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-807d-987c-eb993a4576c9"><li style="list-style-type:disc">읽기 기준은 현재 제목 확인용에 가깝고, 저장은 쓰기 기준 중심으로 진행됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8018-bf77-e7259ec30a2d"><li style="list-style-type:disc"><code>자동</code>이나 표시된 읽기 기준은 원본 저장 인코딩의 확정값이 아니라, 현재 읽기에 성공한 프로필 기준에 가깝습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8068-b5d7-c333ed5bf30d"><li style="list-style-type:disc">저장 인코딩으로 표현할 수 없는 문자가 새 제목이나 기존 <code>Game.ini</code> 내용에 있으면 실패하며, 이 경우 원본 파일 보존을 우선합니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8023-950e-dcff575dd982"><li style="list-style-type:disc">다른 파일의 제목 문자열까지 한 번에 바꾸는 기능은 아닙니다.</li></ul></div>
+      </article>
+    </main>
+  </div>
+  <script src="../../guide/static/main.js"></script>
+</body>
+</html>

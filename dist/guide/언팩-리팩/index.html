@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>언팩/리팩 · AIMT Guide</title>
+  <script>(function(){try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <link rel="stylesheet" href="../../guide/static/styles.css">
+</head>
+<body>
+  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      <label class="search-box"><span>문서 검색</span><input id="guideSearch" type="search" placeholder="검색어 입력"></label>
+      <div id="searchResults" class="search-results" hidden></div>
+      <nav class="nav-list" aria-label="문서 목록">
+<details class="nav-group" data-depth="0" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT GUIDE - KR</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER MVMZ (개정1)</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER VXVXA (개정1)</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="1">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv-%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%84%E3%82%AF%E3%83%BC%E3%83%AB-mv/index.html" data-depth="1">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="1">ClickTeam Fusion ( Multimedia Fusion )(작성예정)</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%83%81%EB%8B%A8%EB%B6%80/index.html" data-depth="1">상단부</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/%ED%8C%8C%EC%9D%BC%EB%AA%A9%EB%A1%9D-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8/index.html" data-depth="2">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="2">프롬프트</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD/index.html" data-depth="2">빠른번역</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="3">테마</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">추출정규식</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="3">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">언어패턴설정</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="3">번역 설정</a>
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="3">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="3">API KEY 설정</a>
+<a class="nav-link" href="../../guide/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">치환용어설정</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="3">기본폰트설정</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="3">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="3">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="3">Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="3">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="3">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="3">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="3">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="3">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="3">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="3">401 Block Unit for Consistency/Duplicate</a>
+<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="3">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="3">Cmd 122 2차 추출 중복처리</a>
+<a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="3">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="3">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">로그 관리</a>
+<a class="nav-link" href="../../guide/%EB%B0%B1%EC%97%85-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">백업 관리</a>
+<a class="nav-link" href="../../guide/%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">캐시 관리</a>
+<a class="nav-link" href="../../guide/%EB%8F%84%EC%9B%80%EB%A7%90/index.html" data-depth="3">도움말</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%ED%83%80/index.html" data-depth="3">기타</a>
+</div></details>
+<a class="nav-link" href="../../guide/cmd/index.html" data-depth="2">CMD</a>
+<a class="nav-link" href="../../guide/view/index.html" data-depth="2">VIEW</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%A4%91%EB%8B%A8%EB%B6%80/index.html" data-depth="1">중단부</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%95%98%EB%8B%A8%EB%B6%80/index.html" data-depth="1">하단부</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%8F%84%EA%B5%AC/index.html" data-depth="2">도구</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html" data-depth="3">빈칸채우기</a>
+<a class="nav-link" href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html" data-depth="3">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html" data-depth="3">적용취소</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="3">번역일관성</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html" data-depth="3">추출 중복</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html" data-depth="3">이스케이프</a>
+<a class="nav-link" href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html" data-depth="3">일본어체크</a>
+<a class="nav-link" href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html" data-depth="3">받침정리</a>
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="3">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="3">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/winmerge-check/index.html" data-depth="3">WINMERGE CHECK</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="3">APPDATA</a>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/mvmz/index.html" data-depth="3">MVMZ</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/index.html" data-depth="4">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/index.html" data-depth="4">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-%EB%8F%99%EA%B8%B0%ED%99%94/index.html" data-depth="4">402 동기화</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EB%A6%84-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">이름 일관성</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">통합 일관성</a>
+<a class="nav-link" href="../../guide/%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%9B%90/index.html" data-depth="4">코드 복원</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html" data-depth="4">번역 가져오기</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-data/index.html" data-depth="4">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="4">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="4">Data 복호화</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="4">프로젝트 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/vxvxa/index.html" data-depth="3">VXVXA</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="4">언팩</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀변경</a>
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4-2948edda/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%EC%A0%84%EC%9A%A9%EC%B6%94%EC%B6%9C/index.html" data-depth="4">전용추출</a>
+<a class="nav-link" href="../../guide/imbook%ED%8C%A8%EC%B9%98-bbtext%ED%8C%A8%EC%B9%98-missions%ED%8C%A8%EC%B9%98/index.html" data-depth="4">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv%EB%B3%80%ED%99%98/index.html" data-depth="4">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/wolf/index.html" data-depth="3">WOLF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9-%EB%A6%AC%ED%8C%A9/index.html" data-depth="4">언팩/리팩</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%B9%98%ED%99%98/index.html" data-depth="4">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-%ED%8C%A8%EC%B9%98/index.html" data-depth="4">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%B9%98%ED%99%98/index.html" data-depth="4">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/ctf/index.html" data-depth="3">CTF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%ED%83%80%EC%A0%95%EB%B3%B4-%ED%99%95%EC%9D%B8/index.html" data-depth="4">메타정보 확인</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀 변경</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">언어 변경</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/tyrano/index.html" data-depth="3">Tyrano</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-47c728f5/index.html" data-depth="4">ASAR</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD-2ccdb6d4/index.html" data-depth="4">타이틀 변경</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/kirikiri/index.html" data-depth="3">Kirikiri</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-%EB%B3%80%ED%99%98/index.html" data-depth="4">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/pgmmv/index.html" data-depth="3">PGMMV</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-16cf2cb1/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/electron/index.html" data-depth="3">Electron</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="4">ASAR</a>
+</div></details>
+<a class="nav-link" href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html" data-depth="3">TTC 빌드</a>
+<a class="nav-link" href="../../guide/%EC%84%B8%EC%9D%B4%EB%B8%8C-%EC%97%90%EB%94%94%ED%84%B0/index.html" data-depth="3">세이브 에디터</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="3">llama-server</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="2">추출</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="2">번역</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="2">적용과 즉시적용</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="3">메모장</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD-77499184/index.html" data-depth="3">빠른번역</a>
+<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="3">용어사전</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="1">RPGMAKER 명령코드 정리(작성 예정)</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/code-101-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A8%B8%EB%A6%BF%EA%B8%80-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%9C%EB%A0%A5%EC%9D%98-%EC%84%A4%EC%A0%95%EB%B6%80/index.html" data-depth="2">code:101 텍스트 머릿글 - 텍스트 출력의 설정부</a>
+<a class="nav-link" href="../../guide/code-401-%ED%85%8D%EC%8A%A4%ED%8A%B8-%ED%91%9C%EC%8B%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:401 텍스트 표시 - 텍스트의 내용</a>
+<a class="nav-link" href="../../guide/code-102-%EC%84%A0%ED%83%9D%EC%A7%80-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:102 선택지 표시</a>
+<a class="nav-link" href="../../guide/code-402-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:402 선택지 내용</a>
+<a class="nav-link" href="../../guide/code-403-%EC%B7%A8%EC%86%8C%ED%95%A0-%EB%95%8C/index.html" data-depth="2">code:403 취소할 때</a>
+<a class="nav-link" href="../../guide/code-404-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:404 선택지 분기 종료</a>
+<a class="nav-link" href="../../guide/code-103-%EC%88%AB%EC%9E%90-%EC%9E%85%EB%A0%A5-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 숫자 입력 처리</a>
+<a class="nav-link" href="../../guide/code-103-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A0%ED%83%9D-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 아이템 선택 처리</a>
+<a class="nav-link" href="../../guide/code-105-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C-%ED%97%A4%EB%8D%94/index.html" data-depth="2">code:105 텍스트의 스크롤 표시 헤더</a>
+<a class="nav-link" href="../../guide/code-405-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:405 텍스트의 스크롤 표시</a>
+<a class="nav-link" href="../../guide/code-121-%EC%8A%A4%EC%9C%84%EC%B9%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:121 스위치 조작</a>
+<a class="nav-link" href="../../guide/code-122-%EB%B3%80%EC%88%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:122 변수 조작</a>
+<a class="nav-link" href="../../guide/code-123-%EC%85%80%ED%94%84-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:123 셀프 스위치의 조작</a>
+<a class="nav-link" href="../../guide/code-124-%ED%83%80%EC%9D%B4%EB%A8%B8-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:124 타이머 조작</a>
+<a class="nav-link" href="../../guide/code-111-%EC%A1%B0%EA%B1%B4-%EB%B6%84%EA%B8%B0/index.html" data-depth="2">code:111 조건 분기</a>
+<a class="nav-link" href="../../guide/code-411-%EA%B7%B8-%EC%9D%B4%EC%99%B8%EC%9D%98-%EA%B2%BD%EC%9A%B0%EC%9D%BC-%EB%95%8C/index.html" data-depth="2">code:411 그 이외의 경우일 때</a>
+<a class="nav-link" href="../../guide/code-412-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:412 분기 종료</a>
+<a class="nav-link" href="../../guide/code-112-%EB%A3%A8%ED%94%84/index.html" data-depth="2">code:112 루프</a>
+<a class="nav-link" href="../../guide/code-413-%EC%83%81%EA%B8%B0%EB%82%B4%EC%9A%A9-%EB%B0%98%EB%B3%B5/index.html" data-depth="2">code:413 상기내용 반복</a>
+<a class="nav-link" href="../../guide/code-113-%EB%A3%A8%ED%94%84-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:113 루프 중단</a>
+<a class="nav-link" href="../../guide/code-115-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B2%98%EB%A6%AC%EC%9D%98-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:115 이벤트 처리의 중단</a>
+<a class="nav-link" href="../../guide/code-117-%EA%B3%B5%ED%86%B5%EC%9D%B4%EB%B2%A4%ED%8A%B8/index.html" data-depth="2">code:117 공통이벤트</a>
+<a class="nav-link" href="../../guide/code-118-%EB%9D%BC%EB%B2%A8/index.html" data-depth="2">code:118 라벨</a>
+<a class="nav-link" href="../../guide/code-119-%EB%9D%BC%EB%B2%A8%EC%A0%90%ED%94%84/index.html" data-depth="2">code:119 라벨점프</a>
+<a class="nav-link" href="../../guide/code-108-%EC%84%A4%EB%AA%85-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:108 설명 머릿글</a>
+<a class="nav-link" href="../../guide/code-408-%EC%84%A4%EB%AA%85-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:408 설명 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-125-%EC%86%8C%EC%A7%80-%EA%B8%88%EC%95%A1-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:125 소지 금액 증감</a>
+<a class="nav-link" href="../../guide/code-126-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:126 아이템 증감</a>
+<a class="nav-link" href="../../guide/code-127-%EB%AC%B4%EA%B8%B0-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:127 무기 증감</a>
+<a class="nav-link" href="../../guide/code-128-%EB%B0%A9%EC%96%B4%EA%B5%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:128 방어구 증감</a>
+<a class="nav-link" href="../../guide/code-129-%ED%8C%8C%ED%8B%B0%EC%9B%90-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:129 파티원 변경</a>
+<a class="nav-link" href="../../guide/code-311-hp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:311 HP 증감</a>
+<a class="nav-link" href="../../guide/code-312-mp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:312 MP 증감</a>
+<a class="nav-link" href="../../guide/code-326-tp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:326 TP 증감</a>
+<a class="nav-link" href="../../guide/code-313-%EC%83%81%ED%83%9C-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:313 상태 변경</a>
+<a class="nav-link" href="../../guide/code-314-%EB%AA%A8%EB%91%90-%ED%9A%8C%EB%B3%B5/index.html" data-depth="2">code:314 모두 회복</a>
+<a class="nav-link" href="../../guide/code-315-exp-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:315 EXP 변경</a>
+<a class="nav-link" href="../../guide/code-316-%EB%A0%88%EB%B2%A8-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:316 레벨 증감</a>
+<a class="nav-link" href="../../guide/code-317-%EB%8A%A5%EB%A0%A5%EC%B9%98-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:317 능력치 증감</a>
+<a class="nav-link" href="../../guide/code-318-%EC%8A%A4%ED%82%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:318 스킬 증감</a>
+<a class="nav-link" href="../../guide/code-319-%EC%9E%A5%EB%B9%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:319 장비 변경</a>
+<a class="nav-link" href="../../guide/code-320-%EC%9D%B4%EB%A6%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:320 이름 변경</a>
+<a class="nav-link" href="../../guide/code-321-%EC%A7%81%EC%97%85-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:321 직업 변경</a>
+<a class="nav-link" href="../../guide/code-324-%EB%8B%89%EB%84%A4%EC%9E%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:324 닉네임 변경</a>
+<a class="nav-link" href="../../guide/code-325-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:325 프로필 변경</a>
+<a class="nav-link" href="../../guide/code-355-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:355 스크립트 명령 머릿글</a>
+<a class="nav-link" href="../../guide/code-655-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:655 스크립트 명령 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-356-mv-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:356 MV 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-357-mz-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:357 MZ 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-657-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9-%EC%83%81%EC%84%B8/index.html" data-depth="2">code:657 플러그인 명령 상세</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="1">추출 파일별 설명</a>
+<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="1">같이 쓰면 좋은 도구들</a>
+<a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="1">자주 나오는 질문</a>
+</div></details>
+      </nav>
+    </aside>
+    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
+    <main class="content-shell">
+      <article class="guide-content">
+        <h1>언팩/리팩</h1>
+        <p class="doc-version">작성 당시 버전: 미기재<br>최종 편집 일시: 2026년 4월 20일 오전 11:55</p>
+<div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-805c-945b-edbc9630a8ef">이 기능은 무엇인가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8067-a6ee-ced23b481687"><code>WOLF 언팩/리팩</code>은 WOLF 아카이브를 풀어 실제 데이터 디렉터리로 되돌리거나, 반대로 디렉터리를 다시 WOLF 아카이브로 묶는 도구입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80f8-b11d-f90724140cb3">같은 <code>WOLF</code> 탭 안에 있지만 두 버튼의 성격은 다릅니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80a4-9334-d53ef01f7284"><li style="list-style-type:disc"><code>언팩</code>: 현재 프로젝트에서 감지한 WOLF 아카이브를 풀어 사용 가능한 데이터 레이아웃으로 만듭니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-806c-8d81-fa8767402c9f"><li style="list-style-type:disc"><code>리팩</code>: 사용자가 고른 폴더를 새 WOLF 아카이브 파일로 다시 패킹합니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8086-870d-d36853198a38">즉, <code>언팩</code>은 현재 프로젝트 기준 복원 도구에 가깝고, <code>리팩</code>은 선택한 폴더를 다시 배포용 아카이브로 묶는 도구에 가깝습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80b6-b01d-c82b2f10e38c">WOLF 언팩</h2></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80b3-9166-f92fc85cd4ec">어떻게 실행되나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8062-9f18-f9112f2f1405">현재 UI 기준으로 <code>언팩</code>을 누르면 바로 풀지 않고, 먼저 <code>아카이브 내용 보기</code> 창이 열립니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-802a-9202-de49f3f08626">이 창에서는:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8090-9dd2-c1a825a56f9e"><li style="list-style-type:disc">감지한 아카이브 목록</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8019-bc44-de21ff1ef709"><li style="list-style-type:disc">풀 수 있는 디렉터리 항목과 루트 파일 묶음</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8098-af54-c96261d07f63"><li style="list-style-type:disc">각 항목의 하위 파일 미리보기 일부</li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80f9-98cf-d220c6545420">를 보여 줍니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80e4-9045-cc7c7a4da697">기본은 전체 선택이고, 각 항목 미리보기는 현재 코드 기준으로 최대 20개까지만 보여 줍니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8065-87e9-c7bef7d30408">즉, 사용자는 <code>전부 언팩</code>이 아니라 <code>풀 대상 항목을 보고 선택한 뒤 실행</code>하는 구조로 이해하는 편이 맞습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80eb-aabc-c3a213b24c1d">무엇을 기준으로 언팩하나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80dd-944f-fcd37ad7325e">현재 코드 기준으로는 <code>현재 프로젝트 경로</code>에서 WOLF 데이터 위치를 감지합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8056-acfa-d44b7c63b1c1">프로젝트가 아직 packed 상태면 그 아카이브를 풀고, 이미 unpacked 상태여도 원본 아카이브가 남아 있으면 그 파일들을 백업 처리할 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8033-917b-e895f5f4d4d9">즉, 별도 파일 선택 창으로 <code>.wolf</code> 하나를 직접 고르는 방식이 아니라 <code>현재 프로젝트의 WOLF 레이아웃</code>을 기준으로 동작합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80df-b503-ea38d50f57f3">결과는 어디에 생기나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-800c-a1e0-fbeca939864e">현재 코드 기준으로 언팩 결과는 감지된 WOLF 데이터 위치 기준으로 바로 풀립니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-803e-8f42-c96c6bc887f6">즉, 별도 작업 폴더를 하나 더 만드는 구조라기보다 <code>현재 프로젝트 쪽 데이터 위치가 사용 가능한 unpacked 상태가 되도록 맞추는 기능</code>으로 보는 편이 맞습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80f0-a6c9-df49e40b3490">또한 언팩이 끝나면 활성 상태의 원본 아카이브는 <code>.bak</code>로 바꿉니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80b0-952b-eee70a325bab">예를 들어:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8051-aa91-e6ba3d3bdecb"><li style="list-style-type:disc"><code>Data.wolf</code> -&gt; <code>Data.wolf.bak</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8011-8185-e85393d8d9ed"><li style="list-style-type:disc"><code>Data.assets</code> -&gt; <code>Data.assets.bak</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80f3-b7c3-f0fccdc14d22">같은 형태가 될 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-805c-9616-e689aec5225e">현재 코드 기준으로는 같은 이름의 <code>.bak</code> 파일이 이미 있어도 새 원본 아카이브로 교체될 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-8048-bb68-ce924fd06991">자주 헷갈리는 점</h3></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-801e-b2e7-e8ec1b7315e4">이미 언팩된 프로젝트에서도 쓸 수 있나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8017-92f5-f91e8783822d">그럴 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80a0-b2c9-d5b71cc350fd">현재 코드 기준으로 이미 unpacked 레이아웃이 완성돼 있으면 실제 언팩 대신 <code>이미 언팩됨</code>으로 끝나거나, 남아 있는 원본 아카이브만 <code>.bak</code>로 백업하고 종료할 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-808f-935c-efc30905ddc8">일부만 풀 수 있나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80b4-b822-c8c6d7fe06a3">그렇습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8093-9688-f361a322db16">현재 UI 기준으로 목록에서 체크한 항목만 선택 언팩할 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80da-9765-de8e93fbcc29">이 항목에는 디렉터리뿐 아니라 monolithic 아카이브의 <code>루트 파일</code> 묶음이 함께 보일 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80d3-b2c0-f70e1dea05da">언팩이 항상 새 폴더를 만드나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80dd-96e4-d569c8aafe57">그렇게 보는 편은 맞지 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80a2-8a8e-f0cf64a23ef2">현재 구현은 현재 프로젝트에서 감지한 WOLF 데이터 위치를 기준으로 usable layout을 만드는 쪽입니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80e4-82f0-d0ca6171bb72">WOLF 리팩</h2></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-807c-8210-e797fac1d492">어떻게 실행되나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8013-aa82-c1398ac6883c"><code>리팩</code>은 별도 입력 모달로 실행합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-805b-b489-eea67a1215dd">현재 UI 기준 입력 항목은 아래입니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80d2-a0ba-ef4c2a861ae0"><li style="list-style-type:disc"><code>리팩 대상 폴더</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8019-9c88-e813378f2389"><li style="list-style-type:disc"><code>버전</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8022-8faa-d005345a42d3"><li style="list-style-type:disc"><code>출력 확장자</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8082-b326-e8dacb843c62"><li style="list-style-type:disc"><code>키 참조 파일</code> 선택사항</li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8025-8685-dbfc3ff38907">즉, 현재 프로젝트를 자동으로 다시 묶는 버튼이라기보다 <code>사용자가 지정한 폴더를 조건에 맞춰 다시 패킹</code>하는 도구입니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-8086-8aad-d4de8029a3c2">버전과 출력 확장자는 무엇인가요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80a3-b035-e25516231f66">현재 UI 기준 버전 선택지는 아래입니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80ea-9eb4-f87e43d0113d"><li style="list-style-type:disc"><code>2.01</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80bc-9f99-ef163e952b3f"><li style="list-style-type:disc"><code>2.10</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-803e-a5af-c51f362ed82b"><li style="list-style-type:disc"><code>2.20</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8082-b6c3-d0917311900f"><li style="list-style-type:disc"><code>2.225</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8079-8876-f1594ee9e86d"><li style="list-style-type:disc"><code>3.00</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8098-8b31-d3b8e44409f3"><li style="list-style-type:disc"><code>3.14</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80ba-8243-f45ccb33a85d"><li style="list-style-type:disc"><code>3.31</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8042-8115-e27a7f922b10"><li style="list-style-type:disc"><code>3.50</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-803e-b41d-c39ea316a410">출력 확장자는 현재 UI 기준으로 WOLF가 인식하는 확장자만 선택할 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-803a-afde-dbeac9094d8f">예:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-806c-baed-f6cd09173b20"><li style="list-style-type:disc"><code>.wolf</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8028-b1f9-fe6761383d44"><li style="list-style-type:disc"><code>.data</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-809a-b73f-d2b4041409c7"><li style="list-style-type:disc"><code>.pak</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80e5-934b-d538b882f88d"><li style="list-style-type:disc"><code>.bin</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-801c-a189-da0026d960af"><li style="list-style-type:disc"><code>.assets</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8098-9ab3-dcb8cfba5bab"><li style="list-style-type:disc"><code>.content</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80a8-9fb3-feaf9430b144"><li style="list-style-type:disc"><code>.res</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8045-af34-ed45c2b0368a"><li style="list-style-type:disc"><code>.resource</code></li></ul></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80ee-8670-f98b50a39bd2">결과는 어디에 생기나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8089-a306-d8874385e6c6">현재 코드 기준으로 결과는 <code>선택한 폴더와 같은 위치</code>에 <code>&lt;폴더명&gt;.&lt;확장자&gt;</code> 형태로 생성됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80d4-bd3e-f7b668b197fa">예를 들어 <code>D:\\Game\\Data</code>를 <code>.wolf</code>로 리팩하면 결과는 같은 위치의 <code>D:\\Game\\Data.wolf</code>가 됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8023-b996-ff3c6d4da872">중요:</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8090-b9ae-c8c3efcab1c0">현재 코드 기준으로 같은 이름의 출력 파일이 이미 있으면 덮어쓰지 않고 바로 실패합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8055-8491-f58685ed15b0">즉, 언팩처럼 자동 교체가 아니라 <code>출력 파일이 이미 있으면 중단</code> 쪽입니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80f0-80de-c29058b26c3a">키 참조 파일은 무엇인가요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-809d-89fd-e8fa6bf375e2">현재 코드 기준으로 <code>키 참조 파일</code>이 정상 입력되면 Pro <code>custom-key</code> 리팩으로 처리됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8066-8ea7-feb7d67873df">즉, 기본 리팩과 달리 <code>참조 파일에서 키를 해석해 그 기준으로 다시 패킹</code>하는 경로라고 보면 됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80b3-b48a-d3c9e03da72f">따라서 이 값을 비워 두면 일반 버전 기준 리팩, 넣으면 custom-key 성격 리팩으로 갈릴 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80a7-b809-df44ad298143">리팩 뒤에는 무엇을 확인하나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8071-9536-e39aaf333c4f">현재 코드 기준으로 리팩이 끝나면:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8037-ba5b-f5cb1bbf6935"><li style="list-style-type:disc">출력 아카이브 검사</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-808a-9367-c9f365d9d815"><li style="list-style-type:disc">참조 <code>.bak</code>가 있으면 크기/모드 비교</li></ul></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8063-938f-f12249d797a7">를 수행해 로그에 남길 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-808d-b7e0-cce25431e6e5">즉, 단순히 파일만 만들고 끝나는 것이 아니라 <code>출력 검증 정보</code>와 <code>참조 비교 정보</code>가 같이 붙을 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-8043-8d33-cd3810b3cb3d">자주 헷갈리는 점</h3></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80cb-8ac6-f90990fc297e">리팩은 현재 프로젝트만 대상으로 하나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80b9-91d8-c7fc19ae3058">아닙니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8098-936d-c41b4118911a">현재 UI 기준으로는 사용자가 폴더를 직접 골라 리팩합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80fc-8db0-e0ae757886e4">리팩 결과가 원본 아카이브를 자동으로 교체하나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80ab-a39e-f4d18e6f0d2b">그렇지 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8006-9c48-fb65b7c985a8">현재 코드 기준으로는 새 출력 파일을 따로 만들고, 같은 이름 출력이 이미 있으면 실패합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="34834c3a-003e-80e6-8698-c6a67a44898e"><code>.bak</code> 비교는 항상 하나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-8021-8011-ca4a05602898">항상은 아닙니다.</p></div><div dir="auto" style="display:contents"><p class="" id="34834c3a-003e-80a4-8b9c-f28bba8cc495">현재 코드 기준으로 참조할 <code>.bak</code> 파일을 찾았을 때만 비교 정보가 추가됩니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="34834c3a-003e-80ae-a133-d5a8e349548c">알아둘 점</h2></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-805c-8955-c69e9a136895"><li style="list-style-type:disc"><code>언팩</code>은 현재 프로젝트 기준, <code>리팩</code>은 선택한 폴더 기준 도구입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8094-9b87-eb6ce73be9a9"><li style="list-style-type:disc"><code>언팩</code>은 실행 전에 항목 선택 창을 보여 주고, 일부만 선택 언팩할 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80d1-bac5-cefc861bc955"><li style="list-style-type:disc"><code>언팩</code> 후에는 활성 원본 아카이브가 <code>.bak</code>로 바뀌며, 기존 <code>.bak</code>는 새 백업으로 교체될 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-8089-acc5-eb2cf34c356b"><li style="list-style-type:disc"><code>리팩</code> 결과는 <code>&lt;폴더명&gt;.&lt;확장자&gt;</code> 형태로 같은 위치에 생깁니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-80c4-810e-eb5b5923e5e4"><li style="list-style-type:disc"><code>리팩</code>은 기존 출력 파일을 덮어쓰지 않고 실패합니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="34834c3a-003e-807f-a215-f9e4a96fdb80"><li style="list-style-type:disc"><code>키 참조 파일</code>을 넣으면 Pro custom-key 리팩 경로로 처리될 수 있습니다.</li></ul></div>
+      </article>
+    </main>
+  </div>
+  <script src="../../guide/static/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>이스케이프 · AIMT Guide</title>
+  <script>(function(){try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <link rel="stylesheet" href="../../guide/static/styles.css">
+</head>
+<body>
+  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      <label class="search-box"><span>문서 검색</span><input id="guideSearch" type="search" placeholder="검색어 입력"></label>
+      <div id="searchResults" class="search-results" hidden></div>
+      <nav class="nav-list" aria-label="문서 목록">
+<details class="nav-group" data-depth="0" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT GUIDE - KR</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER MVMZ (개정1)</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER VXVXA (개정1)</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="1">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv-%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%84%E3%82%AF%E3%83%BC%E3%83%AB-mv/index.html" data-depth="1">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="1">ClickTeam Fusion ( Multimedia Fusion )(작성예정)</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%83%81%EB%8B%A8%EB%B6%80/index.html" data-depth="1">상단부</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/%ED%8C%8C%EC%9D%BC%EB%AA%A9%EB%A1%9D-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8/index.html" data-depth="2">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="2">프롬프트</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD/index.html" data-depth="2">빠른번역</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="3">테마</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">추출정규식</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="3">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">언어패턴설정</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="3">번역 설정</a>
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="3">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="3">API KEY 설정</a>
+<a class="nav-link" href="../../guide/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">치환용어설정</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="3">기본폰트설정</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="3">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="3">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="3">Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="3">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="3">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="3">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="3">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="3">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="3">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="3">401 Block Unit for Consistency/Duplicate</a>
+<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="3">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="3">Cmd 122 2차 추출 중복처리</a>
+<a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="3">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="3">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">로그 관리</a>
+<a class="nav-link" href="../../guide/%EB%B0%B1%EC%97%85-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">백업 관리</a>
+<a class="nav-link" href="../../guide/%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">캐시 관리</a>
+<a class="nav-link" href="../../guide/%EB%8F%84%EC%9B%80%EB%A7%90/index.html" data-depth="3">도움말</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%ED%83%80/index.html" data-depth="3">기타</a>
+</div></details>
+<a class="nav-link" href="../../guide/cmd/index.html" data-depth="2">CMD</a>
+<a class="nav-link" href="../../guide/view/index.html" data-depth="2">VIEW</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%A4%91%EB%8B%A8%EB%B6%80/index.html" data-depth="1">중단부</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%95%98%EB%8B%A8%EB%B6%80/index.html" data-depth="1">하단부</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%8F%84%EA%B5%AC/index.html" data-depth="2">도구</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html" data-depth="3">빈칸채우기</a>
+<a class="nav-link" href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html" data-depth="3">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html" data-depth="3">적용취소</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="3">번역일관성</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html" data-depth="3">추출 중복</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html" data-depth="3">이스케이프</a>
+<a class="nav-link" href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html" data-depth="3">일본어체크</a>
+<a class="nav-link" href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html" data-depth="3">받침정리</a>
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="3">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="3">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/winmerge-check/index.html" data-depth="3">WINMERGE CHECK</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="3">APPDATA</a>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/mvmz/index.html" data-depth="3">MVMZ</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/index.html" data-depth="4">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/index.html" data-depth="4">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-%EB%8F%99%EA%B8%B0%ED%99%94/index.html" data-depth="4">402 동기화</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EB%A6%84-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">이름 일관성</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">통합 일관성</a>
+<a class="nav-link" href="../../guide/%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%9B%90/index.html" data-depth="4">코드 복원</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html" data-depth="4">번역 가져오기</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-data/index.html" data-depth="4">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="4">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="4">Data 복호화</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="4">프로젝트 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/vxvxa/index.html" data-depth="3">VXVXA</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="4">언팩</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀변경</a>
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4-2948edda/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%EC%A0%84%EC%9A%A9%EC%B6%94%EC%B6%9C/index.html" data-depth="4">전용추출</a>
+<a class="nav-link" href="../../guide/imbook%ED%8C%A8%EC%B9%98-bbtext%ED%8C%A8%EC%B9%98-missions%ED%8C%A8%EC%B9%98/index.html" data-depth="4">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv%EB%B3%80%ED%99%98/index.html" data-depth="4">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/wolf/index.html" data-depth="3">WOLF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9-%EB%A6%AC%ED%8C%A9/index.html" data-depth="4">언팩/리팩</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%B9%98%ED%99%98/index.html" data-depth="4">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-%ED%8C%A8%EC%B9%98/index.html" data-depth="4">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%B9%98%ED%99%98/index.html" data-depth="4">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/ctf/index.html" data-depth="3">CTF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%ED%83%80%EC%A0%95%EB%B3%B4-%ED%99%95%EC%9D%B8/index.html" data-depth="4">메타정보 확인</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀 변경</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">언어 변경</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/tyrano/index.html" data-depth="3">Tyrano</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-47c728f5/index.html" data-depth="4">ASAR</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD-2ccdb6d4/index.html" data-depth="4">타이틀 변경</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/kirikiri/index.html" data-depth="3">Kirikiri</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-%EB%B3%80%ED%99%98/index.html" data-depth="4">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/pgmmv/index.html" data-depth="3">PGMMV</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-16cf2cb1/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/electron/index.html" data-depth="3">Electron</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="4">ASAR</a>
+</div></details>
+<a class="nav-link" href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html" data-depth="3">TTC 빌드</a>
+<a class="nav-link" href="../../guide/%EC%84%B8%EC%9D%B4%EB%B8%8C-%EC%97%90%EB%94%94%ED%84%B0/index.html" data-depth="3">세이브 에디터</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="3">llama-server</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="2">추출</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="2">번역</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="2">적용과 즉시적용</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="3">메모장</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD-77499184/index.html" data-depth="3">빠른번역</a>
+<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="3">용어사전</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="1">RPGMAKER 명령코드 정리(작성 예정)</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/code-101-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A8%B8%EB%A6%BF%EA%B8%80-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%9C%EB%A0%A5%EC%9D%98-%EC%84%A4%EC%A0%95%EB%B6%80/index.html" data-depth="2">code:101 텍스트 머릿글 - 텍스트 출력의 설정부</a>
+<a class="nav-link" href="../../guide/code-401-%ED%85%8D%EC%8A%A4%ED%8A%B8-%ED%91%9C%EC%8B%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:401 텍스트 표시 - 텍스트의 내용</a>
+<a class="nav-link" href="../../guide/code-102-%EC%84%A0%ED%83%9D%EC%A7%80-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:102 선택지 표시</a>
+<a class="nav-link" href="../../guide/code-402-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:402 선택지 내용</a>
+<a class="nav-link" href="../../guide/code-403-%EC%B7%A8%EC%86%8C%ED%95%A0-%EB%95%8C/index.html" data-depth="2">code:403 취소할 때</a>
+<a class="nav-link" href="../../guide/code-404-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:404 선택지 분기 종료</a>
+<a class="nav-link" href="../../guide/code-103-%EC%88%AB%EC%9E%90-%EC%9E%85%EB%A0%A5-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 숫자 입력 처리</a>
+<a class="nav-link" href="../../guide/code-103-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A0%ED%83%9D-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 아이템 선택 처리</a>
+<a class="nav-link" href="../../guide/code-105-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C-%ED%97%A4%EB%8D%94/index.html" data-depth="2">code:105 텍스트의 스크롤 표시 헤더</a>
+<a class="nav-link" href="../../guide/code-405-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:405 텍스트의 스크롤 표시</a>
+<a class="nav-link" href="../../guide/code-121-%EC%8A%A4%EC%9C%84%EC%B9%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:121 스위치 조작</a>
+<a class="nav-link" href="../../guide/code-122-%EB%B3%80%EC%88%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:122 변수 조작</a>
+<a class="nav-link" href="../../guide/code-123-%EC%85%80%ED%94%84-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:123 셀프 스위치의 조작</a>
+<a class="nav-link" href="../../guide/code-124-%ED%83%80%EC%9D%B4%EB%A8%B8-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:124 타이머 조작</a>
+<a class="nav-link" href="../../guide/code-111-%EC%A1%B0%EA%B1%B4-%EB%B6%84%EA%B8%B0/index.html" data-depth="2">code:111 조건 분기</a>
+<a class="nav-link" href="../../guide/code-411-%EA%B7%B8-%EC%9D%B4%EC%99%B8%EC%9D%98-%EA%B2%BD%EC%9A%B0%EC%9D%BC-%EB%95%8C/index.html" data-depth="2">code:411 그 이외의 경우일 때</a>
+<a class="nav-link" href="../../guide/code-412-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:412 분기 종료</a>
+<a class="nav-link" href="../../guide/code-112-%EB%A3%A8%ED%94%84/index.html" data-depth="2">code:112 루프</a>
+<a class="nav-link" href="../../guide/code-413-%EC%83%81%EA%B8%B0%EB%82%B4%EC%9A%A9-%EB%B0%98%EB%B3%B5/index.html" data-depth="2">code:413 상기내용 반복</a>
+<a class="nav-link" href="../../guide/code-113-%EB%A3%A8%ED%94%84-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:113 루프 중단</a>
+<a class="nav-link" href="../../guide/code-115-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B2%98%EB%A6%AC%EC%9D%98-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:115 이벤트 처리의 중단</a>
+<a class="nav-link" href="../../guide/code-117-%EA%B3%B5%ED%86%B5%EC%9D%B4%EB%B2%A4%ED%8A%B8/index.html" data-depth="2">code:117 공통이벤트</a>
+<a class="nav-link" href="../../guide/code-118-%EB%9D%BC%EB%B2%A8/index.html" data-depth="2">code:118 라벨</a>
+<a class="nav-link" href="../../guide/code-119-%EB%9D%BC%EB%B2%A8%EC%A0%90%ED%94%84/index.html" data-depth="2">code:119 라벨점프</a>
+<a class="nav-link" href="../../guide/code-108-%EC%84%A4%EB%AA%85-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:108 설명 머릿글</a>
+<a class="nav-link" href="../../guide/code-408-%EC%84%A4%EB%AA%85-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:408 설명 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-125-%EC%86%8C%EC%A7%80-%EA%B8%88%EC%95%A1-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:125 소지 금액 증감</a>
+<a class="nav-link" href="../../guide/code-126-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:126 아이템 증감</a>
+<a class="nav-link" href="../../guide/code-127-%EB%AC%B4%EA%B8%B0-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:127 무기 증감</a>
+<a class="nav-link" href="../../guide/code-128-%EB%B0%A9%EC%96%B4%EA%B5%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:128 방어구 증감</a>
+<a class="nav-link" href="../../guide/code-129-%ED%8C%8C%ED%8B%B0%EC%9B%90-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:129 파티원 변경</a>
+<a class="nav-link" href="../../guide/code-311-hp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:311 HP 증감</a>
+<a class="nav-link" href="../../guide/code-312-mp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:312 MP 증감</a>
+<a class="nav-link" href="../../guide/code-326-tp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:326 TP 증감</a>
+<a class="nav-link" href="../../guide/code-313-%EC%83%81%ED%83%9C-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:313 상태 변경</a>
+<a class="nav-link" href="../../guide/code-314-%EB%AA%A8%EB%91%90-%ED%9A%8C%EB%B3%B5/index.html" data-depth="2">code:314 모두 회복</a>
+<a class="nav-link" href="../../guide/code-315-exp-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:315 EXP 변경</a>
+<a class="nav-link" href="../../guide/code-316-%EB%A0%88%EB%B2%A8-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:316 레벨 증감</a>
+<a class="nav-link" href="../../guide/code-317-%EB%8A%A5%EB%A0%A5%EC%B9%98-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:317 능력치 증감</a>
+<a class="nav-link" href="../../guide/code-318-%EC%8A%A4%ED%82%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:318 스킬 증감</a>
+<a class="nav-link" href="../../guide/code-319-%EC%9E%A5%EB%B9%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:319 장비 변경</a>
+<a class="nav-link" href="../../guide/code-320-%EC%9D%B4%EB%A6%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:320 이름 변경</a>
+<a class="nav-link" href="../../guide/code-321-%EC%A7%81%EC%97%85-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:321 직업 변경</a>
+<a class="nav-link" href="../../guide/code-324-%EB%8B%89%EB%84%A4%EC%9E%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:324 닉네임 변경</a>
+<a class="nav-link" href="../../guide/code-325-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:325 프로필 변경</a>
+<a class="nav-link" href="../../guide/code-355-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:355 스크립트 명령 머릿글</a>
+<a class="nav-link" href="../../guide/code-655-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:655 스크립트 명령 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-356-mv-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:356 MV 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-357-mz-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:357 MZ 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-657-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9-%EC%83%81%EC%84%B8/index.html" data-depth="2">code:657 플러그인 명령 상세</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="1">추출 파일별 설명</a>
+<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="1">같이 쓰면 좋은 도구들</a>
+<a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="1">자주 나오는 질문</a>
+</div></details>
+      </nav>
+    </aside>
+    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
+    <main class="content-shell">
+      <article class="guide-content">
+        <h1>이스케이프</h1>
+        <p class="doc-version">작성 당시 버전: 1.13.0.1<br>최종 편집 일시: 2026년 4월 5일 오후 1:37</p>
+<div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-803a-9587-d2f85c65814b">이 기능은 무엇인가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8017-99cf-c7c7626126b0"><code>이스케이프 검사</code>는 추출 원문과 번역 JSON을 비교해서, 번역 과정에서 깨진 이스케이프 표기나 일부 형식 문제를 정리하는 보정 기능입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8016-8dac-e787f1e3b1d5">단순히 <code>\\</code> 문자를 검사하는 기능이라기보다, 원문 구조를 기준으로 번역문 안의 이스케이프 관련 문제를 찾아 보정하는 보조 도구에 가깝습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8022-aae0-e4f5c36e3e59">발견된 문제들은 자동으로 실행되는 <code>WinMerge</code> 를 통해 직관적으로 살펴보고 수작업으로 수정하실 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80a8-acba-f5006af3004a"><code>설정</code> &gt; <code>기타</code> 의 <code>Escape Auto Remove Trailing Spaces</code> 로 후행공백 제거를 제어할 수 있습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-801c-9a9c-ebadbbe33021">어떤 파일을 대상으로 하나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-804f-ab01-dcefb933112d">현재 화면 버튼 기준으로는 아래 번역 작업 폴더를 대상으로 합니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8094-9d6c-e1076e6ab833"><li style="list-style-type:disc"><code>System</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8039-97a3-f5bea5d84889"><li style="list-style-type:disc"><code>Event</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8033-bc22-d2ba620eb966"><li style="list-style-type:disc"><code>data</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8060-8d53-e05bdbf4c9da">각 폴더에서 <code>extract</code>와 <code>translated</code>에 같은 이름으로 있는 <code>.json</code> 파일만 비교합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8076-9029-dab3271728ab">즉, 게임 원본 프로젝트 <code>data</code>를 직접 훑는 기능이 아니라 <code>이미 추출된 원문</code>과 <code>현재 번역 JSON</code>을 맞춰 보는 방식입니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-804e-b192-e84381167240">실제로 무엇을 고치나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80c0-a7da-f4c8794a8147">현재 코드 기준으로는 크게 세 부류를 다룹니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-801b-a640-c536aec8e9fe">이스케이프 불일치</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-804e-81e9-ff38e8a89f7a">원문과 번역문을 이스케이프 단위로 나눠 비교했을 때 불일치가 나면, 그 항목은 원문 텍스트 기준으로 복원합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8005-b511-f7a0dda4ce77">또 아래 같은 잔여물도 별도 예외로 잡습니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8053-b287-dee6ea247300"><li style="list-style-type:disc"><code>_CTRL</code>, <code>__CTRL</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80a6-bccd-d1c62e5021f1"><li style="list-style-type:disc"><code>&lt;c0/&gt;</code>, <code>&lt;s0/&gt;</code>, <code>&lt;p0/&gt;</code> 같은 태그 잔여물</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80ad-a6db-cfa3038dfbd5">즉, 번역문 일부만 고치는 방식이 아니라 <code>그 항목 전체를 원문 쪽으로 되돌리는</code> 쪽에 가깝습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8078-a71f-c086e50bce59">단, 이스케이프 불일치에 대해 번역폴더의 번역파일을 직접 수정하지는 않고,<br/>파일을 따로 복사해서 수정 및 저장합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80a9-8fd6-e5a75fe9cec7">이렇게 수정된 파일은 이후 비교에 활용되며 다음 검사에서 자동으로 삭제됩니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-8052-a433-e87d913210a9">전각공백 보정</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8060-af74-c3d03efb6f4c">원문 시작 부분에 있는 전각공백 수가 번역문보다 많으면, 부족한 만큼 번역문 앞에 전각공백을 추가합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80bb-ae29-cc7f18382f47">마침 부호 위치 보정</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80fc-9110-d01878befa04">닫는 따옴표나 괄호 바깥에 잘못 붙은 마침표, 쉼표 같은 일부 마침 부호 위치를 자동으로 정리합니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-80ee-9b43-db32395c4545">실행하면 파일이 어떻게 바뀌나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8002-a736-d78892643f2c">여기서 구분해서 봐야 합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-8033-89cf-c7515fc520b4">번역 JSON 직접 수정</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80b6-9ba2-c986bed7c4a3">현재 코드 기준으로 아래 항목은 <code>translated</code> 원본 파일에 바로 반영될 수 있습니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80b8-941a-fa27c7d4608a"><li style="list-style-type:disc">전각공백 보정</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80f9-973c-ef9bf079ee34"><li style="list-style-type:disc">마침 부호 위치 보정</li></ul></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80d8-adbf-ca42706175ab">Check 쪽 별도 저장</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80db-8376-f22b422ca072">이스케이프 불일치가 발견된 파일은 <code>Check</code> 아래에 별도 파일로 저장됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8079-a4bb-e04efc81ee65">이 복사본에는 <code>이스케이프 불일치로 원문 복원된 결과</code>가 들어갑니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-801b-8380-daac2efd32ce">즉, 이 기능은 <code>번역 JSON 직접 수정</code>과 <code>Check 결과 저장</code>이 함께 섞여 있는 구조입니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-8017-87b2-d0defecfbb26">결과로 무엇을 보여 주나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8042-ab75-d071df58c05a">완료 후에는 알림과 <code>CMD</code> 로그로 결과를 보여 줍니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80b8-8ea0-ee8fa6d2f115">다만 현재 화면 버튼 기준으로는 다른 일부 도구처럼 도구 모달을 자동으로 닫거나 <code>CMD</code> 보기로 강제로 전환하지는 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80d8-9710-c1eb44163d79">현재 코드 기준으로는 보통 아래 정보가 포함됩니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80ee-91d1-ef28f9f2f54d"><li style="list-style-type:disc">처리한 파일 수</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8053-9328-e223bafe80ad"><li style="list-style-type:disc">수정된 파일 수</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8040-bcf6-efacf13e6fb0"><li style="list-style-type:disc">전체 라인 수</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8064-abb6-c30fc316c20c"><li style="list-style-type:disc">수정된 라인 수</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8057-a578-e0420121f734"><li style="list-style-type:disc">전각공백 수정 수</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80ea-880f-f5b39b2f1863"><li style="list-style-type:disc">후행공백 제거 수</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-803f-9a1d-c76f0b571fa7"><li style="list-style-type:disc">마침 부호 위치 오류 수</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8056-839b-ce573bf1b542"><li style="list-style-type:disc">많이 수정된 파일 상위 일부</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80e0-9e13-f99f2f40e686">여기서 <code>후행공백 제거 수</code> 항목은 현재 기본값이 꺼져 있으므로 보통 <code>0</code>으로 남는 편입니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-8086-ade7-ed1670e62524">자주 헷갈리는 점</h2></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-807c-8e7c-cd3ed1cd95e3">번역문을 더 자연스럽게 바꿔 주는 기능인가요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80b7-a9c6-e401870e0ee4">그렇게 보면 안 됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80d5-bd3f-decac70845b1">문체 보정이 아니라 <code>이스케이프/공백/마침 부호</code> 쪽의 구조 보정 기능입니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-807f-9a6a-c7161e97d810">이스케이프가 틀리면 일부만 고치나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8020-805e-fcde679be599">현재 구조는 그렇지 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-802c-a176-f907f9af11c4">불일치가 나면 그 항목은 원문 텍스트 기준으로 복원하는 쪽입니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-809d-95a9-e11872e8ce93">수정 결과는 Check에만 저장되고 번역 파일은 안 바뀌나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8035-912d-eb4ad03a019d">그렇게 동작하지 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-803b-9d15-d98c5bde83e8">전각공백이나 마침 부호 쪽 보정은 번역 JSON에 직접 반영될 수 있고, 이스케이프 불일치가 있던 파일은 Check에도 별도 저장됩니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-80f6-8289-c22041beed4e"><code>이스케이프 (data)</code>와는 무엇이 다른가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8030-b589-ebd4385f68b2">둘은 이름이 비슷하지만 기준이 다릅니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80e6-9411-ce89a6bd2f73"><li style="list-style-type:disc"><code>이스케이프 문자</code>: <code>extract</code>와 <code>translated</code>를 비교하고, 번역 JSON 자체를 직접 고칠 수 있음</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80a3-b415-d00fe982fe36"><li style="list-style-type:disc"><code>이스케이프 (data)</code>: 사용자가 고른 <code>원본 게임 data</code>와 현재 프로젝트 <code>data</code>를 비교하고, 프로젝트는 직접 수정하지 않고 <code>Check/data</code> 복사본에 결과를 만듦</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8035-917c-f954f5eeb566">즉, 현재 번역 작업 폴더를 바로 정리하려는 쪽이면 <code>이스케이프 검사</code>, 실제 게임 원본 <code>data</code>를 기준으로 프로젝트 쪽 결과를 대조해 보려는 쪽이면 <code>이스케이프 (data)</code>라고 이해하면 됩니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-802f-8454-cd2b442ccde2">알아둘 점</h2></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8019-ad9e-f730b9fc2be5"><li style="list-style-type:disc"><code>이스케이프 검사</code>는 <code>extract</code>와 <code>translated</code>를 비교하는 번역 JSON 보정 기능입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8005-b612-cff754fc2fe4"><li style="list-style-type:disc">이스케이프 불일치가 나면 해당 항목은 원문 텍스트 기준으로 복원됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80bb-a3ed-cb55736aa0b3"><li style="list-style-type:disc">전각공백과 마침 부호 위치는 번역 JSON에 직접 반영될 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8085-9638-f6af09c5cc03"><li style="list-style-type:disc"><code>Check</code>에는 통계 파일이 저장되고, 이스케이프 불일치가 있던 파일은 별도 결과 파일도 함께 남을 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8093-8f64-e113ea265758">
+</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-80fb-a992-f62a25f5dfc0">사용 시 팁</h2></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="23f34c3a-003e-808b-a400-c874dc882495"><li style="list-style-type:disc">가급적 번역일관성을 통해 번역텍스트를 한차례 다듬고 난 이후에 시도하시는 것을 권장합니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="23f34c3a-003e-8044-a696-c4ee42f3803f"><li style="list-style-type:disc">만약 일관성 기능으로 통일된 텍스트에 문제가 있어 복수의 위치에서 동일한 수정이 필요할 경우,<br/>한줄만 고쳐놓고 번역 일관성 기능을 통해 통일시키면 반복작업을 줄일 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="24a34c3a-003e-80d2-951f-c4cbf52d7254"><li style="list-style-type:disc">또한 고치던 것을 저장하고 창을 닫은 후 다시 이스케이프 버튼을 눌러 기능을 재실행하는 것으로 검사 결과에 나타나는 항목의 수를 점차 줄여나갈 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="24a34c3a-003e-8063-9020-eb183acb6d68"><li style="list-style-type:disc">이스케이프 검사는 꼭 한번에 전부 고쳐야하는 기능이 아닙니다. 한번에 완벽하게 고치는 것은 눈이 쉽게 피로해지고 작업을 느리게 하는 주범입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="24a34c3a-003e-800e-91d7-c6070ab3383b"><li style="list-style-type:disc">고치고 저장하고 닫고 다시 검사하고 고치고 저장하고 닫고 다시 검사하는 과정을 반복하면서 최종적으론 사용자가 원하는 모습을 만들어가는 것을 적극 권장합니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="24a34c3a-003e-8009-82c7-d941c3fda868">
+</p></div>
+      </article>
+    </main>
+  </div>
+  <script src="../../guide/static/main.js"></script>
+</body>
+</html>

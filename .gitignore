@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Local Notion export source. The public Pages artifact is dist/.
+ExportBlock/
+
+# Local-only Codex/project context.
+AGENTS.local.md
+.codex/

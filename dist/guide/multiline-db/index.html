@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiline-DB · AIMT Guide</title>
+  <script>(function(){try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <link rel="stylesheet" href="../../guide/static/styles.css">
+</head>
+<body>
+  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      <label class="search-box"><span>문서 검색</span><input id="guideSearch" type="search" placeholder="검색어 입력"></label>
+      <div id="searchResults" class="search-results" hidden></div>
+      <nav class="nav-list" aria-label="문서 목록">
+<details class="nav-group" data-depth="0" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT GUIDE - KR</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER MVMZ (개정1)</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER VXVXA (개정1)</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="1">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv-%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%84%E3%82%AF%E3%83%BC%E3%83%AB-mv/index.html" data-depth="1">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="1">ClickTeam Fusion ( Multimedia Fusion )(작성예정)</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%83%81%EB%8B%A8%EB%B6%80/index.html" data-depth="1">상단부</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/%ED%8C%8C%EC%9D%BC%EB%AA%A9%EB%A1%9D-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8/index.html" data-depth="2">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="2">프롬프트</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD/index.html" data-depth="2">빠른번역</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="3">테마</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">추출정규식</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="3">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">언어패턴설정</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="3">번역 설정</a>
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="3">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="3">API KEY 설정</a>
+<a class="nav-link" href="../../guide/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">치환용어설정</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="3">기본폰트설정</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="3">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="3">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="3">Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="3">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="3">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="3">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="3">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="3">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="3">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="3">401 Block Unit for Consistency/Duplicate</a>
+<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="3">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="3">Cmd 122 2차 추출 중복처리</a>
+<a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="3">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="3">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">로그 관리</a>
+<a class="nav-link" href="../../guide/%EB%B0%B1%EC%97%85-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">백업 관리</a>
+<a class="nav-link" href="../../guide/%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">캐시 관리</a>
+<a class="nav-link" href="../../guide/%EB%8F%84%EC%9B%80%EB%A7%90/index.html" data-depth="3">도움말</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%ED%83%80/index.html" data-depth="3">기타</a>
+</div></details>
+<a class="nav-link" href="../../guide/cmd/index.html" data-depth="2">CMD</a>
+<a class="nav-link" href="../../guide/view/index.html" data-depth="2">VIEW</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%A4%91%EB%8B%A8%EB%B6%80/index.html" data-depth="1">중단부</a>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%95%98%EB%8B%A8%EB%B6%80/index.html" data-depth="1">하단부</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%8F%84%EA%B5%AC/index.html" data-depth="2">도구</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html" data-depth="3">빈칸채우기</a>
+<a class="nav-link" href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html" data-depth="3">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html" data-depth="3">적용취소</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="3">번역일관성</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html" data-depth="3">추출 중복</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html" data-depth="3">이스케이프</a>
+<a class="nav-link" href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html" data-depth="3">일본어체크</a>
+<a class="nav-link" href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html" data-depth="3">받침정리</a>
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="3">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="3">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/winmerge-check/index.html" data-depth="3">WINMERGE CHECK</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="3">APPDATA</a>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/mvmz/index.html" data-depth="3">MVMZ</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/index.html" data-depth="4">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/index.html" data-depth="4">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-%EB%8F%99%EA%B8%B0%ED%99%94/index.html" data-depth="4">402 동기화</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EB%A6%84-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">이름 일관성</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">통합 일관성</a>
+<a class="nav-link" href="../../guide/%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%9B%90/index.html" data-depth="4">코드 복원</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html" data-depth="4">번역 가져오기</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-data/index.html" data-depth="4">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="4">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="4">Data 복호화</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="4">프로젝트 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/vxvxa/index.html" data-depth="3">VXVXA</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="4">언팩</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀변경</a>
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4-2948edda/index.html" data-depth="4">라인메이커</a>
+<a class="nav-link" href="../../guide/%EC%A0%84%EC%9A%A9%EC%B6%94%EC%B6%9C/index.html" data-depth="4">전용추출</a>
+<a class="nav-link" href="../../guide/imbook%ED%8C%A8%EC%B9%98-bbtext%ED%8C%A8%EC%B9%98-missions%ED%8C%A8%EC%B9%98/index.html" data-depth="4">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv%EB%B3%80%ED%99%98/index.html" data-depth="4">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/wolf/index.html" data-depth="3">WOLF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9-%EB%A6%AC%ED%8C%A9/index.html" data-depth="4">언팩/리팩</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%B9%98%ED%99%98/index.html" data-depth="4">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-%ED%8C%A8%EC%B9%98/index.html" data-depth="4">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%B9%98%ED%99%98/index.html" data-depth="4">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/ctf/index.html" data-depth="3">CTF</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%ED%83%80%EC%A0%95%EB%B3%B4-%ED%99%95%EC%9D%B8/index.html" data-depth="4">메타정보 확인</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀 변경</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">언어 변경</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/tyrano/index.html" data-depth="3">Tyrano</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-47c728f5/index.html" data-depth="4">ASAR</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD-2ccdb6d4/index.html" data-depth="4">타이틀 변경</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/kirikiri/index.html" data-depth="3">Kirikiri</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-%EB%B3%80%ED%99%98/index.html" data-depth="4">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/pgmmv/index.html" data-depth="3">PGMMV</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-16cf2cb1/index.html" data-depth="4">크립터</a>
+</div></details>
+<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/electron/index.html" data-depth="3">Electron</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="4">ASAR</a>
+</div></details>
+<a class="nav-link" href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html" data-depth="3">TTC 빌드</a>
+<a class="nav-link" href="../../guide/%EC%84%B8%EC%9D%B4%EB%B8%8C-%EC%97%90%EB%94%94%ED%84%B0/index.html" data-depth="3">세이브 에디터</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="3">llama-server</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="2">추출</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="2">번역</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="2">적용과 즉시적용</a>
+<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="3">메모장</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD-77499184/index.html" data-depth="3">빠른번역</a>
+<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="3">용어사전</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="1">RPGMAKER 명령코드 정리(작성 예정)</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/code-101-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A8%B8%EB%A6%BF%EA%B8%80-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%9C%EB%A0%A5%EC%9D%98-%EC%84%A4%EC%A0%95%EB%B6%80/index.html" data-depth="2">code:101 텍스트 머릿글 - 텍스트 출력의 설정부</a>
+<a class="nav-link" href="../../guide/code-401-%ED%85%8D%EC%8A%A4%ED%8A%B8-%ED%91%9C%EC%8B%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:401 텍스트 표시 - 텍스트의 내용</a>
+<a class="nav-link" href="../../guide/code-102-%EC%84%A0%ED%83%9D%EC%A7%80-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:102 선택지 표시</a>
+<a class="nav-link" href="../../guide/code-402-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:402 선택지 내용</a>
+<a class="nav-link" href="../../guide/code-403-%EC%B7%A8%EC%86%8C%ED%95%A0-%EB%95%8C/index.html" data-depth="2">code:403 취소할 때</a>
+<a class="nav-link" href="../../guide/code-404-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:404 선택지 분기 종료</a>
+<a class="nav-link" href="../../guide/code-103-%EC%88%AB%EC%9E%90-%EC%9E%85%EB%A0%A5-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 숫자 입력 처리</a>
+<a class="nav-link" href="../../guide/code-103-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A0%ED%83%9D-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 아이템 선택 처리</a>
+<a class="nav-link" href="../../guide/code-105-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C-%ED%97%A4%EB%8D%94/index.html" data-depth="2">code:105 텍스트의 스크롤 표시 헤더</a>
+<a class="nav-link" href="../../guide/code-405-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:405 텍스트의 스크롤 표시</a>
+<a class="nav-link" href="../../guide/code-121-%EC%8A%A4%EC%9C%84%EC%B9%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:121 스위치 조작</a>
+<a class="nav-link" href="../../guide/code-122-%EB%B3%80%EC%88%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:122 변수 조작</a>
+<a class="nav-link" href="../../guide/code-123-%EC%85%80%ED%94%84-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:123 셀프 스위치의 조작</a>
+<a class="nav-link" href="../../guide/code-124-%ED%83%80%EC%9D%B4%EB%A8%B8-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:124 타이머 조작</a>
+<a class="nav-link" href="../../guide/code-111-%EC%A1%B0%EA%B1%B4-%EB%B6%84%EA%B8%B0/index.html" data-depth="2">code:111 조건 분기</a>
+<a class="nav-link" href="../../guide/code-411-%EA%B7%B8-%EC%9D%B4%EC%99%B8%EC%9D%98-%EA%B2%BD%EC%9A%B0%EC%9D%BC-%EB%95%8C/index.html" data-depth="2">code:411 그 이외의 경우일 때</a>
+<a class="nav-link" href="../../guide/code-412-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:412 분기 종료</a>
+<a class="nav-link" href="../../guide/code-112-%EB%A3%A8%ED%94%84/index.html" data-depth="2">code:112 루프</a>
+<a class="nav-link" href="../../guide/code-413-%EC%83%81%EA%B8%B0%EB%82%B4%EC%9A%A9-%EB%B0%98%EB%B3%B5/index.html" data-depth="2">code:413 상기내용 반복</a>
+<a class="nav-link" href="../../guide/code-113-%EB%A3%A8%ED%94%84-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:113 루프 중단</a>
+<a class="nav-link" href="../../guide/code-115-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B2%98%EB%A6%AC%EC%9D%98-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:115 이벤트 처리의 중단</a>
+<a class="nav-link" href="../../guide/code-117-%EA%B3%B5%ED%86%B5%EC%9D%B4%EB%B2%A4%ED%8A%B8/index.html" data-depth="2">code:117 공통이벤트</a>
+<a class="nav-link" href="../../guide/code-118-%EB%9D%BC%EB%B2%A8/index.html" data-depth="2">code:118 라벨</a>
+<a class="nav-link" href="../../guide/code-119-%EB%9D%BC%EB%B2%A8%EC%A0%90%ED%94%84/index.html" data-depth="2">code:119 라벨점프</a>
+<a class="nav-link" href="../../guide/code-108-%EC%84%A4%EB%AA%85-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:108 설명 머릿글</a>
+<a class="nav-link" href="../../guide/code-408-%EC%84%A4%EB%AA%85-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:408 설명 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-125-%EC%86%8C%EC%A7%80-%EA%B8%88%EC%95%A1-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:125 소지 금액 증감</a>
+<a class="nav-link" href="../../guide/code-126-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:126 아이템 증감</a>
+<a class="nav-link" href="../../guide/code-127-%EB%AC%B4%EA%B8%B0-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:127 무기 증감</a>
+<a class="nav-link" href="../../guide/code-128-%EB%B0%A9%EC%96%B4%EA%B5%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:128 방어구 증감</a>
+<a class="nav-link" href="../../guide/code-129-%ED%8C%8C%ED%8B%B0%EC%9B%90-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:129 파티원 변경</a>
+<a class="nav-link" href="../../guide/code-311-hp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:311 HP 증감</a>
+<a class="nav-link" href="../../guide/code-312-mp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:312 MP 증감</a>
+<a class="nav-link" href="../../guide/code-326-tp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:326 TP 증감</a>
+<a class="nav-link" href="../../guide/code-313-%EC%83%81%ED%83%9C-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:313 상태 변경</a>
+<a class="nav-link" href="../../guide/code-314-%EB%AA%A8%EB%91%90-%ED%9A%8C%EB%B3%B5/index.html" data-depth="2">code:314 모두 회복</a>
+<a class="nav-link" href="../../guide/code-315-exp-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:315 EXP 변경</a>
+<a class="nav-link" href="../../guide/code-316-%EB%A0%88%EB%B2%A8-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:316 레벨 증감</a>
+<a class="nav-link" href="../../guide/code-317-%EB%8A%A5%EB%A0%A5%EC%B9%98-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:317 능력치 증감</a>
+<a class="nav-link" href="../../guide/code-318-%EC%8A%A4%ED%82%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:318 스킬 증감</a>
+<a class="nav-link" href="../../guide/code-319-%EC%9E%A5%EB%B9%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:319 장비 변경</a>
+<a class="nav-link" href="../../guide/code-320-%EC%9D%B4%EB%A6%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:320 이름 변경</a>
+<a class="nav-link" href="../../guide/code-321-%EC%A7%81%EC%97%85-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:321 직업 변경</a>
+<a class="nav-link" href="../../guide/code-324-%EB%8B%89%EB%84%A4%EC%9E%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:324 닉네임 변경</a>
+<a class="nav-link" href="../../guide/code-325-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:325 프로필 변경</a>
+<a class="nav-link" href="../../guide/code-355-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:355 스크립트 명령 머릿글</a>
+<a class="nav-link" href="../../guide/code-655-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:655 스크립트 명령 내용 두번째줄부터</a>
+<a class="nav-link" href="../../guide/code-356-mv-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:356 MV 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-357-mz-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:357 MZ 플러그인 명령</a>
+<a class="nav-link" href="../../guide/code-657-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9-%EC%83%81%EC%84%B8/index.html" data-depth="2">code:657 플러그인 명령 상세</a>
+</div></details>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="1">추출 파일별 설명</a>
+<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="1">같이 쓰면 좋은 도구들</a>
+<a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="1">자주 나오는 질문</a>
+</div></details>
+      </nav>
+    </aside>
+    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
+    <main class="content-shell">
+      <article class="guide-content">
+        <h1>Multiline-DB</h1>
+        <p class="doc-version">작성 당시 버전: 1.13.0.1<br>최종 편집 일시: 2026년 4월 5일 오전 1:29</p>
+<div dir="auto" style="display:contents"><div class="column-list" id="33834c3a-003e-80f3-bf10-d185c308a284"><div dir="auto" style="display:contents"><div class="column" id="33834c3a-003e-8091-8fbc-d0e0e0ccfad2" style="width:50%"><div dir="ltr" style="display:contents"><figure class="image" id="2bf34c3a-003e-80d9-b2ff-cc1d0ced7ef7"><a href="../../guide/assets/multiline-db/image.png"><img src="../../guide/assets/multiline-db/image.png" style="width:384px"/></a></figure></div></div></div><div dir="auto" style="display:contents"><div class="column" id="33834c3a-003e-8078-8732-c1eca0568fa0" style="width:50%"><div dir="ltr" style="display:contents"><figure class="image" id="2bf34c3a-003e-80a0-995b-dfaad19f2754"><a href="../../guide/assets/multiline-db/image%201.png"><img src="../../guide/assets/multiline-db/image%201.png" style="width:709.9791870117188px"/></a></figure></div></div></div></div></div><div dir="auto" style="display:contents"><div class="column-list" id="33834c3a-003e-80c3-b8ec-c3239c1274f6"><div dir="auto" style="display:contents"><div class="column" id="33834c3a-003e-8063-b3bd-ea9e81474ef1" style="width:50%"><div dir="auto" style="display:contents"><p class="" id="2bf34c3a-003e-80b1-b887-ff2cc744c9c3">비활성된 상태(체크X)로 추출했을 경우</p></div></div></div><div dir="auto" style="display:contents"><div class="column" id="33834c3a-003e-80aa-87f2-c8bc5e897dd2" style="width:50%"><div dir="auto" style="display:contents"><p class="" id="2bf34c3a-003e-80df-809f-f9fca1accc66">활성된 상태(체크O)로 추출했을 경우</p></div></div></div></div></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-80a0-8dc5-eda5341ff2dd">이 기능은 무엇인가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80a2-b4c9-dcf48a1c759a"><code>Multiline-DB</code>는 <code>MVMZ</code> 데이터베이스 추출에서 <code>설명</code>과 <code>프로필</code>처럼 <code>\n</code> 으로 연결된 여러 줄이 들어갈 수 있는 항목을 <code>한 덩어리로 둘지</code>, <code>줄별로 나눌지</code> 정하는 설정입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-803e-8bae-ff61b84b3f3c">실제로 차이가 생기는 대표적인 대상은 아이템 설명, 스킬 설명, 무기 설명, 방어구 설명, 배우 프로필입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8009-8d45-f92501b475dd">이 설정은 이벤트 대사 <code>401</code>이나 노트 추출 방식과는 다른 기능입니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-807f-8a39-d11ae5c5531d">켜면 무엇이 달라지나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8048-a7d2-d1565cae3161">이 설정을 켜면 줄바꿈이 들어 있는 설명문이나 프로필을 추출할 때 각 줄을 따로 나눠 담습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-804a-9fdc-c08eeb96404a">예를 들어 설명문이 원래 이렇게 되어 있으면:</p></div><div dir="auto" style="display:contents"><script crossorigin="anonymous" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" referrerpolicy="no-referrer" rel="stylesheet"/><pre class="code code-wrap" id="33834c3a-003e-80b5-a13a-d17db6ca58ce"><code style="white-space:pre-wrap;word-break:break-all">첫째 줄 설명\n둘째 줄 설명\n셋째 줄 설명</code></pre></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80f3-a4d4-f8bff63a254f">추출할 때도 이 세 줄을 각각 따로 다루는 쪽에 가깝습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8029-8110-e0ecf2f0d81d">이 방식은:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80a9-b554-ea51a15e9162"><li style="list-style-type:disc">줄마다 번역을 따로 보기 쉽고</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80e0-a6d9-d96250430b23"><li style="list-style-type:disc">어느 줄이 어색한지 찾기 편하고</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8034-8d25-d2cbc232abe9"><li style="list-style-type:disc">짧은 줄 단위로 다듬기 좋습니다</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80f9-b599-f6ca5674e7d7">대신 설명 전체를 한 문단으로 보고 번역하는 감각은 조금 약해질 수 있습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-8088-b421-fe0d33ae95e4">끄면 무엇이 달라지나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8069-ad75-da0dcc9f2f09">이 설정을 끄면 줄바꿈이 있어도 설명문이나 프로필 전체를 한 항목으로 유지합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80a8-ae96-ec4a3bb40a2c">즉, 세 줄짜리 설명문이면 세 줄 전체를 하나의 번역 대상으로 보는 방식입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80a9-a63b-f0d4aaea04d5">줄바꿈 자체가 없어지는 것은 아니고, 여러 줄을 한 번에 번역하는 쪽에 가깝습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8036-8073-fff0dee10e52">이 방식은:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80df-b52b-d677aec37473"><li style="list-style-type:disc">문단 전체 흐름을 한 번에 보기 쉽고</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8073-bffc-c29646ebe063"><li style="list-style-type:disc">문맥이 이어진 설명문을 통째로 다루기 편합니다</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8076-b09c-fd8246c3f171">반대로 특정 줄만 빠르게 고치거나 비교할 때는 켠 상태보다 덜 직관적일 수 있습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-809f-a501-fdf8557f8273">어떤 항목에 영향이 있나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8031-8e38-e59ecb95bed9">현재 코드 기준으로 데이터베이스 추출 대상에는 아래 항목들이 포함됩니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8047-9eac-e67196eb1584"><li style="list-style-type:disc"><code>Actors</code>: <code>name</code>, <code>nickname</code>, <code>profile</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8018-be7a-eafe031d9b21"><li style="list-style-type:disc"><code>Classes</code>: <code>name</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-807e-a943-f0e6bf89e5e8"><li style="list-style-type:disc"><code>Skills</code>: <code>name</code>, <code>description</code>, <code>message1</code>, <code>message2</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-808c-996d-f8b5dfc0e012"><li style="list-style-type:disc"><code>Items</code>: <code>name</code>, <code>description</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8090-9dd0-cf0443b9c977"><li style="list-style-type:disc"><code>Weapons</code>: <code>name</code>, <code>description</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-807e-9907-d2d6081d29d0"><li style="list-style-type:disc"><code>Armors</code>: <code>name</code>, <code>description</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80ee-8927-ed7a8c47253b"><li style="list-style-type:disc"><code>Enemies</code>: <code>name</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80d1-8bf3-cfcfa2a7d0fd"><li style="list-style-type:disc"><code>States</code>: <code>name</code>, <code>message1</code>, <code>message2</code>, <code>message3</code>, <code>message4</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-809a-a8b4-fe6cea90d4be"><li style="list-style-type:disc"><code>Troops</code>: <code>name</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80a7-9289-cd0c1c085e47">이때 <code>Multiline-DB</code>를 켰을 때 실제로 <code>줄별 분리</code>가 적용되는 것은 현재 코드상 <code>description</code>, <code>profile</code> 필드입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8068-b604-c7f78eaa7b2c">즉, 주로 아래 같은 항목에서 차이를 체감하게 됩니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80ae-8ab8-f0f73dc33a06"><li style="list-style-type:disc">배우 프로필</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80e3-926d-e71e6172238b"><li style="list-style-type:disc">스킬 설명</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80db-8679-e63c05b71773"><li style="list-style-type:disc">아이템 설명</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80cd-96ed-e21e062ba1e8"><li style="list-style-type:disc">무기 설명</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80ef-acde-fc9c6cc2fc53"><li style="list-style-type:disc">방어구 설명</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8077-af14-e25ebd1c4485">이름(<code>name</code>)이나 전투 메시지(<code>message1~4</code>)는 추출 대상일 수는 있어도, 이 설정 때문에 줄별로 쪼개지지는 않습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-8089-9d81-ef3140db24d0">적용할 때는 어떻게 되나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8071-ba4d-dbbedb7b1683">켜 둔 상태에서 여러 줄 설명을 줄별로 번역했더라도, 적용 단계에서는 다시 원래의 여러 줄 텍스트로 합쳐서 넣습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80cf-bfba-f65f5a708cef">즉:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-801e-b8fa-eadc12a48707"><li style="list-style-type:disc">추출할 때는 줄별로 나눠 작업하기 쉽게 만들고</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8070-9b3b-dbe1e49ece66"><li style="list-style-type:disc">적용할 때는 게임 데이터 형식에 맞게 다시 여러 줄로 합칩니다</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8078-9089-dbdea5636d1e">그래서 이 설정을 켰다고 해서 게임 안의 설명이 한 줄로 붙어 버리는 기능은 아닙니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-800a-b77c-f7c6ea3f26c1">언제 켜는 편이 좋나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8063-8972-cf0fa969dabc">아래 같은 경우에 잘 맞습니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-805a-a580-c63ae43f4dec"><li style="list-style-type:disc">여러 줄 설명을 줄마다 따로 검토하고 싶을 때</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80a8-922e-df1eb8c8e173"><li style="list-style-type:disc">짧은 줄 단위로 번역 결과를 손보기 편한 쪽이 좋을 때</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8097-8f85-f4c106394eff"><li style="list-style-type:disc">프로필이나 설명문에서 줄마다 말투나 표현을 따로 다듬고 싶을 때</li></ul></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-8016-b7a3-fd338110e140">언제 꺼두는 편이 좋나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8013-8747-d5a82480c823">아래 같은 경우에는 꺼두는 편이 더 편할 수 있습니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-803f-85dd-e04ceb27379c"><li style="list-style-type:disc">여러 줄 설명을 한 문단처럼 보고 번역하고 싶을 때</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8042-ba77-f64f10fcba8b"><li style="list-style-type:disc">설명 전체 문맥을 한 번에 유지하는 쪽이 더 중요할 때</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80e8-88b9-f42a89ebcb25"><li style="list-style-type:disc">줄 단위 수정보다 통문장 번역이 더 익숙할 때</li></ul></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-802e-a111-d56fc3b0a43c"><code>저장</code>하면 언제 반영되나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80a2-8cf0-da528849e9ca"><code>저장</code>을 누르면 설정값 자체는 바로 저장됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8012-a31a-c752c852c73c">하지만 이미 추출해 둔 데이터베이스 번역 파일 구조가 자동으로 다시 바뀌지는 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8068-9c7c-ffdf01b28b80">즉, 이 설정을 바꿨다면 새 방식으로 작업하려면 다시 <code>추출</code>하는 편이 안전합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8035-865b-dba003877150">기존 추출물은 예전 방식 그대로 남아 있고, 새 설정은 다음 추출부터 반영된다고 이해하면 됩니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-80a8-a555-d5e60e72daf9">자주 헷갈리는 점</h2></div><div dir="auto" style="display:contents"><h3 class="" id="33834c3a-003e-8094-96b8-e61acf91c948">이벤트 대사 <code>401</code>과 같은 기능인가요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80fc-93ab-c589d8938249">아닙니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8092-8c01-fc2b2cac47dd"><code>Multiline-DB</code>는 데이터베이스 텍스트 쪽 설정입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80ad-97e3-ded39b8e3301">이벤트 대사 구조는 <code>401-Extract Mode</code>, <code>Flatten Mode</code>, <code>merge 101-401</code> 같은 다른 설정이 담당합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33834c3a-003e-8091-95a2-eaa4083981b4">노트도 이 설정으로 줄별 분리되나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80df-9534-e5d25810166c">현재 코드 기준으로는 그렇게 보면 안 됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80e9-8aa4-ffe47dffce43">노트 추출은 별도 흐름으로 처리됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-806f-825d-fb4f1071a4be">노트도 여러 줄로 나뉘어 다뤄질 수는 있지만, 그것을 결정하는 기능이 <code>Multiline-DB</code>는 아닙니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33834c3a-003e-80b6-99c0-d7f07570f7c8">이름이나 짧은 메시지도 줄별로 나뉘나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-806e-8558-e0e3cc53fbf9">보통은 아닙니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-80b1-95fe-e84f587bd11e">이 설정으로 실제 차이가 생기는 쪽은 <code>description</code>, <code>profile</code>처럼 여러 줄이 들어갈 수 있는 필드입니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33834c3a-003e-809d-be41-e10d4054c553">설정만 바꾸면 기존 번역 파일도 바로 맞춰지나요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-806e-a9a8-defb9006eae4">그렇게 자동으로 바뀌지 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-804b-ba16-facd0d3c1508">추출 구조가 달라질 수 있으므로, 설정을 바꾼 뒤에는 다시 <code>추출</code>해서 이어가는 편이 안전합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33834c3a-003e-8043-862d-e45b505395d7">이미 번역 작업을 진행 중이었다면, 새로 추출한 결과를 기준으로 다시 번역을 이어가는 쪽이 덜 헷갈립니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33834c3a-003e-804e-b30f-e248f374c0a8">알아둘 점</h2></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-80f4-b05d-cc3ed2601a46"><li style="list-style-type:disc"><code>Multiline-DB</code>는 데이터베이스 설명문과 프로필의 추출 단위를 바꾸는 설정에 가깝습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-806e-9c24-e0935ae91a7d"><li style="list-style-type:disc">이 기능은 이벤트 대사 추출 설정이 아닙니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8046-b0d2-c967a088d5f9"><li style="list-style-type:disc">켜면 여러 줄 설명을 줄별로 작업하기 쉬워지고, 끄면 한 문단처럼 다루기 쉬워집니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8037-a3fb-ee52d1286964"><li style="list-style-type:disc">적용할 때는 다시 여러 줄 텍스트로 합쳐집니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8006-8426-d836d94536f2"><li style="list-style-type:disc">이는 한 줄이 과하게 길어지는 경우를 방지하기 위한 기능으로 활성상태가 기본값입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33834c3a-003e-8090-b774-d3302deffefd"><li style="list-style-type:disc">한글과 어순이 동일한 일본어를 번역할 때는 이 기능이 문제되는 경우가 흔치 않지만,<br/>어순이 다른 중국어나 영문을 번역할 때엔 비활성하고 추출 및 번역하시는 것이 도움이 될 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="2bf34c3a-003e-8020-a488-ff52dda681ec">
+</p></div>
+      </article>
+    </main>
+  </div>
+  <script src="../../guide/static/main.js"></script>
+</body>
+</html>
