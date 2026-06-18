@@ -52,7 +52,7 @@ PAGES: list[PageSpec] = [
     PageSpec("SRPG Studio", "srpg-studio", 1, "<p>SRPG Studio 게임 작업 흐름 문서입니다. 원문 복구 필요.</p>"),
     PageSpec("세이브 에디터", "save-editor", 1, "<p>세이브 파일을 열고 수정한 뒤 백업/복원하는 사용자용 문서입니다. 원문 복구 필요.</p>"),
     PageSpec("상단부", "상단부", 1, "<p>상단부 메뉴 설명 묶음입니다. 원문 복구 필요.</p>"),
-    PageSpec("설정", "설정", 2, "<p>설정 화면 문서 묶음입니다. 원문 복구 필요.</p>"),
+    PageSpec("설정 화면", "설정", 2, "<p>설정 화면 문서 묶음입니다. 원문 복구 필요.</p>"),
     PageSpec("AI-MODEL", "ai-model", 3, "<p>AI 모델 선택과 변경 기준을 설명하는 문서입니다. 원문 복구 필요.</p>"),
     PageSpec("API KEY 설정", "api-key-설정", 3, "<p>API 키 입력과 오류 확인 흐름을 설명하는 문서입니다. 원문 복구 필요.</p>"),
     PageSpec("401 Block Unit for Consistency/Duplicate", "401-block-unit-for-consistency-duplicate", 3, "<p>401 대화 블럭 단위 설정 문서입니다. 원문 복구 필요.</p>"),
@@ -99,7 +99,8 @@ def make_nav(from_path: Path) -> str:
         anchor = f'<a class="nav-link" href="{href}" data-depth="{page.depth}">{title}</a>'
         if next_depth > page.depth:
             open_attr = " open" if page.depth == 0 else ""
-            lines.append(f'<details class="nav-group" data-depth="{page.depth}"{open_attr}><summary>{anchor}</summary><div class="nav-children">')
+            nav_key = html.escape(page.path.relative_to(DIST_ROOT).as_posix(), quote=True)
+            lines.append(f'<details class="nav-group" data-depth="{page.depth}" data-nav-key="{nav_key}"{open_attr}><summary>{anchor}</summary><div class="nav-children">')
             stack.append(page.depth)
         else:
             lines.append(anchor)
@@ -196,15 +197,90 @@ def write_static_assets() -> None:
 (function(){
   const normalize = (value) => String(value || "").normalize("NFKC").toLowerCase().replace(/[\\s_\\-/.]+/g, " ").trim();
   const compact = (value) => normalize(value).replace(/ /g, "");
+  function normalizeDocumentPath(pathname){
+    return pathname.replace(/\\/index\\.html?$/, "/");
+  }
+  function absolutizeShellLinks(){
+    document.querySelectorAll(".sidebar a[href], .brand[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("#")) return;
+      try { link.setAttribute("href", new URL(href, location.href).href); } catch (_) {}
+    });
+  }
   function markCurrent(){
-    const current = new URL(location.href).pathname.replace(/\\/index\\.html$/, "/");
+    const current = normalizeDocumentPath(new URL(location.href).pathname);
     document.querySelectorAll(".nav-link[href]").forEach((link) => {
-      const target = new URL(link.getAttribute("href"), location.href).pathname.replace(/\\/index\\.html$/, "/");
+      link.removeAttribute("aria-current");
+      const target = normalizeDocumentPath(new URL(link.getAttribute("href"), location.href).pathname);
       if (target === current) {
         link.setAttribute("aria-current", "page");
         let parent = link.closest("details");
         while (parent) { parent.open = true; parent = parent.parentElement.closest("details"); }
       }
+    });
+  }
+  function closeSearchOverlay(){
+    const overlay = document.getElementById("searchOverlay");
+    if (!overlay) return;
+    overlay.hidden = true;
+    document.body.classList.remove("is-search-open");
+  }
+  function isPlainNavigationClick(event, link){
+    return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && link.target !== "_blank";
+  }
+  function isGuideDocumentUrl(url){
+    const path = url.pathname.toLowerCase();
+    return url.origin === location.origin && (path.endsWith("/") || path.endsWith(".html") || path.endsWith(".htm"));
+  }
+  function rewriteArticleUrls(article, pageUrl){
+    const attributes = [
+      ["a[href]", "href"],
+      ["img[src]", "src"],
+      ["source[src]", "src"],
+      ["video[src]", "src"],
+      ["audio[src]", "src"]
+    ];
+    attributes.forEach(([selector, attribute]) => {
+      article.querySelectorAll(selector).forEach((node) => {
+        const value = node.getAttribute(attribute);
+        if (!value || value.startsWith("#")) return;
+        try { node.setAttribute(attribute, new URL(value, pageUrl).href); } catch (_) {}
+      });
+    });
+  }
+  async function replaceArticleFromUrl(url, options){
+    const response = await fetch(url.href, {credentials: "same-origin"});
+    if (!response.ok) throw new Error("문서를 불러올 수 없습니다.");
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const nextArticle = doc.querySelector("article.guide-content");
+    const contentShell = document.querySelector("main.content-shell");
+    if (!nextArticle || !contentShell) throw new Error("본문 영역을 찾을 수 없습니다.");
+    rewriteArticleUrls(nextArticle, url);
+    contentShell.replaceChildren(document.importNode(nextArticle, true));
+    document.title = doc.title || document.title;
+    if (options.push) history.pushState({}, "", url.href);
+    markCurrent();
+    closeSearchOverlay();
+    window.scrollTo({top: 0, behavior: "auto"});
+  }
+  function setupPartialNavigation(){
+    document.documentElement.dataset.partialNavigation = location.protocol === "file:" ? "fallback" : "enabled";
+    if (location.protocol === "file:") return;
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest ? event.target.closest("a[href]") : null;
+      if (!link || !isPlainNavigationClick(event, link)) return;
+      let url;
+      try { url = new URL(link.getAttribute("href"), location.href); } catch (_) { return; }
+      if (!isGuideDocumentUrl(url)) return;
+      const currentWithoutHash = location.href.split("#")[0];
+      const targetWithoutHash = url.href.split("#")[0];
+      if (currentWithoutHash === targetWithoutHash) return;
+      event.preventDefault();
+      replaceArticleFromUrl(url, {push: true}).catch(() => { location.href = url.href; });
+    }, true);
+    window.addEventListener("popstate", () => {
+      replaceArticleFromUrl(new URL(location.href), {push: false}).catch(() => location.reload());
     });
   }
   async function setupSearch(){
@@ -249,8 +325,10 @@ def write_static_assets() -> None:
     overlay.addEventListener("click", (event) => { if (event.target === overlay) closeSearch(); });
     document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !overlay.hidden) closeSearch(); });
     input.addEventListener("input", renderSearchResults);
-  }  markCurrent();
+  }  absolutizeShellLinks();
+  markCurrent();
   setupSearch();
+  setupPartialNavigation();
 })();
 """.strip(),
     )

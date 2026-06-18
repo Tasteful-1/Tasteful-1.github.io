@@ -2,11 +2,13 @@
   const normalize = (value) => String(value || "").normalize("NFKC").toLowerCase().replace(/[\s_\-/.]+/g, " ").trim();
   const compact = (value) => normalize(value).replace(/ /g, "");
   const navStateKey = "aimt-guide-nav-open";
+  const sidebarScrollKey = "aimt-guide-sidebar-scroll";
   const themeKey = "aimt-guide-theme";
   const sidebarWidthKey = "aimt-guide-sidebar-width";
   const sidebarCollapsedKey = "aimt-guide-sidebar-collapsed";
   const minSidebarWidth = 240;
   const maxSidebarWidth = 520;
+  let isRestoringNav = true;
   const themeLabels = {
     system: {text: "◐", title: "테마: 기기 설정"},
     dark: {text: "☾", title: "테마: 다크"},
@@ -142,30 +144,175 @@
   function writeNavState(state){
     try { localStorage.setItem(navStateKey, JSON.stringify(state)); } catch (_) {}
   }
+  function navGroupKey(group){
+    const link = group.querySelector(":scope > summary .nav-link[href]");
+    const storedKey = group.getAttribute("data-nav-key");
+    const legacyKey = link ? new URL(link.getAttribute("href"), location.href).pathname.replace(/\/index\.html$/, "/") : "";
+    return {
+      key: storedKey ? "group:" + storedKey : legacyKey,
+      legacyKey
+    };
+  }
+  function snapshotNavState(){
+    const next = readNavState();
+    document.querySelectorAll(".nav-group").forEach((group) => {
+      const keys = navGroupKey(group);
+      if (!keys.key) return;
+      next[keys.key] = group.open;
+    });
+    writeNavState(next);
+  }
+  function readSidebarScroll(){
+    try {
+      const value = Number(sessionStorage.getItem(sidebarScrollKey));
+      return Number.isFinite(value) && value >= 0 ? value : null;
+    } catch (_) {
+      return null;
+    }
+  }
+  function writeSidebarScroll(value){
+    try { sessionStorage.setItem(sidebarScrollKey, String(Math.max(0, Math.round(value)))); } catch (_) {}
+  }
+  function normalizeDocumentPath(pathname){
+    return pathname.replace(/\/index\.html?$/, "/");
+  }
+  function absolutizeShellLinks(){
+    document.querySelectorAll(".sidebar a[href], .brand[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("#")) return;
+      try { link.setAttribute("href", new URL(href, location.href).href); } catch (_) {}
+    });
+  }
   function setupNavGroups(){
     const state = readNavState();
     document.querySelectorAll(".nav-group").forEach((group) => {
       const link = group.querySelector(":scope > summary .nav-link[href]");
-      if (!link) return;
-      const key = new URL(link.getAttribute("href"), location.href).pathname.replace(/\/index\.html$/, "/");
+      const keys = navGroupKey(group);
+      const key = keys.key;
+      const legacyKey = keys.legacyKey;
+      if (!key) return;
       if (Object.prototype.hasOwnProperty.call(state, key)) group.open = Boolean(state[key]);
-      link.addEventListener("click", (event) => event.stopPropagation());
+      else if (legacyKey && Object.prototype.hasOwnProperty.call(state, legacyKey)) group.open = Boolean(state[legacyKey]);
+      if (link) link.addEventListener("click", (event) => event.stopPropagation());
       group.addEventListener("toggle", () => {
+        if (isRestoringNav) return;
         const next = readNavState();
         next[key] = group.open;
         writeNavState(next);
       });
     });
+    window.addEventListener("pagehide", snapshotNavState);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") snapshotNavState();
+    });
   }
   function markCurrent(){
-    const current = new URL(location.href).pathname.replace(/\/index\.html$/, "/");
+    const current = normalizeDocumentPath(new URL(location.href).pathname);
+    let currentLink = null;
     document.querySelectorAll(".nav-link[href]").forEach((link) => {
-      const target = new URL(link.getAttribute("href"), location.href).pathname.replace(/\/index\.html$/, "/");
+      link.removeAttribute("aria-current");
+      const target = normalizeDocumentPath(new URL(link.getAttribute("href"), location.href).pathname);
       if (target === current) {
+        currentLink = link;
         link.setAttribute("aria-current", "page");
         let parent = link.closest("details");
         while (parent) { parent.open = true; parent = parent.parentElement.closest("details"); }
       }
+    });
+    return currentLink;
+  }
+  function setupSidebarScrollMemory(currentLink){
+    const sidebar = document.querySelector(".sidebar");
+    if (!sidebar) return;
+    const savedScroll = readSidebarScroll();
+    requestAnimationFrame(() => {
+      if (savedScroll !== null) sidebar.scrollTop = savedScroll;
+      if (!currentLink) return;
+      const sidebarRect = sidebar.getBoundingClientRect();
+      const linkRect = currentLink.getBoundingClientRect();
+      if (savedScroll === null || linkRect.top < sidebarRect.top || linkRect.bottom > sidebarRect.bottom) {
+        sidebar.scrollTop = Math.max(0, currentLink.offsetTop - Math.round((sidebar.clientHeight - currentLink.offsetHeight) / 2));
+      }
+    });
+    let scrollFrame = 0;
+    sidebar.addEventListener("scroll", () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = 0;
+        writeSidebarScroll(sidebar.scrollTop);
+      });
+    }, {passive: true});
+    window.addEventListener("pagehide", () => writeSidebarScroll(sidebar.scrollTop));
+  }
+  function finishNavRestore(){
+    requestAnimationFrame(() => {
+      isRestoringNav = false;
+      document.documentElement.removeAttribute("data-nav-restoring");
+    });
+  }
+  function closeSearchOverlay(){
+    const overlay = document.getElementById("searchOverlay");
+    if (!overlay) return;
+    overlay.hidden = true;
+    document.body.classList.remove("is-search-open");
+  }
+  function isPlainNavigationClick(event, link){
+    return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && link.target !== "_blank";
+  }
+  function isGuideDocumentUrl(url){
+    const path = url.pathname.toLowerCase();
+    return url.origin === location.origin && (path.endsWith("/") || path.endsWith(".html") || path.endsWith(".htm"));
+  }
+  function rewriteArticleUrls(article, pageUrl){
+    const attributes = [
+      ["a[href]", "href"],
+      ["img[src]", "src"],
+      ["source[src]", "src"],
+      ["video[src]", "src"],
+      ["audio[src]", "src"]
+    ];
+    attributes.forEach(([selector, attribute]) => {
+      article.querySelectorAll(selector).forEach((node) => {
+        const value = node.getAttribute(attribute);
+        if (!value || value.startsWith("#")) return;
+        try { node.setAttribute(attribute, new URL(value, pageUrl).href); } catch (_) {}
+      });
+    });
+  }
+  async function replaceArticleFromUrl(url, options){
+    const response = await fetch(url.href, {credentials: "same-origin"});
+    if (!response.ok) throw new Error("문서를 불러올 수 없습니다.");
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const nextArticle = doc.querySelector("article.guide-content");
+    const contentShell = document.querySelector("main.content-shell");
+    if (!nextArticle || !contentShell) throw new Error("본문 영역을 찾을 수 없습니다.");
+    rewriteArticleUrls(nextArticle, url);
+    contentShell.replaceChildren(document.importNode(nextArticle, true));
+    document.title = doc.title || document.title;
+    if (options.push) history.pushState({}, "", url.href);
+    markCurrent();
+    closeSearchOverlay();
+    window.scrollTo({top: 0, behavior: "auto"});
+  }
+  function setupPartialNavigation(){
+    document.documentElement.dataset.partialNavigation = location.protocol === "file:" ? "fallback" : "enabled";
+    if (location.protocol === "file:") return;
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest ? event.target.closest("a[href]") : null;
+      if (!link || !isPlainNavigationClick(event, link)) return;
+      let url;
+      try { url = new URL(link.getAttribute("href"), location.href); } catch (_) { return; }
+      if (!isGuideDocumentUrl(url)) return;
+      const currentWithoutHash = location.href.split("#")[0];
+      const targetWithoutHash = url.href.split("#")[0];
+      if (currentWithoutHash === targetWithoutHash) return;
+      event.preventDefault();
+      snapshotNavState();
+      replaceArticleFromUrl(url, {push: true}).catch(() => { location.href = url.href; });
+    }, true);
+    window.addEventListener("popstate", () => {
+      replaceArticleFromUrl(new URL(location.href), {push: false}).catch(() => location.reload());
     });
   }
   async function setupSearch(){
@@ -282,7 +429,12 @@
   }  setupThemeToggle();
   setupSidebarCollapse();
   setupSidebarResize();
+  absolutizeShellLinks();
+  document.documentElement.dataset.navRestoring = "1";
   setupNavGroups();
-  markCurrent();
+  const currentLink = markCurrent();
+  setupSidebarScrollMemory(currentLink);
+  finishNavRestore();
   setupSearch();
+  setupPartialNavigation();
 })();

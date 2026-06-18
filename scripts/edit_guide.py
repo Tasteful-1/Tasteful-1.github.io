@@ -12,6 +12,59 @@ from urllib.parse import parse_qs, quote, unquote, urlparse
 
 HOST = "127.0.0.1"
 PORT = 8776
+DOC_VERSION = "문서 기준: AIMT PRO 1.13 계열"
+
+GROUP_PAGES = {
+    "guide/index.html",
+    "guide/start/index.html",
+    "guide/basic-workflow/index.html",
+    "guide/engine-guides/index.html",
+    "guide/features/index.html",
+    "guide/troubleshooting/index.html",
+    "guide/advanced-reference/index.html",
+}
+
+FEATURE_SUBGROUP_PAGES = {
+    "guide/features-screen/index.html",
+    "guide/features-quickslot/index.html",
+    "guide/features-reference/index.html",
+}
+
+SETTING_REFERENCE_GROUP_PAGES = set()
+
+EXTERNAL_REFERENCE_PAGES = {
+    "guide/제공자별-참고-링크/index.html",
+}
+
+EXCLUDE_FROM_NAV_PATHS = {
+    "guide/start/index.html",
+    "guide/basic-workflow/index.html",
+    "guide/engine-guides/index.html",
+    "guide/features/index.html",
+    "guide/troubleshooting/index.html",
+    "guide/advanced-reference/index.html",
+    "guide/cmd/index.html",
+    "guide/advanced-regex-rules/index.html",
+    "guide/advanced-mvmz-options/index.html",
+    "guide/advanced-file-formats/index.html",
+    "guide/advanced-ai-local/index.html",
+    "guide/mvmz/index.html",
+    "guide/vxvxa/index.html",
+    "guide/wolf/index.html",
+    "guide/ctf/index.html",
+    "guide/tyrano/index.html",
+    "guide/kirikiri/index.html",
+    "guide/pgmmv/index.html",
+    "guide/electron/index.html",
+    "guide/features-workspace-tools/index.html",
+    "guide/features-engine-tools/index.html",
+    "guide/features-external-tools/index.html",
+    "guide/features-settings/index.html",
+    "guide/winmerge-check/index.html",
+}
+
+STRUCTURE_MANAGED_PATHS = GROUP_PAGES | FEATURE_SUBGROUP_PAGES | SETTING_REFERENCE_GROUP_PAGES | EXTERNAL_REFERENCE_PAGES
+DEFAULT_NEW_PAGE_PARENT = "guide/features-reference/index.html"
 
 
 def find_site_root() -> Path:
@@ -26,6 +79,7 @@ DIST_ROOT = SITE_ROOT / "dist"
 ARTICLE_RE = re.compile(r"(?is)<article\b[^>]*class=[\"'][^\"']*guide-content[^\"']*[\"'][^>]*>.*?</article>")
 TITLE_RE = re.compile(r"(?is)<h1[^>]*>(.*?)</h1>")
 NAV_RE = re.compile(r"(?is)(<nav\b[^>]*class=[\"'][^\"']*nav-list[^\"']*[\"'][^>]*>)(.*?)(</nav>)")
+NAV_LINK_RE = re.compile(r"(?is)<a\b(?P<attrs>[^>]*class=[\"'][^\"']*\bnav-link\b[^\"']*[\"'][^>]*)>(?P<title>.*?)</a>")
 HREF_RE = re.compile(r"href=[\"']([^\"']+)[\"']", re.IGNORECASE)
 DEPTH_RE = re.compile(r"data-depth=[\"'](\d+)[\"']", re.IGNORECASE)
 TAG_RE = re.compile(r"<[^>]+>")
@@ -55,6 +109,10 @@ def normalize_slug(value: str) -> str:
     return re.sub(r"-{2,}", "-", slug) or "new-page"
 
 
+def is_excluded_path(relative_path: str) -> bool:
+    return relative_path.replace("\\", "/") in EXCLUDE_FROM_NAV_PATHS
+
+
 def html_files(dist_root: Path) -> list[Path]:
     return sorted(path for path in dist_root.rglob("*.html") if path.name != "404.html")
 
@@ -82,8 +140,6 @@ def get_href_target(dist_root: Path, html_path: Path, href: str) -> str | None:
     clean = unquote(parsed.path)
     if clean.startswith("/dist/"):
         path = dist_root / clean[6:]
-    elif clean.startswith("/AIMT_Build/"):
-        path = dist_root / clean[len("/AIMT_Build/"):]
     elif clean.startswith("/"):
         path = dist_root / clean.lstrip("/")
     else:
@@ -103,7 +159,7 @@ def relative_href(from_path: Path, to_relative: str, dist_root: Path = DIST_ROOT
     return quote("/".join(parts), safe="/._-#%")
 
 
-def get_nav_entries(dist_root: Path) -> list[dict[str, Any]]:
+def get_nav_entries(dist_root: Path, *, dedupe: bool = False) -> list[dict[str, Any]]:
     index_path = dist_root / "guide" / "index.html"
     if not index_path.exists():
         return []
@@ -112,15 +168,18 @@ def get_nav_entries(dist_root: Path) -> list[dict[str, Any]]:
         return []
     entries: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for line in match.group(2).splitlines():
-        href = HREF_RE.search(line)
+    for nav_match in NAV_LINK_RE.finditer(match.group(2)):
+        attrs = nav_match.group("attrs")
+        href = HREF_RE.search(attrs)
         if not href:
             continue
         target = get_href_target(dist_root, index_path, href.group(1))
-        if not target or target in seen:
+        if not target or is_excluded_path(target):
             continue
-        depth = DEPTH_RE.search(line)
-        entries.append({"path": target, "title": strip_tags(line), "depth": int(depth.group(1)) if depth else 0, "order": len(entries), "hasChildren": False})
+        if dedupe and target in seen:
+            continue
+        depth = DEPTH_RE.search(attrs)
+        entries.append({"path": target, "title": strip_tags(nav_match.group("title")), "depth": int(depth.group(1)) if depth else 0, "order": len(entries), "hasChildren": False})
         seen.add(target)
     for index, entry in enumerate(entries[:-1]):
         entry["hasChildren"] = int(entries[index + 1]["depth"]) > int(entry["depth"])
@@ -137,11 +196,15 @@ def build_nav(entries: list[dict[str, Any]], html_path: Path, dist_root: Path = 
             lines.append("</div></details>")
             stack.pop()
         title = html.escape(str(entry["title"]), quote=False)
-        href = relative_href(html_path, str(entry["path"]), dist_root)
-        anchor = f'<a class="nav-link" href="{href}" data-depth="{depth}">{title}</a>'
+        if bool(entry.get("virtual", False)):
+            anchor = f'<span class="nav-link nav-label" data-depth="{depth}">{title}</span>'
+        else:
+            href = relative_href(html_path, str(entry["path"]), dist_root)
+            anchor = f'<a class="nav-link" href="{href}" data-depth="{depth}">{title}</a>'
         if next_depth > depth:
             open_attr = " open" if depth == 0 else ""
-            lines.append(f'<details class="nav-group" data-depth="{depth}"{open_attr}><summary><span class="nav-caret" aria-hidden="true"></span>{anchor}</summary><div class="nav-children">')
+            nav_key = html.escape(str(entry["path"]), quote=True)
+            lines.append(f'<details class="nav-group" data-depth="{depth}" data-nav-key="{nav_key}"{open_attr}><summary><span class="nav-caret" aria-hidden="true"></span>{anchor}</summary><div class="nav-children">')
             stack.append(depth)
         else:
             lines.append(anchor)
@@ -165,18 +228,46 @@ def rewrite_navs(dist_root: Path, entries: list[dict[str, Any]]) -> int:
     return changed
 
 
-def list_files(dist_root: Path) -> list[dict[str, Any]]:
+def _file_item(dist_root: Path, relative_path: str, entry: dict[str, Any] | None) -> dict[str, Any] | None:
+    if is_excluded_path(relative_path):
+        return None
+    path = dist_root / relative_path
+    if not path.exists() or path.name == "404.html":
+        return None
+    text = read_text(path)
+    movable = bool(entry) and relative_path not in STRUCTURE_MANAGED_PATHS
+    return {
+        "path": relative_path,
+        "title": parse_title(text, path.parent.name),
+        "updated": int(path.stat().st_mtime),
+        "depth": int(entry.get("depth", 0)) if entry else 0,
+        "inNav": bool(entry),
+        "movable": movable,
+        "managed": relative_path in STRUCTURE_MANAGED_PATHS,
+        "hasChildren": bool(entry.get("hasChildren", False)) if entry else False,
+    }
+
+
+def list_files(dist_root: Path, include_unlisted: bool = True) -> list[dict[str, Any]]:
     entries = get_nav_entries(dist_root)
     meta = {entry["path"]: entry for entry in entries}
     order = {entry["path"]: int(entry["order"]) for entry in entries}
+    unique_entries = sorted(meta.values(), key=lambda entry: int(entry["order"]))
     files: list[dict[str, Any]] = []
+    if not include_unlisted:
+        for entry in unique_entries:
+            item = _file_item(dist_root, str(entry["path"]), entry)
+            if item:
+                files.append(item)
+        return files
     for path in sorted(dist_root.rglob("*.html"), key=lambda p: (order.get(p.relative_to(dist_root).as_posix(), 999999), p.relative_to(dist_root).as_posix())):
         rel = path.relative_to(dist_root).as_posix()
         if rel == "404.html":
             continue
         entry = meta.get(rel)
-        text = read_text(path)
-        files.append({"path": rel, "title": parse_title(text, path.parent.name), "updated": int(path.stat().st_mtime), "depth": int(entry.get("depth", 0)) if entry else 0, "inNav": bool(entry), "movable": bool(entry), "hasChildren": bool(entry.get("hasChildren", False)) if entry else False})
+        item = _file_item(dist_root, rel, entry)
+        if item:
+            files.append(item)
     return files
 
 
@@ -195,13 +286,51 @@ def replace_article(text: str, article: str) -> str:
 
 def rebuild_search_index(dist_root: Path) -> None:
     items = []
-    for item in list_files(dist_root):
-        if not item["path"].startswith("guide/"):
+    for item in list_files(dist_root, include_unlisted=True):
+        if not item["path"].startswith("guide/") or is_excluded_path(str(item["path"])):
             continue
-        article = extract_article(read_text(dist_root / item["path"]))
+        title = str(item["title"])
+        if not item.get("inNav", False) and not title.lower().startswith("code:"):
+            continue
+        try:
+            article = extract_article(read_text(dist_root / item["path"]))
+        except ValueError:
+            continue
         body = re.sub(r"\s+", " ", strip_tags(article))
         items.append({"title": item["title"], "url": relative_href(dist_root / "guide" / "index.html", item["path"], dist_root), "path": item["path"], "body": body})
     write_text(dist_root / "guide" / "search-index.json", json.dumps(items, ensure_ascii=False, indent=2))
+
+
+def page_asset_dir(dist_root: Path, html_path: Path) -> Path:
+    """Return the asset directory used by newly inserted images for a guide page."""
+    relative = html_path.relative_to(dist_root).as_posix()
+    parts = relative.split("/")
+    page_slug = "index"
+    if len(parts) >= 3 and parts[0] == "guide" and parts[-1] == "index.html":
+        page_slug = parts[-2]
+    elif len(parts) >= 2:
+        page_slug = normalize_slug(Path(parts[-1]).stem)
+    return dist_root / "guide" / "assets" / page_slug
+
+
+def next_image_path(asset_dir: Path, extension: str) -> Path:
+    """Return image.ext, image 2.ext, ... without overwriting an existing file."""
+    used_numbers: set[int] = set()
+    pattern = re.compile(r"^image(?: ([2-9][0-9]*))?\.[^.]+$", re.IGNORECASE)
+    existing_paths = asset_dir.iterdir() if asset_dir.exists() else []
+    for existing_path in existing_paths:
+        match = pattern.match(existing_path.name)
+        if match:
+            used_numbers.add(int(match.group(1) or "1"))
+    index = 1
+    while index in used_numbers:
+        index += 1
+    name = "image" if index == 1 else f"image {index}"
+    path = asset_dir / f"{name}{extension}"
+    while path.exists():
+        index += 1
+        path = asset_dir / f"image {index}{extension}"
+    return path
 
 
 def save_image(dist_root: Path, html_path: Path, filename: str, mime: str, data_url: str) -> dict[str, Any]:
@@ -210,14 +339,9 @@ def save_image(dist_root: Path, html_path: Path, filename: str, mime: str, data_
     prefix = f"data:{mime};base64,"
     if not data_url.startswith(prefix):
         raise ValueError("이미지 데이터가 올바르지 않습니다.")
-    stem = normalize_slug(Path(filename).stem)[:48] or "image"
-    assets = dist_root / "guide" / "assets"
+    assets = page_asset_dir(dist_root, html_path)
     assets.mkdir(parents=True, exist_ok=True)
-    path = assets / f"{stem}{IMAGE_EXT[mime]}"
-    index = 2
-    while path.exists():
-        path = assets / f"{stem}-{index}{IMAGE_EXT[mime]}"
-        index += 1
+    path = next_image_path(assets, IMAGE_EXT[mime])
     path.write_bytes(base64.b64decode(data_url[len(prefix):], validate=True))
     return {"ok": True, "path": path.relative_to(dist_root).as_posix(), "src": relative_href(html_path, path.relative_to(dist_root).as_posix(), dist_root)}
 
@@ -225,9 +349,15 @@ def save_image(dist_root: Path, html_path: Path, filename: str, mime: str, data_
 def reparent(dist_root: Path, source_path: str, parent_path: str) -> dict[str, Any]:
     source = resolve_html_path(dist_root, source_path).relative_to(dist_root).as_posix()
     parent = resolve_html_path(dist_root, parent_path).relative_to(dist_root).as_posix()
+    if source in STRUCTURE_MANAGED_PATHS or is_excluded_path(source):
+        raise ValueError("목차 구조를 관리하는 기본 페이지는 이동할 수 없습니다.")
+    if is_excluded_path(parent):
+        raise ValueError("목차에서 제외된 페이지 아래로 이동할 수 없습니다.")
     entries = get_nav_entries(dist_root)
-    source_index = next((i for i, e in enumerate(entries) if e["path"] == source), -1)
-    parent_index = next((i for i, e in enumerate(entries) if e["path"] == parent), -1)
+    source_matches = [i for i, entry in enumerate(entries) if entry["path"] == source]
+    parent_matches = [i for i, entry in enumerate(entries) if entry["path"] == parent]
+    source_index = source_matches[-1] if source_matches else -1
+    parent_index = parent_matches[-1] if parent_matches else -1
     if source_index < 0 or parent_index < 0 or source == parent:
         raise ValueError("목차에 있는 서로 다른 페이지끼리만 이동할 수 있습니다.")
     source_depth = int(entries[source_index]["depth"])
@@ -250,7 +380,7 @@ def reparent(dist_root: Path, source_path: str, parent_path: str) -> dict[str, A
 
 EDITOR_HTML = r'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AIMT Guide Editor</title><style>
 :root{--bg:#eef2f8;--panel:#fff;--ink:#182033;--muted:#647084;--line:#d8e0ee;--accent:#315bef;--soft:#edf3ff;--danger:#d92d20}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{display:grid;grid-template-columns:330px minmax(0,1fr);height:100vh}.side{overflow:auto;background:#fff;border-right:1px solid var(--line);padding:18px}.main{overflow:auto;padding:22px}.title{font-size:20px;font-weight:900;margin:0}.hint{font-size:12px;color:var(--muted)}.top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer}.btn.primary{border-color:var(--accent);background:var(--accent);color:#fff}.btn:disabled{opacity:.45}.filter{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin:8px 0 12px}.file{display:block;width:100%;text-align:left;border:0;background:transparent;border-radius:12px;padding:8px 10px;margin:2px 0;cursor:pointer}.file:hover,.file.active{background:var(--soft)}.file.is-unlisted{opacity:.55}.file[draggable=true]{cursor:grab}.file.dragging{opacity:.45}.file.drop-child{box-shadow:inset 0 0 0 2px var(--accent);background:#e8efff}.file-title{display:block;font-weight:700}.file-path{display:block;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-tree-marker{display:inline-block;width:1.25em;color:var(--muted)}.file-tree-marker.is-toggle{cursor:pointer;color:var(--accent)}.editor-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 40px rgba(22,34,56,.08);overflow:hidden}.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;padding:12px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.toolbar select{border:1px solid var(--line);border-radius:10px;padding:7px}.editor-frame{display:block;width:100%;height:64vh;border:0;background:#fff}.source-wrap{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px;z-index:8}.source{width:100%;min-height:170px;font-family:Consolas,monospace;font-size:12px;border:1px solid var(--line);border-radius:12px;padding:10px}.status{font-size:13px;color:var(--muted)}.status.error{color:var(--danger)}@media(max-width:900px){.app{display:block;height:auto}.side{border-right:0;border-bottom:1px solid var(--line)}.editor-frame{height:70vh}.toolbar{position:fixed;left:12px;right:12px;bottom:12px;top:auto;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.16)}}
-</style></head><body><div class="app"><aside class="side"><h1 class="title">AIMT Guide Editor</h1><div class="hint">저장 대상: docs/guide-site/dist HTML</div><div class="top"><button class="btn" id="refreshButton">새로고침</button><button class="btn primary" id="newPageButton">새 페이지</button></div><input class="filter" id="filter" placeholder="목록 검색"><div id="fileList"></div></aside><main class="main"><div class="top"><button class="btn primary" id="saveButton" disabled>저장</button><button class="btn" id="openHtmlButton" disabled>현재 HTML 열기</button><span class="status" id="status">HTML 파일을 불러오는 중입니다.</span></div><section class="editor-card"><div class="toolbar"><select id="blockSelect"><option value="p">문단</option><option value="h1">제목1</option><option value="h2">제목2</option><option value="h3">제목3</option><option value="pre">코드블록</option><option value="blockquote">인용</option></select><button class="btn" data-cmd="bold">굵게</button><button class="btn" data-cmd="italic">기울임</button><button class="btn" data-cmd="underline">밑줄</button><button class="btn" data-cmd="insertUnorderedList">목록</button><button class="btn" data-cmd="insertOrderedList">번호</button><button class="btn" id="linkButton">링크</button><button class="btn" id="hrButton">구분선</button><button class="btn" id="imageButton">이미지</button><input id="imageInput" type="file" accept="image/png,image/jpeg,image/gif,image/webp" hidden></div><iframe class="editor-frame" id="editorFrame" title="guide editor"></iframe><details class="source-wrap"><summary>HTML 소스보기</summary><textarea class="source" id="sourceBox" spellcheck="false"></textarea></details></section></main></div><script>
+</style></head><body><div class="app"><aside class="side"><h1 class="title">AIMT Guide Editor</h1><div class="hint">저장 대상: 현재 저장소 dist HTML<br>새 페이지 기본 위치: 기능별 설명 &gt; 기타 참고</div><div class="top"><button class="btn" id="refreshButton">새로고침</button><button class="btn primary" id="newPageButton">새 페이지</button></div><input class="filter" id="filter" placeholder="목록 검색"><div id="fileList"></div></aside><main class="main"><div class="top"><button class="btn primary" id="saveButton" disabled>저장</button><button class="btn" id="openHtmlButton" disabled>현재 HTML 열기</button><span class="status" id="status">HTML 파일을 불러오는 중입니다.</span></div><section class="editor-card"><div class="toolbar"><select id="blockSelect"><option value="p">문단</option><option value="h1">제목1</option><option value="h2">제목2</option><option value="h3">제목3</option><option value="pre">코드블록</option><option value="blockquote">인용</option></select><button class="btn" data-cmd="bold">굵게</button><button class="btn" data-cmd="italic">기울임</button><button class="btn" data-cmd="underline">밑줄</button><button class="btn" data-cmd="insertUnorderedList">목록</button><button class="btn" data-cmd="insertOrderedList">번호</button><button class="btn" id="linkButton">링크</button><button class="btn" id="hrButton">구분선</button><button class="btn" id="imageButton">이미지</button><input id="imageInput" type="file" accept="image/png,image/jpeg,image/gif,image/webp" hidden></div><iframe class="editor-frame" id="editorFrame" title="guide editor"></iframe><details class="source-wrap"><summary>HTML 소스보기</summary><textarea class="source" id="sourceBox" spellcheck="false"></textarea></details></section></main></div><script>
 const state={files:[],currentPath:'',draggedPath:'',collapsedPaths:new Set(),collapseReady:false,selectedImage:null};
 const fileList=document.getElementById('fileList'),filter=document.getElementById('filter'),statusEl=document.getElementById('status'),frame=document.getElementById('editorFrame'),sourceBox=document.getElementById('sourceBox'),saveButton=document.getElementById('saveButton'),openHtmlButton=document.getElementById('openHtmlButton');
 function showStatus(t,e=false){statusEl.textContent=t;statusEl.className='status'+(e?' error':'')}function showError(e){showStatus(e.message||String(e),true)}async function fetchJson(u,o){const r=await fetch(u,o);const p=await r.json();if(!r.ok)throw new Error(p.error||'요청 실패');return p}function formatTime(ts){return new Date(ts*1000).toLocaleString()}
@@ -260,23 +390,37 @@ function hiddenByCollapse(f,stack){const d=Number(f.depth||0);while(stack.length
 function renderFiles(){const q=filter.value.trim().toLowerCase();fileList.innerHTML='';const searching=q.length>0,stack=[];const matches=state.files.filter(f=>(f.path+' '+f.title).toLowerCase().includes(q)&&(searching||!hiddenByCollapse(f,stack)));for(const f of matches){const drag=canDrag(f,searching),b=document.createElement('button');b.type='button';b.className='file'+(f.path===state.currentPath?' active':'')+(!f.inNav?' is-unlisted':'');b.title=f.path+'\n'+formatTime(f.updated);b.dataset.path=f.path;b.dataset.inNav=f.inNav?'1':'0';b.dataset.movable=drag?'1':'0';b.draggable=drag;b.style.paddingLeft=(10+Math.min(Number(f.depth||0),6)*16)+'px';b.onclick=()=>loadFile(f.path);b.addEventListener('dragstart',dragStart);b.addEventListener('dragover',dragOver);b.addEventListener('dragleave',e=>e.currentTarget.classList.remove('drop-child'));b.addEventListener('drop',e=>dropFile(e,f).catch(showError));b.addEventListener('dragend',clearDrop);const title=document.createElement('span');title.className='file-title';const marker=document.createElement('span');marker.className='file-tree-marker';marker.textContent=f.hasChildren?(state.collapsedPaths.has(f.path)&&!searching?'▸':'▾'):(f.inNav?(drag?'↕':'·'):'·');if(f.hasChildren){marker.classList.add('is-toggle');marker.title=state.collapsedPaths.has(f.path)?'펼치기':'접기';marker.onclick=e=>toggleTreeNode(f,e)}title.append(marker,document.createTextNode(f.title));const p=document.createElement('span');p.className='file-path';p.textContent=f.path;b.append(title,p);fileList.appendChild(b)}if(!matches.length){const empty=document.createElement('div');empty.className='hint';empty.textContent='검색 결과가 없습니다.';fileList.appendChild(empty)}}
 function clearDrop(){state.draggedPath='';fileList.querySelectorAll('.dragging,.drop-child').forEach(e=>e.classList.remove('dragging','drop-child'))}function dragStart(e){const b=e.currentTarget;if(b.dataset.movable!=='1'){e.preventDefault();return}state.draggedPath=b.dataset.path;b.classList.add('dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',state.draggedPath)}function dragOver(e){const b=e.currentTarget;if(!state.draggedPath||b.dataset.inNav!=='1'||b.dataset.path===state.draggedPath)return;e.preventDefault();b.classList.add('drop-child')}async function dropFile(e,target){if(!state.draggedPath||!target||target.path===state.draggedPath){clearDrop();return}e.preventDefault();const p=await fetchJson('/api/reparent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:state.draggedPath,parent:target.path})});await loadFiles();state.collapsedPaths.delete(target.path);renderFiles();clearDrop();showStatus('하위 페이지로 이동했습니다. 반영 파일: '+p.changed+'개')}
 function doc(){return frame.contentDocument||frame.contentWindow.document}function styles(){return `<style>body{margin:0;padding:28px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}.guide-content{outline:0;min-height:480px}.doc-version{font-size:13px;color:#647084}pre{padding:16px;overflow:auto;border-radius:14px;background:#101828;color:#e5e7eb}code{padding:.12em .35em;border-radius:6px;background:#eef2ff}blockquote{padding:12px 16px;border-left:4px solid #315bef;background:#eef3ff;border-radius:12px}img{max-width:100%;height:auto;border-radius:12px}.is-selected-image{outline:3px solid #315bef;outline-offset:3px}.image-tools{position:absolute;z-index:1000;display:flex;gap:4px;padding:6px;background:#fff;border:1px solid #d8e0ee;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.image-tools button{border:1px solid #d8e0ee;background:#fff;border-radius:8px;padding:5px 7px}.resize-handle{position:absolute;z-index:999;width:12px;height:12px;background:#315bef;border:2px solid #fff;border-radius:999px}</style>`}
-function setArticle(a){frame.srcdoc=`<!doctype html><html><head>${styles()}</head><body>${a}</body></html>`;sourceBox.value=a;frame.onload=setupFrame}function setupFrame(){const d=doc(),a=d.querySelector('.guide-content');if(!a)return;a.contentEditable='true';a.addEventListener('input',()=>sourceBox.value=getArticle());d.addEventListener('click',e=>{if(e.target&&e.target.tagName==='IMG')selectImage(e.target);else clearImage()});d.addEventListener('paste',e=>{const f=[...(e.clipboardData?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}});a.addEventListener('dragover',e=>{if([...(e.dataTransfer?.files||[])].some(f=>f.type.startsWith('image/')))e.preventDefault()});a.addEventListener('drop',e=>{const f=[...(e.dataTransfer?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}})}
+function editorBaseHref(){const p=state.currentPath||'guide/index.html',parts=p.split('/');parts.pop();return '/dist/'+parts.map(encodeURIComponent).join('/')+'/'}function setArticle(a){frame.srcdoc=`<!doctype html><html><head><base href="${editorBaseHref()}">${styles()}</head><body>${a}</body></html>`;sourceBox.value=a;frame.onload=setupFrame}function setupFrame(){const d=doc(),a=d.querySelector('.guide-content');if(!a)return;a.contentEditable='true';a.addEventListener('input',()=>sourceBox.value=getArticle());d.addEventListener('click',e=>{if(e.target&&e.target.tagName==='IMG')selectImage(e.target);else clearImage()});d.addEventListener('paste',e=>{const f=[...(e.clipboardData?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}});a.addEventListener('dragover',e=>{if([...(e.dataTransfer?.files||[])].some(f=>f.type.startsWith('image/')))e.preventDefault()});a.addEventListener('drop',e=>{const f=[...(e.dataTransfer?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}})}
 function getArticle(){const d=doc();d.querySelectorAll('.image-tools,.resize-handle').forEach(e=>e.remove());d.querySelectorAll('.is-selected-image').forEach(e=>e.classList.remove('is-selected-image'));return d.querySelector('.guide-content')?.outerHTML||sourceBox.value}async function loadFile(path){const p=await fetchJson('/api/file?path='+encodeURIComponent(path));state.currentPath=p.path;setArticle(p.article);saveButton.disabled=false;openHtmlButton.disabled=false;expandAncestors(path);renderFiles();showStatus('열림: '+p.path)}async function saveCurrent(){if(!state.currentPath)return;const article=getArticle();await fetchJson('/api/file',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:state.currentPath,article})});sourceBox.value=article;showStatus('저장했습니다.');await loadFiles()}
 function exec(cmd,val=null){doc().execCommand(cmd,false,val);sourceBox.value=getArticle();frame.contentWindow.focus()}document.querySelectorAll('[data-cmd]').forEach(b=>b.onclick=()=>exec(b.dataset.cmd));document.getElementById('blockSelect').onchange=e=>exec('formatBlock',e.target.value);document.getElementById('linkButton').onclick=()=>{const u=prompt('링크 주소');if(u)exec('createLink',u)};document.getElementById('hrButton').onclick=()=>exec('insertHorizontalRule');document.getElementById('imageButton').onclick=()=>document.getElementById('imageInput').click();document.getElementById('imageInput').onchange=e=>{const f=e.target.files[0];if(f)insertImage(f).catch(showError);e.target.value=''};
 function fileData(f){return new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;r.readAsDataURL(f)})}async function insertImage(file){if(!state.currentPath)throw new Error('먼저 문서를 열어주세요.');const dataUrl=await fileData(file);const p=await fetchJson('/api/asset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:state.currentPath,filename:file.name,mime:file.type,dataUrl})});exec('insertHTML',`<p><img src="${p.src}" alt=""></p>`);showStatus('이미지를 넣었습니다: '+p.path)}
-function clearImage(){const d=doc();d.querySelectorAll('.image-tools,.resize-handle').forEach(e=>e.remove());d.querySelectorAll('.is-selected-image').forEach(e=>e.classList.remove('is-selected-image'));state.selectedImage=null}function selectImage(img){clearImage();state.selectedImage=img;img.classList.add('is-selected-image');const d=doc(),r=img.getBoundingClientRect(),sx=d.defaultView.scrollX,sy=d.defaultView.scrollY;const tools=d.createElement('div');tools.className='image-tools';tools.style.left=(r.left+sx)+'px';tools.style.top=(r.top+sy-44)+'px';[['왼쪽','left'],['중앙','center'],['오른쪽','right'],['50%','50'],['100%','100']].forEach(([label,val])=>{const b=d.createElement('button');b.textContent=label;b.onclick=()=>imageAction(val);tools.appendChild(b)});d.body.appendChild(tools);const h=d.createElement('span');h.className='resize-handle';h.style.left=(r.right+sx-6)+'px';h.style.top=(r.bottom+sy-6)+'px';h.onmousedown=e=>startResize(e,img);d.body.appendChild(h)}function imageAction(v){const img=state.selectedImage;if(!img)return;if(v==='left'||v==='center'||v==='right'){img.style.display='block';img.style.marginLeft=v==='left'?'0':'auto';img.style.marginRight=v==='right'?'0':'auto'}else{img.style.width=v+'%';img.style.height='auto'}sourceBox.value=getArticle();selectImage(img)}function startResize(e,img){e.preventDefault();const w=doc().defaultView,sx=e.clientX,sy=e.clientY,sw=img.getBoundingClientRect().width,sh=img.getBoundingClientRect().height;function mv(ev){img.style.width=Math.max(24,Math.round(sw+ev.clientX-sx))+'px';img.style.height=Math.max(24,Math.round(sh+ev.clientY-sy))+'px'}function up(){w.removeEventListener('mousemove',mv);w.removeEventListener('mouseup',up);sourceBox.value=getArticle();selectImage(img)}w.addEventListener('mousemove',mv);w.addEventListener('mouseup',up)}
+function clearImage(){const d=doc();d.querySelectorAll('.image-tools,.resize-handle').forEach(e=>e.remove());d.querySelectorAll('.is-selected-image').forEach(e=>e.classList.remove('is-selected-image'));state.selectedImage=null}function selectImage(img){clearImage();state.selectedImage=img;img.classList.add('is-selected-image');const d=doc(),r=img.getBoundingClientRect(),sx=d.defaultView.scrollX,sy=d.defaultView.scrollY;const tools=d.createElement('div');tools.className='image-tools';tools.style.left=(r.left+sx)+'px';tools.style.top=(r.top+sy-44)+'px';[['왼쪽','left'],['중앙','center'],['오른쪽','right'],['50%','50'],['100%','100']].forEach(([label,val])=>{const b=d.createElement('button');b.textContent=label;b.onclick=()=>imageAction(val);tools.appendChild(b)});d.body.appendChild(tools);const h=d.createElement('span');h.className='resize-handle';h.style.left=(r.right+sx-6)+'px';h.style.top=(r.bottom+sy-6)+'px';h.onmousedown=e=>startResize(e,img);d.body.appendChild(h)}function imageAction(v){const img=state.selectedImage;if(!img)return;if(v==='left'||v==='center'||v==='right'){img.style.display='block';img.style.marginLeft=v==='left'?'0':'auto';img.style.marginRight=v==='right'?'0':'auto'}else{img.style.width=v+'%';img.style.height='auto'}sourceBox.value=getArticle();selectImage(img)}function startResize(e,img){e.preventDefault();const w=doc().defaultView,sx=e.clientX,sy=e.clientY,box=img.getBoundingClientRect(),sw=box.width,sh=box.height,ratio=sw/sh||1;function mv(ev){let nw=Math.max(24,Math.round(sw+ev.clientX-sx)),nh=Math.max(24,Math.round(sh+ev.clientY-sy));if(ev.shiftKey){nh=Math.round(nw/ratio);if(nh<24){nh=24;nw=Math.round(nh*ratio)}}img.style.width=nw+'px';img.style.height=nh+'px'}function up(){w.removeEventListener('mousemove',mv);w.removeEventListener('mouseup',up);sourceBox.value=getArticle();selectImage(img)}w.addEventListener('mousemove',mv);w.addEventListener('mouseup',up)}
 sourceBox.addEventListener('input',()=>{doc().body.innerHTML=sourceBox.value;setupFrame()});saveButton.onclick=()=>saveCurrent().catch(showError);document.getElementById('refreshButton').onclick=()=>loadFiles().catch(showError);filter.oninput=renderFiles;openHtmlButton.onclick=()=>{if(state.currentPath)window.open('/dist/'+state.currentPath,'_blank')};document.getElementById('newPageButton').onclick=async()=>{const title=prompt('새 페이지 제목');if(!title)return;const slug=prompt('주소 slug',title.toLowerCase().replace(/\s+/g,'-'))||title;const p=await fetchJson('/api/page',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,slug})});state.collapseReady=false;await loadFiles();await loadFile(p.path)};loadFiles().catch(showError);
 </script></body></html>'''
 
 def render_new_page(title: str, relative_path: str, entries: list[dict[str, Any]], dist_root: Path = DIST_ROOT) -> str:
     html_path = dist_root / relative_path
     safe = html.escape(title, quote=False)
-    return f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{safe} · AIMT Guide</title><script>(function(){{try{{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}}catch(_){{}}}})();</script><link rel="stylesheet" href="{relative_href(html_path, 'guide/static/styles.css', dist_root)}"></head><body>  <div id="searchOverlay" class="search-overlay" hidden>    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">      <div id="searchResults" class="search-results" hidden></div>    </section>  </div><button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button><div class="site-shell"><aside class="sidebar"><div class="brand-row"><a class="brand" href="{relative_href(html_path, 'guide/index.html', dist_root)}">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div><nav class="nav-list" aria-label="문서 목록">
+    return f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{safe} · AIMT Guide</title><script>(function(){{document.documentElement.dataset.navRestoring="1";try{{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}}catch(_){{}}}})();</script><style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{{visibility:hidden}}:root[data-nav-restoring="1"] .nav-caret{{transition:none}}</style><link rel="stylesheet" href="{relative_href(html_path, 'guide/static/styles.css', dist_root)}"></head><body>  <div id="searchOverlay" class="search-overlay" hidden>    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">      <div id="searchResults" class="search-results" hidden></div>    </section>  </div><button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button><div class="site-shell"><aside class="sidebar"><div class="brand-row"><a class="brand" href="{relative_href(html_path, 'guide/index.html', dist_root)}">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div><nav class="nav-list" aria-label="문서 목록">
 {build_nav(entries, html_path, dist_root)}
-      </nav></aside><div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div><main class="content-shell"><article class="guide-content"><h1>{safe}</h1><p class="doc-version">작성 당시 버전: 미기재</p><p>새 문서입니다. 본문을 작성해주세요.</p></article></main></div><script src="{relative_href(html_path, 'guide/static/main.js', dist_root)}"></script></body></html>'''
+      </nav></aside><div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div><main class="content-shell"><article class="guide-content"><h1>{safe}</h1><p class="doc-version">{DOC_VERSION}<br>최종 편집 일시: 편집기 생성</p><h2>무엇을 할 수 있나요?</h2><p>새 문서입니다. 사용자가 이 문서에서 무엇을 판단하거나 실행할 수 있는지 작성해주세요.</p><h2>완료 후 확인</h2><ul><li>설명대로 진행했을 때 사용자가 다음 행동을 알 수 있는지 확인합니다.</li></ul></article></main></div><script src="{relative_href(html_path, 'guide/static/main.js', dist_root)}"></script></body></html>'''
 
 
-def create_page(dist_root: Path, title: str, slug: str) -> dict[str, Any]:
+def insert_after_subtree(entries: list[dict[str, Any]], parent_path: str, entry: dict[str, Any]) -> None:
+    parent_matches = [index for index, item in enumerate(entries) if item["path"] == parent_path]
+    parent_index = parent_matches[-1] if parent_matches else -1
+    if parent_index < 0:
+        entries.insert(1 if entries else 0, entry)
+        return
+    parent_depth = int(entries[parent_index]["depth"])
+    insert_index = parent_index + 1
+    while insert_index < len(entries) and int(entries[insert_index]["depth"]) > parent_depth:
+        insert_index += 1
+    entry["depth"] = parent_depth + 1
+    entries.insert(insert_index, entry)
+
+
+def create_page(dist_root: Path, title: str, slug: str, parent_path: str = "") -> dict[str, Any]:
     clean_title = title.strip() or "새 문서"
     clean_slug = normalize_slug(slug or clean_title)
     relative = f"guide/{clean_slug}/index.html"
@@ -284,7 +428,11 @@ def create_page(dist_root: Path, title: str, slug: str) -> dict[str, Any]:
     if path.exists():
         raise ValueError("이미 같은 주소의 문서가 있습니다.")
     entries = get_nav_entries(dist_root)
-    entries.insert(1 if entries else 0, {"path": relative, "title": clean_title, "depth": 1, "order": 0, "hasChildren": False})
+    parent = parent_path.strip() or DEFAULT_NEW_PAGE_PARENT
+    if parent and not any(entry["path"] == parent for entry in entries):
+        parent = DEFAULT_NEW_PAGE_PARENT if any(entry["path"] == DEFAULT_NEW_PAGE_PARENT for entry in entries) else ""
+    new_entry = {"path": relative, "title": clean_title, "depth": 1, "order": 0, "hasChildren": False}
+    insert_after_subtree(entries, parent, new_entry)
     write_text(path, render_new_page(clean_title, relative, entries, dist_root))
     rewrite_navs(dist_root, entries)
     rebuild_search_index(dist_root)
@@ -322,7 +470,7 @@ class GuideEditorHandler(BaseHTTPRequestHandler):
                 case "/":
                     self.send_payload(text_response(EDITOR_HTML))
                 case "/api/files":
-                    self.send_payload(json_response({"files": list_files(DIST_ROOT)}))
+                    self.send_payload(self.get_files(parsed.query))
                 case "/api/file":
                     self.send_payload(self.get_file(parsed.query))
                 case path if path.startswith("/dist/"):
@@ -343,7 +491,7 @@ class GuideEditorHandler(BaseHTTPRequestHandler):
                     html_path = resolve_html_path(DIST_ROOT, str(payload.get("path", "")))
                     self.send_payload(json_response(save_image(DIST_ROOT, html_path, str(payload.get("filename", "")), str(payload.get("mime", "")), str(payload.get("dataUrl", "")))))
                 case "/api/page":
-                    self.send_payload(json_response(create_page(DIST_ROOT, str(payload.get("title", "")), str(payload.get("slug", "")))))
+                    self.send_payload(json_response(create_page(DIST_ROOT, str(payload.get("title", "")), str(payload.get("slug", "")), str(payload.get("parent", "")))))
                 case "/api/reparent":
                     self.send_payload(json_response(reparent(DIST_ROOT, str(payload.get("source", "")), str(payload.get("parent", "")))))
                 case _:
@@ -355,6 +503,11 @@ class GuideEditorHandler(BaseHTTPRequestHandler):
         path = resolve_html_path(DIST_ROOT, parse_qs(query).get("path", [""])[0])
         text = read_text(path)
         return json_response({"path": path.relative_to(DIST_ROOT).as_posix(), "title": parse_title(text, path.stem), "article": extract_article(text)})
+
+    def get_files(self, query: str) -> tuple[int, bytes, str]:
+        params = parse_qs(query)
+        include_unlisted = params.get("includeUnlisted", ["0"])[0].lower() in {"1", "true", "yes"}
+        return json_response({"files": list_files(DIST_ROOT, include_unlisted=include_unlisted)})
 
     def get_static(self, raw_path: str) -> tuple[int, bytes, str]:
         relative = unquote(raw_path.removeprefix("/dist/")).replace("\\", "/")
@@ -378,7 +531,7 @@ class GuideEditorHandler(BaseHTTPRequestHandler):
 
 def main() -> int:
     if not DIST_ROOT.exists():
-        raise SystemExit("docs/guide-site/dist가 없습니다. rebuild_recovery_dist.py를 먼저 실행해주세요.")
+        raise SystemExit("dist가 없습니다. 먼저 dist를 복원하거나 가이드를 재생성해주세요.")
     server = ThreadingHTTPServer((HOST, PORT), GuideEditorHandler)
     print(f"AIMT Guide Editor: http://{HOST}:{PORT}/")
     server.serve_forever()
