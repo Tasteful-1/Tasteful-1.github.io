@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>2차 추출 필터 · AIMT Guide</title>
-  <script>(function(){try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
   <link rel="stylesheet" href="../../guide/static/styles.css">
 </head>
 <body>
@@ -20,194 +21,189 @@
     <aside class="sidebar">
       <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
       <nav class="nav-list" aria-label="문서 목록">
-<details class="nav-group" data-depth="0" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT GUIDE - KR</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER MVMZ (개정1)</a>
-<a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">RPG MAKER VXVXA (개정1)</a>
-<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="1">WOLF RPG Editor</a>
-<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript-%EA%B0%9C%EC%A0%951/index.html" data-depth="1">TyranoBuilder/TyranoScript (개정1)</a>
-<a class="nav-link" href="../../guide/pixel-game-maker-mv-%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%84%E3%82%AF%E3%83%BC%E3%83%AB-mv/index.html" data-depth="1">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
-<a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="1">ClickTeam Fusion ( Multimedia Fusion )(작성예정)</a>
-<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%83%81%EB%8B%A8%EB%B6%80/index.html" data-depth="1">상단부</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
-<a class="nav-link" href="../../guide/%ED%8C%8C%EC%9D%BC%EB%AA%A9%EB%A1%9D-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8/index.html" data-depth="2">파일목록 새로고침</a>
+<details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="1" data-nav-key="guide/start/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">시작하기</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="2">프롬프트</a>
-<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD/index.html" data-depth="2">빠른번역</a>
-<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="3">테마</a>
-<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">추출정규식</a>
-<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="3">이스케이프패턴</a>
-<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">언어패턴설정</a>
-<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="3">번역 설정</a>
-<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="3">AI-MODEL</a>
-<a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="3">API KEY 설정</a>
-<a class="nav-link" href="../../guide/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="3">제외정규식 / 예외정규식</a>
-<a class="nav-link" href="../../guide/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/index.html" data-depth="3">치환용어설정</a>
-<a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="3">기본폰트설정</a>
-<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="3">타이틀텍스트</a>
-<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="3">Multiline-DB</a>
-<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="3">Extract Names</a>
-<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="3">merge 101-401</a>
-<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="3">Apply exclude regex to 401 block</a>
-<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="3">401-Extract Mode</a>
-<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="3">Flatten Mode</a>
-<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="3">Include text type</a>
-<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="3">Include speaker name</a>
-<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="3">401 Block Unit for Consistency/Duplicate</a>
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="3">2차 추출 필터</a>
-<a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="3">Cmd 122 2차 추출 중복처리</a>
-<a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="3">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="3">CTF 2차 추출 필터 편집</a>
-<a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">로그 관리</a>
-<a class="nav-link" href="../../guide/%EB%B0%B1%EC%97%85-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">백업 관리</a>
-<a class="nav-link" href="../../guide/%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A6%AC/index.html" data-depth="3">캐시 관리</a>
-<a class="nav-link" href="../../guide/%EB%8F%84%EC%9B%80%EB%A7%90/index.html" data-depth="3">도움말</a>
-<a class="nav-link" href="../../guide/%EA%B8%B0%ED%83%80/index.html" data-depth="3">기타</a>
 </div></details>
-<a class="nav-link" href="../../guide/cmd/index.html" data-depth="2">CMD</a>
-<a class="nav-link" href="../../guide/view/index.html" data-depth="2">VIEW</a>
-</div></details>
-<a class="nav-link" href="../../guide/%EC%A4%91%EB%8B%A8%EB%B6%80/index.html" data-depth="1">중단부</a>
-<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%95%98%EB%8B%A8%EB%B6%80/index.html" data-depth="1">하단부</a></summary><div class="nav-children">
-<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%8F%84%EA%B5%AC/index.html" data-depth="2">도구</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html" data-depth="3">빈칸채우기</a>
-<a class="nav-link" href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html" data-depth="3">사용자사전 &amp; 전후처리</a>
-<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html" data-depth="3">적용취소</a>
-<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="3">번역일관성</a>
-<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html" data-depth="3">추출 중복</a>
-<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html" data-depth="3">이스케이프</a>
-<a class="nav-link" href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html" data-depth="3">일본어체크</a>
-<a class="nav-link" href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html" data-depth="3">받침정리</a>
-<a class="nav-link" href="../../guide/vscode/index.html" data-depth="3">VSCODE</a>
-<a class="nav-link" href="../../guide/notepad/index.html" data-depth="3">NOTEPAD++</a>
-<a class="nav-link" href="../../guide/winmerge-check/index.html" data-depth="3">WINMERGE CHECK</a>
-<a class="nav-link" href="../../guide/appdata/index.html" data-depth="3">APPDATA</a>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/mvmz/index.html" data-depth="3">MVMZ</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4/index.html" data-depth="4">라인메이커</a>
-<a class="nav-link" href="../../guide/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/index.html" data-depth="4">플러그인추가</a>
-<a class="nav-link" href="../../guide/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/index.html" data-depth="4">401 병합 &amp; 분할</a>
-<a class="nav-link" href="../../guide/402-%EB%8F%99%EA%B8%B0%ED%99%94/index.html" data-depth="4">402 동기화</a>
-<a class="nav-link" href="../../guide/%EC%9D%B4%EB%A6%84-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">이름 일관성</a>
-<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">통합 일관성</a>
-<a class="nav-link" href="../../guide/%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%9B%90/index.html" data-depth="4">코드 복원</a>
-<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html" data-depth="4">번역 가져오기</a>
-<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-data/index.html" data-depth="4">이스케이프 (data)</a>
-<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="4">크립터 (이미지 / 오디오)</a>
-<a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="4">Data 복호화</a>
-<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="4">프로젝트 변환</a>
-</div></details>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/vxvxa/index.html" data-depth="3">VXVXA</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="4">언팩</a>
-<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀변경</a>
-<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4-2948edda/index.html" data-depth="4">라인메이커</a>
-<a class="nav-link" href="../../guide/%EC%A0%84%EC%9A%A9%EC%B6%94%EC%B6%9C/index.html" data-depth="4">전용추출</a>
-<a class="nav-link" href="../../guide/imbook%ED%8C%A8%EC%B9%98-bbtext%ED%8C%A8%EC%B9%98-missions%ED%8C%A8%EC%B9%98/index.html" data-depth="4">imbook패치, bbtext패치, missions패치</a>
-<a class="nav-link" href="../../guide/mv%EB%B3%80%ED%99%98/index.html" data-depth="4">MV변환</a>
-</div></details>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/wolf/index.html" data-depth="3">WOLF</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9-%EB%A6%AC%ED%8C%A9/index.html" data-depth="4">언팩/리팩</a>
-<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%B9%98%ED%99%98/index.html" data-depth="4">통합 치환</a>
-<a class="nav-link" href="../../guide/exe-%ED%8C%A8%EC%B9%98/index.html" data-depth="4">EXE 패치</a>
-<a class="nav-link" href="../../guide/raw-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%B9%98%ED%99%98/index.html" data-depth="4">RAW/파일명 치환</a>
-</div></details>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/ctf/index.html" data-depth="3">CTF</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%A9%94%ED%83%80%EC%A0%95%EB%B3%B4-%ED%99%95%EC%9D%B8/index.html" data-depth="4">메타정보 확인</a>
-<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">타이틀 변경</a>
-<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4-%EB%B3%80%EA%B2%BD/index.html" data-depth="4">언어 변경</a>
-<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0/index.html" data-depth="4">크립터</a>
-</div></details>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/tyrano/index.html" data-depth="3">Tyrano</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/asar-47c728f5/index.html" data-depth="4">ASAR</a>
-<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD-2ccdb6d4/index.html" data-depth="4">타이틀 변경</a>
-</div></details>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/kirikiri/index.html" data-depth="3">Kirikiri</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/utf-16le-%EB%B3%80%ED%99%98/index.html" data-depth="4">UTF-16LE 변환</a>
-</div></details>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/pgmmv/index.html" data-depth="3">PGMMV</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-16cf2cb1/index.html" data-depth="4">크립터</a>
-</div></details>
-<details class="nav-group" data-depth="3"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/electron/index.html" data-depth="3">Electron</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/asar/index.html" data-depth="4">ASAR</a>
-</div></details>
-<a class="nav-link" href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html" data-depth="3">TTC 빌드</a>
-<a class="nav-link" href="../../guide/%EC%84%B8%EC%9D%B4%EB%B8%8C-%EC%97%90%EB%94%94%ED%84%B0/index.html" data-depth="3">세이브 에디터</a>
-<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="3">llama-server</a>
-</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기본 작업 흐름</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
 <a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="2">추출</a>
 <a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="2">번역</a>
 <a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="2">적용과 즉시적용</a>
-<details class="nav-group" data-depth="2"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="3">메모장</a>
-<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD-77499184/index.html" data-depth="3">빠른번역</a>
-<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="3">용어사전</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="2">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript-%EA%B0%9C%EC%A0%951/index.html" data-depth="2">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv-%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%84%E3%82%AF%E3%83%BC%E3%83%AB-mv/index.html" data-depth="2">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a>
+<details class="nav-group" data-depth="2" data-nav-key="guide/설정/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정 화면</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-general"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">일반</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="4">테마</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="4">추출정규식</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="4">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="4">언어패턴설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-translation"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">번역설정</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="4">번역 설정</a>
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="4">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="4">API KEY 설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-mvmz"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/index.html" data-depth="4">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/index.html" data-depth="4">치환용어설정</a>
+<a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="4">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="4">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
+<a class="nav-link" href="../../guide/%EB%B0%B1%EC%97%85-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">백업 관리</a>
+<a class="nav-link" href="../../guide/%EC%BA%90%EC%8B%9C-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">캐시 관리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-help"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">도움말</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%8F%84%EC%9B%80%EB%A7%90/index.html" data-depth="4">도움말</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EA%B8%B0%ED%83%80/index.html" data-depth="4">기타</a>
 </div></details>
 </div></details>
-<details class="nav-group" data-depth="1"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="1">RPGMAKER 명령코드 정리(작성 예정)</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/code-101-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A8%B8%EB%A6%BF%EA%B8%80-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%9C%EB%A0%A5%EC%9D%98-%EC%84%A4%EC%A0%95%EB%B6%80/index.html" data-depth="2">code:101 텍스트 머릿글 - 텍스트 출력의 설정부</a>
-<a class="nav-link" href="../../guide/code-401-%ED%85%8D%EC%8A%A4%ED%8A%B8-%ED%91%9C%EC%8B%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:401 텍스트 표시 - 텍스트의 내용</a>
-<a class="nav-link" href="../../guide/code-102-%EC%84%A0%ED%83%9D%EC%A7%80-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:102 선택지 표시</a>
-<a class="nav-link" href="../../guide/code-402-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%82%B4%EC%9A%A9/index.html" data-depth="2">code:402 선택지 내용</a>
-<a class="nav-link" href="../../guide/code-403-%EC%B7%A8%EC%86%8C%ED%95%A0-%EB%95%8C/index.html" data-depth="2">code:403 취소할 때</a>
-<a class="nav-link" href="../../guide/code-404-%EC%84%A0%ED%83%9D%EC%A7%80-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:404 선택지 분기 종료</a>
-<a class="nav-link" href="../../guide/code-103-%EC%88%AB%EC%9E%90-%EC%9E%85%EB%A0%A5-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 숫자 입력 처리</a>
-<a class="nav-link" href="../../guide/code-103-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%84%A0%ED%83%9D-%EC%B2%98%EB%A6%AC/index.html" data-depth="2">code:103 아이템 선택 처리</a>
-<a class="nav-link" href="../../guide/code-105-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C-%ED%97%A4%EB%8D%94/index.html" data-depth="2">code:105 텍스트의 스크롤 표시 헤더</a>
-<a class="nav-link" href="../../guide/code-405-%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%8A%A4%ED%81%AC%EB%A1%A4-%ED%91%9C%EC%8B%9C/index.html" data-depth="2">code:405 텍스트의 스크롤 표시</a>
-<a class="nav-link" href="../../guide/code-121-%EC%8A%A4%EC%9C%84%EC%B9%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:121 스위치 조작</a>
-<a class="nav-link" href="../../guide/code-122-%EB%B3%80%EC%88%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:122 변수 조작</a>
-<a class="nav-link" href="../../guide/code-123-%EC%85%80%ED%94%84-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:123 셀프 스위치의 조작</a>
-<a class="nav-link" href="../../guide/code-124-%ED%83%80%EC%9D%B4%EB%A8%B8-%EC%A1%B0%EC%9E%91/index.html" data-depth="2">code:124 타이머 조작</a>
-<a class="nav-link" href="../../guide/code-111-%EC%A1%B0%EA%B1%B4-%EB%B6%84%EA%B8%B0/index.html" data-depth="2">code:111 조건 분기</a>
-<a class="nav-link" href="../../guide/code-411-%EA%B7%B8-%EC%9D%B4%EC%99%B8%EC%9D%98-%EA%B2%BD%EC%9A%B0%EC%9D%BC-%EB%95%8C/index.html" data-depth="2">code:411 그 이외의 경우일 때</a>
-<a class="nav-link" href="../../guide/code-412-%EB%B6%84%EA%B8%B0-%EC%A2%85%EB%A3%8C/index.html" data-depth="2">code:412 분기 종료</a>
-<a class="nav-link" href="../../guide/code-112-%EB%A3%A8%ED%94%84/index.html" data-depth="2">code:112 루프</a>
-<a class="nav-link" href="../../guide/code-413-%EC%83%81%EA%B8%B0%EB%82%B4%EC%9A%A9-%EB%B0%98%EB%B3%B5/index.html" data-depth="2">code:413 상기내용 반복</a>
-<a class="nav-link" href="../../guide/code-113-%EB%A3%A8%ED%94%84-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:113 루프 중단</a>
-<a class="nav-link" href="../../guide/code-115-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%B2%98%EB%A6%AC%EC%9D%98-%EC%A4%91%EB%8B%A8/index.html" data-depth="2">code:115 이벤트 처리의 중단</a>
-<a class="nav-link" href="../../guide/code-117-%EA%B3%B5%ED%86%B5%EC%9D%B4%EB%B2%A4%ED%8A%B8/index.html" data-depth="2">code:117 공통이벤트</a>
-<a class="nav-link" href="../../guide/code-118-%EB%9D%BC%EB%B2%A8/index.html" data-depth="2">code:118 라벨</a>
-<a class="nav-link" href="../../guide/code-119-%EB%9D%BC%EB%B2%A8%EC%A0%90%ED%94%84/index.html" data-depth="2">code:119 라벨점프</a>
-<a class="nav-link" href="../../guide/code-108-%EC%84%A4%EB%AA%85-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:108 설명 머릿글</a>
-<a class="nav-link" href="../../guide/code-408-%EC%84%A4%EB%AA%85-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:408 설명 내용 두번째줄부터</a>
-<a class="nav-link" href="../../guide/code-125-%EC%86%8C%EC%A7%80-%EA%B8%88%EC%95%A1-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:125 소지 금액 증감</a>
-<a class="nav-link" href="../../guide/code-126-%EC%95%84%EC%9D%B4%ED%85%9C-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:126 아이템 증감</a>
-<a class="nav-link" href="../../guide/code-127-%EB%AC%B4%EA%B8%B0-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:127 무기 증감</a>
-<a class="nav-link" href="../../guide/code-128-%EB%B0%A9%EC%96%B4%EA%B5%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:128 방어구 증감</a>
-<a class="nav-link" href="../../guide/code-129-%ED%8C%8C%ED%8B%B0%EC%9B%90-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:129 파티원 변경</a>
-<a class="nav-link" href="../../guide/code-311-hp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:311 HP 증감</a>
-<a class="nav-link" href="../../guide/code-312-mp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:312 MP 증감</a>
-<a class="nav-link" href="../../guide/code-326-tp-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:326 TP 증감</a>
-<a class="nav-link" href="../../guide/code-313-%EC%83%81%ED%83%9C-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:313 상태 변경</a>
-<a class="nav-link" href="../../guide/code-314-%EB%AA%A8%EB%91%90-%ED%9A%8C%EB%B3%B5/index.html" data-depth="2">code:314 모두 회복</a>
-<a class="nav-link" href="../../guide/code-315-exp-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:315 EXP 변경</a>
-<a class="nav-link" href="../../guide/code-316-%EB%A0%88%EB%B2%A8-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:316 레벨 증감</a>
-<a class="nav-link" href="../../guide/code-317-%EB%8A%A5%EB%A0%A5%EC%B9%98-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:317 능력치 증감</a>
-<a class="nav-link" href="../../guide/code-318-%EC%8A%A4%ED%82%AC-%EC%A6%9D%EA%B0%90/index.html" data-depth="2">code:318 스킬 증감</a>
-<a class="nav-link" href="../../guide/code-319-%EC%9E%A5%EB%B9%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:319 장비 변경</a>
-<a class="nav-link" href="../../guide/code-320-%EC%9D%B4%EB%A6%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:320 이름 변경</a>
-<a class="nav-link" href="../../guide/code-321-%EC%A7%81%EC%97%85-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:321 직업 변경</a>
-<a class="nav-link" href="../../guide/code-324-%EB%8B%89%EB%84%A4%EC%9E%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:324 닉네임 변경</a>
-<a class="nav-link" href="../../guide/code-325-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B3%80%EA%B2%BD/index.html" data-depth="2">code:325 프로필 변경</a>
-<a class="nav-link" href="../../guide/code-355-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%A8%B8%EB%A6%BF%EA%B8%80/index.html" data-depth="2">code:355 스크립트 명령 머릿글</a>
-<a class="nav-link" href="../../guide/code-655-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%85%EB%A0%B9-%EB%82%B4%EC%9A%A9-%EB%91%90%EB%B2%88%EC%A7%B8%EC%A4%84%EB%B6%80%ED%84%B0/index.html" data-depth="2">code:655 스크립트 명령 내용 두번째줄부터</a>
-<a class="nav-link" href="../../guide/code-356-mv-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:356 MV 플러그인 명령</a>
-<a class="nav-link" href="../../guide/code-357-mz-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9/index.html" data-depth="2">code:357 MZ 플러그인 명령</a>
-<a class="nav-link" href="../../guide/code-657-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%AA%85%EB%A0%B9-%EC%83%81%EC%84%B8/index.html" data-depth="2">code:657 플러그인 명령 상세</a>
+<details class="nav-group" data-depth="2" data-nav-key="guide/도구/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%8F%84%EA%B5%AC/index.html" data-depth="2">작업 도구</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-utilities"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">유틸리티</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html" data-depth="4">빈칸채우기</a>
+<a class="nav-link" href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html" data-depth="4">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html" data-depth="4">적용취소</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="4">번역일관성</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html" data-depth="4">추출 중복</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html" data-depth="4">이스케이프</a>
+<a class="nav-link" href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html" data-depth="4">일본어체크</a>
+<a class="nav-link" href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html" data-depth="4">받침정리</a>
 </div></details>
-<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="1">추출 파일별 설명</a>
-<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="1">같이 쓰면 좋은 도구들</a>
-<a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="1">자주 나오는 질문</a>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-shortcuts"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">바로가기</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="4">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="4">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="4">APPDATA</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-engine-tools"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">엔진별 보조 도구</span></summary><div class="nav-children">
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-mvmz-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4/index.html" data-depth="5">라인메이커 (MVMZ)</a>
+<a class="nav-link" href="../../guide/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/index.html" data-depth="5">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/index.html" data-depth="5">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-%EB%8F%99%EA%B8%B0%ED%99%94/index.html" data-depth="5">402 동기화</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EB%A6%84-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="5">이름 일관성</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html" data-depth="5">통합 일관성</a>
+<a class="nav-link" href="../../guide/%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%9B%90/index.html" data-depth="5">코드 복원</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html" data-depth="5">번역 가져오기</a>
+<a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-data/index.html" data-depth="5">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%EB%B3%80%EA%B2%BD/index.html" data-depth="5">타이틀변경 (VXVXA)</a>
+<a class="nav-link" href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4-2948edda/index.html" data-depth="5">라인메이커 (VXVXA)</a>
+<a class="nav-link" href="../../guide/%EC%A0%84%EC%9A%A9%EC%B6%94%EC%B6%9C/index.html" data-depth="5">전용추출</a>
+<a class="nav-link" href="../../guide/imbook%ED%8C%A8%EC%B9%98-bbtext%ED%8C%A8%EC%B9%98-missions%ED%8C%A8%EC%B9%98/index.html" data-depth="5">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv%EB%B3%80%ED%99%98/index.html" data-depth="5">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-wolf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9-%EB%A6%AC%ED%8C%A9/index.html" data-depth="5">언팩/리팩</a>
+<a class="nav-link" href="../../guide/%ED%86%B5%ED%95%A9-%EC%B9%98%ED%99%98/index.html" data-depth="5">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-%ED%8C%A8%EC%B9%98/index.html" data-depth="5">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%B9%98%ED%99%98/index.html" data-depth="5">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-ctf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%ED%83%80%EC%A0%95%EB%B3%B4-%ED%99%95%EC%9D%B8/index.html" data-depth="5">메타정보 확인</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/index.html" data-depth="5">타이틀 변경 (CTF)</a>
+<a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4-%EB%B3%80%EA%B2%BD/index.html" data-depth="5">언어 변경</a>
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0/index.html" data-depth="5">크립터 (CTF)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-tyrano-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Tyrano</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-47c728f5/index.html" data-depth="5">ASAR (Tyrano 계열)</a>
+<a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD-2ccdb6d4/index.html" data-depth="5">타이틀 변경 (Tyrano)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-kirikiri-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Kirikiri</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-%EB%B3%80%ED%99%98/index.html" data-depth="5">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-pgmmv-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">PGMMV</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-16cf2cb1/index.html" data-depth="5">크립터 (PGMMV)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-electron-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Electron</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="5">ASAR (Electron)</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html" data-depth="4">TTC 빌드</a>
+<a class="nav-link" href="../../guide/%EC%84%B8%EC%9D%B4%EB%B8%8C-%EC%97%90%EB%94%94%ED%84%B0/index.html" data-depth="4">세이브 에디터</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/features-quickslot/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-quickslot/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="guide/퀵슬롯/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="3">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="4">메모장</a>
+<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="4">용어사전</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/features-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-reference/index.html" data-depth="2">기타 참고</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="3">추출 파일별 설명</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/troubleshooting/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">문제 해결</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="2">자주 나오는 질문</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/advanced-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">참고 자료</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%A0%9C%EA%B3%B5%EC%9E%90%EB%B3%84-%EC%B0%B8%EA%B3%A0-%EB%A7%81%ED%81%AC/index.html" data-depth="2">제공자별 참고 링크</a>
+<a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="2">RPG Maker 명령 코드 참고</a>
+<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="2">외부 유틸리티</a>
+</div></details>
 </div></details>
       </nav>
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-      <article class="guide-content">
-        <h1>2차 추출 필터</h1>
-        <p class="doc-version">작성 당시 버전: 1.13.0.1<br>최종 편집 일시: 2026년 4월 5일 오전 10:14</p>
-<div dir="ltr" style="display:contents"><figure class="image" id="33934c3a-003e-8019-9abe-db8bd0bba378"><a href="../../guide/assets/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/image.png"><img src="../../guide/assets/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/image.png" style="width:703.9791870117188px"/></a></figure></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-80b7-9f21-c164e8874273">이 기능은 무엇인가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8012-b0da-c21932eec91e"><code>WOLF 2차 추출 필터</code>는 WOLF 2차 추출에서 <code>번역용으로 보이는 항목</code>을 줄이는 기능입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-809f-a20c-f52b7155fe4a">입력한 조건을 모두 만족하는 항목은 2차 추출 결과에서 빠집니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80a4-baf0-cffa38beeb42">중요한 점은 이 기능이 <code>1차 raw 데이터를 지우는 기능</code>은 아니라는 것입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-806e-8967-def74c023114">즉, 원본을 직접 삭제하는 쪽이 아니라:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8076-8e8a-fb9d89f53cae"><li style="list-style-type:disc">2차 추출 파일에 무엇을 남길지</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80a1-8b41-c16bb564dde5"><li style="list-style-type:disc">번역 대상으로 무엇을 보낼지</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-804a-b133-f9e8e110c51f">를 정하는 설정에 가깝습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-8095-b466-c6b2567a1278">규칙은 어떻게 적용되나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80ea-97de-d293aecd5e5a">이 기능은 <code>규칙</code> 단위로 동작합니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-806f-91c9-fd9815717149"><li style="list-style-type:disc">한 규칙 안에서는 <code>채워 둔 조건을 모두 만족</code>해야 제외됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-809b-8180-d7f5edc1b587"><li style="list-style-type:disc">비워 둔 칸은 <code>전체</code>로 처리됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-800c-9102-e8b4107a309d"><li style="list-style-type:disc">여러 규칙이 있으면, 그중 <code>하나라도 맞는 항목</code>은 제외됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80d3-9ae9-f52352eb6e50"><li style="list-style-type:disc">꺼 둔 규칙은 저장은 되지만 실제 추출에는 쓰이지 않습니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-803c-82c4-ec35afe0e064">즉, 사용자 입장에서는 <code>한 규칙 안은 AND</code>, <code>여러 규칙끼리는 OR</code>라고 이해하면 됩니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-806a-9ce4-f6f692c1ee59">화면에서 보게 되는 항목</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80b1-92b5-fd516699c7e8">기본 카드에는 주로 <code>대상 파일들</code>, <code>Path 패턴</code>, <code>Command ID</code>, <code>텍스트 정규식</code>이 보이고, <code>고급 조건</code>을 펼치면 <code>Source Kind</code>와 <code>이벤트 선택</code>을 더 볼 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-8085-bbf0-f2d15f019f73">preset 버튼</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8023-8220-ea24c119e12c">자주 쓰는 제외 규칙은 preset 버튼으로 바로 추가할 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8037-84de-cb65f88345a4">현재 기본 preset은 주로 데이터베이스 구조 항목을 빼는 쪽입니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8004-b4a8-e82fe7095a2a"><li style="list-style-type:disc"><code>DB 데이터 name 제외</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-802e-ba00-ebd9545f68fa"><li style="list-style-type:disc"><code>DB 필드 name 제외</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8033-87a3-cf1a3fcb7eb2"><li style="list-style-type:disc"><code>DB field string_args 제외</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8069-abd6-f8b324640f73">처음부터 전부 직접 만들기보다, 가까운 preset을 추가한 뒤 조금 고쳐 쓰는 편이 편합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80ea-bac8-cdb2398d8f7b"><code>활성</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-801a-9175-f874d28e6355">이 규칙을 실제로 사용할지 정합니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8039-a49e-e3e394db467d"><li style="list-style-type:disc">켜짐: 실제 2차 추출 필터에 사용</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8034-9a2d-d81f9d3422c9"><li style="list-style-type:disc">꺼짐: 목록에는 남지만 실제 검사에서는 제외</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80fd-8792-ec4528d21ba3">삭제하기 전에 잠깐 비교해 보고 싶을 때는 <code>활성</code>만 꺼 두는 방식이 편합니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80be-b34f-e19b38d2c456"><code>규칙 이름</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80c1-ad4f-e557b9faf1b7">규칙을 구분하기 위한 표시 이름입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-808d-bcad-e5c66ff77a25">필터 조건 자체에는 직접 영향을 주지 않습니다.<br/>비워 두고 저장하면 기본 이름이 자동으로 붙습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80b5-b2da-efec826f869e"><code>Source Kind</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80e6-948e-f7819670539b">2차 추출 결과의 큰 분류를 기준으로 범위를 좁히는 항목입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8016-9e97-c14f1202e78c">이 항목은 <code>고급 조건</code>을 펼쳤을 때 보입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8015-a753-cb249fcac80a">현재 코드 기준으로 주로 아래 값을 씁니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8012-8f56-dabf8bc9e4c8"><li style="list-style-type:disc"><code>데이터베이스</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80cc-9af3-e61683abbe66"><li style="list-style-type:disc"><code>맵</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80e1-a11f-c9196574b60b"><li style="list-style-type:disc"><code>공통이벤트</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8045-a9b5-c0c81171625b"><li style="list-style-type:disc"><code>Game.dat</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8020-88f1-d7739f911f90"><li style="list-style-type:disc"><code>타일셋</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80ec-a89d-c1980d964edf">비워 두면 전체 source kind에 적용됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8041-8876-f8755b2d937d"><code>공통이벤트</code>를 고르면 옆의 <code>이벤트 선택</code> 버튼으로 공통 이벤트 번호를 더 좁혀서 고를 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-806c-a653-f6700532163d"><code>대상 파일들</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8008-bcb1-eb86e7267d68">특정 2차 추출 파일에만 규칙을 걸고 싶을 때 씁니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80cb-9e3d-e153c82655f8"><code>파일 선택</code>을 누르면 최근 WOLF 2차 추출 결과를 기준으로 파일 목록이 나오고, 체크리스트에 없는 파일명은 아래 <code>직접 입력</code> 칸에 쉼표로 적어서 유지할 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8044-a775-ea6218655046">비워 두면 전체 파일에 적용됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80cb-955b-ee7907a9cd71">예를 들어:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8040-b5b0-d0d4d8d6e0ec"><li style="list-style-type:disc"><code>BD-DB-data.json</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8028-8e03-dff8eab665d8"><li style="list-style-type:disc"><code>BD-DBC-type.json</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8079-8cbd-ebe6ef53a517"><li style="list-style-type:disc"><code>BD-DBS-field.json</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-805d-ac17-c121a0779e0f">같은 파일만 골라 특정 구조를 뺄 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80ec-86c3-d9525f588cb5"><code>Path 패턴</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-805d-a20a-fc6b6cae6f63">엔트리의 내부 path 구조를 기준으로 더 세밀하게 좁히는 항목입니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8086-ba06-f0b0c71f8c75"><li style="list-style-type:disc"><code>*</code>는 아무 토큰이나 맞는 와일드카드처럼 쓰입니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8044-910d-e7a6496e4c08">예를 들어:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-809d-b401-f4fb7f912aee"><li style="list-style-type:disc"><code>types.*.data.*.name</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8021-9011-ddeffba3fe7e"><li style="list-style-type:disc"><code>types.*.fields.*.name</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8053-94a6-dfc79ef92b50"><li style="list-style-type:disc"><code>types.*.fields.*.string_args.*</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80ba-b757-d3c056c67d83">같이 적으면 비슷한 구조의 항목만 골라서 제외할 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8051-b534-c23e6d164aff">이 항목은 파일명만으로는 부족할 때 구조를 한 번 더 좁히는 용도라고 보면 됩니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-8024-8916-fb9c35255f8c"><code>Command ID</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8022-861c-cf59394a4e57">이벤트 계열 항목에서 특정 command id만 대상으로 삼고 싶을 때 씁니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80a4-97d6-c02614b3cf31">쉼표로 여러 개를 넣을 수 있고, 숫자만 입력할 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8097-8d6d-fddaccfd993b">현재 안내 기준으로는 아래 값들을 자주 봅니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8073-9c82-f5d81c82036a"><li style="list-style-type:disc"><code>101</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80b9-bc36-fbfff05e5e4f"><li style="list-style-type:disc"><code>102</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80f1-9f58-de14139c4ab1"><li style="list-style-type:disc"><code>112</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-804d-b589-e68e0ecfe64c"><li style="list-style-type:disc"><code>122</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80ae-b88c-d713e301ae66"><li style="list-style-type:disc"><code>150</code></li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-806f-a47b-e510be55aa6c"><li style="list-style-type:disc"><code>250</code></li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80dd-a802-fb7cafb49965">비워 두면 command id 전체에 적용됩니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-8096-b0b1-cee7b2c03ca2"><code>텍스트 정규식</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-804b-a2bc-ec9cde770558">텍스트 값 자체가 특정 형태일 때만 제외하고 싶을 때 씁니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80a9-9a92-dccabfa915ce">예를 들어 버전 문자열처럼 패턴이 뚜렷한 항목만 빼고 싶다면 정규식으로 좁힐 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8004-8127-fc9788834dac">다만 이 항목은 다른 조건과 따로 노는 것이 아니라, <code>다른 조건도 함께 맞아야</code> 실제로 제외됩니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80ed-8819-c5e05150c9af"><code>이벤트 선택</code></h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8085-980d-f59d2fdeac92">이 버튼은 <code>Source Kind</code>가 <code>공통이벤트</code>일 때만 의미가 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-802d-8124-c2001273033d">이 버튼도 <code>고급 조건</code> 안에서 함께 봅니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-803a-85fb-d0dafeaa15ac">여기서 고르는 번호 목록은 최근 WOLF <code>1차 추출</code> raw state에서 감지한 공통 이벤트 이름을 기준으로 만들어집니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-802c-bc59-d28e1d8858d0">즉:</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8059-b5f4-cc8f21e97457"><li style="list-style-type:disc"><code>파일 선택</code> 목록은 최근 <code>2차 추출</code> 기준</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8028-a4d6-d2f2b067edc9"><li style="list-style-type:disc"><code>이벤트 선택</code> 목록은 최근 <code>1차 추출</code> 기준</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80a7-b984-f6c368dd1572">으로 채워진다고 이해하면 됩니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-8078-a1dc-d0f65a9fc12f">저장하면 언제 반영되나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-800b-a754-fe90193219d5"><code>저장</code>을 누르면 필터 규칙 자체는 바로 저장됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80dd-8a55-f89d6631cd0a">하지만 이미 만들어진 2차 추출 파일이 자동으로 다시 바뀌지는 않습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-803e-a81c-fcc755a69628">현재 코드 기준으로는 <code>다음 WOLF 2차 추출</code>부터 새 규칙이 반영됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8048-a726-f1a3b3e6d82b">즉, 필터를 고쳤다면 보통은:</p></div><div dir="auto" style="display:contents"><ol class="numbered-list" id="33934c3a-003e-80a5-b39b-ec4d44bb8e4e" start="1" type="1"><li><code>저장</code></li></ol></div><div dir="auto" style="display:contents"><ol class="numbered-list" id="33934c3a-003e-80ae-a780-db5f5c694836" start="2" type="1"><li><code>WOLF 2차 추출</code> 다시 실행</li></ol></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8029-b69d-f2886c0f0242">순서로 생각하는 편이 맞습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-804d-b3ae-d09ed7d1f8aa">다시 추출이나 다시 번역이 필요한가요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8067-91d5-cffb97677046">보통은 필요합니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80df-8093-ca75d882d65d">이 기능은 2차 추출에서 보이는 항목과 매핑 구조에 직접 영향을 주기 때문입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80dd-bdb6-fce8d3e297d0">사용자 입장에서는 보통 아래처럼 이해하면 됩니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80bd-9b25-dfd7e580a2bd"><li style="list-style-type:disc">필터만 바꾼 경우<br/><code>WOLF 2차 추출</code>을 다시 하는 쪽이 먼저입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-803e-96d9-e270de71c54e"><li style="list-style-type:disc">2차 추출 결과 파일 구성이 달라진 경우<br/>해당 파일들은 다시 <code>번역</code>하는 편이 안전합니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80e8-99c8-c6c8d625bfee"><li style="list-style-type:disc">이미 프로젝트에 적용까지 끝난 경우<br/>필터를 바꿨다고 예전 적용 결과가 자동으로 되돌아가지는 않습니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-805c-adec-e75046b550b8">즉, 이 기능은 <code>저장만 하면 끝</code>인 설정보다는 <code>다음 2차 추출 작업에 영향이 생기는 설정</code>에 가깝습니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-8020-8af7-e6bf3d951b60"><code>1차 추출</code>도 다시 해야 하나요?</h2></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80b9-b36b-dc33d699a5a7">필터만 바꾼 경우에는 보통 <code>1차 추출</code>보다 <code>2차 추출</code>을 다시 하는 쪽이 먼저입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80b8-84fc-c730ed3e6376">WOLF 2차 추출은 이미 만들어진 1차 raw state를 바탕으로 다시 view를 구성하기 때문입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-800f-80d9-ed8ed22c9f4a">다만 아래 경우에는 <code>1차 추출</code>부터 다시 보는 편이 안전합니다.</p></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80e9-9c49-e4be0532ea76"><li style="list-style-type:disc">아직 WOLF 1차 추출을 한 번도 하지 않은 경우</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-806d-868c-e0c9c38783d4"><li style="list-style-type:disc">최근 프로젝트 변경이 1차 raw state에 아직 반영되지 않은 경우</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8034-9645-fcd0a270e6a8"><li style="list-style-type:disc"><code>공통이벤트</code> 목록이 비어 있거나 오래된 것처럼 보이는 경우</li></ul></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-8027-909b-fd5d9fb00e9b">저장할 때 알아둘 점</h2></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80a7-a78c-d2dbb2cf5ae4"><li style="list-style-type:disc">빈 규칙은 저장 대상에서 빠집니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80e7-ad49-f33296e4dfc0"><li style="list-style-type:disc"><code>Command ID</code>에는 숫자만 입력할 수 있습니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8037-9312-dc8411015eec"><li style="list-style-type:disc"><code>텍스트 정규식</code> 문법이 잘못되면 저장 단계에서 막힙니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-809b-8c5e-d2d2ff5ffb93"><li style="list-style-type:disc"><code>규칙 이름</code>은 비워 둘 수 있지만, 나머지 조건은 하나 이상 있어야 실제 규칙으로 저장됩니다.</li></ul></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-801c-b2f4-eb16175f3acd">자주 헷갈리는 점</h2></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-808a-9d6f-f0a5a8b518c0"><code>저장</code>했는데 추출 파일이 그대로예요</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80ff-a9d2-ec62f28779f6">정상일 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80d0-bf41-f031d2c95d06">이 기능은 이미 끝난 2차 추출 파일을 즉시 고치는 기능이 아니라, <code>다음 2차 추출</code> 때 무엇을 뺄지 정하는 설정입니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80ef-8fa1-fe7d52c18799">한 규칙에 여러 칸을 넣었는데 생각보다 안 빠져요</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80ad-ab36-deed45fab828">한 규칙 안에서는 채워 둔 조건을 모두 만족해야 제외됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8086-b3a0-d7023381ff57">예를 들어 <code>대상 파일들</code>과 <code>Path 패턴</code>을 같이 넣었다면, 둘 다 맞아야 빠집니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80fb-a492-fecdb2331111">여러 규칙을 만들었더니 너무 많이 빠져요</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80bc-b02c-ef5c0bf95b26">여러 규칙은 그중 하나만 맞아도 제외됩니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8063-bf8d-f13e70d34108">즉, 규칙이 많아질수록 제외 범위는 넓어질 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-8095-aa04-ed1fd9a647c2"><code>공통이벤트</code>를 골랐는데 <code>이벤트 선택</code> 목록이 비어 있어요</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8049-87fa-f7e16d432261">최근 WOLF <code>1차 추출</code> 기준 공통 이벤트 정보가 아직 없을 수 있습니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8054-be0a-d26864c71ddd">이 경우에는 먼저 1차 추출 상태를 다시 확인하는 편이 좋습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-8046-9f3d-d67bc4256b44"><code>파일 선택</code>에 원하는 파일이 안 보여요</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-80e7-8f9b-f4ed576d097f">체크리스트는 최근 WOLF <code>2차 추출</code> 결과를 기준으로 채워집니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-808b-aab6-c3d9bbd9bc7d">아직 최근 2차 추출 기록이 없거나, 현재 규칙이 잡으려는 파일이 그 목록에 없으면 <code>직접 입력</code>으로 유지할 수 있습니다.</p></div><div dir="auto" style="display:contents"><h3 class="" id="33934c3a-003e-80fb-b8eb-c41059ed4872">같은 WOLF 설정 안의 <code>Command ID 122 2차추출 중복처리</code>와는 무엇이 다른가요?</h3></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8085-a42b-e60eba64026e">서로 다른 기능입니다.</p></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-8008-a73e-d1c15ab187a2"><code>WOLF 2차 추출 필터</code>는 어떤 항목을 2차 추출 view에서 뺄지 정하는 기능이고, <code>Command ID 122 2차추출 중복처리</code>는 <code>122</code> 계열 항목의 중복 정리 방식에 가까운 별도 설정입니다.</p></div><div dir="auto" style="display:contents"><h2 class="" id="33934c3a-003e-80c1-9748-dbf331d95f43">알아둘 점</h2></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-802e-a59b-f0c122237d42"><li style="list-style-type:disc">이 기능은 WOLF 2차 추출의 <code>보이는 대상</code>을 줄이는 설정입니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8061-8852-d44383984245"><li style="list-style-type:disc">한 규칙 안에서는 채운 조건을 모두 만족해야 제외됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-8006-995a-def47a177d53"><li style="list-style-type:disc">여러 규칙 중 하나라도 맞으면 제외됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-80a8-9f37-dbfc8579d053"><li style="list-style-type:disc">저장만으로는 기존 2차 추출 파일이 바뀌지 않고, 보통 다음 <code>2차 추출</code>부터 반영됩니다.</li></ul></div><div dir="auto" style="display:contents"><ul class="bulleted-list" id="33934c3a-003e-807c-9cae-f32cd0c0cf85"><li style="list-style-type:disc">필터를 바꾼 뒤 2차 추출 결과가 달라졌다면, 해당 파일은 다시 번역하는 편이 안전합니다.</li></ul></div><div dir="auto" style="display:contents"><p class="" id="33934c3a-003e-807c-83b1-d93a59ea192c">
-</p></div>
-      </article>
-    </main>
+<article class="guide-content"><h1>2차 추출 필터</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
+<h2>무엇을 할 수 있나요?</h2>
+<p>2차 추출 필터은 게임 파일에서 번역할 수 있는 텍스트를 찾아 작업용 파일로 준비하는 기능입니다.</p>
+<h2>언제 필요한가요?</h2>
+<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
+<h2>시작 전에 확인할 것</h2>
+<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
+<h2>따라 하기</h2>
+<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
+<h2>화면과 항목</h2>
+<a href="../../guide/assets/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/image.png"><img src="../../guide/assets/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/image.png"/></a><h2>규칙은 어떻게 적용되나요?</h2><p>이 기능은 <code>규칙</code> 단위로 동작합니다.</p><ul><li>한 규칙 안에서는 <code>채워 둔 조건을 모두 만족</code>해야 제외됩니다.</li></ul><ul><li>비워 둔 칸은 <code>전체</code>로 처리됩니다.</li></ul><ul><li>여러 규칙이 있으면, 그중 <code>하나라도 맞는 항목</code>은 제외됩니다.</li></ul><ul><li>꺼 둔 규칙은 저장은 되지만 실제 추출에는 쓰이지 않습니다.</li></ul><p>즉, 사용자 입장에서는 <code>한 규칙 안은 AND</code>, <code>여러 규칙끼리는 OR</code>라고 이해하면 됩니다.</p><h2>화면에서 보게 되는 항목</h2><p>기본 카드에는 주로 <code>대상 파일들</code>, <code>Path 패턴</code>, <code>Command ID</code>, <code>텍스트 정규식</code>이 보이고, <code>고급 조건</code>을 펼치면 <code>Source Kind</code>와 <code>이벤트 선택</code>을 더 볼 수 있습니다.</p><h3>preset 버튼</h3><p>자주 쓰는 제외 규칙은 preset 버튼으로 바로 추가할 수 있습니다.</p><p>현재 기본 preset은 주로 데이터베이스 구조 항목을 빼는 쪽입니다.</p><ul><li><code>DB 데이터 name 제외</code></li></ul><ul><li><code>DB 필드 name 제외</code></li></ul><ul><li><code>DB field string_args 제외</code></li></ul><p>처음부터 전부 직접 만들기보다, 가까운 preset을 추가한 뒤 조금 고쳐 쓰는 편이 편합니다.</p><h3><code>활성</code></h3><p>이 규칙을 실제로 사용할지 정합니다.</p><ul><li>켜짐: 실제 2차 추출 필터에 사용</li></ul><ul><li>꺼짐: 목록에는 남지만 실제 검사에서는 제외</li></ul><p>삭제하기 전에 잠깐 비교해 보고 싶을 때는 <code>활성</code>만 꺼 두는 방식이 편합니다.</p><h3><code>규칙 이름</code></h3><p>규칙을 구분하기 위한 표시 이름입니다.</p><p>필터 조건 자체에는 직접 영향을 주지 않습니다.<br/>비워 두고 저장하면 기본 이름이 자동으로 붙습니다.</p><h3><code>Source Kind</code></h3><p>2차 추출 결과의 큰 분류를 기준으로 범위를 좁히는 항목입니다.</p><p>이 항목은 <code>고급 조건</code>을 펼쳤을 때 보입니다.</p><p>현재 버전에서는 주로 아래 값을 씁니다.</p><ul><li><code>데이터베이스</code></li></ul><ul><li><code>맵</code></li></ul><ul><li><code>공통이벤트</code></li></ul><ul><li><code>Game.dat</code></li></ul><ul><li><code>타일셋</code></li></ul><p>비워 두면 전체 source kind에 적용됩니다.</p><p><code>공통이벤트</code>를 고르면 옆의 <code>이벤트 선택</code> 버튼으로 공통 이벤트 번호를 더 좁혀서 고를 수 있습니다.</p><h3><code>대상 파일들</code></h3><p>특정 2차 추출 파일에만 규칙을 걸고 싶을 때 씁니다.</p><p><code>파일 선택</code>을 누르면 최근 WOLF 2차 추출 결과를 기준으로 파일 목록이 나오고, 체크리스트에 없는 파일명은 아래 <code>직접 입력</code> 칸에 쉼표로 적어서 유지할 수 있습니다.</p><p>비워 두면 전체 파일에 적용됩니다.</p><p>예를 들어:</p><ul><li><code>BD-DB-data.json</code></li></ul><ul><li><code>BD-DBC-type.json</code></li></ul><ul><li><code>BD-DBS-field.json</code></li></ul><p>같은 파일만 골라 특정 구조를 뺄 수 있습니다.</p><h3><code>Path 패턴</code></h3><p>엔트리의 내부 path 구조를 기준으로 더 세밀하게 좁히는 항목입니다.</p><ul><li><code>*</code>는 아무 토큰이나 맞는 와일드카드처럼 쓰입니다.</li></ul><p>예를 들어:</p><ul><li><code>types.*.data.*.name</code></li></ul><ul><li><code>types.*.fields.*.name</code></li></ul><ul><li><code>types.*.fields.*.string_args.*</code></li></ul><p>같이 적으면 비슷한 구조의 항목만 골라서 제외할 수 있습니다.</p><p>이 항목은 파일명만으로는 부족할 때 구조를 한 번 더 좁히는 용도라고 보면 됩니다.</p><h3><code>Command ID</code></h3><p>이벤트 계열 항목에서 특정 command id만 대상으로 삼고 싶을 때 씁니다.</p><p>쉼표로 여러 개를 넣을 수 있고, 숫자만 입력할 수 있습니다.</p><p>현재 안내 기준으로는 아래 값들을 자주 봅니다.</p><ul><li><code>101</code></li></ul><ul><li><code>102</code></li></ul><ul><li><code>112</code></li></ul><ul><li><code>122</code></li></ul><ul><li><code>150</code></li></ul><ul><li><code>250</code></li></ul><p>비워 두면 command id 전체에 적용됩니다.</p><h3><code>텍스트 정규식</code></h3><p>텍스트 값 자체가 특정 형태일 때만 제외하고 싶을 때 씁니다.</p><p>예를 들어 버전 문자열처럼 패턴이 뚜렷한 항목만 빼고 싶다면 정규식으로 좁힐 수 있습니다.</p><p>다만 이 항목은 다른 조건과 따로 노는 것이 아니라, <code>다른 조건도 함께 맞아야</code> 실제로 제외됩니다.</p><h3><code>이벤트 선택</code></h3><p>이 버튼은 <code>Source Kind</code>가 <code>공통이벤트</code>일 때만 의미가 있습니다.</p><p>이 버튼도 <code>고급 조건</code> 안에서 함께 봅니다.</p><p>여기서 고르는 번호 목록은 최근 WOLF <code>1차 추출</code> 최근 추출 결과에서 감지한 공통 이벤트 이름을 기준으로 만들어집니다.</p><p>즉:</p><ul><li><code>파일 선택</code> 목록은 최근 <code>2차 추출</code> 기준</li></ul><ul><li><code>이벤트 선택</code> 목록은 최근 <code>1차 추출</code> 기준</li></ul><p>으로 채워진다고 이해하면 됩니다.</p><h2>저장하면 언제 반영되나요?</h2><p><code>저장</code>을 누르면 필터 규칙 자체는 바로 저장됩니다.</p><p>하지만 이미 만들어진 2차 추출 파일이 자동으로 다시 바뀌지는 않습니다.</p><p>현재 버전에서는 <code>다음 WOLF 2차 추출</code>부터 새 규칙이 반영됩니다.</p><p>즉, 필터를 고쳤다면 보통은:</p><ol start="1" type="1"><li><code>저장</code></li></ol><ol start="2" type="1"><li><code>WOLF 2차 추출</code> 다시 실행</li></ol><p>순서로 생각하는 편이 맞습니다.</p><h2>다시 추출이나 다시 번역이 필요한가요?</h2><p>보통은 필요합니다.</p><p>이 기능은 2차 추출에서 보이는 항목과 매핑 구조에 직접 영향을 주기 때문입니다.</p><p>사용자 입장에서는 보통 아래처럼 이해하면 됩니다.</p><ul><li>필터만 바꾼 경우<br/><code>WOLF 2차 추출</code>을 다시 하는 쪽이 먼저입니다.</li></ul><ul><li>2차 추출 결과 파일 구성이 달라진 경우<br/>해당 파일들은 다시 <code>번역</code>하는 편이 안전합니다.</li></ul><ul><li>이미 프로젝트에 적용까지 끝난 경우<br/>필터를 바꿨다고 예전 적용 결과가 자동으로 되돌아가지는 않습니다.</li></ul><p>즉, 이 기능은 <code>저장만 하면 끝</code>인 설정보다는 <code>다음 2차 추출 작업에 영향이 생기는 설정</code>에 가깝습니다.</p><h2><code>1차 추출</code>도 다시 해야 하나요?</h2><p>필터만 바꾼 경우에는 보통 <code>1차 추출</code>보다 <code>2차 추출</code>을 다시 하는 쪽이 먼저입니다.</p><p>WOLF 2차 추출은 이미 만들어진 1차 최근 추출 결과를 바탕으로 다시 view를 구성하기 때문입니다.</p><p>다만 아래 경우에는 <code>1차 추출</code>부터 다시 보는 편이 안전합니다.</p><ul><li>아직 WOLF 1차 추출을 한 번도 하지 않은 경우</li></ul><ul><li>최근 프로젝트 변경이 1차 최근 추출 결과에 아직 반영되지 않은 경우</li></ul><ul><li><code>공통이벤트</code> 목록이 비어 있거나 오래된 것처럼 보이는 경우</li></ul><h2>저장할 때 알아둘 점</h2><ul><li>빈 규칙은 저장 대상에서 빠집니다.</li></ul><ul><li><code>Command ID</code>에는 숫자만 입력할 수 있습니다.</li></ul><ul><li><code>텍스트 정규식</code> 문법이 잘못되면 저장 단계에서 막힙니다.</li></ul><ul><li><code>규칙 이름</code>은 비워 둘 수 있지만, 나머지 조건은 하나 이상 있어야 실제 규칙으로 저장됩니다.</li></ul>
+<h2>완료 후 확인</h2>
+<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
+<h2>주의/중요/권장</h2>
+<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
+<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
+<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
+<h2>자주 헷갈리는 점</h2>
+<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+</article>
+</main>
   </div>
   <script src="../../guide/static/main.js"></script>
 </body>

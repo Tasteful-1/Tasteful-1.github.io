@@ -287,7 +287,8 @@ def make_nav(pages: list[Page], from_path: Path) -> str:
         anchor = f'<a class="nav-link" href="{href}" data-depth="{page.depth}">{title}</a>'
         if next_depth > page.depth:
             open_attr = " open" if page.depth == 0 else ""
-            lines.append(f'<details class="nav-group" data-depth="{page.depth}"{open_attr}><summary><span class="nav-caret" aria-hidden="true"></span>{anchor}</summary><div class="nav-children">')
+            nav_key = html.escape(page.output_path.relative_to(DIST_ROOT).as_posix(), quote=True)
+            lines.append(f'<details class="nav-group" data-depth="{page.depth}" data-nav-key="{nav_key}"{open_attr}><summary><span class="nav-caret" aria-hidden="true"></span>{anchor}</summary><div class="nav-children">')
             stack.append(page.depth)
         else:
             lines.append(anchor)
@@ -310,7 +311,8 @@ def render_page(page: Page, pages: list[Page], body: str) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} · AIMT Guide</title>
-  <script>(function(){{try{{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}}catch(_){{}}}})();</script>
+  <script>(function(){{document.documentElement.dataset.navRestoring="1";try{{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}}catch(_){{}}}})();</script>
+  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{{visibility:hidden}}:root[data-nav-restoring="1"] .nav-caret{{transition:none}}</style>
   <link rel="stylesheet" href="{css_href}">
 </head>
 <body>
@@ -366,7 +368,6 @@ def write_static_assets() -> None:
     write_text(
         STATIC_ROOT / "styles.css",
         """
-:root{color-scheme:light;--sidebar-width:310px;--sidebar-toggle-top:22px;--sidebar-toggle-left:18px;--bg:#f4f6fb;--panel:#fff;--sidebar:#fff;--field:#fff;--search-panel:#fbfcff;--ink:#172033;--nav-ink:#26324a;--muted:#6b7280;--line:#dce2ef;--accent:#315bef;--soft:#eef3ff;--hover:#f8faff;--code:#101828;--pre-ink:#e5e7eb;--inline-code-bg:#eef2ff;--inline-code-ink:#243b8f;--shadow:rgba(31,41,55,.08);--scroll:rgba(49,91,239,.30);--scroll-hover:rgba(49,91,239,.48)}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1420;--panel:#151b27;--sidebar:#111722;--field:#0f1520;--search-panel:#121a28;--ink:#e5eaf3;--nav-ink:#d8deea;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--hover:#182235;--code:#090d16;--pre-ink:#e8edf7;--inline-code-bg:#1d2942;--inline-code-ink:#c8d4ff;--shadow:rgba(0,0,0,.32);--scroll:rgba(142,162,255,.34);--scroll-hover:rgba(142,162,255,.58)}}:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1420;--panel:#151b27;--sidebar:#111722;--field:#0f1520;--search-panel:#121a28;--ink:#e5eaf3;--nav-ink:#d8deea;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--hover:#182235;--code:#090d16;--pre-ink:#e8edf7;--inline-code-bg:#1d2942;--inline-code-ink:#c8d4ff;--shadow:rgba(0,0,0,.32);--scroll:rgba(142,162,255,.34);--scroll-hover:rgba(142,162,255,.58)}:root[data-theme="light"]{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}.site-shell{display:grid;grid-template-columns:var(--sidebar-width) 8px minmax(0,1fr);min-height:100vh;transition:grid-template-columns .18s ease}:root[data-sidebar="collapsed"] .site-shell{grid-template-columns:0 0 minmax(0,1fr)}.sidebar{grid-column:1;min-width:0;position:sticky;top:0;height:100vh;overflow-y:scroll;overflow-x:hidden;padding:22px 18px;background:var(--sidebar);border-right:1px solid var(--line);scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--scroll) transparent;transition:padding .18s ease,border-color .18s ease,visibility .18s ease}:root[data-sidebar="collapsed"] .sidebar{visibility:hidden;overflow:hidden;padding:0;border-right:0}.sidebar-resizer{grid-column:2;position:sticky;top:0;height:100vh;cursor:col-resize;background:linear-gradient(90deg,transparent 0 3px,var(--line) 3px 4px,transparent 4px);touch-action:none}:root[data-sidebar="collapsed"] .sidebar-resizer{display:none}.sidebar-resizer:hover,.sidebar-resizer:focus{background:linear-gradient(90deg,transparent 0 2px,var(--accent) 2px 5px,transparent 5px);outline:none}body.is-resizing-sidebar{cursor:col-resize;user-select:none}.sidebar::-webkit-scrollbar{width:8px;height:8px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--scroll);background-clip:content-box;border:2px solid transparent;border-radius:999px}.sidebar::-webkit-scrollbar-thumb:hover{background:var(--scroll-hover);background-clip:content-box}.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}.brand{min-width:0;flex:1;color:var(--ink);font-weight:900;text-decoration:none;letter-spacing:.03em}.theme-toggle,.sidebar-toggle{display:grid;place-items:center;width:32px;height:32px;flex:0 0 auto;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--muted);font:700 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.theme-toggle:hover,.sidebar-toggle:hover{background:var(--soft);color:var(--accent)}.sidebar-expand{position:fixed;left:var(--sidebar-toggle-left);top:var(--sidebar-toggle-top);z-index:50;display:none;box-shadow:0 10px 24px var(--shadow)}:root[data-sidebar="collapsed"] .sidebar-expand{display:grid}.nav-list{font-size:14px}.nav-link{display:block;margin:2px 0;padding:7px 9px;border-radius:10px;color:var(--nav-ink);text-decoration:none}.nav-link:hover,.nav-link[aria-current="page"]{background:var(--soft);color:var(--accent)}.nav-group>summary{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;margin:2px 0;border-radius:10px;list-style:none;cursor:pointer}.nav-group>summary::-webkit-details-marker{display:none}.nav-group>summary .nav-link{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis}.nav-group>summary .nav-link:hover{background:transparent}.nav-caret{display:grid;place-items:center;width:24px;height:32px;border-radius:8px;color:var(--muted);transition:transform .16s ease,background-color .16s ease,color .16s ease}.nav-caret:before{content:"▸";font-size:12px;line-height:1}.nav-group[open]>summary .nav-caret{transform:rotate(90deg);color:var(--accent)}.nav-children{margin-left:12px;padding-left:8px;border-left:1px solid var(--line)}.content-shell{grid-column:3;min-width:0;padding:42px min(7vw,72px);transition:padding .18s ease}.guide-content{width:100%;max-width:980px;margin:0 auto;padding:42px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 45px var(--shadow);transition:max-width .18s ease}:root[data-sidebar="collapsed"] .content-shell{padding-left:max(72px,5vw);padding-right:max(42px,4vw)}:root[data-sidebar="collapsed"] .guide-content{max-width:1400px}h1{font-size:34px;line-height:1.2;margin:0 0 6px}h2{margin-top:38px;border-bottom:1px solid var(--line);padding-bottom:6px}.doc-version{margin:0 0 28px;color:var(--muted);font-size:13px}code{padding:.12em .35em;border-radius:6px;background:var(--inline-code-bg);color:var(--inline-code-ink)}pre,.code{padding:16px;overflow:auto;border-radius:16px;background:var(--code);color:var(--pre-ink);white-space:pre-wrap}blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}table{border-collapse:collapse;width:100%;margin:18px 0}th,td{border:1px solid var(--line);padding:8px 10px}img{max-width:100%;height:auto;border-radius:12px}.image{border:none;margin:1.5em 0;padding:0;text-align:center}.column-list{display:flex;gap:32px}.column{min-width:0;overflow:hidden}.link-to-page{margin:1em 0;padding:0;border:none;font-weight:700}.link-to-page a:before{content:"› ";color:var(--accent)}.callout{border-radius:12px;padding:1rem;background:var(--soft)}.bookmark{display:flex;width:100%;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none}.bookmark-info{padding:12px 14px}.bookmark-image{width:33%;object-fit:cover}.selected-value{display:inline-block;padding:0 .5em;background:var(--soft);border-radius:3px;margin:.3em .5em .3em 0}.table_of_contents-item{display:block;font-size:.875rem;line-height:1.3;padding:.125rem}.table_of_contents-indent-1{margin-left:1.5rem}.table_of_contents-indent-2{margin-left:3rem}.table_of_contents-indent-3{margin-left:4.5rem}body.is-search-open{overflow:hidden}.search-overlay{position:fixed;inset:0;z-index:80;display:grid;place-items:start center;padding:72px 20px 24px;background:rgba(15,20,32,.42);backdrop-filter:blur(6px)}.search-overlay[hidden]{display:none}.search-dialog{width:min(760px,100%);max-height:min(760px,calc(100vh - 96px));display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 24px 80px rgba(0,0,0,.24)}.search-header{display:flex;align-items:center;gap:12px;padding:18px 18px 12px;border-bottom:1px solid var(--line)}.search-header h2{flex:1;margin:0;border:0;padding:0;font-size:18px;line-height:1.2}.search-close{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--muted);font:700 18px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.search-close:hover{background:var(--soft);color:var(--accent)}.search-input{width:calc(100% - 36px);margin:16px 18px 10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--field);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.search-overlay .search-results{display:block;min-height:120px;overflow:auto;margin:0;padding:8px 18px 18px;border:0;border-radius:0;background:transparent}.search-overlay .search-results[hidden]{display:none}.search-overlay .search-results a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 10px;margin:4px 0;padding:10px 12px;border:1px solid transparent;border-radius:12px;color:var(--ink);text-decoration:none}.search-overlay .search-results a:hover{border-color:var(--line);background:var(--soft)}.search-result-title{min-width:0;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-badges{display:flex;gap:5px;align-items:center}.search-badge{display:inline-flex;align-items:center;height:22px;padding:0 7px;border:1px solid var(--line);border-radius:999px;background:var(--field);color:var(--muted);font-size:12px;font-weight:700}.search-snippet{grid-column:1/-1;color:var(--muted);font-size:13px;line-height:1.45}.search-empty{padding:28px 8px;color:var(--muted);text-align:center}@media(max-width:900px){.search-overlay{padding:64px 12px 12px}.search-dialog{max-height:calc(100vh - 76px);border-radius:14px}.search-result-title{white-space:normal}}@media(max-width:900px){.site-shell{display:block}.sidebar{position:relative;height:auto}.sidebar-resizer{display:none}:root[data-sidebar="collapsed"] .sidebar{display:none}.sidebar-expand{left:18px;top:18px}.content-shell{padding:18px}.guide-content{padding:24px;border-radius:18px}:root[data-sidebar="collapsed"] .content-shell{padding:64px 18px 18px}.column-list{display:block}}
 """.strip(),
     )
     write_text(
@@ -376,11 +377,13 @@ def write_static_assets() -> None:
   const normalize = (value) => String(value || "").normalize("NFKC").toLowerCase().replace(/[\\s_\\-/.]+/g, " ").trim();
   const compact = (value) => normalize(value).replace(/ /g, "");
   const navStateKey = "aimt-guide-nav-open";
+  const sidebarScrollKey = "aimt-guide-sidebar-scroll";
   const themeKey = "aimt-guide-theme";
   const sidebarWidthKey = "aimt-guide-sidebar-width";
   const sidebarCollapsedKey = "aimt-guide-sidebar-collapsed";
   const minSidebarWidth = 240;
   const maxSidebarWidth = 520;
+  let isRestoringNav = true;
   const themeLabels = {
     system: {text: "◐", title: "테마: 기기 설정"},
     dark: {text: "☾", title: "테마: 다크"},
@@ -516,30 +519,175 @@ def write_static_assets() -> None:
   function writeNavState(state){
     try { localStorage.setItem(navStateKey, JSON.stringify(state)); } catch (_) {}
   }
+  function navGroupKey(group){
+    const link = group.querySelector(":scope > summary .nav-link[href]");
+    const storedKey = group.getAttribute("data-nav-key");
+    const legacyKey = link ? new URL(link.getAttribute("href"), location.href).pathname.replace(/\\/index\\.html$/, "/") : "";
+    return {
+      key: storedKey ? "group:" + storedKey : legacyKey,
+      legacyKey
+    };
+  }
+  function snapshotNavState(){
+    const next = readNavState();
+    document.querySelectorAll(".nav-group").forEach((group) => {
+      const keys = navGroupKey(group);
+      if (!keys.key) return;
+      next[keys.key] = group.open;
+    });
+    writeNavState(next);
+  }
+  function readSidebarScroll(){
+    try {
+      const value = Number(sessionStorage.getItem(sidebarScrollKey));
+      return Number.isFinite(value) && value >= 0 ? value : null;
+    } catch (_) {
+      return null;
+    }
+  }
+  function writeSidebarScroll(value){
+    try { sessionStorage.setItem(sidebarScrollKey, String(Math.max(0, Math.round(value)))); } catch (_) {}
+  }
+  function normalizeDocumentPath(pathname){
+    return pathname.replace(/\\/index\\.html?$/, "/");
+  }
+  function absolutizeShellLinks(){
+    document.querySelectorAll(".sidebar a[href], .brand[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("#")) return;
+      try { link.setAttribute("href", new URL(href, location.href).href); } catch (_) {}
+    });
+  }
   function setupNavGroups(){
     const state = readNavState();
     document.querySelectorAll(".nav-group").forEach((group) => {
       const link = group.querySelector(":scope > summary .nav-link[href]");
-      if (!link) return;
-      const key = new URL(link.getAttribute("href"), location.href).pathname.replace(/\\/index\\.html$/, "/");
+      const keys = navGroupKey(group);
+      const key = keys.key;
+      const legacyKey = keys.legacyKey;
+      if (!key) return;
       if (Object.prototype.hasOwnProperty.call(state, key)) group.open = Boolean(state[key]);
-      link.addEventListener("click", (event) => event.stopPropagation());
+      else if (legacyKey && Object.prototype.hasOwnProperty.call(state, legacyKey)) group.open = Boolean(state[legacyKey]);
+      if (link) link.addEventListener("click", (event) => event.stopPropagation());
       group.addEventListener("toggle", () => {
+        if (isRestoringNav) return;
         const next = readNavState();
         next[key] = group.open;
         writeNavState(next);
       });
     });
+    window.addEventListener("pagehide", snapshotNavState);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") snapshotNavState();
+    });
   }
   function markCurrent(){
-    const current = new URL(location.href).pathname.replace(/\\/index\\.html$/, "/");
+    const current = normalizeDocumentPath(new URL(location.href).pathname);
+    let currentLink = null;
     document.querySelectorAll(".nav-link[href]").forEach((link) => {
-      const target = new URL(link.getAttribute("href"), location.href).pathname.replace(/\\/index\\.html$/, "/");
+      link.removeAttribute("aria-current");
+      const target = normalizeDocumentPath(new URL(link.getAttribute("href"), location.href).pathname);
       if (target === current) {
+        currentLink = link;
         link.setAttribute("aria-current", "page");
         let parent = link.closest("details");
         while (parent) { parent.open = true; parent = parent.parentElement.closest("details"); }
       }
+    });
+    return currentLink;
+  }
+  function setupSidebarScrollMemory(currentLink){
+    const sidebar = document.querySelector(".sidebar");
+    if (!sidebar) return;
+    const savedScroll = readSidebarScroll();
+    requestAnimationFrame(() => {
+      if (savedScroll !== null) sidebar.scrollTop = savedScroll;
+      if (!currentLink) return;
+      const sidebarRect = sidebar.getBoundingClientRect();
+      const linkRect = currentLink.getBoundingClientRect();
+      if (savedScroll === null || linkRect.top < sidebarRect.top || linkRect.bottom > sidebarRect.bottom) {
+        sidebar.scrollTop = Math.max(0, currentLink.offsetTop - Math.round((sidebar.clientHeight - currentLink.offsetHeight) / 2));
+      }
+    });
+    let scrollFrame = 0;
+    sidebar.addEventListener("scroll", () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = 0;
+        writeSidebarScroll(sidebar.scrollTop);
+      });
+    }, {passive: true});
+    window.addEventListener("pagehide", () => writeSidebarScroll(sidebar.scrollTop));
+  }
+  function finishNavRestore(){
+    requestAnimationFrame(() => {
+      isRestoringNav = false;
+      document.documentElement.removeAttribute("data-nav-restoring");
+    });
+  }
+  function closeSearchOverlay(){
+    const overlay = document.getElementById("searchOverlay");
+    if (!overlay) return;
+    overlay.hidden = true;
+    document.body.classList.remove("is-search-open");
+  }
+  function isPlainNavigationClick(event, link){
+    return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && link.target !== "_blank";
+  }
+  function isGuideDocumentUrl(url){
+    const path = url.pathname.toLowerCase();
+    return url.origin === location.origin && (path.endsWith("/") || path.endsWith(".html") || path.endsWith(".htm"));
+  }
+  function rewriteArticleUrls(article, pageUrl){
+    const attributes = [
+      ["a[href]", "href"],
+      ["img[src]", "src"],
+      ["source[src]", "src"],
+      ["video[src]", "src"],
+      ["audio[src]", "src"]
+    ];
+    attributes.forEach(([selector, attribute]) => {
+      article.querySelectorAll(selector).forEach((node) => {
+        const value = node.getAttribute(attribute);
+        if (!value || value.startsWith("#")) return;
+        try { node.setAttribute(attribute, new URL(value, pageUrl).href); } catch (_) {}
+      });
+    });
+  }
+  async function replaceArticleFromUrl(url, options){
+    const response = await fetch(url.href, {credentials: "same-origin"});
+    if (!response.ok) throw new Error("문서를 불러올 수 없습니다.");
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const nextArticle = doc.querySelector("article.guide-content");
+    const contentShell = document.querySelector("main.content-shell");
+    if (!nextArticle || !contentShell) throw new Error("본문 영역을 찾을 수 없습니다.");
+    rewriteArticleUrls(nextArticle, url);
+    contentShell.replaceChildren(document.importNode(nextArticle, true));
+    document.title = doc.title || document.title;
+    if (options.push) history.pushState({}, "", url.href);
+    markCurrent();
+    closeSearchOverlay();
+    window.scrollTo({top: 0, behavior: "auto"});
+  }
+  function setupPartialNavigation(){
+    document.documentElement.dataset.partialNavigation = location.protocol === "file:" ? "fallback" : "enabled";
+    if (location.protocol === "file:") return;
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest ? event.target.closest("a[href]") : null;
+      if (!link || !isPlainNavigationClick(event, link)) return;
+      let url;
+      try { url = new URL(link.getAttribute("href"), location.href); } catch (_) { return; }
+      if (!isGuideDocumentUrl(url)) return;
+      const currentWithoutHash = location.href.split("#")[0];
+      const targetWithoutHash = url.href.split("#")[0];
+      if (currentWithoutHash === targetWithoutHash) return;
+      event.preventDefault();
+      snapshotNavState();
+      replaceArticleFromUrl(url, {push: true}).catch(() => { location.href = url.href; });
+    }, true);
+    window.addEventListener("popstate", () => {
+      replaceArticleFromUrl(new URL(location.href), {push: false}).catch(() => location.reload());
     });
   }
   async function setupSearch(){
@@ -656,9 +804,14 @@ def write_static_assets() -> None:
   }  setupThemeToggle();
   setupSidebarCollapse();
   setupSidebarResize();
+  absolutizeShellLinks();
+  document.documentElement.dataset.navRestoring = "1";
   setupNavGroups();
-  markCurrent();
+  const currentLink = markCurrent();
+  setupSidebarScrollMemory(currentLink);
+  finishNavRestore();
   setupSearch();
+  setupPartialNavigation();
 })();
 """.strip(),
     )
@@ -672,7 +825,8 @@ def write_404(pages: list[Page]) -> None:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>페이지를 찾을 수 없습니다 · AIMT Guide</title>
-  <script>(function(){{try{{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}}catch(_){{}}}})();</script>
+  <script>(function(){{document.documentElement.dataset.navRestoring="1";try{{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}}catch(_){{}}}})();</script>
+  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{{visibility:hidden}}:root[data-nav-restoring="1"] .nav-caret{{transition:none}}</style>
   <link rel="stylesheet" href="guide/static/styles.css">
 </head>
 <body>
