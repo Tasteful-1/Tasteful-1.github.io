@@ -1,36 +1,6 @@
-<!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VIEW · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
-</head>
-<body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>기본 작업 흐름 · AIMT Guide</title><script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script><style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style><link rel="stylesheet" href="../../guide/static/styles.css"></head><body>  <div id="searchOverlay" class="search-overlay" hidden>    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">      <div id="searchResults" class="search-results" hidden></div>    </section>  </div><button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button><div class="site-shell"><aside class="sidebar"><div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div><nav class="nav-list" aria-label="문서 목록">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
-<details class="nav-group" data-depth="1" data-nav-key="guide/start/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">시작하기</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="2">프롬프트</a>
-</div></details>
-<details class="nav-group" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기본 작업 흐름</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
-<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="2">추출</a>
-<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="2">번역</a>
-<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="2">적용과 즉시적용</a>
-</div></details>
+<details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
 <a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
@@ -40,7 +10,24 @@
 <a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
 </div></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a>
+<details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="4">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/%ED%8C%8C%EC%9D%BC%EB%AA%A9%EB%A1%9D-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8/index.html" data-depth="4">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/%ED%99%94%EB%A9%B4%EC%A0%84%ED%99%98/index.html" data-depth="4">화면전환</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="4">프롬프트</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD/index.html" data-depth="4">빠른번역</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-mainview"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역2 메인뷰</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/viewer/index.html" data-depth="4">Viewer</a>
+<a class="nav-link" href="../../guide/console/index.html" data-depth="4">Console</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-commandbar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역3 커맨드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="4">추출</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="4">번역</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="4">적용과 즉시적용</a>
+</div></details>
+</div></details>
 <details class="nav-group" data-depth="2" data-nav-key="guide/설정/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정 화면</a></summary><div class="nav-children">
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-general"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">일반</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="4">테마</a>
@@ -48,8 +35,7 @@
 <a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="4">이스케이프패턴</a>
 <a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="4">언어패턴설정</a>
 </div></details>
-<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-translation"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">번역설정</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="4">번역 설정</a>
+<details class="nav-group" data-depth="3" data-nav-key="guide/번역-설정/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="3">번역 설정</a></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ai-model/index.html" data-depth="4">AI-MODEL</a>
 <a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="4">API KEY 설정</a>
 </div></details>
@@ -159,52 +145,26 @@
 <a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
 </div></details>
 </div></details>
-<details class="nav-group" data-depth="2" data-nav-key="guide/features-quickslot/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-quickslot/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
-<details class="nav-group" data-depth="3" data-nav-key="guide/퀵슬롯/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="3">퀵슬롯</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="4">메모장</a>
-<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="4">용어사전</a>
-</div></details>
-</div></details>
-<details class="nav-group" data-depth="2" data-nav-key="guide/features-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-reference/index.html" data-depth="2">기타 참고</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="3">추출 파일별 설명</a>
+<details class="nav-group" data-depth="2" data-nav-key="guide/퀵슬롯/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="3">메모장</a>
 </div></details>
 </div></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/troubleshooting/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">문제 해결</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="2">자주 나오는 질문</a>
 </div></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/advanced-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">참고 자료</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%99%B8%EB%B6%80-%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/index.html" data-depth="2">외부 유틸리티</a>
 <a class="nav-link" href="../../guide/%EC%A0%9C%EA%B3%B5%EC%9E%90%EB%B3%84-%EC%B0%B8%EA%B3%A0-%EB%A7%81%ED%81%AC/index.html" data-depth="2">제공자별 참고 링크</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="2">추출 파일별 설명</a>
 <a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="2">RPG Maker 명령 코드 참고</a>
-<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="2">외부 유틸리티</a>
 </div></details>
 </div></details>
-      </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
-<article class="guide-content"><h1>VIEW</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>VIEW은 AIMT 사용 중 필요한 작업을 더 정확하게 진행하기 위한 기능입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<a href="../../guide/assets/view/image.png"><img src="../../guide/assets/view/image.png"/></a><p><strong>주의:</strong> 1.13.1.0 에서 추가된 기능입니다.</p><h2>어디에 있나요?</h2><p>현재 버전에서는 <code>VIEW</code> 버튼은 메인 화면 상단 오른쪽, <code>CMD</code> 버튼 옆에 동적으로 추가됩니다.</p><p>이 버튼을 누르면 기본 파일 목록 대신 <code>VIEW</code> 화면이 열리고, 다시 누르면 파일 목록으로 돌아갑니다.</p><h2>여기에는 무엇이 표시되나요?</h2><p><code>VIEW</code> 화면은 크게 두 부분으로 나뉩니다.</p><ul><li>왼쪽: 현재 엔진 기준으로 열린 추출 JSON 파일 목록</li></ul><ul><li>오른쪽: 선택한 파일의 <code>Extract</code> / <code>Translation</code> 비교 편집 영역</li></ul><p>파일을 열면 두 JSON을 나란히 비교해서 보여 주고, 현재 버전에서는 두 쪽 모두 직접 수정할 수 있습니다.</p><p>다만 번역 JSON을 읽는 데 실패한 경우에는 번역 쪽 편집이 막히고 안내 문구가 먼저 표시됩니다.</p><h2>어떤 파일을 다루나요?</h2><p>현재 버전에서는 <code>VIEW</code>는 현재 프로젝트의 <code>extract</code> / <code>translated</code> 작업 폴더 쌍을 기준으로 동작합니다.</p><p>즉, 여기서 다루는 것은 <code>작업용 JSON</code>입니다.</p><p>중요한 점은 이 저장이 <code>최종 게임 반영</code>과 같은 뜻은 아니라는 점입니다.</p><p><code>VIEW</code>에서 저장한 뒤 실제 결과물에 반영하려면 이후 <code>Apply</code> 단계가 따로 필요합니다.</p><h2>여기서 직접 할 수 있는 것은 무엇인가요?</h2><p>현재 버전에서는 <code>VIEW</code>에서 할 수 있는 대표 작업은 아래와 같습니다.</p><ul><li>파일 선택</li></ul><ul><li><code>추출</code> / <code>번역</code> 내용 직접 수정</li></ul><ul><li>선택 행 또는 전체 행 복사</li></ul><ul><li><code>되돌리기</code></li></ul><ul><li><code>저장</code></li></ul><ul><li>파일 우클릭 후 <code>추출</code> 또는 <code>번역</code> 파일 삭제</li></ul><p>복사 버튼은:</p><ul><li><code>←</code> : 번역본을 추출본으로 복사</li></ul><ul><li><code>→</code> : 추출본을 번역본으로 복사</li></ul><p>를 뜻합니다.</p><p>행을 선택한 상태면 선택한 행만 복사하고, 선택이 없으면 전체 행을 대상으로 동작합니다.</p><h2>저장은 어떻게 동작하나요?</h2><p><code>VIEW</code>에서 수정한 내용은 바로 파일에 쓰이는 것이 아니라, 먼저 화면 안의 <code>draft</code> 상태로 유지됩니다.</p><p>그래서:</p><ul><li>다른 파일로 이동하거나</li></ul><ul><li>파일 목록을 새로고치려 하거나</li></ul><p>저장되지 않은 변경이 있으면 먼저 확인창이 뜰 수 있습니다.</p><p><code>저장</code>을 누르면 현재 버전에서는 작업 폴더의 <code>Extract JSON</code> 또는 <code>Translated JSON</code> 파일에 즉시 기록됩니다.</p><p>반대로 <code>되돌리기</code>를 누르면 마지막 저장 상태로 돌아갑니다.</p><h2>찾기 / 바꾸기 / 이동은 어떻게 쓰나요?</h2><p>현재 버전에서는 <code>VIEW</code>는 아래 단축키를 지원합니다.</p><ul><li><code>Ctrl+F</code> : 찾기</li></ul><ul><li><code>Ctrl+H</code> : 바꾸기</li></ul><ul><li><code>Ctrl+G</code> : 인덱스 이동</li></ul><ul><li><code>F3</code> : 다음 검색 결과 이동</li></ul><p>즉, 기존 문서처럼 <code>찾기 / 바꾸기 / 이동</code>을 지원하는 설명은 여전히 맞습니다.</p><p>다만 이 단축키는 <code>VIEW</code>가 열려 있을 때만 의미가 있습니다.</p><h2>주의해서 볼 점은 무엇인가요?</h2><h3>저장되지 않은 변경</h3><p>현재 버전에서는 저장되지 않은 변경이 있으면 파일 전환이나 파일 목록 새로고침 전에 먼저 확인을 묻습니다.</p><p>즉, <code>VIEW</code>는 메모장처럼 보이지만 저장 전까지는 임시 변경 상태가 남아 있습니다.</p><h3>번역 JSON 로드 실패</h3><p>번역 JSON 파싱에 실패하면 번역 쪽은 편집 불가 상태가 되고 안내 문구가 표시됩니다.</p><p>이 경우에는 단순히 화면 표시만 비는 것이 아니라, 번역 쪽 일부 작업도 제한됩니다.</p><h3><code>code_401.json</code> 계열</h3><p>현재 버전에서는 <code>code_401</code> 계열은 일반 행 표시가 아니라 블록 단위로 묶여 보일 수 있습니다.</p><p>이 경우 편집한 블록의 줄 수가 원문과 다르면 유효하지 않은 draft로 처리되며, 저장도 막힙니다. 즉 <code>원본과 같은 줄 수</code>로 맞춰야 합니다.</p><p>즉, 여러 줄 대사를 편집할 때는 줄 수까지 같이 맞춰야 합니다.</p><h2>파일 삭제도 가능한가요?</h2><p>현재 버전에서는 왼쪽 파일 목록에서 파일을 우클릭하면 컨텍스트 메뉴로 <code>extract</code> 또는 <code>translation</code> 쪽 파일 삭제를 할 수 있습니다.</p><p>다만:</p><ul><li><code>extract</code> 파일을 지우면 목록 자체에서 사라질 수 있고</li></ul><ul><li><code>translation</code> 파일을 지우면 번역본만 제거된 상태로 다시 열릴 수 있습니다.</li></ul><p>즉, 단순 화면 정리가 아니라 실제 작업 파일 삭제이므로 주의해서 써야 합니다.</p>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
-<h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
-<h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
-</article>
-</main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
-</body>
-</html>
+      </nav></aside><div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div><main class="content-shell"><article class="guide-content"><h1>기본 작업 흐름</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-19</p>
+<h2>이 영역에서 확인할 수 있는 것</h2>
+<p>프로젝트를 지정한 뒤 추출, 번역, 적용, 확인까지 이어지는 일반적인 작업 순서입니다.</p>
+<h2>바로 이동</h2>
+<ul><li><a href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html">새 프로젝트 / 프로젝트 지정</a></li><li><a href="../../guide/%EC%B6%94%EC%B6%9C/index.html">추출</a></li><li><a href="../../guide/%EB%B2%88%EC%97%AD/index.html">번역</a></li><li><a href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html">적용과 즉시적용</a></li></ul>
+<h2>처음이라면</h2>
+<p>위에서 아래 순서로 읽으면 됩니다.</p><p>가벼운 마음으로 한번씩 정독하고 본인이 번역하고자하는 엔진의 가이드를 읽어주세요.</p>
+</article></main></div><script src="../../guide/static/main.js"></script></body></html>

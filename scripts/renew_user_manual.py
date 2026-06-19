@@ -19,7 +19,6 @@ ADVANCED_INTRO = "이 문서는 일반 작업 순서에서 벗어나, 값을 직
 SHORT_ARTICLE_FALLBACK = "아직 세부 설명이 충분하지 않은 문서입니다. 먼저 기능의 위치와 실행 결과를 확인하고, 필요한 경우 관련 상위 문서를 함께 확인하세요."
 
 GROUP_PAGES: dict[str, str] = {
-    "guide/start/index.html": "시작하기",
     "guide/basic-workflow/index.html": "기본 작업 흐름",
     "guide/engine-guides/index.html": "엔진별 가이드",
     "guide/features/index.html": "기능별 설명",
@@ -27,19 +26,18 @@ GROUP_PAGES: dict[str, str] = {
     "guide/advanced-reference/index.html": "참고 자료",
 }
 
-VIRTUAL_GROUP_PAGES: set[str] = set(GROUP_PAGES)
+VIRTUAL_GROUP_PAGES: set[str] = set(GROUP_PAGES) - {"guide/basic-workflow/index.html"}
 
 ADVANCED_SUBGROUP_PAGES: dict[str, str] = {}
 
 SETTING_REFERENCE_GROUP_PAGES: dict[str, str] = {}
 
 EXTERNAL_REFERENCE_PAGES: dict[str, str] = {
+    "guide/외부-유틸리티/index.html": "외부 유틸리티",
     "guide/제공자별-참고-링크/index.html": "제공자별 참고 링크",
 }
 
-STARTING_PATHS = {
-    "guide/프롬프트/index.html",
-}
+NAV_ONLY_EXCLUDE_PATHS: set[str] = set()
 
 WORKFLOW_PATHS = {
     "guide/새-프로젝트-프로젝트-지정/index.html",
@@ -62,7 +60,9 @@ TROUBLESHOOTING_PATHS = {
 }
 
 EXCLUDE_FROM_NAV_PATHS = VIRTUAL_GROUP_PAGES | {
-    "guide/cmd/index.html",
+    "guide/start/index.html",
+    "guide/features-quickslot/index.html",
+    "guide/용어사전/index.html",
     "guide/advanced-regex-rules/index.html",
     "guide/advanced-mvmz-options/index.html",
     "guide/advanced-file-formats/index.html",
@@ -82,7 +82,7 @@ EXCLUDE_FROM_NAV_PATHS = VIRTUAL_GROUP_PAGES | {
     "guide/winmerge-check/index.html",
 }
 
-DELETE_DIST_PATHS = (EXCLUDE_FROM_NAV_PATHS - {"guide/cmd/index.html"}) | VIRTUAL_GROUP_PAGES
+DELETE_DIST_PATHS = EXCLUDE_FROM_NAV_PATHS | VIRTUAL_GROUP_PAGES
 
 ADVANCED_KEYWORDS = (
     "code:",
@@ -112,6 +112,8 @@ TITLE_OVERRIDES = {
     "guide/clickteam-fusion-multimedia-fusion-작성예정/index.html": "ClickTeam Fusion 준비 중",
     "guide/rpgmaker-명령코드-정리-작성-예정/index.html": "RPG Maker 명령 코드 참고",
     "guide/advanced-reference/index.html": "참고 자료",
+    "guide/외부-유틸리티/index.html": "외부 유틸리티",
+    "guide/화면전환/index.html": "화면전환",
     "guide/asar-47c728f5/index.html": "ASAR (Tyrano 계열)",
     "guide/asar/index.html": "ASAR (Electron)",
     "guide/라인메이커/index.html": "라인메이커 (MVMZ)",
@@ -137,14 +139,13 @@ ADVANCED_AI_PATHS = {
 
 ADVANCED_DIRECT_PATHS = {
     "guide/rpgmaker-명령코드-정리-작성-예정/index.html",
-    "guide/같이-쓰면-좋은-도구들/index.html",
+    "guide/추출-파일별-설명/index.html",
+    "guide/외부-유틸리티/index.html",
     "guide/제공자별-참고-링크/index.html",
 }
 
 FEATURE_SUBGROUP_PAGES: dict[str, str] = {
     "guide/features-screen/index.html": "화면 영역",
-    "guide/features-quickslot/index.html": "퀵슬롯",
-    "guide/features-reference/index.html": "기타 참고",
 }
 
 MERGED_SCREEN_PAGE_PATHS: set[str] = {
@@ -154,48 +155,92 @@ MERGED_SCREEN_PAGE_PATHS: set[str] = {
 }
 
 SCREEN_AREA_LINK_ONLY_PATHS: set[str] = {
-    "guide/view/index.html",
+    "guide/viewer/index.html",
 }
 
-FEATURE_SCREEN_PATHS: set[str] = set()
+FEATURE_SCREEN_PATHS: set[str] = {
+    "guide/화면전환/index.html",
+}
 
 SCREEN_AREA_SECTIONS: tuple[tuple[str, str, str, tuple[tuple[str, str], ...]], ...] = (
     (
-        "영역① 상단부",
-        "프로젝트 지정, 파일 목록 갱신, 프롬프트, 빠른번역, 설정, 화면 모드 진입처럼 작업을 시작하거나 화면 상태를 바꾸는 영역입니다.",
+        "영역1 사이드바",
+        "프로젝트 지정, 파일 목록 갱신, 프롬프트, 빠른번역, 설정, 화면 전환처럼 작업을 시작하거나 화면 상태를 바꾸는 영역입니다.",
         "guide/assets/상단부/image.png",
         (
             ("guide/새-프로젝트-프로젝트-지정/index.html", "새 프로젝트 / 프로젝트 지정"),
             ("guide/파일목록-새로고침/index.html", "파일목록 새로고침"),
+            ("guide/화면전환/index.html", "화면전환"),
             ("guide/프롬프트/index.html", "프롬프트"),
             ("guide/빠른번역/index.html", "빠른번역"),
-            ("guide/설정/index.html", "설정"),
-            ("guide/view/index.html", "VIEW"),
+            ("guide/설정/index.html", "설정 화면"),
         ),
     ),
     (
-        "영역② 중단부",
-        "선택한 파일과 작업 대상의 내용을 확인하는 영역입니다. 목록에서 대상을 고르고, 필요한 경우 VIEW 화면으로 세부 내용을 확인합니다.",
+        "영역2 메인뷰",
+        "선택한 파일과 작업 대상의 내용을 확인하는 영역입니다. 목록에서 대상을 고르고, 필요한 경우 Viewer 화면으로 세부 내용을 확인합니다.",
         "guide/assets/중단부/image 3.png",
         (
-            ("guide/view/index.html", "VIEW"),
+            ("guide/viewer/index.html", "Viewer"),
+            ("guide/console/index.html", "Console"),
         ),
     ),
     (
-        "영역③ 하단부",
+        "영역3 커맨드바",
         "추출, 번역, 적용, 도구, 퀵슬롯처럼 실제 작업을 실행하는 영역입니다. 작업 단계가 바뀔 때 가장 자주 사용하는 버튼들이 모여 있습니다.",
         "guide/assets/하단부/image 1.png",
         (
-            ("guide/도구/index.html", "작업 도구"),
             ("guide/추출/index.html", "추출"),
             ("guide/번역/index.html", "번역"),
             ("guide/적용과-즉시적용/index.html", "적용과 즉시적용"),
+            ("guide/도구/index.html", "작업 도구"),
             ("guide/퀵슬롯/index.html", "퀵슬롯"),
         ),
     ),
 )
 
+SCREEN_AREA_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
+    (
+        "sidebar",
+        "영역1 사이드바",
+        (
+            "guide/새-프로젝트-프로젝트-지정/index.html",
+            "guide/파일목록-새로고침/index.html",
+            "guide/화면전환/index.html",
+            "guide/프롬프트/index.html",
+            "guide/빠른번역/index.html",
+        ),
+    ),
+    (
+        "mainview",
+        "영역2 메인뷰",
+        (
+            "guide/viewer/index.html",
+            "guide/console/index.html",
+        ),
+    ),
+    (
+        "commandbar",
+        "영역3 커맨드바",
+        (
+            "guide/추출/index.html",
+            "guide/번역/index.html",
+            "guide/적용과-즉시적용/index.html",
+        ),
+    ),
+)
+
+SCREEN_AREA_NAV_CHILD_PATHS: set[str] = {
+    child_path
+    for _group_id, _group_title, child_paths in SCREEN_AREA_NAV_GROUPS
+    for child_path in child_paths
+}
+
 SETTINGS_PAGE_PATH = "guide/설정/index.html"
+
+ELEVATED_SETTINGS_PAGE_CHILD_PATHS: tuple[str, ...] = (
+    "guide/번역-설정/index.html",
+)
 
 SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     (
@@ -212,7 +257,6 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "translation",
         "번역설정",
         (
-            "guide/번역-설정/index.html",
             "guide/ai-model/index.html",
             "guide/api-key-설정/index.html",
         ),
@@ -277,7 +321,7 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ),
 )
 
-SETTINGS_PAGE_CHILD_PATHS: tuple[str, ...] = tuple(
+SETTINGS_PAGE_CHILD_PATHS: tuple[str, ...] = ELEVATED_SETTINGS_PAGE_CHILD_PATHS + tuple(
     child_path
     for _group_id, _group_title, child_paths in SETTINGS_NAV_GROUPS
     for child_path in child_paths
@@ -310,8 +354,6 @@ FEATURE_WORKSPACE_TOOL_PATHS = {
 }
 
 WORKSPACE_TOOL_LINK_ONLY_PATHS: set[str] = {
-    "guide/파일목록-새로고침/index.html",
-    "guide/빠른번역/index.html",
     "guide/빠른번역-77499184/index.html",
 }
 
@@ -374,7 +416,6 @@ FEATURE_QUICKSLOT_PATHS = {
     "guide/퀵슬롯/index.html",
     "guide/메모장/index.html",
     "guide/빠른번역-77499184/index.html",
-    "guide/용어사전/index.html",
 }
 
 FEATURE_QUICKSLOT_PARENT_PATHS: tuple[str, ...] = (
@@ -448,7 +489,6 @@ FEATURE_NESTED_CHILD_PATHS_BY_PARENT: dict[str, tuple[str, ...]] = {
     "guide/퀵슬롯/index.html": (
         "guide/메모장/index.html",
         "guide/빠른번역-77499184/index.html",
-        "guide/용어사전/index.html",
     ),
 }
 
@@ -501,13 +541,6 @@ FEATURE_NESTED_CHILD_PATHS = {
 FEATURE_NESTED_CHILD_ORDER_BY_PARENT = {
     parent_path: {child_path: index for index, child_path in enumerate(child_paths)}
     for parent_path, child_paths in FEATURE_NESTED_CHILD_PATHS_BY_PARENT.items()
-}
-
-FEATURE_REFERENCE_PATHS = {
-    "guide/추출-파일별-설명/index.html",
-    "guide/2차-추출-필터/index.html",
-    "guide/ctf-이미지-고속-추출/index.html",
-    "guide/ctf-2차-추출-필터-편집/index.html",
 }
 
 PHRASE_REPLACEMENTS = {
@@ -703,7 +736,14 @@ def _drop_duplicate_standard_sections(value: str) -> str:
 
 
 def _unwrap_existing_manual(value: str) -> str:
-    markers = [r"<h2[^>]*>\s*항목별 설명\s*</h2>", r"<h2[^>]*>\s*고급 사용자 참고\s*</h2>", r"<h2[^>]*>\s*질문과 답변\s*</h2>"]
+    markers = [
+        r"<h2[^>]*>\s*항목별 설명\s*</h2>",
+        r"<h2[^>]*>\s*고급 사용자 참고\s*</h2>",
+        r"<h2[^>]*>\s*질문과 답변\s*</h2>",
+        r"<h2[^>]*>\s*화면과 항목\s*</h2>",
+        r"<h2[^>]*>\s*참고 내용\s*</h2>",
+        r"<h2[^>]*>\s*명령 코드 참고\s*</h2>",
+    ]
     starts: list[tuple[int, int]] = []
     for marker in markers:
         starts.extend((match.start(), match.end()) for match in re.finditer(marker, value, flags=re.IGNORECASE))
@@ -712,7 +752,7 @@ def _unwrap_existing_manual(value: str) -> str:
     _start, body_start = sorted(starts)[-1]
     tail = value[body_start:]
     stop = re.search(
-        r"(?is)<h2[^>]*>\s*(?:결과 확인 방법|알아둘 점|자주 헷갈리는 점|주의|그래도 해결되지 않을 때)\s*</h2>",
+        r"(?is)<h2[^>]*>\s*(?:변경 전 확인할 중요 사항|완료 후 확인|완료 기준|결과 확인 방법|주의/중요/권장|알아둘 점|자주 헷갈리는 점|주의|그래도 해결되지 않을 때)\s*</h2>",
         tail,
     )
     return tail[: stop.start()] if stop else tail
@@ -725,7 +765,7 @@ def _replace_article_safe(text: str, article: str) -> str:
     return main_re.sub(lambda match: f"{match.group(1)}\n{clean}\n{match.group(2)}", text, count=1)
 
 
-def _source_text_for(path: str, fallback: str) -> str:
+def _git_source_text_for(path: str) -> str:
     git_path = f"HEAD:dist/{path}"
     try:
         completed = subprocess.run(
@@ -739,7 +779,25 @@ def _source_text_for(path: str, fallback: str) -> str:
         )
         return completed.stdout
     except (subprocess.CalledProcessError, FileNotFoundError):
-        return fallback
+        return ""
+
+
+def _article_from_current_or_git(path: str, current_text: str) -> tuple[str, str, bool]:
+    """Return article source and title source, preferring the current file.
+
+    Expected failures:
+        ValueError is raised when neither the current file nor the committed
+        fallback has an article.guide-content block.
+    """
+
+    try:
+        current_article = edit_guide.extract_article(current_text)
+        return current_article, current_text, True
+    except ValueError:
+        git_text = _git_source_text_for(path)
+        if not git_text:
+            raise
+        return edit_guide.extract_article(git_text), git_text, False
 
 
 PAGE_TYPE_TEMPLATES: dict[str, tuple[str, ...]] = {
@@ -1296,7 +1354,7 @@ def _screen_area_article() -> str:
         _doc_version(),
         _image_block(from_path, "guide/assets/하단부/image.png", "AIMT 화면 전체"),
         "<h2>전체 화면</h2>",
-        _p("AIMT 화면은 크게 영역① 상단부, 영역② 중단부, 영역③ 하단부로 나누어 볼 수 있습니다. 먼저 전체 화면의 위치 관계를 확인한 뒤, 필요한 영역의 설명과 관련 문서로 이동하세요."),
+        _p("AIMT 화면은 크게 영역1 사이드바, 영역2 메인뷰, 영역3 커맨드바로 나누어 볼 수 있습니다. 먼저 전체 화면의 위치 관계를 확인한 뒤, 필요한 영역의 설명과 관련 문서로 이동하세요."),
     ]
     for title, description, asset_path, links in SCREEN_AREA_SECTIONS:
         parts.extend([
@@ -1356,7 +1414,7 @@ def _ensure_group_pages() -> None:
         html_path = DIST_ROOT / path
         if html_path.exists():
             continue
-        source_text = _source_text_for(path, "")
+        source_text = _git_source_text_for(path)
         title = TITLE_OVERRIDES.get(path)
         if not title and source_text:
             title = edit_guide.parse_title(source_text, html_path.parent.name)
@@ -1383,14 +1441,6 @@ def _remove_deleted_pages() -> None:
 
 def _build_group_articles() -> dict[str, str]:
     return {
-        "guide/start/index.html": _hub_article(
-            "guide/start/index.html",
-            "시작하기",
-            "AIMT를 처음 사용할 때 필요한 준비 과정을 모은 영역입니다.",
-            [
-                ("guide/프롬프트/index.html", "프롬프트"),
-            ],
-        ),
         "guide/basic-workflow/index.html": _hub_article(
             "guide/basic-workflow/index.html",
             "기본 작업 흐름",
@@ -1421,22 +1471,18 @@ def _build_group_articles() -> dict[str, str]:
                 ("guide/features-screen/index.html", "화면 영역"),
                 ("guide/설정/index.html", "설정 화면"),
                 ("guide/도구/index.html", "작업 도구"),
-                ("guide/features-quickslot/index.html", "퀵슬롯"),
-                ("guide/features-reference/index.html", "기타 참고"),
+                ("guide/퀵슬롯/index.html", "퀵슬롯"),
             ],
         ),
         "guide/features-screen/index.html": _screen_area_article(),
-        "guide/features-quickslot/index.html": _hub_article(
-            "guide/features-quickslot/index.html",
-            "퀵슬롯",
-            "퀵슬롯과 퀵슬롯에서 바로 여는 보조 기능 문서 묶음입니다.",
-            _links_from_ordered_paths(FEATURE_QUICKSLOT_PARENT_PATHS),
-        ),
-        "guide/features-reference/index.html": _hub_article(
-            "guide/features-reference/index.html",
-            "기타 참고",
-            "기능별 설명에 속하지만 특정 화면 영역으로 묶기 어려운 참고 문서입니다.",
-            _links_from_paths(FEATURE_REFERENCE_PATHS),
+        "guide/화면전환/index.html": _hub_article(
+            "guide/화면전환/index.html",
+            "화면전환",
+            "AIMT의 화면 표시 방식과 명령 입력 화면으로 이동하는 기능을 함께 확인하는 영역입니다.",
+            [
+                ("guide/viewer/index.html", "Viewer"),
+                ("guide/console/index.html", "Console"),
+            ],
         ),
         "guide/troubleshooting/index.html": _hub_article(
             "guide/troubleshooting/index.html",
@@ -1452,7 +1498,8 @@ def _build_group_articles() -> dict[str, str]:
             "AIMT에서 함께 참고하기 좋은 외부 사이트, API 제공자 문서, 출처 링크를 모은 영역입니다.",
             [
                 ("guide/rpgmaker-명령코드-정리-작성-예정/index.html", "RPG Maker 명령 코드 참고"),
-                ("guide/같이-쓰면-좋은-도구들/index.html", "외부 유틸리티"),
+                ("guide/추출-파일별-설명/index.html", "추출 파일별 설명"),
+                ("guide/외부-유틸리티/index.html", "외부 유틸리티"),
                 ("guide/제공자별-참고-링크/index.html", "제공자별 참고 링크"),
             ],
         ),
@@ -1582,6 +1629,24 @@ def _append_workspace_tool_groups(
             nav.append(child_entry)
 
 
+def _append_screen_area_groups(nav: list[dict[str, Any]], by_path: dict[str, dict[str, Any]], parent_depth: int) -> None:
+    group_depth = parent_depth + 1
+    child_depth = group_depth + 1
+    for group_id, title, child_paths in SCREEN_AREA_NAV_GROUPS:
+        nav.append(_virtual_nav_group(f"screen-{group_id}", title, group_depth))
+        for child_path in child_paths:
+            if child_path in EXCLUDE_FROM_NAV_PATHS:
+                continue
+            if child_path in WORKSPACE_TOOL_LINK_ONLY_PATHS:
+                continue
+            try:
+                child_entry = dict(by_path[child_path])
+            except KeyError:
+                continue
+            child_entry["depth"] = child_depth
+            nav.append(child_entry)
+
+
 def _ensure_path_entry(by_path: dict[str, dict[str, Any]], path: str) -> None:
     if path in by_path:
         return
@@ -1605,6 +1670,10 @@ def _append_settings_groups(
     group_depth = parent_depth + 1
     child_depth = group_depth + 1
     for group_id, title, child_paths in SETTINGS_NAV_GROUPS:
+        parent_path = ""
+        if group_id == "translation":
+            parent_path = "guide/번역-설정/index.html"
+            _ensure_path_entry(by_path, parent_path)
         children: list[dict[str, Any]] = []
         for child_path in child_paths:
             if child_path in WORKSPACE_TOOL_LINK_ONLY_PATHS:
@@ -1618,7 +1687,15 @@ def _append_settings_groups(
             children.append(child_entry)
         if not children:
             continue
-        nav.append(_virtual_nav_group(f"settings-{group_id}", title, group_depth))
+        if parent_path:
+            try:
+                parent_entry = dict(by_path[parent_path])
+            except KeyError:
+                continue
+            parent_entry["depth"] = group_depth
+            nav.append(parent_entry)
+        else:
+            nav.append(_virtual_nav_group(f"settings-{group_id}", title, group_depth))
         nav.extend(children)
 
 
@@ -1627,6 +1704,10 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
     for path, title in {**GROUP_PAGES, **ADVANCED_SUBGROUP_PAGES, **SETTING_REFERENCE_GROUP_PAGES, **FEATURE_SUBGROUP_PAGES, **EXTERNAL_REFERENCE_PAGES}.items():
         by_path[path] = {"path": path, "title": title, "depth": 1, "order": -1, "hasChildren": True, "virtual": path in VIRTUAL_GROUP_PAGES}
     for path in SETTINGS_PAGE_CHILD_PATHS:
+        _ensure_path_entry(by_path, path)
+    for path in SCREEN_AREA_NAV_CHILD_PATHS:
+        _ensure_path_entry(by_path, path)
+    for path in FEATURE_QUICKSLOT_PATHS:
         _ensure_path_entry(by_path, path)
     for path, title in TITLE_OVERRIDES.items():
         if path in by_path:
@@ -1637,7 +1718,6 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
     root["title"] = TITLE_OVERRIDES["guide/index.html"]
 
     buckets: dict[str, list[dict[str, Any]]] = {
-        "guide/start/index.html": [],
         "guide/basic-workflow/index.html": [],
         "guide/engine-guides/index.html": [],
         "guide/features/index.html": [],
@@ -1652,20 +1732,23 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
         "guide/features-screen/index.html": [],
         "guide/도구/index.html": [],
         "guide/features-engine-tools/index.html": [],
-        "guide/features-quickslot/index.html": [],
-        "guide/features-reference/index.html": [],
+        "guide/퀵슬롯/index.html": [],
         "guide/features/index.html": [],
     }
     for path, entry in list(by_path.items()):
+        if path in NAV_ONLY_EXCLUDE_PATHS:
+            continue
         if path in EXCLUDE_FROM_NAV_PATHS:
             continue
         if path in WORKSPACE_TOOL_LINK_ONLY_PATHS:
             continue
-        if path in MERGED_SCREEN_PAGE_PATHS or path in SCREEN_AREA_LINK_ONLY_PATHS:
+        if path in MERGED_SCREEN_PAGE_PATHS or path in SCREEN_AREA_LINK_ONLY_PATHS or path in SCREEN_AREA_NAV_CHILD_PATHS:
             continue
         if path == SETTINGS_PAGE_PATH:
             continue
         if path in GROUP_PAGES or path in ADVANCED_SUBGROUP_PAGES or path in FEATURE_SUBGROUP_PAGES or path in settings_reference_parent_paths:
+            continue
+        if path == "guide/퀵슬롯/index.html":
             continue
         title = str(entry["title"])
         settings_parent = ""
@@ -1673,10 +1756,8 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         if path in SETTINGS_PAGE_CHILD_ORDER:
             group = "guide/features/index.html"
-        elif path in STARTING_PATHS:
-            group = "guide/start/index.html"
         elif path in WORKFLOW_PATHS:
-            group = "guide/basic-workflow/index.html"
+            group = "guide/features/index.html"
         elif path in ENGINE_PATHS:
             group = "guide/engine-guides/index.html"
         elif path in TROUBLESHOOTING_PATHS:
@@ -1700,7 +1781,7 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 elif settings_parent:
                     entry["depth"] = 4
                     settings_buckets[settings_parent].append(entry)
-                elif path in FEATURE_NESTED_CHILD_PATHS and path not in FEATURE_NESTED_PARENT_PATHS:
+                elif path in FEATURE_NESTED_CHILD_PATHS and path not in FEATURE_NESTED_PARENT_PATHS and path not in FEATURE_QUICKSLOT_PATHS:
                     continue
                 elif path in FEATURE_SCREEN_PATHS:
                     entry["depth"] = 3
@@ -1713,10 +1794,7 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     feature_buckets["guide/features-engine-tools/index.html"].append(entry)
                 elif path in FEATURE_QUICKSLOT_PATHS:
                     entry["depth"] = 3
-                    feature_buckets["guide/features-quickslot/index.html"].append(entry)
-                elif path in FEATURE_REFERENCE_PATHS:
-                    entry["depth"] = 3
-                    feature_buckets["guide/features-reference/index.html"].append(entry)
+                    feature_buckets["guide/퀵슬롯/index.html"].append(entry)
                 else:
                     feature_buckets["guide/features/index.html"].append(entry)
             else:
@@ -1733,14 +1811,16 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "guide/features-screen/index.html",
                 SETTINGS_PAGE_PATH,
                 "guide/도구/index.html",
-                "guide/features-quickslot/index.html",
-                "guide/features-reference/index.html",
+                "guide/퀵슬롯/index.html",
             ]:
                 subgroup_entry = dict(by_path[subgroup_path])
                 subgroup_entry["depth"] = 2
                 nav.append(subgroup_entry)
                 if subgroup_path == SETTINGS_PAGE_PATH:
                     _append_settings_groups(nav, by_path, 2)
+                    continue
+                if subgroup_path == "guide/features-screen/index.html":
+                    _append_screen_area_groups(nav, by_path, 2)
                     continue
                 if subgroup_path == "guide/도구/index.html":
                     _append_workspace_tool_groups(
@@ -1786,15 +1866,37 @@ def _flatten_nested_card_styles() -> None:
     if not css_path.exists():
         return
     text = edit_guide.read_text(css_path)
+    code_block_style = (
+        "pre,.code{color:#7ee787}"
+        "pre code,.code code{padding:0;border-radius:0;background:transparent;color:inherit}"
+    )
+    basic_workflow_nav_style = (
+        ".nav-single-group>summary{cursor:default;pointer-events:none}"
+        ".nav-single-group>summary .nav-link{cursor:pointer;pointer-events:auto}"
+        ".nav-caret.nav-caret-static:before{content:\"\" !important;display:block;width:3px;height:3px;border-radius:999px;background:var(--muted);opacity:.72}"
+        ".nav-single-group[open]>summary .nav-caret-static{transform:none}"
+        ".nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current=\"page\"]) .nav-caret-static{color:var(--muted)}"
+    )
     replacements = {
         "blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}": "blockquote{margin:20px 0;padding:0 0 0 14px;border-left:3px solid var(--accent);background:transparent;border-radius:0}",
         ".callout{border-radius:12px;padding:1rem;background:var(--soft)}": ".callout{border-radius:0;padding:0;background:transparent}",
         ".bookmark{display:flex;width:100%;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none}": ".bookmark{display:flex;width:100%;align-items:stretch;border:0;border-radius:0;overflow:visible;text-decoration:none}",
         ".bookmark-info{padding:12px 14px}": ".bookmark-info{padding:0}",
         ".selected-value{display:inline-block;padding:0 .5em;background:var(--soft);border-radius:3px;margin:.3em .5em .3em 0}": ".selected-value{display:inline;font-weight:700;background:transparent;border-radius:0;margin:0 .25em 0 0}",
+        '.nav-list>.nav-link[href$="guide/basic-workflow/index.html"]{position:relative;padding-left:33px}.nav-list>.nav-link[href$="guide/basic-workflow/index.html"]:before{content:"";position:absolute;left:11px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:999px;background:var(--muted);opacity:.75}.nav-list>.nav-link[href$="guide/basic-workflow/index.html"]:hover:before,.nav-list>.nav-link[href$="guide/basic-workflow/index.html"][aria-current="page"]:before{background:var(--accent);opacity:1}': "",
+        '.nav-list .nav-link[href$="guide/basic-workflow/index.html"]{position:relative;padding-left:33px}.nav-list .nav-link[href$="guide/basic-workflow/index.html"]:before{content:"";position:absolute;left:11px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:999px;background:var(--muted);opacity:.75}.nav-list .nav-link[href$="guide/basic-workflow/index.html"]:hover:before,.nav-list .nav-link[href$="guide/basic-workflow/index.html"][aria-current="page"]:before{background:var(--accent);opacity:1}': "",
+        '.nav-workflow-link{display:flex;align-items:center;gap:10px;padding-left:11px}.nav-workflow-link .nav-dot{width:7px;height:7px;flex:0 0 7px;border-radius:999px;background:var(--muted);opacity:.78}.nav-workflow-link:hover .nav-dot,.nav-workflow-link[aria-current="page"] .nav-dot{background:var(--accent);opacity:1}': "",
+        '.nav-single{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;margin:2px 0;border-radius:10px}.nav-single .nav-link{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis}.nav-caret-static:before{content:"•";font-size:18px;line-height:1}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
+        '.nav-single-group>summary{cursor:default}.nav-single-group>summary .nav-link{cursor:pointer}.nav-caret-static:before{content:"•";font-size:18px;line-height:1}.nav-single-group[open]>summary .nav-caret-static{transform:none}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
+        '.nav-single-group>summary{cursor:default;pointer-events:none}.nav-single-group>summary .nav-link{cursor:pointer;pointer-events:auto}.nav-caret-static:before{content:"";display:block;width:5px;height:5px;border-radius:999px;background:currentColor}.nav-single-group[open]>summary .nav-caret-static{transform:none}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
+        '.nav-single-group>summary{cursor:default;pointer-events:none}.nav-single-group>summary .nav-link{cursor:pointer;pointer-events:auto}.nav-caret.nav-caret-static:before{content:"" !important;display:block;width:5px;height:5px;border-radius:999px;background:currentColor}.nav-single-group[open]>summary .nav-caret-static{transform:none}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
     }
     for old, new in replacements.items():
         text = text.replace(old, new)
+    if code_block_style not in text:
+        text = text.rstrip() + "\n" + code_block_style + "\n"
+    if basic_workflow_nav_style not in text:
+        text = text.rstrip() + "\n" + basic_workflow_nav_style + "\n"
     edit_guide.write_text(css_path, text)
 
 
@@ -1803,20 +1905,23 @@ def main() -> int:
     _remove_deleted_pages()
     entries = edit_guide.get_nav_entries(DIST_ROOT)
     group_articles = _build_group_articles()
-    all_paths = {entry["path"] for entry in edit_guide.list_files(DIST_ROOT, include_unlisted=True)}
+    all_paths = {entry["path"] for entry in edit_guide.list_files(DIST_ROOT, include_unlisted=True) if not entry.get("virtual")}
 
     for path in sorted(all_paths):
         html_path = DIST_ROOT / path
         if not html_path.exists():
             continue
         text = edit_guide.read_text(html_path)
-        source_text = _source_text_for(path, text)
         try:
-            original_article = edit_guide.extract_article(source_text)
+            original_article, title_source_text, uses_current_article = _article_from_current_or_git(path, text)
         except ValueError:
             continue
-        title = TITLE_OVERRIDES.get(path, edit_guide.parse_title(source_text, html_path.parent.name))
-        article = group_articles.get(path) or _render_article(path, title, original_article)
+        title = TITLE_OVERRIDES.get(path, edit_guide.parse_title(title_source_text, html_path.parent.name))
+        article = (
+            original_article
+            if uses_current_article
+            else group_articles.get(path) or _render_article(path, title, original_article)
+        )
         updated = _replace_article_safe(text, article)
         updated = re.sub(r"(?is)<title>.*?</title>", f"<title>{_escape(title)} · AIMT Guide</title>", updated, count=1)
         edit_guide.write_text(html_path, updated)
@@ -1825,7 +1930,8 @@ def main() -> int:
     changed = edit_guide.rewrite_navs(DIST_ROOT, new_entries)
     _flatten_nested_card_styles()
     edit_guide.rebuild_search_index(DIST_ROOT)
-    print(f"Renewed guide articles and navigation. nav_rewritten={changed}, pages={len(edit_guide.list_files(DIST_ROOT))}")
+    page_count = len([entry for entry in edit_guide.list_files(DIST_ROOT) if not entry.get("virtual")])
+    print(f"Renewed guide articles and navigation. nav_rewritten={changed}, pages={page_count}")
     return 0
 
 
