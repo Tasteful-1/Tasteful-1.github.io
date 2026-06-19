@@ -5,6 +5,7 @@ import html
 import json
 import mimetypes
 import re
+from html.parser import HTMLParser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
@@ -16,7 +17,6 @@ DOC_VERSION = "문서 기준: AIMT PRO 1.13 계열"
 
 GROUP_PAGES = {
     "guide/index.html",
-    "guide/start/index.html",
     "guide/basic-workflow/index.html",
     "guide/engine-guides/index.html",
     "guide/features/index.html",
@@ -26,24 +26,22 @@ GROUP_PAGES = {
 
 FEATURE_SUBGROUP_PAGES = {
     "guide/features-screen/index.html",
-    "guide/features-quickslot/index.html",
-    "guide/features-reference/index.html",
+    "guide/퀵슬롯/index.html",
 }
 
 SETTING_REFERENCE_GROUP_PAGES = set()
 
 EXTERNAL_REFERENCE_PAGES = {
+    "guide/외부-유틸리티/index.html",
     "guide/제공자별-참고-링크/index.html",
 }
 
 EXCLUDE_FROM_NAV_PATHS = {
     "guide/start/index.html",
-    "guide/basic-workflow/index.html",
     "guide/engine-guides/index.html",
     "guide/features/index.html",
     "guide/troubleshooting/index.html",
     "guide/advanced-reference/index.html",
-    "guide/cmd/index.html",
     "guide/advanced-regex-rules/index.html",
     "guide/advanced-mvmz-options/index.html",
     "guide/advanced-file-formats/index.html",
@@ -60,11 +58,13 @@ EXCLUDE_FROM_NAV_PATHS = {
     "guide/features-engine-tools/index.html",
     "guide/features-external-tools/index.html",
     "guide/features-settings/index.html",
+    "guide/features-quickslot/index.html",
+    "guide/용어사전/index.html",
     "guide/winmerge-check/index.html",
 }
 
 STRUCTURE_MANAGED_PATHS = GROUP_PAGES | FEATURE_SUBGROUP_PAGES | SETTING_REFERENCE_GROUP_PAGES | EXTERNAL_REFERENCE_PAGES
-DEFAULT_NEW_PAGE_PARENT = "guide/features-reference/index.html"
+DEFAULT_NEW_PAGE_PARENT = "guide/features-screen/index.html"
 
 
 def find_site_root() -> Path:
@@ -86,12 +86,100 @@ TAG_RE = re.compile(r"<[^>]+>")
 IMAGE_EXT = {"image/png": ".png", "image/jpeg": ".jpg", "image/gif": ".gif", "image/webp": ".webp"}
 
 
+class NavEntryParser(HTMLParser):
+    """Parse the rendered guide navigation into editor tree entries.
+
+    Expected failures:
+        Invalid or partial HTML may omit entries, but parsing should not raise for
+        ordinary guide pages.
+    """
+
+    def __init__(self, dist_root: Path, index_path: Path, dedupe: bool) -> None:
+        super().__init__(convert_charrefs=True)
+        self.dist_root = dist_root
+        self.index_path = index_path
+        self.dedupe = dedupe
+        self.entries: list[dict[str, Any]] = []
+        self.seen: set[str] = set()
+        self.details_stack: list[dict[str, str]] = []
+        self.in_summary_depth = 0
+        self.current_link: dict[str, Any] | None = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attr = {name.lower(): value or "" for name, value in attrs}
+        if tag == "details" and "nav-group" in attr.get("class", "").split():
+            self.details_stack.append({"key": attr.get("data-nav-key", ""), "depth": attr.get("data-depth", "")})
+            return
+        if tag == "summary":
+            self.in_summary_depth += 1
+            return
+        if tag not in {"a", "span"} or "nav-link" not in attr.get("class", "").split():
+            return
+        self.current_link = {"tag": tag, "attrs": attr, "text": []}
+
+    def handle_endtag(self, tag: str) -> None:
+        if self.current_link and tag == self.current_link["tag"]:
+            self._finish_link()
+            self.current_link = None
+            return
+        if tag == "summary" and self.in_summary_depth:
+            self.in_summary_depth -= 1
+            return
+        if tag == "details" and self.details_stack:
+            self.details_stack.pop()
+
+    def handle_data(self, data: str) -> None:
+        if self.current_link:
+            self.current_link["text"].append(data)
+
+    def _finish_link(self) -> None:
+        link = self.current_link
+        if not link:
+            return
+        attrs: dict[str, str] = link["attrs"]
+        title = re.sub(r"\s+", " ", "".join(link["text"])).strip()
+        if not title:
+            return
+        details = self.details_stack[-1] if self.details_stack and self.in_summary_depth else {}
+        href = attrs.get("href", "")
+        target = get_href_target(self.dist_root, self.index_path, href) if href else None
+        virtual = not bool(target)
+        path = target or details.get("key", "")
+        if not path:
+            return
+        if not virtual and is_excluded_path(path):
+            return
+        if self.dedupe and path in self.seen:
+            return
+        raw_depth = attrs.get("data-depth") or details.get("depth") or "0"
+        try:
+            depth = int(raw_depth)
+        except ValueError:
+            depth = 0
+        self.entries.append(
+            {
+                "path": path,
+                "title": title,
+                "depth": depth,
+                "order": len(self.entries),
+                "hasChildren": False,
+                "virtual": virtual,
+            }
+        )
+        self.seen.add(path)
+
+
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
 
 def write_text(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        if path.read_text(encoding="utf-8") == text:
+            return
+    except FileNotFoundError:
+        pass
     path.write_text(text, encoding="utf-8", newline="\n")
 
 
@@ -159,31 +247,74 @@ def relative_href(from_path: Path, to_relative: str, dist_root: Path = DIST_ROOT
     return quote("/".join(parts), safe="/._-#%")
 
 
-def get_nav_entries(dist_root: Path, *, dedupe: bool = False) -> list[dict[str, Any]]:
+def get_nav_entries(dist_root: Path, *, dedupe: bool = False, include_virtual: bool = False) -> list[dict[str, Any]]:
     index_path = dist_root / "guide" / "index.html"
     if not index_path.exists():
         return []
     match = NAV_RE.search(read_text(index_path))
     if not match:
         return []
-    entries: list[dict[str, Any]] = []
-    seen: set[str] = set()
-    for nav_match in NAV_LINK_RE.finditer(match.group(2)):
-        attrs = nav_match.group("attrs")
-        href = HREF_RE.search(attrs)
-        if not href:
-            continue
-        target = get_href_target(dist_root, index_path, href.group(1))
-        if not target or is_excluded_path(target):
-            continue
-        if dedupe and target in seen:
-            continue
-        depth = DEPTH_RE.search(attrs)
-        entries.append({"path": target, "title": strip_tags(nav_match.group("title")), "depth": int(depth.group(1)) if depth else 0, "order": len(entries), "hasChildren": False})
-        seen.add(target)
+    parser = NavEntryParser(dist_root, index_path, dedupe)
+    parser.feed(match.group(2))
+    entries = parser.entries if include_virtual else [entry for entry in parser.entries if not entry.get("virtual")]
+    for order, entry in enumerate(entries):
+        entry["order"] = order
     for index, entry in enumerate(entries[:-1]):
         entry["hasChildren"] = int(entries[index + 1]["depth"]) > int(entry["depth"])
+    annotate_nav_move_flags(entries)
     return entries
+
+
+def is_movable_nav_entry(entry: dict[str, Any]) -> bool:
+    """Return whether a navigation entry can be moved by the editor."""
+    path = str(entry.get("path", ""))
+    return all(
+        [
+            bool(path),
+            not bool(entry.get("virtual", False)),
+            path not in STRUCTURE_MANAGED_PATHS,
+            not is_excluded_path(path),
+        ]
+    )
+
+
+def subtree_end(entries: list[dict[str, Any]], start_index: int) -> int:
+    """Return the exclusive end index for a nav entry and all descendants."""
+    start_depth = int(entries[start_index]["depth"])
+    end_index = start_index + 1
+    while end_index < len(entries) and int(entries[end_index]["depth"]) > start_depth:
+        end_index += 1
+    return end_index
+
+
+def previous_sibling_index(entries: list[dict[str, Any]], source_index: int) -> int | None:
+    """Return the previous sibling index, or None when the item is first."""
+    source_depth = int(entries[source_index]["depth"])
+    index = source_index - 1
+    while index >= 0:
+        depth = int(entries[index]["depth"])
+        if depth == source_depth:
+            return index
+        if depth < source_depth:
+            return None
+        index -= 1
+    return None
+
+
+def next_sibling_index(entries: list[dict[str, Any]], source_index: int) -> int | None:
+    """Return the next sibling index, or None when the item is last."""
+    source_depth = int(entries[source_index]["depth"])
+    index = subtree_end(entries, source_index)
+    if index < len(entries) and int(entries[index]["depth"]) == source_depth:
+        return index
+    return None
+
+
+def annotate_nav_move_flags(entries: list[dict[str, Any]]) -> None:
+    """Attach same-parent move availability to each nav entry."""
+    for index, entry in enumerate(entries):
+        entry["canMoveUp"] = is_movable_nav_entry(entry) and previous_sibling_index(entries, index) is not None
+        entry["canMoveDown"] = is_movable_nav_entry(entry) and next_sibling_index(entries, index) is not None
 
 
 def build_nav(entries: list[dict[str, Any]], html_path: Path, dist_root: Path = DIST_ROOT) -> str:
@@ -196,6 +327,7 @@ def build_nav(entries: list[dict[str, Any]], html_path: Path, dist_root: Path = 
             lines.append("</div></details>")
             stack.pop()
         title = html.escape(str(entry["title"]), quote=False)
+        is_basic_workflow = str(entry["path"]) == "guide/basic-workflow/index.html"
         if bool(entry.get("virtual", False)):
             anchor = f'<span class="nav-link nav-label" data-depth="{depth}">{title}</span>'
         else:
@@ -206,6 +338,9 @@ def build_nav(entries: list[dict[str, Any]], html_path: Path, dist_root: Path = 
             nav_key = html.escape(str(entry["path"]), quote=True)
             lines.append(f'<details class="nav-group" data-depth="{depth}" data-nav-key="{nav_key}"{open_attr}><summary><span class="nav-caret" aria-hidden="true"></span>{anchor}</summary><div class="nav-children">')
             stack.append(depth)
+        elif is_basic_workflow:
+            nav_key = html.escape(str(entry["path"]), quote=True)
+            lines.append(f'<details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="{depth}" data-nav-key="{nav_key}"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span>{anchor}</summary></details>')
         else:
             lines.append(anchor)
     while stack:
@@ -229,40 +364,59 @@ def rewrite_navs(dist_root: Path, entries: list[dict[str, Any]]) -> int:
 
 
 def _file_item(dist_root: Path, relative_path: str, entry: dict[str, Any] | None) -> dict[str, Any] | None:
+    if entry and entry.get("virtual"):
+        return {
+            "path": relative_path,
+            "title": str(entry["title"]),
+            "updated": 0,
+            "depth": int(entry.get("depth", 0)),
+            "inNav": True,
+            "movable": False,
+            "managed": True,
+            "hasChildren": bool(entry.get("hasChildren", False)),
+            "virtual": True,
+            "canMoveUp": False,
+            "canMoveDown": False,
+        }
     if is_excluded_path(relative_path):
         return None
     path = dist_root / relative_path
     if not path.exists() or path.name == "404.html":
         return None
     text = read_text(path)
-    movable = bool(entry) and relative_path not in STRUCTURE_MANAGED_PATHS
+    title = parse_title(text, path.parent.name)
+    movable = bool(entry) and relative_path not in STRUCTURE_MANAGED_PATHS and not is_excluded_path(relative_path)
     return {
         "path": relative_path,
-        "title": parse_title(text, path.parent.name),
+        "title": title,
         "updated": int(path.stat().st_mtime),
         "depth": int(entry.get("depth", 0)) if entry else 0,
         "inNav": bool(entry),
         "movable": movable,
         "managed": relative_path in STRUCTURE_MANAGED_PATHS,
         "hasChildren": bool(entry.get("hasChildren", False)) if entry else False,
+        "canMoveUp": bool(entry.get("canMoveUp", False)) if entry else False,
+        "canMoveDown": bool(entry.get("canMoveDown", False)) if entry else False,
     }
 
 
 def list_files(dist_root: Path, include_unlisted: bool = True) -> list[dict[str, Any]]:
-    entries = get_nav_entries(dist_root)
+    entries = get_nav_entries(dist_root, include_virtual=True)
     meta = {entry["path"]: entry for entry in entries}
-    order = {entry["path"]: int(entry["order"]) for entry in entries}
     unique_entries = sorted(meta.values(), key=lambda entry: int(entry["order"]))
     files: list[dict[str, Any]] = []
+    included_paths: set[str] = set()
+    for entry in unique_entries:
+        entry_path = str(entry["path"])
+        item = _file_item(dist_root, entry_path, entry)
+        if item:
+            files.append(item)
+            included_paths.add(entry_path)
     if not include_unlisted:
-        for entry in unique_entries:
-            item = _file_item(dist_root, str(entry["path"]), entry)
-            if item:
-                files.append(item)
         return files
-    for path in sorted(dist_root.rglob("*.html"), key=lambda p: (order.get(p.relative_to(dist_root).as_posix(), 999999), p.relative_to(dist_root).as_posix())):
+    for path in sorted(dist_root.rglob("*.html"), key=lambda p: p.relative_to(dist_root).as_posix()):
         rel = path.relative_to(dist_root).as_posix()
-        if rel == "404.html":
+        if rel == "404.html" or rel in included_paths:
             continue
         entry = meta.get(rel)
         item = _file_item(dist_root, rel, entry)
@@ -285,19 +439,27 @@ def replace_article(text: str, article: str) -> str:
 
 
 def rebuild_search_index(dist_root: Path) -> None:
+    """Build search index from actual guide HTML files, not only navigation entries.
+
+    Expected failures:
+    - Files without article.guide-content are skipped.
+    - Non-guide HTML files are skipped.
+    """
     items = []
-    for item in list_files(dist_root, include_unlisted=True):
-        if not item["path"].startswith("guide/") or is_excluded_path(str(item["path"])):
+    guide_root = dist_root / "guide"
+    for html_path in sorted(guide_root.rglob("*.html"), key=lambda path: path.relative_to(dist_root).as_posix()):
+        item_path = html_path.relative_to(dist_root).as_posix()
+        if not item_path.startswith("guide/") or html_path.name == "404.html":
             continue
-        title = str(item["title"])
-        if not item.get("inNav", False) and not title.lower().startswith("code:"):
-            continue
+        text = read_text(html_path)
         try:
-            article = extract_article(read_text(dist_root / item["path"]))
+            article = extract_article(text)
         except ValueError:
             continue
+        title = parse_title(text, html_path.parent.name)
         body = re.sub(r"\s+", " ", strip_tags(article))
-        items.append({"title": item["title"], "url": relative_href(dist_root / "guide" / "index.html", item["path"], dist_root), "path": item["path"], "body": body})
+        guide_url = item_path.removeprefix("guide/")
+        items.append({"title": title, "url": guide_url, "path": item_path, "body": body})
     write_text(dist_root / "guide" / "search-index.json", json.dumps(items, ensure_ascii=False, indent=2))
 
 
@@ -348,12 +510,19 @@ def save_image(dist_root: Path, html_path: Path, filename: str, mime: str, data_
 
 def reparent(dist_root: Path, source_path: str, parent_path: str) -> dict[str, Any]:
     source = resolve_html_path(dist_root, source_path).relative_to(dist_root).as_posix()
-    parent = resolve_html_path(dist_root, parent_path).relative_to(dist_root).as_posix()
     if source in STRUCTURE_MANAGED_PATHS or is_excluded_path(source):
         raise ValueError("목차 구조를 관리하는 기본 페이지는 이동할 수 없습니다.")
-    if is_excluded_path(parent):
+    entries = get_nav_entries(dist_root, include_virtual=True)
+    try:
+        parent = resolve_html_path(dist_root, parent_path).relative_to(dist_root).as_posix()
+        parent_is_virtual = False
+    except FileNotFoundError:
+        parent = str(parent_path).replace("\\", "/")
+        parent_is_virtual = any(entry["path"] == parent and entry.get("virtual") for entry in entries)
+        if not parent_is_virtual:
+            raise ValueError("목차에 있는 페이지나 그룹 아래로만 이동할 수 있습니다.")
+    if is_excluded_path(parent) and not parent_is_virtual:
         raise ValueError("목차에서 제외된 페이지 아래로 이동할 수 없습니다.")
-    entries = get_nav_entries(dist_root)
     source_matches = [i for i, entry in enumerate(entries) if entry["path"] == source]
     parent_matches = [i for i, entry in enumerate(entries) if entry["path"] == parent]
     source_index = source_matches[-1] if source_matches else -1
@@ -378,24 +547,67 @@ def reparent(dist_root: Path, source_path: str, parent_path: str) -> dict[str, A
     rebuild_search_index(dist_root)
     return {"ok": True, "changed": changed, "path": source, "parent": parent}
 
+
+def reorder_nav_entry(dist_root: Path, source_path: str, direction: str) -> dict[str, Any]:
+    """Move a nav entry up or down among siblings without changing its parent.
+
+    Expected failures:
+        Raises ValueError when the source is not in the nav, is structure-managed,
+        or has no sibling in the requested direction.
+    """
+    source = resolve_html_path(dist_root, source_path).relative_to(dist_root).as_posix()
+    entries = get_nav_entries(dist_root, include_virtual=True)
+    source_matches = [index for index, entry in enumerate(entries) if entry["path"] == source]
+    source_index = source_matches[-1] if source_matches else -1
+    if source_index < 0:
+        raise ValueError("목차에 있는 페이지 순서만 바꿀 수 있습니다.")
+    if not is_movable_nav_entry(entries[source_index]):
+        raise ValueError("목차 구조를 관리하는 기본 페이지는 순서를 바꿀 수 없습니다.")
+
+    clean_direction = direction.strip().lower()
+    if clean_direction == "up":
+        sibling_index = previous_sibling_index(entries, source_index)
+        if sibling_index is None:
+            raise ValueError("같은 그룹에서 더 위로 이동할 수 없습니다.")
+        source_end = subtree_end(entries, source_index)
+        source_block = entries[source_index:source_end]
+        previous_block = entries[sibling_index:source_index]
+        entries[sibling_index:source_end] = source_block + previous_block
+    elif clean_direction == "down":
+        source_end = subtree_end(entries, source_index)
+        sibling_index = next_sibling_index(entries, source_index)
+        if sibling_index is None:
+            raise ValueError("같은 그룹에서 더 아래로 이동할 수 없습니다.")
+        sibling_end = subtree_end(entries, sibling_index)
+        source_block = entries[source_index:source_end]
+        next_block = entries[sibling_index:sibling_end]
+        entries[source_index:sibling_end] = next_block + source_block
+    else:
+        raise ValueError("direction은 up 또는 down이어야 합니다.")
+
+    changed = rewrite_navs(dist_root, entries)
+    rebuild_search_index(dist_root)
+    return {"ok": True, "changed": changed, "path": source, "direction": clean_direction}
+
 EDITOR_HTML = r'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AIMT Guide Editor</title><style>
-:root{--bg:#eef2f8;--panel:#fff;--ink:#182033;--muted:#647084;--line:#d8e0ee;--accent:#315bef;--soft:#edf3ff;--danger:#d92d20}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{display:grid;grid-template-columns:330px minmax(0,1fr);height:100vh}.side{overflow:auto;background:#fff;border-right:1px solid var(--line);padding:18px}.main{overflow:auto;padding:22px}.title{font-size:20px;font-weight:900;margin:0}.hint{font-size:12px;color:var(--muted)}.top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer}.btn.primary{border-color:var(--accent);background:var(--accent);color:#fff}.btn:disabled{opacity:.45}.filter{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin:8px 0 12px}.file{display:block;width:100%;text-align:left;border:0;background:transparent;border-radius:12px;padding:8px 10px;margin:2px 0;cursor:pointer}.file:hover,.file.active{background:var(--soft)}.file.is-unlisted{opacity:.55}.file[draggable=true]{cursor:grab}.file.dragging{opacity:.45}.file.drop-child{box-shadow:inset 0 0 0 2px var(--accent);background:#e8efff}.file-title{display:block;font-weight:700}.file-path{display:block;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-tree-marker{display:inline-block;width:1.25em;color:var(--muted)}.file-tree-marker.is-toggle{cursor:pointer;color:var(--accent)}.editor-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 40px rgba(22,34,56,.08);overflow:hidden}.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;padding:12px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.toolbar select{border:1px solid var(--line);border-radius:10px;padding:7px}.editor-frame{display:block;width:100%;height:64vh;border:0;background:#fff}.source-wrap{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px;z-index:8}.source{width:100%;min-height:170px;font-family:Consolas,monospace;font-size:12px;border:1px solid var(--line);border-radius:12px;padding:10px}.status{font-size:13px;color:var(--muted)}.status.error{color:var(--danger)}@media(max-width:900px){.app{display:block;height:auto}.side{border-right:0;border-bottom:1px solid var(--line)}.editor-frame{height:70vh}.toolbar{position:fixed;left:12px;right:12px;bottom:12px;top:auto;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.16)}}
-</style></head><body><div class="app"><aside class="side"><h1 class="title">AIMT Guide Editor</h1><div class="hint">저장 대상: 현재 저장소 dist HTML<br>새 페이지 기본 위치: 기능별 설명 &gt; 기타 참고</div><div class="top"><button class="btn" id="refreshButton">새로고침</button><button class="btn primary" id="newPageButton">새 페이지</button></div><input class="filter" id="filter" placeholder="목록 검색"><div id="fileList"></div></aside><main class="main"><div class="top"><button class="btn primary" id="saveButton" disabled>저장</button><button class="btn" id="openHtmlButton" disabled>현재 HTML 열기</button><span class="status" id="status">HTML 파일을 불러오는 중입니다.</span></div><section class="editor-card"><div class="toolbar"><select id="blockSelect"><option value="p">문단</option><option value="h1">제목1</option><option value="h2">제목2</option><option value="h3">제목3</option><option value="pre">코드블록</option><option value="blockquote">인용</option></select><button class="btn" data-cmd="bold">굵게</button><button class="btn" data-cmd="italic">기울임</button><button class="btn" data-cmd="underline">밑줄</button><button class="btn" data-cmd="insertUnorderedList">목록</button><button class="btn" data-cmd="insertOrderedList">번호</button><button class="btn" id="linkButton">링크</button><button class="btn" id="hrButton">구분선</button><button class="btn" id="imageButton">이미지</button><input id="imageInput" type="file" accept="image/png,image/jpeg,image/gif,image/webp" hidden></div><iframe class="editor-frame" id="editorFrame" title="guide editor"></iframe><details class="source-wrap"><summary>HTML 소스보기</summary><textarea class="source" id="sourceBox" spellcheck="false"></textarea></details></section></main></div><script>
+:root{color-scheme:light;--bg:#eef2f8;--panel:#fff;--field:#fff;--ink:#182033;--muted:#647084;--line:#d8e0ee;--accent:#315bef;--soft:#edf3ff;--danger:#d92d20;--toolbar:rgba(255,255,255,.94);--shadow:rgba(22,34,56,.08)}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1420;--panel:#151b27;--field:#0f1520;--ink:#e5eaf3;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--danger:#ff8a80;--toolbar:rgba(21,27,39,.94);--shadow:rgba(0,0,0,.32)}}:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1420;--panel:#151b27;--field:#0f1520;--ink:#e5eaf3;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--danger:#ff8a80;--toolbar:rgba(21,27,39,.94);--shadow:rgba(0,0,0,.32)}:root[data-theme="light"]{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{display:grid;grid-template-columns:330px minmax(0,1fr);height:100vh}.side{overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:18px}.main{min-height:0;height:100vh;overflow:auto;padding:18px 22px 22px;display:flex;flex-direction:column}.title{font-size:20px;font-weight:900;margin:0}.hint{font-size:12px;color:var(--muted)}.top{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px}.btn,.theme-select{border:1px solid var(--line);background:var(--field);color:var(--ink);border-radius:10px;padding:8px 10px;cursor:pointer}.btn.primary{border-color:var(--accent);background:var(--accent);color:#fff}.btn:disabled{opacity:.45}.theme-select{margin-left:auto}.filter{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin:8px 0 12px;background:var(--field);color:var(--ink)}.file{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:transparent;color:var(--ink);border-radius:12px;padding:8px 10px;margin:2px 0;cursor:pointer}.file:hover,.file.active{background:var(--soft)}.file.is-unlisted{opacity:.55}.file[draggable=true]{cursor:grab}.file.dragging{opacity:.45}.file.drop-child{box-shadow:inset 0 0 0 2px var(--accent);background:var(--soft)}.file-main{min-width:0}.file-title{display:block;font-weight:700}.file-path{display:block;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.file-actions{display:flex;gap:3px;align-items:center}.nav-move{width:25px;height:25px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);font-size:13px;line-height:1;cursor:pointer}.nav-move:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}.nav-move:disabled{opacity:.28;cursor:default}.file-tree-marker{display:inline-block;width:1.25em;color:var(--muted)}.file-tree-marker.is-toggle{cursor:pointer;color:var(--accent)}.working-overlay{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;background:rgba(12,18,32,.42);backdrop-filter:blur(4px)}.working-overlay[hidden]{display:none}.working-box{min-width:240px;max-width:80vw;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:0 22px 60px rgba(0,0,0,.28);text-align:center}.working-box strong{display:block;margin-bottom:5px}.working-box span{display:block;color:var(--muted);font-size:13px}.editor-card{position:relative;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px var(--shadow);overflow:hidden}.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;padding:10px;background:var(--toolbar);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.toolbar select{border:1px solid var(--line);border-radius:10px;padding:7px;background:var(--field);color:var(--ink)}.editor-frame{display:block;width:100%;flex:1 1 auto;min-height:360px;height:auto;border:0;background:var(--field)}.source-wrap{flex:0 0 auto;margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 28px var(--shadow);overflow:hidden}.source-wrap>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;cursor:pointer;color:var(--muted);font-size:13px;font-weight:700}.source-action{padding:6px 9px;font-size:12px;font-weight:700}.source-wrap[open]>summary{border-bottom:1px solid var(--line)}.source-wrap[open]{padding-bottom:12px}.source{display:block;width:calc(100% - 24px);height:48vh;min-height:280px;margin:12px;font-family:Consolas,monospace;font-size:12px;border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--field);color:var(--ink);resize:vertical}.status{font-size:13px;color:var(--muted)}.status.error{color:var(--danger)}@media(max-width:900px){.app{display:block;height:auto}.side{border-right:0;border-bottom:1px solid var(--line)}.main{display:block;height:auto}.editor-card{min-height:72vh}.editor-frame{min-height:64vh}.source{height:54vh}.toolbar{position:sticky;top:0}.theme-select{margin-left:0}}
+</style></head><body><div class="working-overlay" id="workingOverlay" hidden><div class="working-box"><strong id="workingTitle">목차를 정리하는 중입니다.</strong><span>잠시만 기다려주세요.</span></div></div><div class="app"><aside class="side"><h1 class="title">AIMT Guide Editor</h1><div class="hint">저장 대상: 현재 저장소 dist HTML<br>새 페이지 기본 위치: 기능별 설명 &gt; 화면 영역</div><div class="top"><button class="btn" id="refreshButton">새로고침</button><button class="btn primary" id="newPageButton">새 페이지</button></div><input class="filter" id="filter" placeholder="목록 검색"><div id="fileList"></div></aside><main class="main"><div class="top"><button class="btn primary" id="saveButton" disabled>저장</button><button class="btn" id="openHtmlButton" disabled>현재 HTML 열기</button><span class="status" id="status">HTML 파일을 불러오는 중입니다.</span><select class="theme-select" id="themeSelect" aria-label="테마 선택"><option value="system">시스템 테마</option><option value="light">밝은 테마</option><option value="dark">어두운 테마</option></select></div><section class="editor-card"><div class="toolbar"><select id="blockSelect"><option value="p">문단</option><option value="h1">제목1</option><option value="h2">제목2</option><option value="h3">제목3</option><option value="pre">코드블록</option><option value="blockquote">인용</option></select><button class="btn" data-cmd="bold">굵게</button><button class="btn" data-cmd="italic">기울임</button><button class="btn" data-cmd="underline">밑줄</button><button class="btn" id="codeButton">코드</button><button class="btn" data-cmd="insertUnorderedList">목록</button><button class="btn" data-cmd="insertOrderedList">번호</button><button class="btn" id="linkButton">링크</button><button class="btn" id="hrButton">구분선</button><button class="btn" id="imageButton">이미지</button><input id="imageInput" type="file" accept="image/png,image/jpeg,image/gif,image/webp" hidden></div><iframe class="editor-frame" id="editorFrame" title="guide editor"></iframe></section><details class="source-wrap"><summary><span>HTML 소스보기</span><button class="btn source-action" id="beautifySourceButton" type="button">Beautify</button></summary><textarea class="source" id="sourceBox" spellcheck="false"></textarea></details></main></div><script>
 const state={files:[],currentPath:'',draggedPath:'',collapsedPaths:new Set(),collapseReady:false,selectedImage:null};
-const fileList=document.getElementById('fileList'),filter=document.getElementById('filter'),statusEl=document.getElementById('status'),frame=document.getElementById('editorFrame'),sourceBox=document.getElementById('sourceBox'),saveButton=document.getElementById('saveButton'),openHtmlButton=document.getElementById('openHtmlButton');
-function showStatus(t,e=false){statusEl.textContent=t;statusEl.className='status'+(e?' error':'')}function showError(e){showStatus(e.message||String(e),true)}async function fetchJson(u,o){const r=await fetch(u,o);const p=await r.json();if(!r.ok)throw new Error(p.error||'요청 실패');return p}function formatTime(ts){return new Date(ts*1000).toLocaleString()}
+const fileList=document.getElementById('fileList'),filter=document.getElementById('filter'),statusEl=document.getElementById('status'),frame=document.getElementById('editorFrame'),sourceBox=document.getElementById('sourceBox'),saveButton=document.getElementById('saveButton'),openHtmlButton=document.getElementById('openHtmlButton'),themeSelect=document.getElementById('themeSelect'),beautifySourceButton=document.getElementById('beautifySourceButton'),workingOverlay=document.getElementById('workingOverlay'),workingTitle=document.getElementById('workingTitle');
+function showStatus(t,e=false){statusEl.textContent=t;statusEl.className='status'+(e?' error':'')}function showError(e){showStatus(e.message||String(e),true)}async function fetchJson(u,o){const r=await fetch(u,o);const p=await r.json();if(!r.ok)throw new Error(p.error||'요청 실패');return p}function formatTime(ts){return new Date(ts*1000).toLocaleString()}function setWorking(on,title='목차를 정리하는 중입니다.'){workingTitle.textContent=title;workingOverlay.hidden=!on}async function withWorking(title,task){setWorking(true,title);try{return await task()}finally{setWorking(false)}}
+const themeKey='aimt-guide-theme';function savedTheme(){try{return localStorage.getItem(themeKey)||'system'}catch(_){return 'system'}}function resolvedTheme(){const t=savedTheme();if(t==='light'||t==='dark')return t;return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}function applyTheme(){const t=savedTheme();if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;else document.documentElement.removeAttribute('data-theme');if(themeSelect)themeSelect.value=t;const d=frame.contentDocument;if(d&&d.body)d.body.dataset.theme=resolvedTheme()}if(themeSelect){themeSelect.onchange=()=>{try{const v=themeSelect.value;if(v==='light'||v==='dark')localStorage.setItem(themeKey,v);else localStorage.removeItem(themeKey)}catch(_){}applyTheme()}}if(window.matchMedia){const mq=window.matchMedia('(prefers-color-scheme: dark)');if(mq.addEventListener)mq.addEventListener('change',applyTheme)}applyTheme();
 async function loadFiles(){const p=await fetchJson('/api/files');state.files=p.files;initializeCollapsedPaths();renderFiles();showStatus('HTML 파일 '+state.files.length+'개를 불러왔습니다.')}function initializeCollapsedPaths(){if(state.collapseReady)return;state.files.forEach(f=>{if(f.hasChildren&&Number(f.depth||0)>=1)state.collapsedPaths.add(f.path)});state.collapseReady=true}
 function toggleTreeNode(f,e){e.stopPropagation();if(!f.hasChildren)return;if(state.collapsedPaths.has(f.path))state.collapsedPaths.delete(f.path);else state.collapsedPaths.add(f.path);renderFiles()}function expandAncestors(path){const i=state.files.findIndex(f=>f.path===path);if(i<0)return;let childDepth=Number(state.files[i].depth||0);for(let c=i-1;c>=0;c--){const f=state.files[c],d=Number(f.depth||0);if(d<childDepth){state.collapsedPaths.delete(f.path);childDepth=d}if(childDepth<=0)break}}
-function hiddenByCollapse(f,stack){const d=Number(f.depth||0);while(stack.length&&stack[stack.length-1].depth>=d)stack.pop();if(stack.length)return true;if(f.hasChildren&&state.collapsedPaths.has(f.path))stack.push({path:f.path,depth:d});return false}function canDrag(f,searching){if(!f||!f.inNav||!f.movable)return false;if(!f.hasChildren)return true;return !searching&&state.collapsedPaths.has(f.path)}
-function renderFiles(){const q=filter.value.trim().toLowerCase();fileList.innerHTML='';const searching=q.length>0,stack=[];const matches=state.files.filter(f=>(f.path+' '+f.title).toLowerCase().includes(q)&&(searching||!hiddenByCollapse(f,stack)));for(const f of matches){const drag=canDrag(f,searching),b=document.createElement('button');b.type='button';b.className='file'+(f.path===state.currentPath?' active':'')+(!f.inNav?' is-unlisted':'');b.title=f.path+'\n'+formatTime(f.updated);b.dataset.path=f.path;b.dataset.inNav=f.inNav?'1':'0';b.dataset.movable=drag?'1':'0';b.draggable=drag;b.style.paddingLeft=(10+Math.min(Number(f.depth||0),6)*16)+'px';b.onclick=()=>loadFile(f.path);b.addEventListener('dragstart',dragStart);b.addEventListener('dragover',dragOver);b.addEventListener('dragleave',e=>e.currentTarget.classList.remove('drop-child'));b.addEventListener('drop',e=>dropFile(e,f).catch(showError));b.addEventListener('dragend',clearDrop);const title=document.createElement('span');title.className='file-title';const marker=document.createElement('span');marker.className='file-tree-marker';marker.textContent=f.hasChildren?(state.collapsedPaths.has(f.path)&&!searching?'▸':'▾'):(f.inNav?(drag?'↕':'·'):'·');if(f.hasChildren){marker.classList.add('is-toggle');marker.title=state.collapsedPaths.has(f.path)?'펼치기':'접기';marker.onclick=e=>toggleTreeNode(f,e)}title.append(marker,document.createTextNode(f.title));const p=document.createElement('span');p.className='file-path';p.textContent=f.path;b.append(title,p);fileList.appendChild(b)}if(!matches.length){const empty=document.createElement('div');empty.className='hint';empty.textContent='검색 결과가 없습니다.';fileList.appendChild(empty)}}
-function clearDrop(){state.draggedPath='';fileList.querySelectorAll('.dragging,.drop-child').forEach(e=>e.classList.remove('dragging','drop-child'))}function dragStart(e){const b=e.currentTarget;if(b.dataset.movable!=='1'){e.preventDefault();return}state.draggedPath=b.dataset.path;b.classList.add('dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',state.draggedPath)}function dragOver(e){const b=e.currentTarget;if(!state.draggedPath||b.dataset.inNav!=='1'||b.dataset.path===state.draggedPath)return;e.preventDefault();b.classList.add('drop-child')}async function dropFile(e,target){if(!state.draggedPath||!target||target.path===state.draggedPath){clearDrop();return}e.preventDefault();const p=await fetchJson('/api/reparent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:state.draggedPath,parent:target.path})});await loadFiles();state.collapsedPaths.delete(target.path);renderFiles();clearDrop();showStatus('하위 페이지로 이동했습니다. 반영 파일: '+p.changed+'개')}
-function doc(){return frame.contentDocument||frame.contentWindow.document}function styles(){return `<style>body{margin:0;padding:28px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}.guide-content{outline:0;min-height:480px}.doc-version{font-size:13px;color:#647084}pre{padding:16px;overflow:auto;border-radius:14px;background:#101828;color:#e5e7eb}code{padding:.12em .35em;border-radius:6px;background:#eef2ff}blockquote{padding:12px 16px;border-left:4px solid #315bef;background:#eef3ff;border-radius:12px}img{max-width:100%;height:auto;border-radius:12px}.is-selected-image{outline:3px solid #315bef;outline-offset:3px}.image-tools{position:absolute;z-index:1000;display:flex;gap:4px;padding:6px;background:#fff;border:1px solid #d8e0ee;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.image-tools button{border:1px solid #d8e0ee;background:#fff;border-radius:8px;padding:5px 7px}.resize-handle{position:absolute;z-index:999;width:12px;height:12px;background:#315bef;border:2px solid #fff;border-radius:999px}</style>`}
-function editorBaseHref(){const p=state.currentPath||'guide/index.html',parts=p.split('/');parts.pop();return '/dist/'+parts.map(encodeURIComponent).join('/')+'/'}function setArticle(a){frame.srcdoc=`<!doctype html><html><head><base href="${editorBaseHref()}">${styles()}</head><body>${a}</body></html>`;sourceBox.value=a;frame.onload=setupFrame}function setupFrame(){const d=doc(),a=d.querySelector('.guide-content');if(!a)return;a.contentEditable='true';a.addEventListener('input',()=>sourceBox.value=getArticle());d.addEventListener('click',e=>{if(e.target&&e.target.tagName==='IMG')selectImage(e.target);else clearImage()});d.addEventListener('paste',e=>{const f=[...(e.clipboardData?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}});a.addEventListener('dragover',e=>{if([...(e.dataTransfer?.files||[])].some(f=>f.type.startsWith('image/')))e.preventDefault()});a.addEventListener('drop',e=>{const f=[...(e.dataTransfer?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}})}
-function getArticle(){const d=doc();d.querySelectorAll('.image-tools,.resize-handle').forEach(e=>e.remove());d.querySelectorAll('.is-selected-image').forEach(e=>e.classList.remove('is-selected-image'));return d.querySelector('.guide-content')?.outerHTML||sourceBox.value}async function loadFile(path){const p=await fetchJson('/api/file?path='+encodeURIComponent(path));state.currentPath=p.path;setArticle(p.article);saveButton.disabled=false;openHtmlButton.disabled=false;expandAncestors(path);renderFiles();showStatus('열림: '+p.path)}async function saveCurrent(){if(!state.currentPath)return;const article=getArticle();await fetchJson('/api/file',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:state.currentPath,article})});sourceBox.value=article;showStatus('저장했습니다.');await loadFiles()}
-function exec(cmd,val=null){doc().execCommand(cmd,false,val);sourceBox.value=getArticle();frame.contentWindow.focus()}document.querySelectorAll('[data-cmd]').forEach(b=>b.onclick=()=>exec(b.dataset.cmd));document.getElementById('blockSelect').onchange=e=>exec('formatBlock',e.target.value);document.getElementById('linkButton').onclick=()=>{const u=prompt('링크 주소');if(u)exec('createLink',u)};document.getElementById('hrButton').onclick=()=>exec('insertHorizontalRule');document.getElementById('imageButton').onclick=()=>document.getElementById('imageInput').click();document.getElementById('imageInput').onchange=e=>{const f=e.target.files[0];if(f)insertImage(f).catch(showError);e.target.value=''};
+function hiddenByCollapse(f,stack){const d=Number(f.depth||0);while(stack.length&&stack[stack.length-1].depth>=d)stack.pop();if(stack.length)return true;if(f.hasChildren&&state.collapsedPaths.has(f.path))stack.push({path:f.path,depth:d});return false}function canDrag(f,searching){return !!(f&&f.inNav&&f.movable&&!searching)}function canOrder(f,searching){return !!(f&&f.inNav&&f.movable&&!searching)}
+function renderFiles(){const q=filter.value.trim().toLowerCase();fileList.innerHTML='';const searching=q.length>0,stack=[];const matches=state.files.filter(f=>(f.path+' '+f.title).toLowerCase().includes(q)&&(searching||!hiddenByCollapse(f,stack)));for(const f of matches){const drag=canDrag(f,searching),orderable=canOrder(f,searching),isVirtual=!!f.virtual,b=document.createElement('div');b.role='button';b.tabIndex=0;b.className='file'+(f.path===state.currentPath?' active':'')+(!f.inNav?' is-unlisted':'')+(isVirtual?' is-virtual':'');b.title=f.path+'\n'+(f.updated?formatTime(f.updated):'목차 그룹');b.dataset.path=f.path;b.dataset.inNav=f.inNav?'1':'0';b.dataset.movable=drag?'1':'0';b.draggable=drag;b.style.paddingLeft=(10+Math.min(Number(f.depth||0),6)*16)+'px';b.onclick=e=>{if(e.target.closest('.file-actions'))return;if(isVirtual){toggleTreeNode(f,e);return}loadFile(f.path)};b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();b.click()}};b.addEventListener('dragstart',dragStart);b.addEventListener('dragover',dragOver);b.addEventListener('dragleave',e=>e.currentTarget.classList.remove('drop-child'));b.addEventListener('drop',e=>dropFile(e,f).catch(showError));b.addEventListener('dragend',clearDrop);const main=document.createElement('span');main.className='file-main';const title=document.createElement('span');title.className='file-title';const marker=document.createElement('span');marker.className='file-tree-marker';marker.textContent=f.hasChildren?(state.collapsedPaths.has(f.path)&&!searching?'▸':'▾'):(f.inNav?(drag?'↕':'·'):'·');if(f.hasChildren){marker.classList.add('is-toggle');marker.title=state.collapsedPaths.has(f.path)?'펼치기':'접기';marker.onclick=e=>toggleTreeNode(f,e)}title.append(marker,document.createTextNode(f.title));const p=document.createElement('span');p.className='file-path';p.textContent=f.path;main.append(title,p);const actions=document.createElement('span');actions.className='file-actions';if(f.inNav&&f.movable){[['up','↑','위로 이동',!!f.canMoveUp],['down','↓','아래로 이동',!!f.canMoveDown]].forEach(([dir,label,tip,enabled])=>{const btn=document.createElement('button');btn.type='button';btn.className='nav-move';btn.textContent=label;btn.title=searching?'검색 중에는 순서를 바꿀 수 없습니다.':tip;btn.disabled=!orderable||!enabled;btn.onclick=e=>{e.stopPropagation();moveEntry(f.path,dir).catch(showError)};actions.appendChild(btn)})}b.append(main,actions);fileList.appendChild(b)}if(!matches.length){const empty=document.createElement('div');empty.className='hint';empty.textContent='검색 결과가 없습니다.';fileList.appendChild(empty)}}
+function clearDrop(){state.draggedPath='';fileList.querySelectorAll('.dragging,.drop-child').forEach(e=>e.classList.remove('dragging','drop-child'))}function dragStart(e){const b=e.currentTarget;if(b.dataset.movable!=='1'){e.preventDefault();return}state.draggedPath=b.dataset.path;b.classList.add('dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',state.draggedPath)}function dragOver(e){const b=e.currentTarget;if(!state.draggedPath||b.dataset.inNav!=='1'||b.dataset.path===state.draggedPath)return;e.preventDefault();b.classList.add('drop-child')}async function dropFile(e,target){if(!state.draggedPath||!target||target.path===state.draggedPath){clearDrop();return}e.preventDefault();const source=state.draggedPath;try{await withWorking('목차 위치를 옮기는 중입니다.',async()=>{const p=await fetchJson('/api/reparent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source,parent:target.path})});await loadFiles();state.collapsedPaths.delete(target.path);renderFiles();showStatus('하위 페이지로 이동했습니다. 반영 파일: '+p.changed+'개')})}finally{clearDrop()}}async function moveEntry(path,direction){await withWorking('목차 순서를 바꾸는 중입니다.',async()=>{const p=await fetchJson('/api/reorder',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:path,direction})});await loadFiles();expandAncestors(path);renderFiles();showStatus((direction==='up'?'위로':'아래로')+' 이동했습니다. 반영 파일: '+p.changed+'개')})}
+function doc(){return frame.contentDocument||frame.contentWindow.document}function styles(){return `<style>body{--bg:#fff;--panel:#fff;--ink:#182033;--muted:#647084;--line:#d8e0ee;--accent:#315bef;--soft:#eef3ff;--field:#fff;--code:#101828;--pre-ink:#e5e7eb;--inline-code-bg:#eef2ff;--inline-code-ink:#243b8f;margin:0;padding:28px;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}body[data-theme="dark"]{--bg:#0f1520;--panel:#151b27;--ink:#e5eaf3;--muted:#98a2b3;--line:#2a3445;--accent:#8ea2ff;--soft:rgba(142,162,255,.16);--field:#0f1520;--code:#090d16;--pre-ink:#e8edf7;--inline-code-bg:#1d2942;--inline-code-ink:#c8d4ff}.guide-content{outline:0;min-height:calc(100vh - 56px);background:var(--panel);color:var(--ink)}.doc-version{font-size:13px;color:var(--muted)}pre{padding:16px;overflow:auto;border-radius:14px;background:var(--code);color:#7ee787}code{padding:.12em .35em;border-radius:6px;background:var(--inline-code-bg);color:var(--inline-code-ink)}pre code{padding:0;border-radius:0;background:transparent;color:inherit}blockquote{padding:12px 16px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}img{max-width:100%;height:auto;border-radius:12px}.is-selected-image{outline:3px solid var(--accent);outline-offset:3px}.image-tools{position:absolute;z-index:1000;display:flex;gap:4px;padding:6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.18)}.image-tools button{border:1px solid var(--line);background:var(--field);color:var(--ink);border-radius:8px;padding:5px 7px}.resize-handle{position:absolute;z-index:999;width:12px;height:12px;background:var(--accent);border:2px solid var(--panel);border-radius:999px}</style>`}
+function editorBaseHref(){const p=state.currentPath||'guide/index.html',parts=p.split('/');parts.pop();return '/dist/'+parts.map(encodeURIComponent).join('/')+'/'}function setArticle(a){frame.srcdoc=`<!doctype html><html><head><base href="${editorBaseHref()}">${styles()}</head><body data-theme="${resolvedTheme()}">${a}</body></html>`;sourceBox.value=a;frame.onload=setupFrame}function setupFrame(){applyTheme();const d=doc(),a=d.querySelector('.guide-content');if(!a)return;a.contentEditable='true';a.addEventListener('input',()=>sourceBox.value=getArticle());d.addEventListener('click',e=>{if(e.target&&e.target.tagName==='IMG')selectImage(e.target);else clearImage()});d.addEventListener('paste',e=>{const f=[...(e.clipboardData?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}});a.addEventListener('dragover',e=>{if([...(e.dataTransfer?.files||[])].some(f=>f.type.startsWith('image/')))e.preventDefault()});a.addEventListener('drop',e=>{const f=[...(e.dataTransfer?.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();insertImage(f).catch(showError)}})}
+function getArticle(){const d=doc();d.querySelectorAll('.image-tools,.resize-handle').forEach(e=>e.remove());d.querySelectorAll('.is-selected-image').forEach(e=>e.classList.remove('is-selected-image'));return d.querySelector('.guide-content')?.outerHTML||sourceBox.value}const voidTags=new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']),rawTags=new Set(['pre','code','textarea','script','style']),blockTags=new Set(['article','section','div','header','footer','main','aside','nav','h1','h2','h3','h4','h5','h6','p','ul','ol','li','table','thead','tbody','tfoot','tr','td','th','blockquote','pre','figure','figcaption','details','summary']);function escapeText(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}function escapeAttr(v){return String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;')}function openTag(node,tag){const attrs=[...node.attributes].map(a=>' '+a.name+'="'+escapeAttr(a.value)+'"').join('');return '<'+tag+attrs+'>'}function meaningfulNodes(node){return [...node.childNodes].filter(n=>n.nodeType!==3||n.textContent.trim())}function hasBlockChild(nodes){return nodes.some(n=>n.nodeType===1&&blockTags.has(n.tagName.toLowerCase()))}function beautifyNode(node,level){const indent='  '.repeat(level);if(node.nodeType===3){const text=node.textContent.replace(/\s+/g,' ').trim();return text?indent+escapeText(text):''}if(node.nodeType===8)return indent+'<!-- '+node.textContent.trim()+' -->';if(node.nodeType!==1)return '';const tag=node.tagName.toLowerCase();if(rawTags.has(tag))return indent+node.outerHTML.trim();if(voidTags.has(tag))return indent+openTag(node,tag);const nodes=meaningfulNodes(node);if(!nodes.length)return indent+openTag(node,tag)+'</'+tag+'>';if(!hasBlockChild(nodes))return indent+node.outerHTML.trim();const body=nodes.map(n=>beautifyNode(n,level+1)).filter(Boolean).join('\n');return indent+openTag(node,tag)+'\n'+body+'\n'+indent+'</'+tag+'>'}function beautifyHtml(html){const tpl=document.createElement('template');tpl.innerHTML=html.trim();return [...tpl.content.childNodes].map(n=>beautifyNode(n,0)).filter(Boolean).join('\n')}function syncSourceToFrame(){doc().body.innerHTML=sourceBox.value;setupFrame()}function beautifySource(){sourceBox.value=beautifyHtml(sourceBox.value);syncSourceToFrame();showStatus('HTML 소스를 정렬했습니다.')}async function loadFile(path){const p=await fetchJson('/api/file?path='+encodeURIComponent(path));state.currentPath=p.path;setArticle(p.article);saveButton.disabled=false;openHtmlButton.disabled=false;expandAncestors(path);renderFiles();showStatus('열림: '+p.path)}async function saveCurrent(){if(!state.currentPath)return;const article=getArticle();await fetchJson('/api/file',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:state.currentPath,article})});sourceBox.value=article;showStatus('저장했습니다.');await loadFiles()}
+function exec(cmd,val=null){doc().execCommand(cmd,false,val);sourceBox.value=getArticle();frame.contentWindow.focus()}function wrapSelectionWithCode(){const d=doc(),w=frame.contentWindow,selection=w.getSelection();if(!selection||selection.rangeCount<1||selection.isCollapsed){showStatus('코드로 감쌀 텍스트를 먼저 선택하세요.',true);frame.contentWindow.focus();return}const range=selection.getRangeAt(0);const article=d.querySelector('.guide-content');if(!article||!article.contains(range.commonAncestorContainer)){showStatus('본문 안의 텍스트만 코드로 감쌀 수 있습니다.',true);frame.contentWindow.focus();return}const code=d.createElement('code');code.appendChild(range.extractContents());range.insertNode(code);selection.removeAllRanges();const nextRange=d.createRange();nextRange.selectNodeContents(code);selection.addRange(nextRange);sourceBox.value=getArticle();showStatus('선택 영역에 코드 스타일을 적용했습니다.');frame.contentWindow.focus()}document.querySelectorAll('[data-cmd]').forEach(b=>b.onclick=()=>exec(b.dataset.cmd));document.getElementById('blockSelect').onchange=e=>exec('formatBlock',e.target.value);document.getElementById('codeButton').onclick=wrapSelectionWithCode;document.getElementById('linkButton').onclick=()=>{const u=prompt('링크 주소');if(u)exec('createLink',u)};document.getElementById('hrButton').onclick=()=>exec('insertHorizontalRule');document.getElementById('imageButton').onclick=()=>document.getElementById('imageInput').click();document.getElementById('imageInput').onchange=e=>{const f=e.target.files[0];if(f)insertImage(f).catch(showError);e.target.value=''};
 function fileData(f){return new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;r.readAsDataURL(f)})}async function insertImage(file){if(!state.currentPath)throw new Error('먼저 문서를 열어주세요.');const dataUrl=await fileData(file);const p=await fetchJson('/api/asset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:state.currentPath,filename:file.name,mime:file.type,dataUrl})});exec('insertHTML',`<p><img src="${p.src}" alt=""></p>`);showStatus('이미지를 넣었습니다: '+p.path)}
 function clearImage(){const d=doc();d.querySelectorAll('.image-tools,.resize-handle').forEach(e=>e.remove());d.querySelectorAll('.is-selected-image').forEach(e=>e.classList.remove('is-selected-image'));state.selectedImage=null}function selectImage(img){clearImage();state.selectedImage=img;img.classList.add('is-selected-image');const d=doc(),r=img.getBoundingClientRect(),sx=d.defaultView.scrollX,sy=d.defaultView.scrollY;const tools=d.createElement('div');tools.className='image-tools';tools.style.left=(r.left+sx)+'px';tools.style.top=(r.top+sy-44)+'px';[['왼쪽','left'],['중앙','center'],['오른쪽','right'],['50%','50'],['100%','100']].forEach(([label,val])=>{const b=d.createElement('button');b.textContent=label;b.onclick=()=>imageAction(val);tools.appendChild(b)});d.body.appendChild(tools);const h=d.createElement('span');h.className='resize-handle';h.style.left=(r.right+sx-6)+'px';h.style.top=(r.bottom+sy-6)+'px';h.onmousedown=e=>startResize(e,img);d.body.appendChild(h)}function imageAction(v){const img=state.selectedImage;if(!img)return;if(v==='left'||v==='center'||v==='right'){img.style.display='block';img.style.marginLeft=v==='left'?'0':'auto';img.style.marginRight=v==='right'?'0':'auto'}else{img.style.width=v+'%';img.style.height='auto'}sourceBox.value=getArticle();selectImage(img)}function startResize(e,img){e.preventDefault();const w=doc().defaultView,sx=e.clientX,sy=e.clientY,box=img.getBoundingClientRect(),sw=box.width,sh=box.height,ratio=sw/sh||1;function mv(ev){let nw=Math.max(24,Math.round(sw+ev.clientX-sx)),nh=Math.max(24,Math.round(sh+ev.clientY-sy));if(ev.shiftKey){nh=Math.round(nw/ratio);if(nh<24){nh=24;nw=Math.round(nh*ratio)}}img.style.width=nw+'px';img.style.height=nh+'px'}function up(){w.removeEventListener('mousemove',mv);w.removeEventListener('mouseup',up);sourceBox.value=getArticle();selectImage(img)}w.addEventListener('mousemove',mv);w.addEventListener('mouseup',up)}
-sourceBox.addEventListener('input',()=>{doc().body.innerHTML=sourceBox.value;setupFrame()});saveButton.onclick=()=>saveCurrent().catch(showError);document.getElementById('refreshButton').onclick=()=>loadFiles().catch(showError);filter.oninput=renderFiles;openHtmlButton.onclick=()=>{if(state.currentPath)window.open('/dist/'+state.currentPath,'_blank')};document.getElementById('newPageButton').onclick=async()=>{const title=prompt('새 페이지 제목');if(!title)return;const slug=prompt('주소 slug',title.toLowerCase().replace(/\s+/g,'-'))||title;const p=await fetchJson('/api/page',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,slug})});state.collapseReady=false;await loadFiles();await loadFile(p.path)};loadFiles().catch(showError);
+sourceBox.addEventListener('input',syncSourceToFrame);beautifySourceButton.onclick=e=>{e.preventDefault();e.stopPropagation();beautifySource()};saveButton.onclick=()=>saveCurrent().catch(showError);document.getElementById('refreshButton').onclick=()=>loadFiles().catch(showError);filter.oninput=renderFiles;openHtmlButton.onclick=()=>{if(state.currentPath)window.open('/dist/'+state.currentPath,'_blank')};document.getElementById('newPageButton').onclick=async()=>{const title=prompt('새 페이지 제목');if(!title)return;const slug=prompt('주소 slug',title.toLowerCase().replace(/\s+/g,'-'))||title;const p=await fetchJson('/api/page',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,slug})});state.collapseReady=false;await loadFiles();await loadFile(p.path)};loadFiles().catch(showError);
 </script></body></html>'''
 
 def render_new_page(title: str, relative_path: str, entries: list[dict[str, Any]], dist_root: Path = DIST_ROOT) -> str:
@@ -494,6 +706,8 @@ class GuideEditorHandler(BaseHTTPRequestHandler):
                     self.send_payload(json_response(create_page(DIST_ROOT, str(payload.get("title", "")), str(payload.get("slug", "")), str(payload.get("parent", "")))))
                 case "/api/reparent":
                     self.send_payload(json_response(reparent(DIST_ROOT, str(payload.get("source", "")), str(payload.get("parent", "")))))
+                case "/api/reorder":
+                    self.send_payload(json_response(reorder_nav_entry(DIST_ROOT, str(payload.get("source", "")), str(payload.get("direction", "")))))
                 case _:
                     self.send_payload(json_response({"error": "지원하지 않는 경로입니다."}, 404))
         except Exception as exc:
