@@ -326,6 +326,15 @@
     if (!openButton || !overlay || !dialog || !closeButton || !input || !results || !script) return;
     let index = [];
     try { index = await fetch(new URL("../search-index.json", script.src)).then((res) => res.json()); } catch (_) { return; }
+    function searchResultUrl(item){
+      const guideRoot = new URL("..", script.src);
+      const rawPath = String(item.path || "").replace(/\\/g, "/");
+      if (rawPath.startsWith("guide/")) return new URL(rawPath.slice(6), guideRoot).toString();
+      if (rawPath) return new URL(rawPath, guideRoot).toString();
+      const rawUrl = String(item.url || "").replace(/\\/g, "/");
+      if (rawUrl.startsWith("guide/")) return new URL(rawUrl.slice(6), guideRoot).toString();
+      return new URL(rawUrl, guideRoot).toString();
+    }
     function closeSearch(){
       overlay.hidden = true;
       document.body.classList.remove("is-search-open");
@@ -395,7 +404,7 @@
       }
       for (const row of matches) {
         const a = document.createElement("a");
-        a.href = new URL(row.item.url, new URL("..", script.src)).toString();
+        a.href = searchResultUrl(row.item);
         const title = document.createElement("span");
         title.className = "search-result-title";
         title.textContent = row.item.title;

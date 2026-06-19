@@ -176,7 +176,7 @@ def build_search_index() -> None:
         entries.append(
             {
                 "title": page.title,
-                "url": relative_href(GUIDE_ROOT / "index.html", page.path),
+                "url": page.path.relative_to(GUIDE_ROOT).as_posix(),
                 "path": page.relative,
                 "body": plain_text(page.body),
             }
@@ -293,6 +293,15 @@ def write_static_assets() -> None:
     if (!openButton || !overlay || !closeButton || !input || !results || !script) return;
     let index = [];
     try { index = await fetch(new URL("../search-index.json", script.src)).then((res) => res.json()); } catch (_) { return; }
+    function searchResultUrl(item){
+      const guideRoot = new URL("..", script.src);
+      const rawPath = String(item.path || "").replace(/\\\\/g, "/");
+      if (rawPath.startsWith("guide/")) return new URL(rawPath.slice(6), guideRoot).toString();
+      if (rawPath) return new URL(rawPath, guideRoot).toString();
+      const rawUrl = String(item.url || "").replace(/\\\\/g, "/");
+      if (rawUrl.startsWith("guide/")) return new URL(rawUrl.slice(6), guideRoot).toString();
+      return new URL(rawUrl, guideRoot).toString();
+    }
     function closeSearch(){ overlay.hidden = true; openButton.focus(); }
     function openSearch(){ overlay.hidden = false; input.focus(); input.select(); renderSearchResults(); }
     function badge(text){ const node = document.createElement("span"); node.className = "search-badge"; node.textContent = text; return node; }
@@ -311,7 +320,7 @@ def write_static_assets() -> None:
       if (!matches.length) { const empty = document.createElement("div"); empty.className = "search-empty"; empty.textContent = "검색 결과가 없습니다."; results.appendChild(empty); return; }
       for (const row of matches) {
         const a = document.createElement("a");
-        a.href = new URL(row.item.url, new URL("..", script.src)).toString();
+        a.href = searchResultUrl(row.item);
         a.append(document.createTextNode(row.item.title));
         const badges = document.createElement("span");
         if (row.titleMatched) badges.appendChild(badge("제목"));

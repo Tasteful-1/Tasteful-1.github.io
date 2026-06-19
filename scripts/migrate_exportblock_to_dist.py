@@ -355,7 +355,7 @@ def write_search_index(pages: list[Page], page_bodies: dict[Path, str]) -> None:
     entries = [
         {
             "title": page.title,
-            "url": relative_href(GUIDE_ROOT / "index.html", page.output_path),
+            "url": page.output_path.relative_to(GUIDE_ROOT).as_posix(),
             "path": page.relative_output,
             "body": plain_text(page_bodies[page.source_path]),
         }
@@ -701,6 +701,15 @@ def write_static_assets() -> None:
     if (!openButton || !overlay || !dialog || !closeButton || !input || !results || !script) return;
     let index = [];
     try { index = await fetch(new URL("../search-index.json", script.src)).then((res) => res.json()); } catch (_) { return; }
+    function searchResultUrl(item){
+      const guideRoot = new URL("..", script.src);
+      const rawPath = String(item.path || "").replace(/\\\\/g, "/");
+      if (rawPath.startsWith("guide/")) return new URL(rawPath.slice(6), guideRoot).toString();
+      if (rawPath) return new URL(rawPath, guideRoot).toString();
+      const rawUrl = String(item.url || "").replace(/\\\\/g, "/");
+      if (rawUrl.startsWith("guide/")) return new URL(rawUrl.slice(6), guideRoot).toString();
+      return new URL(rawUrl, guideRoot).toString();
+    }
     function closeSearch(){
       overlay.hidden = true;
       document.body.classList.remove("is-search-open");
@@ -770,7 +779,7 @@ def write_static_assets() -> None:
       }
       for (const row of matches) {
         const a = document.createElement("a");
-        a.href = new URL(row.item.url, new URL("..", script.src)).toString();
+        a.href = searchResultUrl(row.item);
         const title = document.createElement("span");
         title.className = "search-result-title";
         title.textContent = row.item.title;
