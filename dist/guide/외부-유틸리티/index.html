@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CMD · AIMT Guide</title>
+  <title>외부 유틸리티 · AIMT Guide</title>
   <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
   <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
   <link rel="stylesheet" href="../../guide/static/styles.css">
@@ -22,15 +22,7 @@
       <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
       <nav class="nav-list" aria-label="문서 목록">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
-<details class="nav-group" data-depth="1" data-nav-key="guide/start/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">시작하기</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="2">프롬프트</a>
-</div></details>
-<details class="nav-group" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기본 작업 흐름</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="2">새 프로젝트 / 프로젝트 지정</a>
-<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="2">추출</a>
-<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="2">번역</a>
-<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="2">적용과 즉시적용</a>
-</div></details>
+<details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/rpg-maker-mvmz-%EA%B0%9C%EC%A0%951/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
 <a class="nav-link" href="../../guide/rpg-maker-vxvxa-%EA%B0%9C%EC%A0%951/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
@@ -40,7 +32,24 @@
 <a class="nav-link" href="../../guide/clickteam-fusion-multimedia-fusion-%EC%9E%91%EC%84%B1%EC%98%88%EC%A0%95/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
 </div></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a>
+<details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%83%88-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A7%80%EC%A0%95/index.html" data-depth="4">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/%ED%8C%8C%EC%9D%BC%EB%AA%A9%EB%A1%9D-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8/index.html" data-depth="4">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/%ED%99%94%EB%A9%B4%EC%A0%84%ED%99%98/index.html" data-depth="4">화면전환</a>
+<a class="nav-link" href="../../guide/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/index.html" data-depth="4">프롬프트</a>
+<a class="nav-link" href="../../guide/%EB%B9%A0%EB%A5%B8%EB%B2%88%EC%97%AD/index.html" data-depth="4">빠른번역</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-mainview"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역2 메인뷰</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/viewer/index.html" data-depth="4">Viewer</a>
+<a class="nav-link" href="../../guide/console/index.html" data-depth="4">Console</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-commandbar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역3 커맨드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C/index.html" data-depth="4">추출</a>
+<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD/index.html" data-depth="4">번역</a>
+<a class="nav-link" href="../../guide/%EC%A0%81%EC%9A%A9%EA%B3%BC-%EC%A6%89%EC%8B%9C%EC%A0%81%EC%9A%A9/index.html" data-depth="4">적용과 즉시적용</a>
+</div></details>
+</div></details>
 <details class="nav-group" data-depth="2" data-nav-key="guide/설정/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EC%84%A4%EC%A0%95/index.html" data-depth="2">설정 화면</a></summary><div class="nav-children">
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-general"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">일반</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%ED%85%8C%EB%A7%88/index.html" data-depth="4">테마</a>
@@ -48,8 +57,7 @@
 <a class="nav-link" href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84%ED%8C%A8%ED%84%B4/index.html" data-depth="4">이스케이프패턴</a>
 <a class="nav-link" href="../../guide/%EC%96%B8%EC%96%B4%ED%8C%A8%ED%84%B4%EC%84%A4%EC%A0%95/index.html" data-depth="4">언어패턴설정</a>
 </div></details>
-<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-translation"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">번역설정</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="4">번역 설정</a>
+<details class="nav-group" data-depth="3" data-nav-key="guide/번역-설정/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%EB%B2%88%EC%97%AD-%EC%84%A4%EC%A0%95/index.html" data-depth="3">번역 설정</a></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ai-model/index.html" data-depth="4">AI-MODEL</a>
 <a class="nav-link" href="../../guide/api-key-%EC%84%A4%EC%A0%95/index.html" data-depth="4">API KEY 설정</a>
 </div></details>
@@ -159,37 +167,103 @@
 <a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
 </div></details>
 </div></details>
-<details class="nav-group" data-depth="2" data-nav-key="guide/features-quickslot/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-quickslot/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
-<details class="nav-group" data-depth="3" data-nav-key="guide/퀵슬롯/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="3">퀵슬롯</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="4">메모장</a>
-<a class="nav-link" href="../../guide/%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84/index.html" data-depth="4">용어사전</a>
-</div></details>
-</div></details>
-<details class="nav-group" data-depth="2" data-nav-key="guide/features-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-reference/index.html" data-depth="2">기타 참고</a></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="3">추출 파일별 설명</a>
+<details class="nav-group" data-depth="2" data-nav-key="guide/퀵슬롯/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/%ED%80%B5%EC%8A%AC%EB%A1%AF/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EB%A9%94%EB%AA%A8%EC%9E%A5/index.html" data-depth="3">메모장</a>
 </div></details>
 </div></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/troubleshooting/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">문제 해결</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%9E%90%EC%A3%BC-%EB%82%98%EC%98%A4%EB%8A%94-%EC%A7%88%EB%AC%B8/index.html" data-depth="2">자주 나오는 질문</a>
 </div></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/advanced-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">참고 자료</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/%EC%99%B8%EB%B6%80-%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/index.html" data-depth="2">외부 유틸리티</a>
 <a class="nav-link" href="../../guide/%EC%A0%9C%EA%B3%B5%EC%9E%90%EB%B3%84-%EC%B0%B8%EA%B3%A0-%EB%A7%81%ED%81%AC/index.html" data-depth="2">제공자별 참고 링크</a>
+<a class="nav-link" href="../../guide/%EC%B6%94%EC%B6%9C-%ED%8C%8C%EC%9D%BC%EB%B3%84-%EC%84%A4%EB%AA%85/index.html" data-depth="2">추출 파일별 설명</a>
 <a class="nav-link" href="../../guide/rpgmaker-%EB%AA%85%EB%A0%B9%EC%BD%94%EB%93%9C-%EC%A0%95%EB%A6%AC-%EC%9E%91%EC%84%B1-%EC%98%88%EC%A0%95/index.html" data-depth="2">RPG Maker 명령 코드 참고</a>
-<a class="nav-link" href="../../guide/%EA%B0%99%EC%9D%B4-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EB%8F%84%EA%B5%AC%EB%93%A4/index.html" data-depth="2">외부 유틸리티</a>
 </div></details>
 </div></details>
       </nav>
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>CMD</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>CMD은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<a href="../../guide/assets/cmd/image.png"><img src="../../guide/assets/cmd/image.png"/></a><h2>이 기능은 무엇인가요?</h2><p><code>CMD</code>는 메인 화면 상단 오른쪽의 <code>CMD</code> 버튼으로 여는 <code>작업 로그 뷰</code>입니다.</p><p>현재 버전에서는 이 영역은 별도 콘솔 창이 아니라, 메인 화면 안에서:</p><ul><li>추출</li></ul><ul><li>번역</li></ul><ul><li>적용</li></ul><ul><li>각종 도구 실행</li></ul><p>과정에서 올라오는 로그를 모아 보여 주는 패널입니다.</p><p>즉, 사용자 입장에서는 <code>지금 무슨 작업이 진행됐는지</code>와 <code>오류/경고가 있었는지</code>를 확인하는 화면으로 이해하면 됩니다.</p><h2>어디에 있나요?</h2><p><code>CMD</code> 버튼은 메인 화면 상단 오른쪽에 있습니다.</p><p>이 버튼을 누르면 기본 파일 목록 화면 대신 로그 화면이 열리고, 다시 누르면 파일 목록으로 돌아갑니다.</p><p>현재 구조상 메인 화면의 주 보기 모드는 아래 3가지입니다.</p><ul><li>기본 파일 목록</li></ul><ul><li><code>CMD</code></li></ul><ul><li><code>VIEW</code></li></ul><h2>여기에는 무엇이 표시되나요?</h2><p>현재 버전에서는 각종 작업 메시지가 시간과 함께 순서대로 쌓입니다.</p><p>예를 들면:</p><ul><li>파일 목록 갱신 결과</li></ul><ul><li>추출/번역/적용 시작 및 완료</li></ul><ul><li>도구 실행 결과</li></ul><ul><li>오류/경고 메시지</li></ul><p>같은 내용이 이 영역에 표시됩니다.</p><p>경우에 따라서는 로그 줄 옆에 추가 동작 버튼이 함께 붙을 수도 있습니다.</p><p>즉, 단순 안내문이 아니라 실제 작업 흐름 기록에 가깝습니다.</p><h2>자동으로 열릴 때도 있나요?</h2><p>현재 버전에서는 <code>error</code> 또는 <code>warning</code> 로그가 새로 추가되면, <code>CMD</code>가 닫혀 있더라도 자동으로 <code>CMD</code> 화면으로 전환될 수 있습니다.</p><p>또 현재 구조상 추출, 번역, 적용, 일부 도구/유틸리티 작업은 시작 시점에 <code>CMD</code> 화면으로 먼저 전환을 시도하는 경우가 많습니다.</p><p>즉, 중요한 오류나 경고가 생기면 사용자가 바로 보게 하는 쪽에 가깝고, 여러 작업은 시작과 함께 로그 화면을 먼저 띄우려는 흐름도 있습니다.</p><h2>여기서 직접 할 수 있는 것은 무엇인가요?</h2><p><code>CMD</code> 화면 자체는 편집기나 실행기가 아닙니다.</p><p>현재 버전에서는 사용자가 직접 할 수 있는 것은 주로:</p><ul><li>로그 읽기</li></ul><ul><li>우클릭 메뉴 열기</li></ul><ul><li><code>CLEAR</code>로 로그 비우기</li></ul><p>정도입니다.</p><p><code>CLEAR</code>는 현재 화면에 쌓인 로그 표시를 비우는 기능이지, 이미 실행한 작업 자체를 취소하거나 결과 파일을 되돌리는 기능은 아닙니다.</p><h2>저장되나요?</h2><p>현재 버전에서는 <code>CMD</code>는 화면 표시용 로그 영역입니다.</p><p>즉, 이 영역에서 따로 저장 버튼을 눌러 로그 파일을 만드는 구조는 아닙니다.</p><p><code>CLEAR</code>를 누르면 현재 화면에 보이는 로그 DOM이 초기화되고 기본 안내 문구로 돌아갑니다.</p><h2>저장 후 언제 반영되나요?</h2><p><code>CMD</code>는 별도 저장이 필요한 기능이 아닙니다.</p><p>로그가 생길 때마다 즉시 한 줄씩 추가되는 구조에 가깝습니다.</p><p>즉, 추출/번역/도구 실행 중 메시지가 올라오면 같은 세션에서 바로 보입니다.</p><h2>자주 헷갈리는 점</h2><h3><code>CMD</code>는 시스템 콘솔 창인가요?</h3><p>그렇게 보면 안 됩니다.</p><p>현재 구조상 <code>CMD</code>는 메인 화면 안에 있는 로그 패널입니다.</p><h3><code>CLEAR</code>를 누르면 작업 결과도 지워지나요?</h3><p>아닙니다.</p><p>지워지는 것은 현재 보이는 로그 표시뿐입니다.</p><h3>CMD에 보이는 내용이 전체 로그와 완전히 같은가요?</h3><p>그렇게 단정하면 안 됩니다.</p><p>현재 화면 <code>CMD</code>는 사용자가 보기 쉽게 모은 작업 로그 영역에 가깝고, 실제 내부 로그 쪽이 더 자세할 수 있습니다.</p><h3>오류가 나면 왜 <code>CMD</code>로 화면이 바뀌나요?</h3><p>현재 버전에서는 경고나 오류 로그가 들어오면 사용자가 바로 보도록 <code>CMD</code> 화면을 자동으로 열 수 있습니다.</p><p>즉, 이상 상태를 놓치지 않게 하려는 동작입니다.</p><h2>알아둘 점</h2><ul><li><code>CMD</code>는 메인 화면 안의 작업 로그 뷰입니다.</li></ul><ul><li>추출/번역/적용/도구 실행 과정의 메시지를 즉시 보여 줍니다.</li></ul><ul><li>경고나 오류가 들어오면 자동으로 <code>CMD</code> 화면이 열릴 수 있습니다.</li></ul><ul><li>추출/번역/적용과 일부 유틸리티는 시작 시점에도 <code>CMD</code> 전환을 시도합니다.</li></ul><ul><li>로그 줄에 따라 추가 동작 버튼이 함께 붙을 수도 있습니다.</li></ul><ul><li>우클릭 <code>CLEAR</code>는 화면 로그만 비우며, 실제 작업 결과를 되돌리지는 않습니다.</li></ul>
+<article class="guide-content">
+  <h1>외부 유틸리티</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-19</p>
+  <h2>이 참고 문서의 범위</h2>
+  <p>AIMT 와 함께 활용할 수 있는 외부 유틸리티들입니다. 본인 판단 하에 꼭 필요한 경우에 유용하게 이용해보세요.</p>
+  <h2>참고 내용</h2>
+  <ul>
+    <li>
+      PGMMV :
+      <ul>
+        <li>
+          Pixel Game Maker MV extractor by xj47
+          <ul>
+            <li><a href="https://f95zone.to/threads/pixel-game-maker-mv-extractor.105950">https://f95zone.to/threads/pixel-game-maker-mv-extractor.105950</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      Wolf :
+      <ul>
+        <li>
+          UberWolf by SinFlower
+          <ul>
+            <li><a href="https://github.com/Sinflower/UberWolf">https://github.com/Sinflower/UberWolf</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      LiveMaker :
+      <ul>
+        <li>
+          Tool For LiveMaker by floating
+          <ul>
+            <li><a href="https://arca.live/b/handtranslator/24444357">https://arca.live/b/handtranslator/24444357</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a href="http://light.vn/">Light.vn</a>
+      :
+      <ul>
+        <li>
+          Light.vnTools by kiraio-moe
+          <ul>
+            <li><a href="https://github.com/kiraio-moe/Light.vnTools">https://github.com/kiraio-moe/Light.vnTools</a></li>
+          </ul>
+          <ul>
+            <li><strong>주의:</strong> 주의. 이 툴은 라이선스 문제로 더 이상 지원되지 않습니다.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      GameMaker :
+      <ul>
+        <li>UndertaleModTool by UnderminersTeam</li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/UnderminersTeam/UndertaleModTool">https://github.com/UnderminersTeam/UndertaleModTool</a></li>
+      </ul>
+      <ul>
+        <li>UndertaleModTool Community Edition(CE) by XDOneDude</li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/XDOneDude/UndertaleModToolCE">https://github.com/XDOneDude/UndertaleModToolCE</a></li>
+      </ul>
+    </li>
+  </ul>
 </article>
 </main>
   </div>
