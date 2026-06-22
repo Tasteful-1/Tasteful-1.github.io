@@ -199,17 +199,58 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>ASAR (Tyrano 계열)</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>ASAR (Tyrano 계열)은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<p><strong>주의:</strong> 1.11.1 에 추가된 기능입니다.</p><h2>이 기능은 무엇인가요?</h2><p><code>ASAR</code>는 <code>.asar</code> 파일과 일반 폴더를 서로 바꾸는 도구입니다.</p><p>즉, Tyrano 탭 안에 있더라도 번역 실행 버튼이라기보다 <code>언팩</code>과 <code>팩</code>을 처리하는 파일 변환 도구로 보면 됩니다.</p><h2>버튼을 누르면 어떻게 되나요?</h2><p><code>ASAR</code>를 누르면 작은 선택창이 열리고, 여기서 <code>언팩</code> 또는 <code>팩</code>을 고를 수 있습니다.</p><h3><code>언팩</code></h3><p><code>.asar</code> 파일을 하나 고르면, 같은 위치에 같은 이름의 폴더를 만들어 내용을 풉니다.</p><p>예를 들어 <code>app.asar</code>를 고르면 같은 위치에 <code>app</code> 폴더가 생기는 식입니다.</p><p>다만 같은 이름의 폴더가 이미 있으면 덮어쓰지 않고 중단합니다.</p><h3><code>팩</code></h3><p>폴더를 하나 고르면, 그 폴더 바로 옆에 같은 이름의 <code>.asar</code> 파일을 만듭니다.</p><p>예를 들어 <code>app</code> 폴더를 고르면 같은 위치에 <code>app.asar</code>가 생기는 식입니다.</p><p>같은 이름의 <code>.asar</code> 파일이 이미 있으면, 현재 버전에서는 먼저 <code>.asar.bak</code>로 바꿔 두고 새 파일을 만듭니다.</p><h2>자주 헷갈리는 점</h2><h3>이게 Tyrano 번역 기능인가요?</h3><p>그렇게 보기보다는 파일 포맷 변환 도구에 가깝습니다.</p><p>즉, <code>ASAR</code> 자체를 풀거나 다시 묶는 기능이지, 번역문을 바로 만들거나 적용하는 기능은 아닙니다.</p><h3>Tyrano 프로젝트를 자동으로 찾아서 처리하나요?</h3><p>아닙니다.</p><p>현재 버전에서는 사용자가 직접 <code>.asar</code> 파일이나 폴더를 골라서 팩/언팩하는 방식입니다.</p><h3>기존 파일이나 폴더를 덮어쓰나요?</h3><p>경우에 따라 다릅니다.</p><p><code>언팩</code>은 같은 위치에 새 폴더를 만들고, <code>팩</code>은 같은 위치에 <code>.asar</code> 파일을 만듭니다.</p><p>이미 같은 이름의 <code>.asar</code>가 있으면 현재 버전에서는 기존 파일을 <code>.asar.bak</code>로 백업한 뒤 새로 만듭니다.</p><h3>눌렀는데 안 될 수도 있나요?</h3><p>그럴 수 있습니다.</p><p>선택한 경로가 조건에 맞지 않거나, <code>언팩</code> 대상 폴더가 이미 있거나, 파일 접근 문제가 있으면 작업이 중단될 수 있습니다.</p><h2>알아둘 점</h2><ul><li><code>ASAR</code>는 <code>.asar</code> 파일 언팩과 폴더 팩을 처리하는 도구입니다.</li></ul><ul><li><code>언팩</code>은 <code>.asar</code> 파일을 같은 위치의 폴더로 풉니다.</li></ul><ul><li><code>팩</code>은 폴더를 같은 위치의 <code>.asar</code> 파일로 만듭니다.</li></ul><ul><li>Electron 탭에 있는 <code>ASAR</code> 버튼과 같은 기능입니다.</li></ul>
+<article class="guide-content">
+  <h1>ASAR (Tyrano 계열)</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+  <h2>이 도구는 무엇인가요?</h2>
+  <p>Tyrano 앱에서 ASAR로 묶인 파일을 풀거나 다시 묶을 때 사용하는 도구입니다.</p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>번역을 마친 데이터를 다시 .asar 로 묶고 싶을 때 사용합니다.<br>번역을 위해 언팩할 때도 사용할 수 있지만, 단순히 언팩만 하고 싶을 땐 반디집 등을 이용하는 것도 괜찮습니다.</li>
+  </ul>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <tbody>
+      <tr>
+        <th>도구 위치</th>
+        <td>작업 도구</td>
+      </tr>
+      <tr>
+        <th>대상</th>
+        <td>Tyrano ASAR 파일</td>
+      </tr>
+      <tr>
+        <th>실행 기준</th>
+        <td>Tyrano 전용 보조 도구입니다.</td>
+      </tr>
+      <tr>
+        <th>결과</th>
+        <td>ASAR 파일이 풀리거나 수정 결과가 다시 묶입니다.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>결과 확인 방법</h2>
+  <ul>
+    <li>완료 메시지나 결과 목록을 확인합니다.</li>
+    <li>ASAR 파일이 풀리거나 수정 결과가 다시 묶입니다.</li>
+    <li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li>
+  </ul>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>패키징 후 실행 파일이 정상적으로 시작되는지 반드시 확인하세요.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p>
+    </div>
+  </div>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

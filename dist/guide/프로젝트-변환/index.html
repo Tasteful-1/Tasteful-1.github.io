@@ -199,29 +199,29 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>프로젝트 변환</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>프로젝트 변환은 AIMT 사용 중 필요한 작업을 더 정확하게 진행하기 위한 기능입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<h2>어디에서 실행하나요?</h2><p>하단 <code>도구</code>의 MVMZ 영역에서 <code>프로젝트 변환</code>을 누릅니다.</p><p>모달이 열리면 아래 두 경로를 지정합니다.</p><ol start="1" type="1"><li><code>변환 소스 폴더</code></li></ol><ol start="2" type="1"><li><code>출력 기준 폴더</code></li></ol><p>두 경로가 모두 존재하는 폴더여야 실행됩니다.</p><h2>변환 소스 폴더는 무엇을 고르나요?</h2><p>변환하려는 MV/MZ 게임 폴더를 고릅니다.</p><p>현재 버전에서는 아래 입력을 판별할 수 있습니다.</p><ul><li><code>data/System.json</code>이 있는 게임 루트</li></ul><ul><li><code>data</code> 폴더 자체</li></ul><ul><li><code>www/data/System.json</code>이 있는 MV 배포 루트</li></ul><ul><li><code>www</code> 폴더 자체</li></ul><p>MV 배포본처럼 실제 게임 파일이 <code>www</code> 안에 들어 있는 구조라면, 변환 결과에서는 <code>www</code> 안쪽 내용이 새 프로젝트 루트로 올라옵니다.</p><p>입력 경로에서 <code>data/System.json</code>을 찾지 못하면 변환할 프로젝트 구조로 판단하지 못해 실패합니다.</p><h2>출력 기준 폴더는 무엇인가요?</h2><p>변환 결과 프로젝트 폴더를 만들 위치입니다.</p><p>예를 들어 출력 기준 폴더를 <code>D:\\Work\\Converted</code>로 고르면, 그 안에 <code>Project...</code> 형태의 새 폴더가 만들어집니다.</p><p>출력 기준 폴더는 입력 게임 폴더 안쪽에 둘 수 없습니다. 원본 안에 결과를 만들면 복사 대상이 서로 겹칠 수 있기 때문입니다.</p><h2>변환 중에는 무엇을 하나요?</h2><p>현재 버전에서는 아래 작업을 수행합니다.</p><ul><li>소스 게임 파일을 새 프로젝트 폴더로 복사</li></ul><ul><li><code>js/plugins.js</code>를 RPG Maker가 읽기 쉬운 <code>$plugins</code> 구조로 다시 저장</li></ul><ul><li><code>data/System.json</code>의 이미지/오디오 암호화 플래그를 꺼짐으로 변경</li></ul><ul><li><code>System.json</code>에 암호화 키가 있으면 지원되는 이미지/오디오 리소스를 복호화</li></ul><ul><li>MV면 <code>Game.rpgproject</code> 생성</li></ul><ul><li>MZ면 <code>game.rmmzproject</code> 생성</li></ul><p>변환은 AIMT 내부 <code>MVMZProjectConverterCLI.exe</code>를 통해 실행됩니다. 일반 사용자가 CLI를 직접 실행하는 흐름이 아니라, AIMT가 내부 job 파일을 만들어 CLI에 전달하는 방식입니다.</p><h2>리소스 복호화는 어떻게 되나요?</h2><p><code>System.json</code>에 <code>encryptionKey</code>가 있으면 새 프로젝트 폴더 안의 암호화 리소스를 찾아 복호화합니다.</p><p>현재 버전에서는 아래 확장자를 대상으로 봅니다.</p><ul><li><code>.rpgmvp</code>, <code>.png_</code> -&gt; <code>.png</code></li></ul><ul><li><code>.rpgmvo</code>, <code>.ogg_</code> -&gt; <code>.ogg</code></li></ul><ul><li><code>.rpgmvm</code>, <code>.m4a_</code> -&gt; <code>.m4a</code></li></ul><ul><li><code>.rpgmvw</code>, <code>.wav_</code> -&gt; <code>.wav</code></li></ul><p>복호화가 성공한 암호화 파일은 새 프로젝트 폴더 안에서 제거되고, 복호화된 일반 파일이 남습니다.</p><p>암호화 키가 없거나 비어 있으면 프로젝트 변환 자체는 계속될 수 있지만, 리소스 복호화 수는 0개가 될 수 있습니다.</p><h2>원본 폴더도 바뀌나요?</h2><p>원본 입력 폴더는 직접 수정하지 않습니다.</p><p>복사와 변환은 출력 기준 폴더 아래 새로 만들어진 결과 프로젝트에서만 일어납니다.</p><p>다만 결과 프로젝트 안에서는 <code>plugins.js</code>, <code>System.json</code>, 프로젝트 마커 파일, 복호화 리소스가 새로 만들어지거나 바뀝니다.</p><h2>실패할 수 있는 경우</h2><p>아래 상황에서는 실패할 수 있습니다.</p><ul><li>변환 소스 폴더가 없거나 폴더가 아닙니다.</li></ul><ul><li>출력 기준 폴더가 없거나 폴더가 아닙니다.</li></ul><ul><li>입력 경로에서 <code>data/System.json</code>을 찾지 못합니다.</li></ul><ul><li>출력 기준 폴더가 입력 프로젝트 내부에 있습니다.</li></ul><ul><li>소스 경로에 현재 CLI가 허용하지 않는 특수문자가 들어 있습니다.</li></ul><ul><li><code>js/plugins.js</code>가 있지만 <code>$plugins = [...]</code> 배열 구조를 판별하지 못합니다.</li></ul><ul><li><code>MVMZProjectConverterCLI.exe</code>를 찾지 못합니다.</li></ul><ul><li>파일 복사 또는 리소스 복호화 중 권한/잠금 문제가 발생합니다.</li></ul>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
+<article class="guide-content">
+<h1>프로젝트 변환</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+<h2>이 도구는 무엇인가요?</h2><p>MVMZ 프로젝트 구조를 AIMT 작업 흐름에 맞춰 준비하거나 변환할 때 사용하는 보조 도구입니다.</p>
+<h2>언제 사용하나요?</h2>
+<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<h2>사용 전 확인할 것</h2>
+<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<h2>기본 사용 순서</h2>
+<ol><li>작업 도구에서 프로젝트 변환을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<h2>화면/항목 설명</h2>
+<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 프로젝트 폴더</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>작업 가능한 프로젝트 구조 또는 변환 결과가 준비됩니다.</td></tr></tbody></table>
+<h2>결과 확인 방법</h2>
+<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>작업 가능한 프로젝트 구조 또는 변환 결과가 준비됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
 <h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>변환 결과는 원본과 달라질 수 있으므로 새 위치에 작업본을 만들고 확인하세요.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
 <h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
+<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

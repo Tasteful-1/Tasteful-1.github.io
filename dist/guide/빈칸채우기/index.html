@@ -199,29 +199,20 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>빈칸채우기</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>빈칸채우기은 AIMT 사용 중 필요한 작업을 더 정확하게 진행하기 위한 기능입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<h2>어떤 파일을 대상으로 하나요?</h2><p>현재 버전에서는 이 기능은 <code>extract</code>와 <code>translated</code>를 서로 비교해서 동작합니다.</p><p>엔진이 시나리오형이면 내부 작업 폴더의:</p><ul><li><code>Scenario/extract</code></li></ul><ul><li><code>Scenario/translated</code></li></ul><p>를 비교합니다.</p><p>그 외 일반 구조에서는:</p><ul><li><code>System/extract</code> 와 <code>System/translated</code></li></ul><ul><li><code>Event/extract</code> 와 <code>Event/translated</code></li></ul><ul><li><code>data/extract</code> 와 <code>data/translated</code></li></ul><p>를 비교합니다.</p><p>즉, 원본 프로젝트 폴더를 직접 훑는 기능이 아니라 <code>이미 추출된 원문 파일</code>과 <code>이미 존재하는 번역 파일</code>을 맞춰 보는 방식입니다.</p><h2>실제로 무엇을 채우나요?</h2><p>현재 버전에서는 <code>빈 문자열("")</code>만 채웁니다.</p><p>번역 파일 구조가 무엇인지에 따라 방식이 조금 다릅니다.</p><h3>딕셔너리형 JSON</h3><p>딕셔너리형에서는 두 가지를 처리합니다.</p><ul><li>값이 <code>""</code>인 항목은 원문 값으로 채움</li></ul><ul><li>번역 파일에 아예 없는 키는 원문 쪽 키와 값을 추가</li></ul><p>즉, 딕셔너리형은 <code>빈 값 보정</code>과 <code>누락 키 보충</code>을 같이 합니다.</p><h3>리스트형 JSON</h3><p>리스트형에서는 같은 위치를 따라가며 <code>""</code>만 원문 값으로 바꿉니다.</p><p>중첩 리스트는 재귀적으로 내려가며 처리합니다.</p><p>다만 리스트 안에 들어 있는 딕셔너리 내부를 다시 파고들어 채우는 방식은 아닙니다.<br/>리스트형은 전체 길이나 바깥 구조가 조금만 달라도 보수적으로 동작합니다.</p><h2>채워지지 않는 경우는 언제인가요?</h2><p>현재 버전에서는 아래 경우는 건너뜁니다.</p><h3>번역 파일 자체가 없는 경우</h3><p>원문 <code>extract</code> 파일은 있어도 대응되는 <code>translated</code> 파일이 없으면 그 파일은 만들지 않고 그냥 넘어갑니다.</p><p>즉, <code>빈칸채우기</code>는 <code>없는 번역 파일을 새로 생성하는 기능</code>이 아닙니다.</p><h3>리스트 길이가 다른 경우</h3><p>리스트형 파일은 원문과 번역 리스트 길이가 다르면 그 파일 전체를 건너뜁니다.</p><p>즉, 일부 칸만 맞는다고 해서 억지로 끼워 넣지 않습니다.</p><p>번역 돌려놓고 설정을 바꿔서 새로 추출해 온 경우가 아니라면 신경쓰지 않아도 됩니다.</p><h3>이미 값이 들어 있는 경우</h3><p>현재 값이 비어 있지 않다면 그대로 둡니다.</p><p>오역처럼 보여도 자동으로 다시 번역하거나, 기존 번역을 덮어쓰는 기능은 아닙니다.</p><p>특정 영역을 새로 번역해 채워넣고 싶다면 범위 지정을 통한 부분 번역을 사용해주세요.</p><h2>실행하면 화면에서는 어떻게 보이나요?</h2><p>현재 버전에서는 도구 모달에서 <code>빈칸채우기</code>를 누르면:</p><ul><li>버튼이 잠시 비활성화되고</li></ul><ul><li>도구 모달이 닫히고</li></ul><ul><li><code>Console</code> 보기로 전환된 뒤</li></ul><ul><li>결과 메시지가 로그에 쌓입니다</li></ul><p>완료 메시지에는 보통 아래 정보가 포함됩니다.</p><ul><li>처리한 파일 수</li></ul><ul><li>채운 항목 수</li></ul><ul><li>많이 채운 파일 상위 목록</li></ul><p>즉, 결과 확인은 <code>Console</code> 로그 창에서 보는 구조입니다.</p>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
+<article class="guide-content">
+<h1>빈칸채우기</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+<h2>이 도구는 무엇인가요?</h2><p>번역 결과에서 비어 있는 칸을 찾아 추출 기준 원문으로 채워, 적용 시 문장이 통째로 사라지는 일을 줄이는 도구입니다.</p>
+<h2>언제 사용하나요?</h2>
+<ul><li>AI 번역 뒤 빈 번역 칸이 남았을 때</li><li>번역 도중 중단이 발생했을 때</li><li>적용 전에 누락 위험을 빠르게 줄이고 싶을 때</li><li>일부 파일만 먼저 안전하게 정리하고 싶을 때</li></ul>
+<h2>화면/항목 설명</h2><div><p><img src="../../guide/assets/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/image.png" alt=""></p></div>
+<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>번역 결과 파일의 빈 번역 칸</td></tr><tr><th>실행 기준</th><td>작업 도구 화면에서 실행하는 보조 기능입니다.</td></tr><tr><th>결과</th><td>빈칸이 원문으로 채워집니다.</td></tr></tbody></table>
 <h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
-<h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>의도적으로 비워 둔 항목도 채워질 수 있으니, 실행 전 대상 파일을 좁혀 확인하세요.</p><p>의도적으로 비워 두는 경우엔 완전히 비우기보다 반각 또는 전각 공백을 넣어두는 것이 안전합니다.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>
