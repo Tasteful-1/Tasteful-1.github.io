@@ -140,6 +140,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -202,23 +203,23 @@
 <article class="guide-content">
 <h1>402 동기화</h1>
 <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-<h2>이 도구는 무엇인가요?</h2><p>MVMZ 선택지 관련 402 항목이 번역 결과와 어긋나지 않도록 맞춰 주는 도구입니다.</p>
+<h2>이 도구는 무엇인가요?</h2><p>402 동기화는 MVMZ 선택지 명령의 102 항목과 그 결과 분기인 402 항목의 표시 텍스트를 맞추는 도구입니다. 102 선택지 목록을 기준으로 각 402 분기의 텍스트가 어긋난 경우 402 쪽 값을 다시 맞춥니다. 게임 플레이와 무관하지만 검수 중 거슬릴 때를 위한 기능입니다.</p>
 <h2>언제 사용하나요?</h2>
-<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<ul><li>선택지 번역 후 402 분기 이름이 원문이나 이전 값으로 남아 있을 때</li><li>코드 상 선택지 표시문과 분기 조건 텍스트가 서로 다르게 보일 때</li><li>Map, CommonEvents, Troops, Scenario 파일의 선택지 구조를 적용 전에 정리하고 싶을 때</li><li>선택지 번역을 수정한 뒤 분기 텍스트까지 같은 값으로 맞추고 싶을 때</li></ul>
 <h2>사용 전 확인할 것</h2>
-<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<ul><li>현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.</li><li>선택지 명령 102와 분기 명령 402가 포함된 JSON 파일이 있어야 합니다.</li><li>이 도구는 402의 표시 텍스트를 102 선택지 기준으로 직접 수정합니다.</li><li>선택지 순서나 인덱스가 이미 손상된 경우 일부 402는 범위 밖 항목으로 처리될 수 있습니다.</li><li>실행 전 작업본을 보관하세요.</li></ul>
 <h2>기본 사용 순서</h2>
-<ol><li>작업 도구에서 402 동기화을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<ol><li>작업 도구의 MVMZ 영역에서 402 동기화를 실행합니다.</li><li>AIMT가 CommonEvents, Troops, Scenario, Map 파일을 검사합니다.</li><li>각 명령 목록에서 같은 들여쓰기의 최신 102 선택지 목록을 기준으로 기억합니다.</li><li>402 명령을 만나면 분기 인덱스에 해당하는 102 선택지 텍스트와 비교합니다.</li><li>다르면 402의 표시 텍스트를 102 선택지 텍스트로 수정합니다.</li><li>완료 메시지에서 검사한 402 수, 불일치 수, 수정 수, 102 누락 수, 범위 밖 402 수를 확인합니다.</li><li>게임을 실행해 선택지와 분기 동작이 정상인지 확인합니다.</li></ol>
 <h2>화면/항목 설명</h2>
-<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 선택지와 402 분기 항목</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>선택지와 연결된 항목의 표시가 서로 맞도록 정리됩니다.</td></tr></tbody></table>
-<h2>결과 확인 방법</h2>
-<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>선택지와 연결된 항목의 표시가 서로 맞도록 정리됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<table><tbody><tr><th>102 선택지</th><td>플레이어에게 보이는 선택지 목록입니다. 402 동기화의 기준이 됩니다.</td></tr><tr><th>402 분기</th><td>선택지별 분기 항목입니다. 선택지 인덱스와 표시 텍스트를 가집니다.</td></tr><tr><th>불일치 402</th><td>402의 표시 텍스트가 102 선택지의 해당 인덱스 텍스트와 다른 항목입니다.</td></tr><tr><th>102 누락</th><td>앞에서 기준이 될 102 선택지 목록을 찾지 못한 402 항목입니다.</td></tr><tr><th>범위 밖 402</th><td>402가 가리키는 선택지 번호가 102 선택지 목록 범위를 벗어난 항목입니다.</td></tr></tbody></table>
 <h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>선택지 순서가 바뀌면 게임 진행에 영향을 줄 수 있으니 실행 후 실제 선택 장면을 확인하세요.</p></div></div>
-<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
+<div class="guide-callout" data-callout="important"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>402 동기화는 선택지 분기 텍스트를 직접 수정합니다. 실행 전 작업본을 보관하고, 처리 후 실제 선택 장면을 확인하세요.</p></div></div>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">주의</div><div class="guide-callout-body"><p>이 도구는 선택지 순서를 새로 판단하지 않습니다. 402 인덱스가 이미 잘못되어 있으면 범위 밖 항목으로 남을 수 있습니다.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>선택지 번역을 수정한 뒤 적용 전에 402 동기화를 실행하면 선택지와 분기 표시가 어긋나는 문제를 줄일 수 있습니다.</p></div></div>
 <h2>자주 헷갈리는 점</h2>
-<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
-<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
+<h3>선택지 순서도 자동으로 고치나요?</h3><p>아닙니다. 402가 가진 선택지 번호를 기준으로 텍스트만 맞춥니다. 순서 자체가 잘못된 경우에는 이벤트 구조를 직접 확인해야 합니다.</p>
+<h3>102가 없는 402도 고쳐지나요?</h3><p>아닙니다. 기준이 될 102 선택지 목록을 찾지 못하면 누락 항목으로 집계되고 건너뜁니다.</p>
+<h3>선택지 번역 자체를 새로 번역하나요?</h3><p>아닙니다. 이미 저장된 102 선택지 텍스트를 기준으로 402 텍스트를 맞추는 도구입니다.</p>
 </article>
 </main>
   </div>

@@ -140,6 +140,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -202,25 +203,27 @@
 <article class="guide-content">
 <h1>401 병합 &amp; 분할</h1>
 <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-<h2>이 도구는 무엇인가요?</h2><p>MVMZ 이벤트 대사 코드인 401 항목을 작업하기 쉬운 단위로 병합하거나 다시 분할하는 도구입니다.</p>
+<h2>이 도구는 무엇인가요?</h2><p>401 병합 &amp; 분할은 MVMZ 이벤트 명령의 401 대사 줄을 합치거나 다시 나누는 도구입니다. 병합은 같은 들여쓰기에서 연속된 401 명령을 하나의 401에 합치고, 분할은 줄바꿈이 들어간 401 텍스트를 여러 401 명령으로 되돌립니다.</p>
 <h2>화면 참고 이미지</h2>
-<p><a href="../../guide/assets/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/image.png"><img src="../../guide/assets/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/image.png"/></a></p>
+<p><img src="../../guide/assets/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/image%202.png" alt=""></p>
 <h2>언제 사용하나요?</h2>
-<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<ul><li>여러 줄로 나뉜 401 대사를 한 번에 번역하거나 검수하기 쉬운 단위로 합치고 싶을 때</li><li>병합된 401 텍스트를 게임 적용 전 원래처럼 여러 401 줄로 다시 나눠야 할 때</li><li>번역 과정에서 대사 줄 수가 줄어들어 원본 이벤트 구조와 맞지 않을 때</li><li>CommonEvents, Troops, Scenario, Map 파일의 401 대사 구조를 정리해야 할 때</li></ul><div><div class="guide-callout" data-callout="tip" role="note"><div class="guide-callout-title">팁</div><div class="guide-callout-body"><p>번역할 프로젝트의 언어에 따라 권장하는 방식이 다릅니다.</p><p><ul><li>일본어 : 개행으로 하는 것이 일반적입니다.</li><li>영어 : 반각공백으로 해야 번역결과가 자연스럽습니다.<br>다만 분할을 포기해야하기에 별도의 랩퍼 <code>wrapper</code> 플러그인 등을 병용하는 게 좋습니다.</li><li>중국어 : 직접 연결로 해야 번역결과가 자연스럽습니다.<br>영어와 마찬가지로 분할을 포기해야하기에 별도의 랩퍼 <code style="background: none 0% 0% / auto repeat scroll padding-box border-box rgb(29, 41, 66); color: rgb(200, 212, 255);">wrapper</code> 플러그인 등을 병용하는 게 좋습니다.</li></ul></p></div></div></div>
 <h2>사용 전 확인할 것</h2>
-<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<ul><li>현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.</li><li>대상 파일은 CommonEvents, Troops, Scenario, Map 계열 JSON입니다.</li><li><u>병합과 분할은 프로젝트 JSON을 직접 수정합니다.</u> 실행 전 작업본을 보관하세요.</li><li>분할은 기본적으로 텍스트 안의 줄바꿈을 기준으로 나눕니다.</li><li>원본 기준 빈 401 보충이 필요하면 원본 데이터 위치를 함께 준비해야 합니다.</li></ul>
 <h2>기본 사용 순서</h2>
-<ol><li>작업 도구에서 401 병합 &amp; 분할을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<ol><li>작업 도구의 MVMZ 영역에서 Merge 401 또는 Split 401을 선택합니다.</li><li>Merge 401을 선택했다면 병합 방식을 고릅니다.</li><li>병합 방식은 <code>
+</code>, Half-space, None 중 선택합니다.</li><li>AIMT가 CommonEvents, Troops, Scenario, Map 파일을 검사합니다.</li><li>Merge 401은 같은 들여쓰기의 연속된 401을 첫 번째 401에 합치고 나머지 401을 제거합니다.</li><li>Split 401은 줄바꿈이 들어간 401을 여러 401 명령으로 나눕니다.</li><li>완료 메시지에서 처리 파일 수, 수정 파일 수, 병합/분할 그룹 수를 확인합니다.</li><li>게임을 실행해 대사 순서와 줄 표시가 의도대로 유지되는지 확인합니다.</li></ol>
 <h2>화면/항목 설명</h2>
-<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 이벤트의 401 대사 항목</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>대사 항목이 선택한 기준에 맞춰 병합 또는 분할됩니다.</td></tr></tbody></table>
-<h2>결과 확인 방법</h2>
-<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>대사 항목이 선택한 기준에 맞춰 병합 또는 분할됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<table><tbody><tr><th>Merge 401</th><td>연속된 401 대사 명령을 하나로 합칩니다.</td></tr><tr><th>Split 401</th><td>줄바꿈이 포함된 401 텍스트를 여러 401 명령으로 나눕니다.</td></tr><tr><th><code>
+</code></th><td>각 401 텍스트를 줄바꿈으로 연결합니다.</td></tr><tr><th>Half-space</th><td>각 401 텍스트를 반각 공백으로 연결합니다.</td></tr><tr><th>None</th><td>구분자 없이 텍스트를 바로 이어 붙입니다.</td></tr><tr><th>전각공백 보충</th><td>원본 기준으로 부족한 401 줄이 있으면 빈 401을 전각공백으로 보충할 수 있습니다.</td></tr></tbody></table>
 <h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>대사 순서와 줄 수가 적용 결과에 영향을 줄 수 있으므로 실행 후 표본 확인이 필요합니다.</p></div></div>
-<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
+<div class="guide-callout" data-callout="important"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>401 병합과 분할은 이벤트 명령 목록을 직접 수정합니다. 실행 전 작업본을 보관하고, 처리 후 실제 대사 장면을 확인하세요.</p></div></div>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">주의</div><div class="guide-callout-body"><p>None 방식은 줄 사이 구분자가 사라집니다. 문장이 붙어도 괜찮은 경우에만 사용하세요.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>번역 품질을 위해 병합했다면 적용 전에는 Split 401으로 구조를 되돌린 뒤 게임 화면을 확인하는 흐름이 안전합니다.</p></div></div>
 <h2>자주 헷갈리는 점</h2>
-<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
-<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
+<h3>101 대사 표시 명령도 같이 바뀌나요?</h3><p>이 도구는 401 대사 줄을 대상으로 합니다. 101과 401을 함께 다루는 설정은 별도의 <code>merge 101-401</code> 설정을 확인하세요.</p>
+<h3>분할하면 항상 원본과 같은 줄 수가 되나요?</h3><p>기본 분할은 줄바꿈 기준입니다. 원본 기준 보충이 필요한 경우에는 원본 데이터와 비교해 부족한 401을 전각공백으로 보충할 수 있습니다.</p>
+<h3>모든 401이 하나로 합쳐지나요?</h3><p>아닙니다. 같은 들여쓰기에서 연속된 401 그룹만 병합됩니다. 다른 명령이 끼어 있거나 들여쓰기가 다르면 별도 그룹으로 처리됩니다.</p>
 </article>
 </main>
   </div>

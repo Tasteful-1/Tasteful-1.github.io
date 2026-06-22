@@ -140,6 +140,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -202,23 +203,21 @@
 <article class="guide-content">
 <h1>Data 복호화</h1>
 <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-<h2>이 도구는 무엇인가요?</h2><p>MVMZ data 파일이 암호화되어 있거나 바로 읽기 어려울 때 내용을 확인할 수 있도록 처리하는 도구입니다.</p>
+<h2>이 도구는 무엇인가요?</h2>
+<p>Data 복호화는 현재 RPG Maker MV/MZ 프로젝트의 data JSON 파일이 특수 암호화 방식으로 저장되어 있을 때, 읽을 수 있는 JSON으로 복호화해 같은 위치에 덮어쓰는 도구입니다. 일반적으론 사용할 일 없는 기능입니다.</p>
 <h2>언제 사용하나요?</h2>
-<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<ul><li>data 폴더의 JSON 파일이 일반 텍스트 JSON처럼 열리지 않을 때</li><li>MVMZ 추출 전에 data 파일을 먼저 읽을 수 있는 형태로 바꿔야 할 때</li><li>게임이 별도 로더로 암호화된 data를 읽는 구조라 AIMT 추출이 실패할 때</li></ul>
 <h2>사용 전 확인할 것</h2>
-<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
-<h2>기본 사용 순서</h2>
-<ol><li>작업 도구에서 Data 복호화을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<ul><li>현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.</li><li>프로젝트 안에 data 폴더와 System.json이 있어야 합니다.</li><li>이 도구는 data JSON을 같은 위치에 덮어씁니다. 실행 전 프로젝트를 보관하세요.</li><li>복호화 방식에 따라 js 폴더의 로더 파일도 평문 data를 읽도록 함께 수정될 수 있습니다.</li></ul>
 <h2>화면/항목 설명</h2>
-<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ data 폴더의 데이터 파일</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>선택한 데이터 파일을 읽을 수 있는 형태로 준비합니다.</td></tr></tbody></table>
-<h2>결과 확인 방법</h2>
-<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>선택한 데이터 파일을 읽을 수 있는 형태로 준비합니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<table><tbody><tr><th>대상</th><td>현재 프로젝트의 data 폴더 안 JSON 파일입니다.</td></tr><tr><th>처리 방식</th><td>지원되는 암호화 방식을 감지해 임시 위치에서 복호화한 뒤 원래 data 파일을 교체합니다.</td></tr><tr><th>로더 조정</th><td>필요한 경우 게임이 복호화된 JSON을 읽을 수 있도록 관련 JS 로더를 함께 수정합니다.</td></tr><tr><th>처리 결과</th><td>완료 메시지에 처리된 파일 수와 대상 data 경로가 표시됩니다.</td></tr></tbody></table>
 <h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>복호화한 파일을 원본 프로젝트에 그대로 덮어쓰기 전에 백업과 실행 확인이 필요합니다.</p></div></div>
-<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
+<div class="guide-callout" data-callout="danger"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>Data 복호화는 현재 프로젝트의 data JSON을 같은 위치에 덮어씁니다. 실행 전 반드시 프로젝트를 보관하세요.</p></div></div>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">주의</div><div class="guide-callout-body"><p>복호화와 함께 로더 JS가 수정될 수 있습니다. 복호화 후 게임 실행 확인을 먼저 하고 다음 작업으로 넘어가세요.</p></div></div>
 <h2>자주 헷갈리는 점</h2>
-<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
-<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
+<h3>이미지나 오디오도 복호화하나요?</h3><p>아닙니다. Data 복호화는 data JSON 중심입니다. 이미지와 오디오는 크립터 (이미지 / 오디오)를 꼭 필요할 경우에만 사용합니다.</p>
+<h3>복호화 결과가 별도 폴더에 만들어지나요?</h3><p>아닙니다. 최종 결과는 현재 프로젝트 data 폴더에 같은 이름으로 반영됩니다.</p>
+<h3>실패하면 일부 파일만 바뀔 수 있나요?</h3><p>작업 중 오류가 발생하면 원래 파일로 되돌리도록 처리됩니다. 그래도 작업 전 프로젝트 보관은 필수입니다.</p>
 </article>
 </main>
   </div>
