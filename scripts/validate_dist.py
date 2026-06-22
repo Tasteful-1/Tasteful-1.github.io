@@ -34,14 +34,15 @@ def resolve_internal_target(html_path: Path, raw_url: str) -> Path | None:
     url, _fragment = urldefrag(raw_url.strip())
     if not url or is_external_url(url):
         return None
-    if url.startswith("/AIMT_Build/"):
-        relative = url.removeprefix("/AIMT_Build/")
+    path_value = urlparse(url).path
+    if path_value.startswith("/AIMT_Build/"):
+        relative = path_value.removeprefix("/AIMT_Build/")
         return (DIST_ROOT / unquote(relative)).resolve()
-    if url.startswith("/dist/"):
-        return (DIST_ROOT / unquote(url.removeprefix("/dist/"))).resolve()
-    if url.startswith("/"):
-        return (DIST_ROOT / unquote(url.lstrip("/"))).resolve()
-    return (html_path.parent / unquote(url)).resolve()
+    if path_value.startswith("/dist/"):
+        return (DIST_ROOT / unquote(path_value.removeprefix("/dist/"))).resolve()
+    if path_value.startswith("/"):
+        return (DIST_ROOT / unquote(path_value.lstrip("/"))).resolve()
+    return (html_path.parent / unquote(path_value)).resolve()
 
 
 def validate_dist(dist_root: Path = DIST_ROOT) -> list[str]:
@@ -63,7 +64,8 @@ def validate_dist(dist_root: Path = DIST_ROOT) -> list[str]:
         for match in HTML_RE.finditer(text):
             raw_url = match.group(1) or match.group(2) or ""
             target = resolve_internal_target(html_path, raw_url)
-            if target is not None and raw_url.lower().split("#", 1)[0].endswith(".md"):
+            raw_path = urlparse(urldefrag(raw_url.strip())[0]).path.lower()
+            if target is not None and raw_path.endswith(".md"):
                 errors.append(f"markdown link remains: {html_path} -> {raw_url}")
             if target is None:
                 continue

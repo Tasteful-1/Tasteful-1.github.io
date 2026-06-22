@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>401-Extract Mode · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>401-Extract Mode · AIMT Guide</title>
+<script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+<style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+<link href="../../guide/static/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<button aria-label="사이드바 열기" class="sidebar-expand sidebar-toggle" id="sidebarExpand" title="사이드바 열기" type="button">☰</button>
+<div class="search-overlay" hidden="" id="searchOverlay">
+<section aria-labelledby="searchTitle" aria-modal="true" class="search-dialog" role="dialog">
+<div class="search-header"><h2 id="searchTitle">문서 검색</h2><button aria-label="검색 닫기" class="search-close" id="searchClose" title="검색 닫기" type="button">×</button></div>
+<input autocomplete="off" class="search-input" id="guideSearch" placeholder="검색어 입력" type="search"/>
+<div class="search-results" hidden="" id="searchResults"></div>
+</section>
+</div>
+<div class="site-shell">
+<aside class="sidebar">
+<div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button aria-label="문서 검색" class="sidebar-toggle" id="searchOpen" title="문서 검색" type="button">⌕</button><button aria-label="테마 변경" class="theme-toggle" id="themeToggle" title="테마 변경" type="button">◐</button><button aria-label="사이드바 닫기" class="sidebar-toggle" id="sidebarCollapse" title="사이드바 닫기" type="button">←</button></div>
+<nav aria-label="문서 목록" class="nav-list">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
 <details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
@@ -67,7 +68,9 @@
 <a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
 <a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
 <a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
 <a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
@@ -76,13 +79,25 @@
 <a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
 <a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
 </div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/wolf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
 <a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95/index.html" data-depth="4">LiveMaker 폰트 설정</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
@@ -126,6 +141,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -182,25 +198,82 @@
 </div></details>
 </div></details>
       </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
-<article class="guide-content"><h1>401-Extract Mode</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>401-Extract Mode은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<a href="../../guide/assets/401-extract-mode/image.png"><img src="../../guide/assets/401-extract-mode/image.png"/></a><h2>이 기능은 무엇인가요?</h2><p><code>401-Extract Mode</code>는 <code>MVMZ</code> 이벤트 대사를 어떤 단위로 추출할지 정하는 설정입니다.</p><p>여기서 <code>401</code>은 실제 대사 줄입니다.</p><p>이 설정에 따라 대사를 <code>한 줄씩 나눠서</code> 볼지, <code>이어지는 대사 흐름으로 묶어서</code> 볼지가 달라집니다.</p><p>즉, 이 기능은 번역 문장을 더 잘게 나눌지, 문맥 단위로 묶을지를 정하는 설정이라고 보면 됩니다.</p><h2><code>list</code>와 <code>group</code>의 차이</h2><h3><code>list</code></h3><p><code>list</code>는 대사를 가능한 한 잘게 나눠서 저장하는 방식입니다.</p><p>연속된 대사라도 각 줄을 따로따로 다루기 쉽습니다.</p><p>예를 들어 원래 이벤트에 대사 두 줄이 이어져 있으면, 추출 결과도 보통 두 항목으로 나뉘어 저장됩니다.</p><script crossorigin="anonymous" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" referrerpolicy="no-referrer" rel="stylesheet"/><script crossorigin="anonymous" integrity="sha512-QXFMVAusM85vUYDaNgcYeU3rzSlc+bTV4JvkfJhjxSHlQEo+ig53BtnGkvFTiNJh8D+wv6uWAQ2vJaVmxe8d3w==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script><pre><code>[
-  "안녕하세요.",
-  "오늘도 부탁드려요."
-]</code></pre><p>이 방식은 구조가 단순하고, 어느 줄을 고치는지 찾기 쉬운 편입니다.</p><p>대신 문맥이 여러 줄로 끊어져 보일 수 있습니다.</p><h3><code>group</code></h3><p><code>group</code>은 이어지는 <code>401</code> 대사 줄을 하나의 묶음으로 보는 방식입니다.</p><p>같은 흐름의 대사를 한 번에 확인하기 쉬워서, 문맥을 보고 번역해야 할 때 더 편할 수 있습니다.</p><p>예를 들어 같은 대화 흐름의 두 줄이 이어져 있으면 아래처럼 한 묶음으로 저장될 수 있습니다.</p><pre><code>[
-  ["안녕하세요.", "오늘도 부탁드려요."]
-]</code></pre><p>이 방식은 문맥 파악에는 유리하지만, 한 줄만 따로 떼어 보기는 <code>list</code>보다 덜 직관적일 수 있습니다.</p><h2>실제로 무엇이 달라지나요?</h2><p>이 설정은 프로젝트 원본 데이터의 대사를 바로 바꾸는 기능이 아닙니다.</p><p>대신 <code>추출 결과 파일의 저장 구조</code>를 바꿉니다.</p><p>그래서 같은 이벤트라도:</p><ul><li><code>list</code>에서는 줄 단위로 잘게 보이고</li></ul><ul><li><code>group</code>에서는 이어지는 대사 흐름이 묶여 보일 수 있습니다</li></ul><p>번역할 때 느끼는 차이도 여기서 생깁니다.</p><h2><code>Flatten Mode</code>와는 어떤 관계인가요?</h2><p><code>Flatten Mode</code>는 묶인 대사나 구조를 번역 단계에서 어떤 형태로 펼쳐서 다룰지에 가까운 설정입니다.</p><p>하지만 현재 버전에서는 <code>401-Extract Mode</code>가 <code>list</code>이면 <code>Flatten Mode</code>는 자동으로 <code>full</code>에 고정됩니다.</p><p>즉, <code>list</code>일 때는 <code>Flatten Mode</code>를 별도로 고를 수 없습니다.</p><p>이유는 <code>list</code> 자체가 이미 줄 단위 구조이기 때문에, <code>group</code>에서 쓰는 방식의 추가 평탄화 선택이 의미가 거의 없기 때문입니다.</p><p>반대로 <code>401-Extract Mode</code>를 <code>group</code>으로 바꾸면 <code>Flatten Mode</code>를 다시 선택할 수 있습니다.</p><p>사용자 입장에서는 아래처럼 이해하면 됩니다.</p><ul><li><code>list</code>: 이미 잘게 나뉜 상태라 <code>Flatten Mode</code> 선택이 잠김</li></ul><ul><li><code>group</code>: 묶음 구조를 쓰므로 <code>Flatten Mode</code> 선택 가능</li></ul><h2><code>merge 101-401</code>과 같이 쓰면 어떻게 되나요?</h2><p><code>merge 101-401</code>은 화자명 쪽 <code>101</code>과 대사 줄 <code>401</code>을 같은 계열로 다룰지 정하는 설정입니다.</p><p><code>401-Extract Mode</code>는 그 안에서 <code>401</code>을 어떤 단위로 저장할지 정하는 설정입니다.</p><p>즉, 두 설정은 서로 다른 역할을 합니다.</p><ul><li><code>merge 101-401</code>: <code>101</code>과 <code>401</code>을 함께 볼지</li></ul><ul><li><code>401-Extract Mode</code>: <code>401</code>을 줄 단위로 볼지, 묶음 단위로 볼지</li></ul><p>예를 들면:</p><ul><li><code>merge 101-401</code> OFF + <code>list</code>  : <code>101</code> <code>401</code>이 분리되고, <code>401</code>도 줄 단위로 저장됩니다.</li></ul><ul><li><code>merge 101-401</code> OFF + <code>group</code> : <code>101</code> <code>401</code>은 분리되지만, <code>401</code>은 묶음 단위로 저장될 수 있습니다.</li></ul><ul><li><code>merge 101-401</code> ON + <code>list</code> : <code>101</code> <code>401</code>이 같은 계열 파일로 모이지만, 항목 자체는 비교적 잘게 유지됩니다.</li></ul><ul><li><code>merge 101-401</code> ON + <code>group</code><br/>화자명과 이어지는 대사 흐름을 한 묶음으로 보기 가장 쉬운 쪽에 가깝습니다.</li></ul><h2><code>group</code>이면 항상 화자명까지 함께 묶이나요?</h2><p>항상 그런 것은 아닙니다.</p><p><code>group</code>은 기본적으로 <code>401</code> 대사 줄을 묶는 설정입니다.</p><p>여기에 <code>merge 101-401</code>까지 켜져 있으면, <code>101</code> 뒤에 실제로 이어지는 <code>401</code>이 있을 때 <code>101-401</code> 묶음이 만들어질 수 있습니다.</p><p>그래서 <code>group</code>을 켰다고 해서 모든 항목이 자동으로 <code>화자명 + 대사 묶음</code>이 되는 것은 아닙니다.</p><h2>언제 <code>list</code>가 더 좋나요?</h2><p>아래 같은 경우에는 <code>list</code>가 더 편할 수 있습니다.</p><ul><li>한 줄씩 따로 고치고 싶을 때</li></ul><ul><li>기존 <code>code_401.json</code> 구조를 익숙하게 보고 싶을 때</li></ul><ul><li>어느 줄이 어디에 대응되는지 빠르게 찾고 싶을 때</li></ul><ul><li>문맥보다 줄 단위 수정이 더 중요한 작업일 때</li></ul><h2>언제 <code>group</code>이 더 좋나요?</h2><p>아래 같은 경우에는 <code>group</code>이 더 잘 맞을 수 있습니다.</p><ul><li>대화 흐름을 문맥 단위로 보고 번역하고 싶을 때</li></ul><ul><li>여러 줄이 연결된 말투를 한 번에 맞추고 싶을 때</li></ul><ul><li><code>merge 101-401</code>과 함께 써서 화자명과 대사를 같이 보고 싶을 때</li></ul><ul><li>웹 번역기나 AI 번역에서 여러 줄 문맥을 함께 넘기는 쪽이 더 자연스러울 때</li></ul><h2><code>저장</code>하면 언제 반영되나요?</h2><p><code>저장</code>을 누르면 설정값 자체는 바로 저장됩니다.</p><p>하지만 이미 추출해 둔 <code>Event</code> 파일 구조가 자동으로 다시 바뀌지는 않습니다.</p><p>예를 들어 <code>list</code>로 추출해 둔 뒤 나중에 <code>group</code>으로 바꿔도, 기존 추출 파일이 자동으로 그룹 구조로 다시 만들어지지는 않습니다.</p><p>새 구조로 작업하려면 다시 <code>추출</code>해야 합니다.</p><h2>번역과 적용에도 영향이 있나요?</h2><p>영향이 있습니다.</p><p>현재 버전에서는 번역 단계는 추출할 때 함께 저장된 메타데이터와 구조 정보를 참고합니다.</p><p>적용 단계는 추출 매핑 정보와 번역 파일 구조를 함께 참고합니다.</p><p>그래서 <code>401-Extract Mode</code>를 바꿨다면, 예전 추출 결과를 그대로 계속 쓰는 것보다 새 설정으로 다시 추출한 뒤 그 결과를 기준으로 번역과 적용을 이어가는 편이 안전합니다.</p><h2>자주 헷갈리는 점</h2><h3><code>group</code>으로 바꿨는데 기존 파일이 그대로예요</h3><p>정상일 수 있습니다.</p><p>설정만 저장했다고 기존 추출 결과가 자동으로 다시 만들어지지는 않기 때문입니다.</p><h3><code>list</code>인데 <code>Flatten Mode</code>를 못 고르겠어요</h3><p>현재 버전에서는 정상입니다.</p><p><code>list</code>에서는 <code>Flatten Mode</code>가 <code>full</code>로 고정되고 선택칸이 잠깁니다.</p><h3><code>group</code>이면 무조건 더 좋은가요?</h3><p>그렇지는 않습니다.</p><p>문맥을 보기에는 좋지만, 한 줄씩 따로 수정하거나 위치를 바로 찾는 데는 <code>list</code>가 더 편할 수 있습니다.</p><h3><code>group</code>이면 모든 대사가 한 덩어리로 합쳐지나요?</h3><p>그렇게 보면 안 됩니다.</p><p>기본적으로는 이어지는 <code>401</code> 대사 줄 단위로 묶는 것이고, 이벤트 전체를 무조건 한 덩어리로 만드는 기능은 아닙니다.</p><h3>설정만 바꾸고 바로 적용해도 되나요?</h3><p>권장하지 않습니다.</p><p>구조를 바꿨다면 다시 <code>추출</code>한 뒤 그 결과 기준으로 번역과 적용을 이어가는 편이 안전합니다.</p><h2>알아둘 점</h2><ul><li><code>list</code>는 줄 단위, <code>group</code>은 대화 흐름 단위에 가깝습니다.</li></ul><ul><li><code>list</code>에서는 <code>Flatten Mode</code>가 자동으로 <code>full</code>에 고정됩니다.</li></ul><ul><li><code>group</code>은 연속된 <code>401</code> 묶음 단위에 가깝고, 한 줄 단위 수정은 <code>list</code>가 더 단순할 수 있습니다.</li></ul><ul><li>설정을 바꿨다면 기존 추출 파일을 그대로 쓰지 말고 다시 <code>추출</code>하는 것이 중요합니다.</li></ul>
+</aside>
+<div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
+<main class="content-shell">
+<article class="guide-content">
+  <h1>401-Extract Mode</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
+  <p><img src="../../guide/assets/401-extract-mode/image%202.png" alt=""></p>
+  <h2>무엇을 조정하는 설정인가요?</h2>
+  <p>401-Extract Mode는 MVMZ 이벤트 대사의 401 줄을 개별 항목 중심으로 추출할지, 이어지는 흐름을 묶음 중심으로 추출할지 정하는 설정입니다.</p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>대사를 한 줄씩 세밀하게 수정하고 싶을 때</li>
+    <li>여러 줄 대사를 문맥 단위로 보고 번역하고 싶을 때</li>
+    <li>merge 101-401과 함께 대사 추출 구조를 처음 정할 때</li>
+  </ul>
+  <h2>사용 전 확인할 것</h2>
+  <ul>
+    <li>기본값은 list입니다.</li>
+    <li>설정을 바꾸면 추출 결과 구조가 달라지므로 다시 추출해야 합니다.</li>
+    <li>기존 번역 파일과 구조가 달라질 수 있으므로 작업 초반에 결정하는 편이 좋습니다.</li>
+  </ul>
+  <h2>기본 사용 순서</h2>
+  <ol>
+    <li>설정 화면에서 MVMZ 영역의 401-Extract Mode를 확인합니다.</li>
+    <li>줄 단위 관리가 필요하면 list를 선택합니다.</li>
+    <li>문맥 단위 관리가 필요하면 group을 선택합니다.</li>
+    <li>필요하면 merge 101-401 설정도 함께 확인합니다.</li>
+    <li>MVMZ 추출을 다시 실행합니다.</li>
+    <li>대사 결과가 원하는 단위로 보이는지 확인합니다.</li>
+  </ol>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>모드</th>
+        <th>이해 방법</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>list</td>
+        <td>대사를 가능한 한 개별 줄 중심으로 저장합니다. 찾고 고치기 쉽지만 문맥이 끊겨 보일 수 있습니다.</td>
+      </tr>
+      <tr>
+        <td>group</td>
+        <td>이어지는 대사 흐름을 묶음으로 저장합니다. 문맥 파악에 유리하지만 한 줄만 따로 고치는 감각은 약해질 수 있습니다.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>결과 확인 방법</h2>
+  <ul>
+    <li>추출 결과에서 대사 줄이 개별 항목인지 묶음 항목인지 확인합니다.</li>
+    <li>번역 후 적용했을 때 줄 순서와 대사 흐름이 유지되는지 확인합니다.</li>
+    <li>번역 품질이 문맥 부족으로 흔들리면 group을 비교하고, 검수 편의가 떨어지면 list를 비교합니다.</li>
+  </ul>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="important">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>401-Extract Mode는 추출 구조를 바꾸는 설정입니다. 이미 번역을 많이 진행했다면 변경 전에 필요한 파일을 보관하세요.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>대사량이 많고 문맥이 중요한 작품은 group을 시험하고, 짧은 반복 대사가 많은 작품은 list를 먼저 확인해 보세요.</p><p>group 보다 list 가 기능상 더 안정적일 수 있습니다.</p>
+    </div>
+  </div>
+  <h2>자주 헷갈리는 점</h2>
+  <ul>
+    <li><strong>Flatten Mode와 같은 설정인가요?</strong><br>아닙니다. 401-Extract Mode는 추출 결과의 단위를 정하고, Flatten Mode는 번역 단계에서 AI에 넘기는 입력 단위를 조정합니다.</li>
+    <li><strong>group을 선택하면 적용이 더 위험한가요?</strong><br>위험하다기보다 구조가 달라집니다. 번역 결과의 줄 수와 대사 흐름이 맞는지 확인하는 과정이 더 중요해집니다.</li>
+  </ul>
 </article>
 </main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
+</div>
+<script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>
