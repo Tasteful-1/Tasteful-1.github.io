@@ -140,6 +140,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -200,25 +201,78 @@
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
 <article class="guide-content">
-<h1>프로젝트 변환</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-<h2>이 도구는 무엇인가요?</h2><p>MVMZ 프로젝트 구조를 AIMT 작업 흐름에 맞춰 준비하거나 변환할 때 사용하는 보조 도구입니다.</p>
-<h2>언제 사용하나요?</h2>
-<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
-<h2>사용 전 확인할 것</h2>
-<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
-<h2>기본 사용 순서</h2>
-<ol><li>작업 도구에서 프로젝트 변환을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
-<h2>화면/항목 설명</h2>
-<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 프로젝트 폴더</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>작업 가능한 프로젝트 구조 또는 변환 결과가 준비됩니다.</td></tr></tbody></table>
-<h2>결과 확인 방법</h2>
-<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>작업 가능한 프로젝트 구조 또는 변환 결과가 준비됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
-<h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>변환 결과는 원본과 달라질 수 있으므로 새 위치에 작업본을 만들고 확인하세요.</p></div></div>
-<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
-<h2>자주 헷갈리는 점</h2>
-<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
-<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
+  <h1>프로젝트 변환</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+  <h2>이 도구는 무엇인가요?</h2>
+  <div>
+    <p><img src="../../guide/assets/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/image.png" alt=""></p>
+  </div>
+  <p>프로젝트 변환은 RPG Maker MV/MZ 배포본이나 data/www 구조의 게임 폴더를 <code>RPG MAKER MV/MZ</code> 에서 작업하기 쉬운 프로젝트 폴더로 복사하고, 암호화된 이미지와 오디오가 있으면 함께 복호화하는 도구입니다.</p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>배포된 MV/MZ 게임을 작업용 프로젝트 형태로 따로 만들고 싶을 때</li>
+    <li>입력 경로가 게임 루트, www 폴더, data 폴더 중 어느 쪽인지 헷갈릴 때</li>
+    <li>암호화된 이미지나 오디오를 함께 풀어 작업 가능한 복사본을 만들고 싶을 때</li>
+    <li>RPG MAKER 로 프로젝트를 열어 게임의 구조를 파악하고 싶을 때</li>
+  </ul>
+  <h2>사용 전 확인할 것</h2>
+  <ul>
+    <li>변환 소스 폴더에는 data/System.json을 찾을 수 있어야 합니다.</li>
+    <li>출력 기준 폴더를 입력 프로젝트 내부로 지정하면 안 됩니다.</li>
+    <li>변환 결과는 원본을 직접 바꾸지 않고 새 Project 계열 폴더로 만들어집니다.</li>
+  </ul>
+  <h2>기본 사용 순서</h2>
+  <ol>
+    <li>작업 도구의 MVMZ 영역에서 프로젝트 변환을 엽니다.</li>
+    <li>변환 소스 폴더에 MV/MZ 게임 폴더, www 폴더, data 폴더 중 하나를 지정합니다.</li>
+    <li>출력 기준 폴더에 변환 결과를 만들 상위 폴더를 지정합니다.</li>
+    <li>확인을 누르면 AIMT가 새 Project 계열 폴더를 생성합니다.</li>
+    <li>소스 파일을 복사하고, 필요한 경우 이미지와 오디오 암호화를 해제합니다.</li>
+    <li>완료 메시지에서 출력 폴더, 복사 파일 수, 복호화 파일 수를 확인합니다.</li>
+  </ol>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <tbody>
+      <tr>
+        <th>변환 소스 폴더</th>
+        <td>MV/MZ 게임 루트, www 폴더, 또는 data 폴더를 선택할 수 있습니다.</td>
+      </tr>
+      <tr>
+        <th>출력 기준 폴더</th>
+        <td>변환 결과 Project 폴더가 생성될 위치입니다.</td>
+      </tr>
+      <tr>
+        <th>복사 파일 수</th>
+        <td>새 프로젝트 폴더로 복사된 파일 수입니다.</td>
+      </tr>
+      <tr>
+        <th>복호화 파일 수</th>
+        <td>변환 중 암호화가 해제된 이미지와 오디오 파일 수입니다.</td>
+      </tr>
+      <tr>
+        <th>프로젝트 표시</th>
+        <td>변환된 폴더에는 프로젝트를 실행할 수 있는 실행기가 함께 준비됩니다. <code>Game.rpgproject</code>, <code>game.rmmzproject</code></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>출력 기준 폴더는 원본 게임 폴더 밖으로 지정하세요. 원본 안에 결과를 만들면 변환이 실패하거나 파일 구분이 어려워집니다.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>변환 후에는 새로 만들어진 Project 폴더를 작업 대상으로 사용하고, 원본 배포본은 그대로 보관하세요.</p>
+    </div>
+  </div>
+  <h2>자주 헷갈리는 점</h2>
+  <h3>원본 프로젝트를 직접 바꾸나요?</h3>
+  <p>아닙니다. 소스 폴더를 복사해 출력 기준 폴더 아래에 새 Project 계열 폴더를 만듭니다.</p>
+  <h3>data 폴더만 선택해도 되나요?</h3>
+  <p>data/System.json을 찾을 수 있으면 data 폴더, www 폴더, 게임 루트 중 하나를 선택할 수 있습니다.</p>
 </article>
 </main>
   </div>

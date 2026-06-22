@@ -140,6 +140,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -202,25 +203,27 @@
 <article class="guide-content">
 <h1>통합 일관성</h1>
 <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-<h2>이 도구는 무엇인가요?</h2><p>여러 검사 기준을 함께 사용해 MVMZ 번역 결과의 표현 흔들림을 넓게 확인하는 도구입니다.</p>
+<h2>이 도구는 무엇인가요?</h2>
+<p>통합 일관성은 RPG Maker MV/MZ 이벤트 명령의 주요 텍스트 파라미터를 한꺼번에 검사해, 같은 원문이 여러 번역 표기로 갈라진 항목을 찾아 주는 도구입니다.</p>
 <h2>화면 참고 이미지</h2>
-<p><a href="../../guide/assets/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/image.png"><img src="../../guide/assets/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/image.png"/></a></p>
+<p><img src="../../guide/assets/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/image%202.png" alt=""></p>
 <h2>언제 사용하나요?</h2>
-<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<ul><li>이미 번역이 끝난 프로젝트를 대상으로 일관성 검사를 하고싶을 때</li><li>대사, 선택지, 주석, 스크립트, 플러그인 명령 등 여러 영역의 번역 표기를 함께 점검할 때</li><li>대규모 번역 후 같은 원문이 다른 번역으로 저장된 항목을 찾고 싶을 때</li><li>적용 전에 반복 표현과 명령 파라미터 번역을 넓게 검수해야 할 때</li></ul>
 <h2>사용 전 확인할 것</h2>
-<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<ul><li>현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.</li><li>원문 기준 비교가 필요하면 번역 전 원본 data 폴더를 준비합니다.</li><li>이 도구는 여러 명령 코드를 대상으로 하므로, 적용 전 수정 범위를 반드시 확인합니다.</li><li>같은 원문이라도 문맥에 따라 다른 번역이 필요한 항목은 통일 대상에서 제외합니다.</li></ul>
 <h2>기본 사용 순서</h2>
-<ol><li>작업 도구에서 통합 일관성을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<ol><li>작업 도구의 MVMZ 영역에서 통합 일관성을 엽니다.</li><li>원문 폴더를 선택해 원문과 현재 번역 결과를 비교합니다.</li><li>검사 결과를 명령 그룹별로 확인합니다.</li><li>불일치 항목의 번역 후보와 사용 위치를 검토합니다.</li><li>필요한 항목만 선택해 같은 번역으로 통일합니다.</li><li>자동 통일을 사용할 경우 적용 전후 결과를 비교하고, 게임에서 해당 장면을 확인합니다.</li></ol>
 <h2>화면/항목 설명</h2>
-<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 추출/번역 결과 전체의 반복 표현</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>여러 파일의 표현 차이를 모아 보고 정리할 수 있습니다.</td></tr></tbody></table>
+<table><tbody><tr><th>검사 범위</th><td>101, 102, 108/408, 111, 122, 320/324/325, 355/655, 356/357, 401, 405 등 주요 이벤트 명령의 텍스트 항목입니다.</td></tr><tr><th>명령 그룹</th><td>대사, 선택지, 주석, 조건, 변수, 프로필, 스크립트, 플러그인 명령처럼 용도별로 묶어 보여 줍니다.</td></tr><tr><th>원문 값</th><td>비교 기준이 되는 원래 텍스트입니다.</td></tr><tr><th>번역 후보</th><td>같은 원문에 대해 현재 프로젝트에서 발견된 서로 다른 번역입니다.</td></tr><tr><th>통일 적용</th><td>선택한 후보를 기준으로 해당 항목들을 같은 번역으로 맞춥니다.</td></tr></tbody></table>
 <h2>결과 확인 방법</h2>
-<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>여러 파일의 표현 차이를 모아 보고 정리할 수 있습니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<ul><li>그룹별 불일치 수와 후보 목록을 확인합니다.</li><li>적용한 항목이 의도한 명령 그룹에만 반영되었는지 확인합니다.</li><li>대사, 선택지, 플러그인 명령처럼 게임 동작에 영향을 줄 수 있는 항목은 실제 장면에서 다시 확인합니다.</li></ul>
 <h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>한 번에 넓은 범위를 바꾸기보다 결과를 확인하면서 단계적으로 반영하세요.</p></div></div>
-<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>통합 일관성은 넓은 범위를 다룹니다. 같은 원문이라도 명령 종류나 장면에 따라 다른 번역이 필요한지 먼저 확인하세요.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>먼저 검사 결과를 그룹별로 좁혀 보고, 대사나 선택지처럼 눈에 보이는 항목부터 통일하는 흐름이 안전합니다.</p></div></div>
 <h2>자주 헷갈리는 점</h2>
-<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
-<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
+<h3>모든 텍스트를 검사하나요?</h3><p>아닙니다. MVMZ 이벤트 명령에서 AIMT가 지원하는 주요 텍스트 파라미터를 검사합니다.</p>
+<h3>이름 일관성과 무엇이 다른가요?</h3><p>이름 일관성은 대사 이름 태그에 집중합니다. 통합 일관성은 대사, 선택지, 주석, 스크립트, 플러그인 명령 등 여러 명령 그룹을 함께 봅니다.</p>
+<h3>자동 통일 후 바로 적용해도 되나요?</h3><p>자동 통일은 후보를 빠르게 고르는 보조 기능입니다. 실제 문맥이 맞는지는 결과 목록과 게임 화면에서 확인해야 합니다.</p>
 </article>
 </main>
   </div>

@@ -140,6 +140,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -202,25 +203,25 @@
 <article class="guide-content">
 <h1>플러그인추가</h1>
 <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-<h2>이 도구는 무엇인가요?</h2><p>MVMZ 프로젝트에 번역 작업이나 표시 확인에 필요한 플러그인 파일을 추가할 때 사용하는 도구입니다.</p>
+<h2>이 도구는 무엇인가요?</h2><p>플러그인추가는 AIMT가 제공하거나 사용자가 가져온 MVMZ용 플러그인 파일을 현재 프로젝트에 추가하는 도구입니다. 선택한 <code>.js</code> 파일을 프로젝트의 <code>js/plugins</code> 폴더에 복사하고, 필요한 경우 <code>js/plugins.js</code>의 플러그인 목록에도 등록합니다.</p>
 <h2>화면 참고 이미지</h2>
-<p><a href="../../guide/assets/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/image.png"><img src="../../guide/assets/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/image.png"/></a></p>
+<p><img src="../../guide/assets/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/image%202.png" alt=""></p>
 <h2>언제 사용하나요?</h2>
-<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<ul><li>MVMZ 프로젝트에 번역 보조용 플러그인을 추가해야 할 때</li><li>현재 프로젝트의 <code>plugins.js</code>에 플러그인 등록이 필요할 때</li><li>기존 플러그인 파일을 AIMT 플러그인 목록에서 골라 프로젝트에 복사하고 싶을 때</li><li>이미 등록된 플러그인을 교체할지 확인해야 할 때</li></ul><div><div class="guide-callout" data-callout="tip" role="note"><div class="guide-callout-title">팁</div><div class="guide-callout-body"><p>번역을 하다보면 특정 플러그인들의 특정 위치를 수정해야할 때가 있습니다.<br>이런 경우 미리 수정해둔 플러그인을 가져와 담아두었다가 재활용하면 시간을 크게 절약할 수 있습니다.<br>단, 프로젝트에서 쓰고 있는 플러그인이 미리 고쳐둔 플러그인보다 버전이 높을 수도 있으니 항상 안전을 보장할 수는 없습니다.</p></div></div></div>
 <h2>사용 전 확인할 것</h2>
-<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<ul><li>현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.</li><li>프로젝트 안에 <code>js</code> 폴더와 <code>plugins.js</code>를 쓸 수 있어야 합니다.</li><li>기존 플러그인과 이름이 같거나 이미 등록되어 있으면 덮어쓰기 확인이 표시될 수 있습니다.</li><li>플러그인 충돌 가능성이 있으므로 실행 전 프로젝트를 보관하세요.<br>충돌 비교엔 WinMerge 를 활용하게 됩니다.</li><li>플러그인 추가 후에는 게임 실행으로 충돌이나 로딩 오류를 반드시 확인해야 합니다.</li></ul>
 <h2>기본 사용 순서</h2>
-<ol><li>작업 도구에서 플러그인추가을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<ol><li>작업 도구의 MVMZ 영역에서 Add Plugin을 엽니다.</li><li>표시되는 플러그인 목록에서 추가할 <code>.js</code> 파일을 선택합니다.</li><li>필요하면 플러그인 설명이나 도움말 내용을 확인합니다.</li><li>추가를 실행합니다.</li><li>이미 같은 파일이나 등록 정보가 있으면 덮어쓰기 여부를 선택합니다.</li><li>완료 메시지를 확인합니다.</li><li>프로젝트의 <code>js/plugins</code>와 <code>plugins.js</code>에서 반영 여부를 확인합니다.</li><li>게임을 실행해 플러그인 로딩 오류가 없는지 확인합니다.</li></ol>
 <h2>화면/항목 설명</h2>
-<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 프로젝트의 플러그인 관련 파일</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>필요한 플러그인 파일이나 설정이 프로젝트에 추가됩니다.</td></tr></tbody></table>
-<h2>결과 확인 방법</h2>
-<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>필요한 플러그인 파일이나 설정이 프로젝트에 추가됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<table><tbody><tr><th>플러그인 목록</th><td>AIMT가 사용할 수 있는 <code>.js</code> 플러그인 파일 목록입니다.</td></tr><tr><th>도움말/정보</th><td>플러그인 파일의 설명 블록과 help 내용을 확인하는 영역입니다.</td></tr><tr><th>추가</th><td>선택한 파일을 프로젝트 <code>js/plugins</code> 폴더에 복사하고 <code>plugins.js</code>에 등록합니다.</td></tr><tr><th>덮어쓰기 확인</th><td>같은 파일이 있거나 이미 등록된 플러그인일 때 표시됩니다.</td></tr><tr><th>plugins.js 등록</th><td>플러그인 메타데이터를 읽어 프로젝트의 플러그인 목록에 추가합니다.</td></tr></tbody></table>
 <h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>기존 플러그인 구성과 충돌할 수 있으므로 적용 전 프로젝트를 백업하세요.</p></div></div>
-<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
+<div class="guide-callout" data-callout="important"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>플러그인추가는 파일 복사와 <code>plugins.js</code> 수정을 함께 수행할 수 있습니다. 실행 전 프로젝트를 보관하세요.</p></div></div>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">주의</div><div class="guide-callout-body"><p>같은 이름의 플러그인을 덮어쓰면 기존 플러그인 내용이 바뀔 수 있습니다. 덮어쓰기 전 대상이 맞는지 확인하세요.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>플러그인을 추가한 직후에는 게임을 한 번 실행해 콘솔 오류와 플러그인 충돌 여부를 확인하세요.<br>새로 추가한 플러그인은 기존의 플러그인들보다 후미에 배치되며, 간혹 이 순서로 인해 의도치 않은 문제가 생기기도 합니다.</p></div></div>
 <h2>자주 헷갈리는 점</h2>
-<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
-<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
+<h3>파일만 복사하나요?</h3><p>아닙니다. 새 플러그인을 추가할 때는 파일 복사와 함께 <code>plugins.js</code> 등록도 시도합니다.</p>
+<h3>이미 등록된 플러그인은 어떻게 되나요?</h3><p>이미 등록되어 있거나 파일이 존재하면 덮어쓰기 확인이 표시될 수 있습니다. 취소하면 변경하지 않습니다.</p>
+<h3>플러그인을 추가하면 바로 게임에 적용되나요?</h3><p>프로젝트 파일에는 반영되지만, 실제 동작 여부는 게임 실행으로 확인해야 합니다. 기존 플러그인과 충돌할 수 있습니다.</p>
 </article>
 </main>
   </div>
