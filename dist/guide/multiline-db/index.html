@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Multiline-DB · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Multiline-DB · AIMT Guide</title>
+<script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+<style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+<link href="../../guide/static/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<button aria-label="사이드바 열기" class="sidebar-expand sidebar-toggle" id="sidebarExpand" title="사이드바 열기" type="button">☰</button>
+<div class="search-overlay" hidden="" id="searchOverlay">
+<section aria-labelledby="searchTitle" aria-modal="true" class="search-dialog" role="dialog">
+<div class="search-header"><h2 id="searchTitle">문서 검색</h2><button aria-label="검색 닫기" class="search-close" id="searchClose" title="검색 닫기" type="button">×</button></div>
+<input autocomplete="off" class="search-input" id="guideSearch" placeholder="검색어 입력" type="search"/>
+<div class="search-results" hidden="" id="searchResults"></div>
+</section>
+</div>
+<div class="site-shell">
+<aside class="sidebar">
+<div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button aria-label="문서 검색" class="sidebar-toggle" id="searchOpen" title="문서 검색" type="button">⌕</button><button aria-label="테마 변경" class="theme-toggle" id="themeToggle" title="테마 변경" type="button">◐</button><button aria-label="사이드바 닫기" class="sidebar-toggle" id="sidebarCollapse" title="사이드바 닫기" type="button">←</button></div>
+<nav aria-label="문서 목록" class="nav-list">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
 <details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
@@ -67,7 +68,9 @@
 <a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
 <a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
 <a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
 <a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
@@ -76,13 +79,25 @@
 <a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
 <a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
 </div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/wolf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
 <a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95/index.html" data-depth="4">LiveMaker 폰트 설정</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
@@ -182,20 +197,95 @@
 </div></details>
 </div></details>
       </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
-<article class="guide-content"><h1>Multiline-DB</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>Multiline-DB은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<a href="../../guide/assets/multiline-db/image.png"><img src="../../guide/assets/multiline-db/image.png"/></a><a href="../../guide/assets/multiline-db/image%201.png"><img src="../../guide/assets/multiline-db/image%201.png"/></a><p>비활성된 상태(체크X)로 추출했을 경우</p><p>활성된 상태(체크O)로 추출했을 경우</p><h2>이 기능은 무엇인가요?</h2><p><code>Multiline-DB</code>는 <code>MVMZ</code> 데이터베이스 추출에서 <code>설명</code>과 <code>프로필</code>처럼 <code>\n</code> 으로 연결된 여러 줄이 들어갈 수 있는 항목을 <code>한 덩어리로 둘지</code>, <code>줄별로 나눌지</code> 정하는 설정입니다.</p><p>실제로 차이가 생기는 대표적인 대상은 아이템 설명, 스킬 설명, 무기 설명, 방어구 설명, 배우 프로필입니다.</p><p>이 설정은 이벤트 대사 <code>401</code>이나 노트 추출 방식과는 다른 기능입니다.</p><h2>켜면 무엇이 달라지나요?</h2><p>이 설정을 켜면 줄바꿈이 들어 있는 설명문이나 프로필을 추출할 때 각 줄을 따로 나눠 담습니다.</p><p>예를 들어 설명문이 원래 이렇게 되어 있으면:</p><script crossorigin="anonymous" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" referrerpolicy="no-referrer" rel="stylesheet"/><pre><code>첫째 줄 설명\n둘째 줄 설명\n셋째 줄 설명</code></pre><p>추출할 때도 이 세 줄을 각각 따로 다루는 쪽에 가깝습니다.</p><p>이 방식은:</p><ul><li>줄마다 번역을 따로 보기 쉽고</li></ul><ul><li>어느 줄이 어색한지 찾기 편하고</li></ul><ul><li>짧은 줄 단위로 다듬기 좋습니다</li></ul><p>대신 설명 전체를 한 문단으로 보고 번역하는 감각은 조금 약해질 수 있습니다.</p><h2>끄면 무엇이 달라지나요?</h2><p>이 설정을 끄면 줄바꿈이 있어도 설명문이나 프로필 전체를 한 항목으로 유지합니다.</p><p>즉, 세 줄짜리 설명문이면 세 줄 전체를 하나의 번역 대상으로 보는 방식입니다.</p><p>줄바꿈 자체가 없어지는 것은 아니고, 여러 줄을 한 번에 번역하는 쪽에 가깝습니다.</p><p>이 방식은:</p><ul><li>문단 전체 흐름을 한 번에 보기 쉽고</li></ul><ul><li>문맥이 이어진 설명문을 통째로 다루기 편합니다</li></ul><p>반대로 특정 줄만 빠르게 고치거나 비교할 때는 켠 상태보다 덜 직관적일 수 있습니다.</p><h2>어떤 항목에 영향이 있나요?</h2><p>현재 버전에서는 데이터베이스 추출 대상에는 아래 항목들이 포함됩니다.</p><ul><li><code>Actors</code>: <code>name</code>, <code>nickname</code>, <code>profile</code></li></ul><ul><li><code>Classes</code>: <code>name</code></li></ul><ul><li><code>Skills</code>: <code>name</code>, <code>description</code>, <code>message1</code>, <code>message2</code></li></ul><ul><li><code>Items</code>: <code>name</code>, <code>description</code></li></ul><ul><li><code>Weapons</code>: <code>name</code>, <code>description</code></li></ul><ul><li><code>Armors</code>: <code>name</code>, <code>description</code></li></ul><ul><li><code>Enemies</code>: <code>name</code></li></ul><ul><li><code>States</code>: <code>name</code>, <code>message1</code>, <code>message2</code>, <code>message3</code>, <code>message4</code></li></ul><ul><li><code>Troops</code>: <code>name</code></li></ul><p>이때 <code>Multiline-DB</code>를 켰을 때 실제로 <code>줄별 분리</code>가 적용되는 것은 현재 코드상 <code>description</code>, <code>profile</code> 필드입니다.</p><p>즉, 주로 아래 같은 항목에서 차이를 체감하게 됩니다.</p><ul><li>배우 프로필</li></ul><ul><li>스킬 설명</li></ul><ul><li>아이템 설명</li></ul><ul><li>무기 설명</li></ul><ul><li>방어구 설명</li></ul><p>이름(<code>name</code>)이나 전투 메시지(<code>message1~4</code>)는 추출 대상일 수는 있어도, 이 설정 때문에 줄별로 쪼개지지는 않습니다.</p><h2>적용할 때는 어떻게 되나요?</h2><p>켜 둔 상태에서 여러 줄 설명을 줄별로 번역했더라도, 적용 단계에서는 다시 원래의 여러 줄 텍스트로 합쳐서 넣습니다.</p><p>즉:</p><ul><li>추출할 때는 줄별로 나눠 작업하기 쉽게 만들고</li></ul><ul><li>적용할 때는 게임 데이터 형식에 맞게 다시 여러 줄로 합칩니다</li></ul><p>그래서 이 설정을 켰다고 해서 게임 안의 설명이 한 줄로 붙어 버리는 기능은 아닙니다.</p><h2>언제 켜는 편이 좋나요?</h2><p>아래 같은 경우에 잘 맞습니다.</p><ul><li>여러 줄 설명을 줄마다 따로 검토하고 싶을 때</li></ul><ul><li>짧은 줄 단위로 번역 결과를 손보기 편한 쪽이 좋을 때</li></ul><ul><li>프로필이나 설명문에서 줄마다 말투나 표현을 따로 다듬고 싶을 때</li></ul><h2>언제 꺼두는 편이 좋나요?</h2><p>아래 같은 경우에는 꺼두는 편이 더 편할 수 있습니다.</p><ul><li>여러 줄 설명을 한 문단처럼 보고 번역하고 싶을 때</li></ul><ul><li>설명 전체 문맥을 한 번에 유지하는 쪽이 더 중요할 때</li></ul><ul><li>줄 단위 수정보다 통문장 번역이 더 익숙할 때</li></ul><h2><code>저장</code>하면 언제 반영되나요?</h2><p><code>저장</code>을 누르면 설정값 자체는 바로 저장됩니다.</p><p>하지만 이미 추출해 둔 데이터베이스 번역 파일 구조가 자동으로 다시 바뀌지는 않습니다.</p><p>즉, 이 설정을 바꿨다면 새 방식으로 작업하려면 다시 <code>추출</code>하는 편이 안전합니다.</p><p>기존 추출물은 예전 방식 그대로 남아 있고, 새 설정은 다음 추출부터 반영된다고 이해하면 됩니다.</p><h2>자주 헷갈리는 점</h2><h3>이벤트 대사 <code>401</code>과 같은 기능인가요?</h3><p>아닙니다.</p><p><code>Multiline-DB</code>는 데이터베이스 텍스트 쪽 설정입니다.</p><p>이벤트 대사 구조는 <code>401-Extract Mode</code>, <code>Flatten Mode</code>, <code>merge 101-401</code> 같은 다른 설정이 담당합니다.</p><h3>노트도 이 설정으로 줄별 분리되나요?</h3><p>현재 버전에서는 그렇게 보면 안 됩니다.</p><p>노트 추출은 별도 흐름으로 처리됩니다.</p><p>노트도 여러 줄로 나뉘어 다뤄질 수는 있지만, 그것을 결정하는 기능이 <code>Multiline-DB</code>는 아닙니다.</p><h3>이름이나 짧은 메시지도 줄별로 나뉘나요?</h3><p>보통은 아닙니다.</p><p>이 설정으로 실제 차이가 생기는 쪽은 <code>description</code>, <code>profile</code>처럼 여러 줄이 들어갈 수 있는 필드입니다.</p><h3>설정만 바꾸면 기존 번역 파일도 바로 맞춰지나요?</h3><p>그렇게 자동으로 바뀌지 않습니다.</p><p>추출 구조가 달라질 수 있으므로, 설정을 바꾼 뒤에는 다시 <code>추출</code>해서 이어가는 편이 안전합니다.</p><p>이미 번역 작업을 진행 중이었다면, 새로 추출한 결과를 기준으로 다시 번역을 이어가는 쪽이 덜 헷갈립니다.</p><h2>알아둘 점</h2><ul><li><code>Multiline-DB</code>는 데이터베이스 설명문과 프로필의 추출 단위를 바꾸는 설정에 가깝습니다.</li></ul><ul><li>이 기능은 이벤트 대사 추출 설정이 아닙니다.</li></ul><ul><li>켜면 여러 줄 설명을 줄별로 작업하기 쉬워지고, 끄면 한 문단처럼 다루기 쉬워집니다.</li></ul><ul><li>적용할 때는 다시 여러 줄 텍스트로 합쳐집니다.</li></ul><ul><li>이는 한 줄이 과하게 길어지는 경우를 방지하기 위한 기능으로 활성상태가 기본값입니다.</li></ul><ul><li>한글과 어순이 동일한 일본어를 번역할 때는 이 기능이 문제되는 경우가 흔치 않지만,<br/>어순이 다른 중국어나 영문을 번역할 때엔 비활성하고 추출 및 번역하시는 것이 도움이 될 수 있습니다.</li></ul>
+</aside>
+<div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
+<main class="content-shell">
+<article class="guide-content">
+  <h1>Multiline-DB</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p><p><img src="../../guide/assets/multiline-db/image%202.png" alt=""></p>
+  <p><a href="../../guide/assets/multiline-db/image.png"><img alt="" src="../../guide/assets/multiline-db/image.png"></a></p>
+  <p><a href="../../guide/assets/multiline-db/image%201.png"><img alt="" src="../../guide/assets/multiline-db/image%201.png"></a></p>
+  <h2>무엇을 조정하는 설정인가요?</h2>
+  <p>Multiline-DB는 MVMZ 데이터베이스의 설명문이나 프로필처럼 줄바꿈이 들어갈 수 있는 항목을 줄 단위로 나눠 추출할지 정하는 설정입니다.</p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>아이템 설명, 스킬 설명, 액터 프로필처럼 여러 줄 설명이 많은 게임을 작업할 때</li>
+    <li>줄마다 따로 번역·검수하는 편이 편할 때</li>
+    <li>반대로 설명 전체를 한 문맥으로 번역하고 싶어 설정을 비교해야 할 때</li>
+  </ul>
+  <h2>사용 전 확인할 것</h2>
+  <ul>
+    <li>기본값은 켜짐입니다.</li>
+    <li>설정을 바꾸면 추출 결과의 항목 단위가 달라질 수 있으므로 다시 추출해야 합니다.</li>
+    <li>이 설정은 이벤트 대사 401 처리와는 별개의 데이터베이스 설정입니다.</li>
+  </ul>
+  <h2>기본 사용 순서</h2>
+  <ol>
+    <li>설정 화면에서 MVMZ 영역의 Multiline-DB를 확인합니다.</li>
+    <li>줄 단위로 다루고 싶으면 켭니다.</li>
+    <li>설명 전체를 한 항목으로 보고 싶으면 끕니다.</li>
+    <li>MVMZ 추출을 다시 실행합니다.</li>
+    <li>데이터베이스 설명이나 프로필 추출 결과를 비교합니다.</li>
+    <li>선택한 방식으로 번역과 적용을 진행합니다.</li>
+  </ol>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>상태</th>
+        <th>결과</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>켜짐</td>
+        <td>줄바꿈이 들어 있는 설명문을 줄 단위로 나눠 다루기 쉬워집니다.</td>
+      </tr>
+      <tr>
+        <td>꺼짐</td>
+        <td>여러 줄 설명문을 하나의 항목에 가깝게 유지해 문단 흐름을 보기 쉽습니다.</td>
+      </tr>
+      <tr>
+        <td>영향 대상</td>
+        <td>아이템, 스킬, 무기, 방어구 설명과 액터 프로필처럼 데이터베이스의 여러 줄 텍스트가 대표적입니다.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>결과 확인 방법</h2>
+  <ul>
+    <li>추출 결과에서 설명문이 줄 단위로 나뉘었는지 또는 한 항목으로 유지되는지 확인합니다.</li>
+    <li>게임 적용 후 설명창의 줄바꿈이 원래 의도와 맞는지 확인합니다.</li>
+    <li>문맥이 끊겨 번역 품질이 떨어지면 끈 상태도 비교합니다.</li>
+  </ul>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="important">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>이 설정은 추출 단위를 바꿉니다. 이미 번역한 뒤 바꾸면 기존 결과와 맞지 않을 수 있으므로 작업 초반에 정하는 편이 좋습니다.</p>
+    </div>
+  </div>
+  <div>
+    <div class="guide-callout" data-callout="caution" role="alert">
+      <div class="guide-callout-title">주의</div>
+      <div class="guide-callout-body">
+        <p>설정을 바꾸고나면 꼭 새로 추출해야 변경한 설정값이 반영된 결과를 얻을 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>설명이 짧고 줄마다 의미가 분명하면 켜짐, 긴 문단 흐름이 중요하면 꺼짐을 비교해 보세요.</p>
+    </div>
+  </div>
+  <h2>자주 헷갈리는 점</h2>
+  <ul>
+    <li><strong>대사 401도 이 설정의 영향을 받나요?</strong><br>아닙니다. 이벤트 대사는 401-Extract Mode, Flatten Mode, merge 101-401 같은 설정에서 다룹니다.</li>
+    <li><strong>켜면 줄바꿈이 사라지나요?</strong><br>아닙니다. 줄바꿈을 어떻게 추출 단위로 볼지 정하는 설정이며, 적용 후 화면 줄바꿈은 별도로 확인해야 합니다.</li>
+  </ul>
 </article>
 </main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
+</div>
+<script src="../../guide/static/main.js"></script>
 </body>
 </html>

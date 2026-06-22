@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>타이틀텍스트 · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>타이틀텍스트 · AIMT Guide</title>
+<script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+<style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+<link href="../../guide/static/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<button aria-label="사이드바 열기" class="sidebar-expand sidebar-toggle" id="sidebarExpand" title="사이드바 열기" type="button">☰</button>
+<div class="search-overlay" hidden="" id="searchOverlay">
+<section aria-labelledby="searchTitle" aria-modal="true" class="search-dialog" role="dialog">
+<div class="search-header"><h2 id="searchTitle">문서 검색</h2><button aria-label="검색 닫기" class="search-close" id="searchClose" title="검색 닫기" type="button">×</button></div>
+<input autocomplete="off" class="search-input" id="guideSearch" placeholder="검색어 입력" type="search"/>
+<div class="search-results" hidden="" id="searchResults"></div>
+</section>
+</div>
+<div class="site-shell">
+<aside class="sidebar">
+<div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button aria-label="문서 검색" class="sidebar-toggle" id="searchOpen" title="문서 검색" type="button">⌕</button><button aria-label="테마 변경" class="theme-toggle" id="themeToggle" title="테마 변경" type="button">◐</button><button aria-label="사이드바 닫기" class="sidebar-toggle" id="sidebarCollapse" title="사이드바 닫기" type="button">←</button></div>
+<nav aria-label="문서 목록" class="nav-list">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
 <details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
@@ -67,7 +68,9 @@
 <a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
 <a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
 <a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
 <a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
@@ -76,13 +79,25 @@
 <a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
 <a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
 </div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/wolf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
 <a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95/index.html" data-depth="4">LiveMaker 폰트 설정</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
@@ -182,32 +197,74 @@
 </div></details>
 </div></details>
       </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
-<article class="guide-content"><h1>타이틀텍스트</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>타이틀텍스트은 AIMT 사용 중 필요한 작업을 더 정확하게 진행하기 위한 기능입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<a href="../../guide/assets/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/image.png"><img src="../../guide/assets/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/image.png"/></a><h2>화면 구성</h2><p>창 안에는 보통 아래 요소가 있습니다.</p><ul><li>규칙 목록</li></ul><ul><li>각 줄의 ON/OFF</li></ul><ul><li>텍스트 입력칸</li></ul><ul><li>개별 삭제 버튼 <code>✕</code></li></ul><ul><li><code>+ 규칙 추가</code></li></ul><ul><li><code>저장</code></li></ul><ul><li><code>취소</code></li></ul><p>한 줄은 <code>추가 문구 1개</code>를 뜻합니다.</p><p>예를 들어:</p><ul><li><code>한국어판</code></li></ul><ul><li><code>한글 패치</code></li></ul><ul><li><code>Remaster</code></li></ul><p>같은 짧은 문구를 한 줄씩 넣어 관리합니다.</p><h2>ON/OFF는 어떻게 동작하나요?</h2><p>이 기능의 ON/OFF는 일반 다중 선택 방식이 아닙니다.</p><p>현재 버전에서는 <code>한 번에 하나만 ON</code> 되는 방식입니다.</p><p>즉:</p><ul><li>하나를 켜면 다른 줄은 자동으로 OFF가 되고</li></ul><ul><li>이미 켜져 있던 줄을 다시 누르면 전체 OFF 상태로 둘 수도 있습니다</li></ul><p>여러 줄을 동시에 켜 두는 기능으로 생각하면 맞지 않을 수 있습니다.</p><h2>여러 줄을 넣는 이유는 무엇인가요?</h2><p>여러 후보를 저장해 두고, 그중 지금 쓸 것만 하나 켜기 위해서입니다.</p><p>예를 들어:</p><ul><li><code>한국어판</code></li></ul><ul><li><code>한글 패치</code></li></ul><ul><li><code>체험판</code></li></ul><p>을 모두 적어 두고, 현재 배포 상태에 맞는 항목만 ON으로 바꿔 쓸 수 있습니다.</p><h2>저장 형식</h2><p>현재 버전에서는 각 줄은 아래 정보로 저장됩니다.</p><ul><li>입력한 텍스트</li></ul><ul><li>ON/OFF 상태</li></ul><p>즉, <code>원본 -&gt; 변경</code> 같은 두 칸 구조가 아니라 <code>문구 1개 + 사용 여부</code> 구조입니다.</p><p>빈 문자열 <code>''</code>은 저장 대상에서 빠집니다.</p><p>다만 공백만 있는 줄은 저장 파일에 남을 수 있으므로, 실사용할 문구만 또렷하게 적는 편이 안전합니다.</p><h2>저장하면 언제 반영되나요?</h2><p><code>저장</code>을 눌러도 앱 화면 전체가 즉시 바뀌는 기능은 아닙니다.</p><p>현재 버전에서는 <code>MVMZ 적용</code> 단계에서 저장된 규칙을 읽어 게임 제목 뒤에 붙입니다.</p><p>사용자 입장에서는 <code>다음 MVMZ 적용 흐름에서 제목 뒤에 붙일 문구를 정하는 기능</code>으로 이해하는 편이 정확합니다.</p><h2>실제로 어떻게 붙나요?</h2><p>적용 시에는 ON 상태인 문구만 읽어 게임 제목 뒤에 공백을 두고 붙입니다.</p><p>예를 들어:</p><ul><li>게임 제목: <code>My Game</code></li></ul><ul><li>ON 상태 문구: <code>한국어판</code></li></ul><p>이면 결과는 보통 <code>My Game 한국어판</code>처럼 됩니다.</p><p>이미 같은 문구가 뒤에 붙어 있으면 중복해서 한 번 더 붙이지 않도록 처리하는 조건도 들어 있습니다.</p><h2><code>저장</code>, <code>취소</code>, 닫기</h2><ul><li><code>저장</code><br/>현재 규칙 목록과 ON/OFF 상태를 저장하고 창을 닫습니다.</li></ul><ul><li><code>취소</code><br/>저장하지 않고 닫습니다.</li></ul><ul><li>오른쪽 위 <code>X</code><br/>저장하지 않고 닫습니다.</li></ul><ul><li>바깥 클릭 또는 <code>Esc</code><br/>저장하지 않고 닫힐 수 있습니다.</li></ul><p>현재 버전에서는 미저장 변경사항 경고가 없습니다.</p><p>즉, 저장하지 않은 상태에서 닫으면 방금 수정한 내용이 그대로 사라질 수 있습니다.</p>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
+</aside>
+<div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
+<main class="content-shell">
+<article class="guide-content">
+<h1>타이틀텍스트</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
+<p><img src="../../guide/assets/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/image%203.png" alt=""></p>
+<h2>무엇을 조정하는 설정인가요?</h2>
+<p>타이틀텍스트는 MVMZ 적용 시 게임 제목 뒤에 붙일 짧은 문구를 관리하는 설정입니다.</p>
+<h2>언제 사용하나요?</h2>
+<ul>
+<li>게임 제목에 한국어판, 한글 패치, 체험판 같은 표시를 붙이고 싶을 때</li>
+<li>배포 상태에 따라 제목 뒤 문구를 빠르게 바꿔야 할 때</li>
+<li>여러 후보 문구를 저장해 두고 하나만 선택해 사용하고 싶을 때</li>
+</ul>
+<h2>사용 전 확인할 것</h2>
+<ul>
+<li>제목 뒤에 붙일 문구만 짧게 입력합니다.</li>
+<li>한 번에 여러 문구를 켜는 구조가 아니라는 점을 확인합니다.</li>
+<li>저장 후 실제 반영은 MVMZ 적용 단계에서 확인합니다.</li>
+</ul>
+<h2>기본 사용 순서</h2>
+<ol>
+<li>설정 화면에서 MVMZ 영역의 타이틀텍스트를 엽니다.</li>
+<li>사용할 문구를 한 줄로 추가합니다.</li>
+<li>현재 적용할 문구만 ON으로 둡니다.</li>
+<li>필요 없는 후보는 삭제하거나 OFF로 둡니다.</li>
+<li>저장한 뒤 MVMZ 적용을 실행합니다.</li>
+<li>게임 제목 화면에서 문구가 붙었는지 확인합니다.</li>
+</ol>
+<h2>화면/항목 설명</h2>
+<table>
+<thead><tr><th>항목</th><th>이해 방법</th></tr></thead>
+<tbody>
+<tr><td>텍스트 입력칸</td><td>게임 제목 뒤에 붙일 문구입니다.</td></tr>
+<tr><td>ON/OFF</td><td>현재 적용할 후보를 선택합니다. 보통 한 번에 하나만 ON으로 사용합니다.</td></tr>
+<tr><td>규칙 추가</td><td>후보 문구를 한 줄 더 추가합니다.</td></tr>
+<tr><td>삭제</td><td>사용하지 않을 후보 문구를 제거합니다.</td></tr>
+<tr><td>저장</td><td>현재 후보 목록과 선택 상태를 저장합니다.</td></tr>
+</tbody>
+</table>
+<h2>결과 확인 방법</h2>
+<ul>
+<li>MVMZ 적용 후 게임 제목 뒤에 선택한 문구가 붙었는지 확인합니다.</li>
+<li>이미 같은 문구가 붙어 있는 제목에 중복으로 붙지 않았는지 확인합니다.</li>
+<li>문구가 필요 없으면 모든 후보를 OFF로 둔 뒤 다시 적용합니다.</li>
+</ul>
 <h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
+<div class="guide-callout" data-callout="important">
+<div class="guide-callout-title">중요</div>
+<div class="guide-callout-body">
+<p>타이틀텍스트는 저장 즉시 게임 제목을 바꾸는 기능이 아니라, 다음 MVMZ 적용 때 사용할 문구를 정하는 기능입니다.</p>
+</div>
+</div>
+<div class="guide-callout" data-callout="tip">
+<div class="guide-callout-title">권장</div>
+<div class="guide-callout-body">
+<p>문구는 짧게 유지하세요. 긴 설명을 붙이면 제목 화면이나 창 제목에서 잘릴 수 있습니다.</p>
+</div>
+</div>
 <h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+<ul>
+<li><strong>여러 문구를 동시에 붙일 수 있나요?</strong><br>이 설정은 후보를 여러 개 저장해 두고 현재 사용할 하나를 고르는 방식으로 이해하는 편이 안전합니다.</li>
+<li><strong>원본 제목을 직접 바꾸는 기능인가요?</strong><br>아닙니다. 적용 단계에서 제목 뒤에 선택 문구를 덧붙이는 용도입니다.</li>
+</ul>
 </article>
 </main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
+</div>
+<script src="../../guide/static/main.js"></script>
 </body>
 </html>
