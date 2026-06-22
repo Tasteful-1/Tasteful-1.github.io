@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>제외정규식 / 예외정규식 · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>제외정규식 / 예외정규식 · AIMT Guide</title>
+<script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+<style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+<link href="../../guide/static/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<button aria-label="사이드바 열기" class="sidebar-expand sidebar-toggle" id="sidebarExpand" title="사이드바 열기" type="button">☰</button>
+<div class="search-overlay" hidden="" id="searchOverlay">
+<section aria-labelledby="searchTitle" aria-modal="true" class="search-dialog" role="dialog">
+<div class="search-header"><h2 id="searchTitle">문서 검색</h2><button aria-label="검색 닫기" class="search-close" id="searchClose" title="검색 닫기" type="button">×</button></div>
+<input autocomplete="off" class="search-input" id="guideSearch" placeholder="검색어 입력" type="search"/>
+<div class="search-results" hidden="" id="searchResults"></div>
+</section>
+</div>
+<div class="site-shell">
+<aside class="sidebar">
+<div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button aria-label="문서 검색" class="sidebar-toggle" id="searchOpen" title="문서 검색" type="button">⌕</button><button aria-label="테마 변경" class="theme-toggle" id="themeToggle" title="테마 변경" type="button">◐</button><button aria-label="사이드바 닫기" class="sidebar-toggle" id="sidebarCollapse" title="사이드바 닫기" type="button">←</button></div>
+<nav aria-label="문서 목록" class="nav-list">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
 <details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
@@ -67,7 +68,9 @@
 <a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
 <a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
 <a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
 <a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
@@ -76,13 +79,25 @@
 <a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
 <a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
 </div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/wolf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
 <a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95/index.html" data-depth="4">LiveMaker 폰트 설정</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
@@ -182,20 +197,109 @@
 </div></details>
 </div></details>
       </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
-<article class="guide-content"><h1>제외정규식 / 예외정규식</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>제외정규식 / 예외정규식은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image.png"/></a><a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%201.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%201.png"/></a><h1>제외정규식</h1><h2>이 기능은 무엇인가요?</h2><p>번역을 위해 데이터를 추출 하게되면 너무나도 많은 것들이 뽑혀나옵니다.</p><p>거기엔 번역을 해야하는 것도 있고, 할 필요가 없는 것도 있고, 해선 안되는 것도 섞여 있습니다.</p><p><code>제외정규식</code>은 추출 과정에서 빼고 싶은 텍스트와, 그중에서도 예외로 추출되게 둘 텍스트를 정하는 설정입니다.</p><p>이 기능은 이미 만들어진 번역 파일을 고치는 기능이 아닙니다.<br/>저장한 내용은 보통 <code>다음 추출</code>부터 영향을 줍니다.</p><p>이름이 비슷한 <code>추출정규식</code>과도 역할이 다릅니다.</p><ul><li><code>제외정규식</code><br/>MVMZ, VXVXA에서 추출 대상 중 일부를 빼거나 다시 살리는 설정</li></ul><ul><li><code>추출정규식</code><br/>Tyrano, Kirikiri 같은 엔진의 추출 패턴 자체를 정하는 설정</li></ul><h2>지원 엔진</h2><p>현재 이 창은 <code>MVMZ</code>, <code>VXVXA</code>에서만 사용합니다.</p><p>현재 엔진이 다른 종류라면 버튼이 비활성화됩니다.</p><h2>화면 구성</h2><p>창 안에는 보통 아래 요소가 있습니다.</p><ul><li>왼쪽 카테고리 목록</li></ul><ul><li>현재 카테고리의 패턴 목록</li></ul><ul><li>각 줄의 ON/OFF</li></ul><ul><li>패턴 입력칸</li></ul><ul><li>개별 삭제 버튼</li></ul><ul><li><code>+ 패턴 추가</code></li></ul><ul><li>제목 옆 화살표 버튼</li></ul><ul><li><code>자동 정렬 저장</code></li></ul><ul><li><code>저장</code></li></ul><ul><li><code>취소</code></li></ul><p>MVMZ의 <code>plugins</code> 카테고리는 일반 패턴 입력칸 대신 아래 3칸으로 나뉩니다.</p><ul><li>플러그인 이름</li></ul><ul><li>파라미터 이름</li></ul><ul><li>키 이름</li></ul><h2>카테고리는 어떻게 보면 되나요?</h2><p>카테고리는 엔진과 데이터 위치에 따라 나뉩니다.</p><p>보통 추출파일의 이름과 동일한 명칭으로 되어 있습니다.</p><h3>MVMZ</h3><ul><li><code>actor_notes</code>, <code>item_notes</code> 같은 항목<br/>데이터베이스 메모란 쪽을 조정할 때 봅니다.</li></ul><ul><li>숫자 카테고리<br/>이벤트 명령 코드별 텍스트를 나눠 둔 항목입니다.<br/>코드 번호를 외울 필요는 없고, 추출 파일 이름이나 현재 손보려는 구간에 맞는 항목을 찾으면 됩니다.</li></ul><ul><li><code>code_357</code> <br/>code 357 의 코드는 4개의 항목으로 구성되어 있습니다.<br/>첫번째는 플러그인 이름, 두번째와 세번째는 명령어 이름, 그리고 네번째는 실제 값입니다.<br/>이 카테고리에선 위 4 항목을 동시에 처리하고 있으며, 용도에 따라 적절한 값을 넣어 사용해주세요.</li></ul><ul><li><code>122_range</code><br/>1.7.4.0 업데이트에 따라 제외정규식에 122_range 항목이 추가되었습니다.<br/>텍스트 내용이 아니라 변수 번호 범위를 기준으로 제외할 때 씁니다.<br/>텍스트 내용으로 제외시킬 땐 <code>122</code> 에 입력해주세요.<br/>패턴의 입력은 0000-0000 과 같은 네자리 숫자쌍으로 이루어지며,<br/>변수 번호의 범위가 특정 번호(예:13)일 경우 0013-0013 과 같이 앞뒤 동일하게 입력하면 됩니다.<br/>~0050 혹은 0125~ 과 같이 * 을 활용하는 것으로, 특정 번호의 이상 혹은 이하를 필터링할 수도 있습니다.<br/>겹치는 범위도 포함으로 처리됩니다.</li></ul><ul><li><code>plugins</code><br/>플러그인 이름, 파라미터 이름, 키 이름 단위로 범위를 좁혀서 제외할 때 씁니다.</li></ul><h3>VXVXA</h3><ul><li><code>Database_Memo</code><br/>데이터베이스 메모란 쪽을 조정할 때 봅니다.</li></ul><ul><li>숫자 카테고리<br/>이벤트 명령 코드별 텍스트를 나눠 둔 항목입니다.</li></ul><h2>기본 사용 순서</h2><ol start="1" type="1"><li>제외할 구간에 맞는 카테고리를 왼쪽에서 고릅니다.</li></ol><ol start="2" type="1"><li>일반 제외 패턴을 먼저 입력합니다.</li></ol><ol start="3" type="1"><li>무슨 일이 있어도 꼭 추출해야하는 항목은 제목 옆 화살표 버튼으로 <code>예외 패턴</code> 화면에 입력합니다.</li></ol><ol start="4" type="1"><li>필요한 줄을 추가하거나, 기존 줄을 켜고 끄거나, 삭제합니다.</li></ol><ol start="5" type="1"><li>마지막에 <code>저장</code>을 눌러 확정합니다.</li></ol><p>여러 카테고리를 바꿨다면 한 번의 <code>저장</code>으로 현재 엔진의 수정 내용을 함께 저장합니다.</p><h2>일반 패턴과 예외 패턴은 어떻게 다른가요?</h2><ul><li>일반 패턴<br/>해당 조건에 맞는 텍스트를 추출에서 제외합니다.</li></ul><ul><li>예외 패턴<br/>같은 카테고리 안에서 <code>이 항목은 제외하지 말고 추출</code>하도록 살리는 용도입니다.</li></ul><p>현재 버전에서는 대부분 카테고리에서 <code>예외 패턴</code>이 먼저 검사되고, 그다음 <code>일반 패턴</code>이 적용됩니다.</p><p>일부 경우에는 언어 감지보다 먼저 예외 패턴을 확인하므로, 원래라면 추출 후보에서 빠질 텍스트도 예외 패턴에 맞으면 추출될 수 있습니다.</p><p>즉, 제외 규칙을 넓게 잡고 예외 패턴으로 필요한 경우만 다시 남기는 방식으로 쓰는 편이 관리하기 쉽습니다.</p><h2>화살표 버튼은 무엇인가요?</h2><p>제목 옆 <code>◀</code>, <code>▶</code>는 카테고리를 넘기는 버튼이 아니라, 현재 카테고리의 <code>일반 패턴 화면</code>과 <code>예외 패턴 화면</code>을 바꾸는 버튼입니다.</p><p>같은 카테고리 안에서 일반 설정과 예외 설정을 오갈 때 사용합니다.</p><h2>ON/OFF는 무엇을 의미하나요?</h2><p>각 줄의 ON/OFF는 그 항목을 실제 검사에 사용할지 정하는 스위치입니다.</p><ul><li>ON<br/>저장되고 실제 제외/예외 검사에도 사용됩니다.</li></ul><ul><li>OFF<br/>목록에는 남고 저장도 되지만, 실제 검사에서는 빠집니다.</li></ul><p>삭제하기 전에 잠깐 꺼 두고 결과를 비교할 때 ON/OFF가 유용합니다.</p><h2><code>자동 정렬 저장</code>은 무엇인가요?</h2><p><code>자동 정렬 저장</code>을 켜면 각 카테고리의 패턴 목록이 정렬된 순서로 다시 보입니다.</p><p>이 상태에서 <code>저장</code>하면 정렬된 순서가 함께 저장됩니다.</p><p>다만 이 항목을 켠 뒤 다시 끄면, 화면이 <code>현재 저장된 값</code> 기준으로 다시 불러와집니다.<br/>아직 저장하지 않은 수정이 있었다면 사라질 수 있으니, 정리를 끝냈다면 먼저 <code>저장</code>하는 편이 안전합니다.</p><p>MVMZ의 <code>plugins</code> 카테고리는 <code>플러그인 이름 -&gt; 파라미터 이름 -&gt; 키 이름</code> 순서로 정렬됩니다.</p><h2><code>plugins</code> 카테고리는 어떻게 입력하나요?</h2><p><code>plugins</code>는 일반 정규식 한 칸을 넣는 방식이 아닙니다.</p><ul><li>플러그인 이름만 입력<br/>그 플러그인 전체를 대상으로 잡습니다.</li></ul><ul><li>플러그인 이름 + 파라미터 이름 입력<br/>해당 파라미터 범위까지 좁힙니다.</li></ul><ul><li>플러그인 이름 + 파라미터 이름 + 키 이름 입력<br/>더 세부 항목만 대상으로 잡습니다.</li></ul><p>플러그인 이름은 비워 둘 수 없습니다.<br/>파라미터 이름과 키 이름은 필요할 때만 채우면 됩니다.<br/>정규식 입력도 가능하니 자유롭게 이용해주세요.</p><h2><code>저장</code>, <code>취소</code>, 닫기</h2><ul><li><code>저장</code><br/>현재 엔진의 제외 패턴과 예외 패턴을 저장합니다.</li></ul><ul><li><code>취소</code><br/>저장하지 않고 닫습니다.</li></ul><ul><li>오른쪽 위 <code>X</code><br/>저장하지 않고 닫습니다.</li></ul><ul><li><code>Esc</code><br/>저장하지 않고 닫습니다.</li></ul><p>이 창은 저장하지 않은 변경사항을 따로 확인해 주지 않습니다.<br/>따라서 <code>취소</code>, <code>X</code>, <code>Esc</code>로 닫으면 방금 수정한 내용이 그대로 사라질 수 있습니다.</p><h2>저장하면 언제 반영되나요?</h2><p><code>저장</code>을 누르면 설정 파일에는 바로 반영됩니다.</p><p>하지만 이미 끝난 추출 결과를 자동으로 다시 만들지는 않습니다.<br/>변경 효과는 보통 <code>다음 추출 작업</code>에서 확인하게 됩니다.</p><h2>저장 시 알아둘 점</h2><ul><li>빈 줄은 저장 대상에서 빠집니다.</li></ul><ul><li><code>plugins</code> 카테고리는 플러그인 이름이 비어 있으면 저장 대상에서 빠집니다.</li></ul><ul><li>정규식 문법이 잘못돼 있어도 저장 자체는 될 수 있습니다.</li></ul><ul><li>잘못된 패턴은 실제 추출 단계에서야 오류가 나거나, 해당 카테고리가 기대한 대로 동작하지 않을 수 있습니다.</li></ul><ul><li>일부 항목 저장에 실패하면 경고가 뜨고 창이 그대로 남을 수 있습니다.</li></ul><h2>자주 헷갈리는 점</h2><h3><code>저장했는데 추출 파일이 그대로예요</code></h3><p>정상일 수 있습니다.</p><p>이 기능은 이미 추출된 파일을 다시 고치는 기능이 아니라, 다음 추출 때 어떤 항목을 뺄지 정하는 설정입니다.</p><h3><code>화살표를 눌렀는데 다른 카테고리로 안 넘어가요</code></h3><p>정상입니다.</p><p>화살표는 카테고리 이동이 아니라, 현재 카테고리의 일반 패턴 화면과 예외 패턴 화면을 바꾸는 버튼입니다.</p><h3><code>패턴을 껐는데 왜 목록에 남아 있나요</code></h3><p>정상입니다.</p><p>OFF는 삭제가 아니라 비활성화입니다.</p><h3><code>자동 정렬 저장을 껐더니 방금 수정한 내용이 사라졌어요</code></h3><p>현재 저장된 값 기준으로 목록을 다시 읽어온 경우일 수 있습니다.</p><p>정렬을 끄기 전에는 먼저 <code>저장</code>해 두는 편이 안전합니다.</p><h3><code>122_range</code>에는 어떤 값을 넣어야 하나요?</h3><p>이 항목은 일반 텍스트 정규식보다는 <code>변수 번호 범위</code>를 구분하는 쪽에 가깝습니다.</p><p>현재 버전에서는 정확한 번호, <code>*</code>가 들어간 와일드카드, <code>0001~0010</code> 같은 범위 형식을 사용합니다.</p><h3><code>plugins</code>에 일반 정규식을 넣는 곳이 안 보여요</h3><p>정상입니다.</p><p>이 카테고리는 플러그인 이름, 파라미터 이름, 키 이름으로 범위를 정하는 전용 입력 방식입니다.</p><p>각 칸에 입력한 정규식은 해당 칸에 맞는 범위에서만 적용되니 안심하시고 이용해주시길 바랍니다.</p><h2>알아둘 점</h2><ul><li>대부분 카테고리에서는 예외 패턴이 일반 제외보다 먼저 적용됩니다.</li></ul><ul><li>숫자 카테고리는 이벤트 명령 코드 기준이라 이름만 보고 바로 감이 안 올 수 있습니다. 그런 경우에는 추출 파일 이름이나 현재 손보는 구간을 기준으로 맞는 카테고리를 찾는 편이 빠릅니다.</li></ul><h2>간단 팁소개</h2><p>번역할 텍스트만을 추려내고자 하는데 종종 불필요한 항목들이 너무 많은 경우가 있습니다.</p><p>이럴 때 번역할 텍스트가 일정한 구조를 가지고 있다면 예외정규식을 활용할 수 있습니다.</p><a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%202.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%202.png"/></a><p>우선, 처리하고자 하는 탭의 제외 정규식에 .* 을 추가합니다.</p><p>이는 존재하는 모든 추출 대상 텍스트들을 제외시키겠다는 의미입니다.</p><p>그 후 우상단의 화살표를 클릭해 예외설정으로 진입합니다.</p><a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%203.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%203.png"/></a><p>이 곳에선 제외 정규식이나, 언어패턴설정과 무관하게 항상 추출해야만 하는 항목들을 설정해둘 수 있습니다.</p><p>이 방식으로 설정값을 조정하면 꼭 추출하고 싶은 부분들만 추출되도록 할 수 있습니다.</p><p>다만, 이 방식은 이후 다른 게임을 번역할 때,</p><p>번역이 필요한 부분들까지 제외시킬 리스크가 있기에 번역이 끝나면 꼭 뒷정리를 해줘야 합니다.</p><a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%204.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%204.png"/></a><p>사용을 마친 .* 는 OFF 로 하는 걸 잊지 말아주세요.</p>
+</aside>
+<div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
+<main class="content-shell">
+<article class="guide-content">
+  <h1>제외정규식 / 예외정규식</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
+  <p><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%205.png" alt=""></p>
+  <h2>무엇을 조정하는 설정인가요?</h2>
+  <p>제외정규식 / 예외정규식은 MVMZ와 VXVXA 추출 과정에서 번역하지 않을 텍스트를 제외하고,</p>
+  <p>그중 반드시 남겨야 할 텍스트를 예외로 되살리는 설정입니다.</p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>추출 결과에 시스템값, 제어문, 번역하면 안 되는 문자열이 많이 섞일 때</li>
+    <li>넓은 제외 규칙을 쓰되 특정 문구만 번역 대상으로 남기고 싶을 때</li>
+    <li>MVMZ 플러그인 파라미터, 이벤트 명령, 데이터베이스 메모처럼 위치별로 제외 범위를 조정할 때</li>
+  </ul>
+  <h2>사용 전 확인할 것</h2>
+  <ul>
+    <li>정규식은 적용 범위가 넓을 수 있으므로 작은 예시로 먼저 확인합니다.</li>
+    <li>어느 카테고리에서 문제가 생겼는지 추출 결과의 파일명이나 항목명을 먼저 확인합니다.</li>
+    <li>기존 추출 결과가 자동으로 바뀌지 않으므로 저장 후 다시 추출할 계획을 세웁니다.</li>
+  </ul>
+  <h2>기본 사용 순서</h2>
+  <ol>
+    <li>설정 화면에서 MVMZ 또는 VXVXA 영역의 제외정규식 버튼을 엽니다.</li>
+    <li>왼쪽 목록에서 조정할 카테고리를 선택합니다.</li>
+    <li>제외할 조건은 일반 패턴 영역에 추가합니다.</li>
+    <li>제외 규칙에 걸리더라도 꼭 추출해야 하는 조건은 예외 패턴 영역에 추가합니다.</li>
+    <li>필요한 줄만 ON으로 두고 저장합니다.</li>
+    <li>추출을 다시 실행한 뒤 결과 샘플을 확인합니다.</li>
+  </ol>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>설명</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>일반 패턴</td>
+        <td>조건에 맞는 텍스트를 추출 대상에서 제외합니다.</td>
+      </tr>
+      <tr>
+        <td>예외 패턴</td>
+        <td>같은 카테고리 안에서 모든 설정에 관계없이 꼭 추출할 텍스트를 지정합니다.</td>
+      </tr>
+      <tr>
+        <td>각 카테고리</td>
+        <td>데이터베이스 메모, 이벤트 명령 코드, 플러그인 파라미터처럼 텍스트가 나온 위치를 나눈 목록입니다.</td>
+      </tr>
+      <tr>
+        <td>plugins</td>
+        <td>MVMZ 플러그인 이름, 파라미터 이름, 키 이름을 조합해 제외 범위를 좁힐 때 사용합니다.</td>
+      </tr>
+      <tr>
+        <td>122_range</td>
+        <td>MVMZ 변수 조작 계열에서 텍스트 내용이 아니라 변수 번호 범위로 제외 대상을 정할 때 사용합니다.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>관리하기 쉬운 방식은 제외 규칙을 먼저 넓게 잡고, 반드시 번역해야 하는 문구를 예외 패턴으로 되살리는 것입니다.</p>
+  <h2>결과 확인 방법</h2>
+  <ul>
+    <li>다시 추출한 결과에서 제외하려던 문장이 빠졌는지 확인합니다.</li>
+    <li>예외로 남겨야 하는 문장이 여전히 추출되는지 확인합니다.</li>
+    <li>필요한 문장까지 빠졌다면 제외 규칙을 좁히거나 예외 패턴을 추가합니다.</li>
+  </ul>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">주의</div>
+    <div class="guide-callout-body">
+      <p>너무 넓은 정규식을 넣으면 필요한 부분들까지 추출에서 빠질 수 있습니다. 제외시킬 항목들의 특징적인 공통점을 노리는게 포인트입니다.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="important">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>저장한 규칙은 보통 다음 추출부터 의미가 있습니다. 이미 만들어진 번역 결과를 즉시 고치는 기능은 아닙니다.</p>
+    </div>
+  </div>
+  <h2>자주 헷갈리는 점</h2>
+  <ul>
+    <li><strong>추출정규식과 같은 기능인가요?</strong><br>아닙니다. 추출정규식은 주로 추출할 패턴 자체를 정하는 설정이고, 제외정규식은 이미 후보가 된 텍스트 중 빼거나 되살릴 대상을 정하는 설정입니다.</li>
+    <li><strong>예외 패턴만 넣으면 모든 곳에서 살아나나요?</strong><br>예외 패턴도 선택한 카테고리 안에서 동작합니다. 다른 위치의 텍스트는 해당 위치의 카테고리를 따로 확인해야 합니다.</li>
+  </ul>
+  <h2></h2><div class="guide-callout" data-callout="tip" role="note"><div class="guide-callout-title">Tip</div><div class="guide-callout-body"><p><span style="font-size: 14px;">번역할 텍스트만을 추려내고자 하는데 종종 불필요한 항목들이 너무 많은 경우가 있습니다.</span></p>
+  <p>이럴 때 번역할 텍스트가 일정한 구조를 가지고 있다면 예외정규식을 활용할 수 있습니다.</p>
+  <a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%202.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%202.png"></a>
+  <p>우선, 처리하고자 하는 탭의 제외 정규식에 .* 을 추가합니다.</p>
+  <p>이는 존재하는 모든 추출 대상 텍스트들을 제외시키겠다는 의미입니다.</p>
+  <p>그 후 우상단의 화살표를 클릭해 예외설정으로 진입합니다.</p>
+  <a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%203.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%203.png"></a>
+  <p>이 곳에선 제외 정규식이나, 언어패턴설정과 무관하게 항상 추출해야만 하는 항목들을 설정해둘 수 있습니다.</p>
+  <p>이 방식으로 설정값을 조정하면 꼭 추출하고 싶은 부분들만 추출되도록 할 수 있습니다.</p>
+  <p>다만, 이 방식은 이후 다른 게임을 번역할 때,</p>
+  <p>번역이 필요한 부분들까지 제외시킬 리스크가 있기에 번역이 끝나면 꼭 뒷정리를 해줘야 합니다.</p>
+  <a href="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%204.png"><img src="../../guide/assets/%EC%A0%9C%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D-%EC%98%88%EC%99%B8%EC%A0%95%EA%B7%9C%EC%8B%9D/image%204.png"></a>
+  <p>사용을 마친 .* 는 OFF 로 하는 걸 잊지 말아주세요.</p></div></div><p></p>
 </article>
 </main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
+</div>
+<script src="../../guide/static/main.js"></script>
 </body>
 </html>

@@ -13,8 +13,8 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 
 DIST_ROOT = edit_guide.DIST_ROOT
 GUIDE_ROOT = DIST_ROOT / "guide"
-RENEWED_AT = "2026-06-18"
-DOC_VERSION = f"문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: {RENEWED_AT}"
+RENEWED_AT = "2026-06-22"
+DOC_VERSION = f"문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: {RENEWED_AT}"
 ADVANCED_INTRO = "이 문서는 일반 작업 순서에서 벗어나, 값을 직접 확인하거나 세밀하게 조정해야 할 때 참고하는 자료입니다."
 SHORT_ARTICLE_FALLBACK = "아직 세부 설명이 충분하지 않은 문서입니다. 먼저 기능의 위치와 실행 결과를 확인하고, 필요한 경우 관련 상위 문서를 함께 확인하세요."
 
@@ -114,6 +114,12 @@ TITLE_OVERRIDES = {
     "guide/advanced-reference/index.html": "참고 자료",
     "guide/외부-유틸리티/index.html": "외부 유틸리티",
     "guide/화면전환/index.html": "화면전환",
+    "guide/wolf-2차-추출-제외-필터/index.html": "WOLF 2차 추출 제외 필터",
+    "guide/vxvxa-message-block-unit/index.html": "Message Block Unit",
+    "guide/extract-troop-names/index.html": "Extract Troop Names",
+    "guide/dbdic-include-extract-names/index.html": "DBdic include Extract Names",
+    "guide/srpg-2차-추출-필터/index.html": "SRPG 2차 추출 필터",
+    "guide/livemaker-폰트-설정/index.html": "LiveMaker 폰트 설정",
     "guide/asar-47c728f5/index.html": "ASAR (Tyrano 계열)",
     "guide/asar/index.html": "ASAR (Electron)",
     "guide/라인메이커/index.html": "라인메이커 (MVMZ)",
@@ -123,6 +129,15 @@ TITLE_OVERRIDES = {
     "guide/타이틀-변경-2ccdb6d4/index.html": "타이틀 변경 (Tyrano)",
     "guide/크립터/index.html": "크립터 (CTF)",
     "guide/크립터-16cf2cb1/index.html": "크립터 (PGMMV)",
+}
+
+RENAMED_PAGE_PATHS = {
+    "guide/2차-추출-필터/index.html": "guide/wolf-2차-추출-제외-필터/index.html",
+    "guide/2차-추출-제외-필터/index.html": "guide/wolf-2차-추출-제외-필터/index.html",
+    "guide/ctf-2차-추출-필터-편집/index.html": "guide/ctf-2차-추출-제외-필터/index.html",
+    "guide/bakin-2차-추출-필터-편집/index.html": "guide/bakin-2차-추출-제외-필터/index.html",
+    "guide/ctf-2차-추출-제외-필터-편집/index.html": "guide/ctf-2차-추출-제외-필터/index.html",
+    "guide/bakin-2차-추출-제외-필터-편집/index.html": "guide/bakin-2차-추출-제외-필터/index.html",
 }
 
 ADVANCED_REGEX_PATHS = {
@@ -270,7 +285,9 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
             "guide/기본폰트설정/index.html",
             "guide/타이틀텍스트/index.html",
             "guide/multiline-db/index.html",
+            "guide/extract-troop-names/index.html",
             "guide/extract-names/index.html",
+            "guide/dbdic-include-extract-names/index.html",
             "guide/merge-101-401/index.html",
             "guide/apply-exclude-regex-to-401-block/index.html",
             "guide/401-extract-mode/index.html",
@@ -281,10 +298,17 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         ),
     ),
     (
+        "vxvxa",
+        "VXVXA",
+        (
+            "guide/vxvxa-message-block-unit/index.html",
+        ),
+    ),
+    (
         "wolf",
         "WOLF",
         (
-            "guide/2차-추출-필터/index.html",
+            "guide/wolf-2차-추출-제외-필터/index.html",
             "guide/cmd-122-2차-추출-중복처리/index.html",
         ),
     ),
@@ -293,7 +317,28 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "CTF",
         (
             "guide/ctf-이미지-고속-추출/index.html",
-            "guide/ctf-2차-추출-필터-편집/index.html",
+            "guide/ctf-2차-추출-제외-필터/index.html",
+        ),
+    ),
+    (
+        "bakin",
+        "Bakin",
+        (
+            "guide/bakin-2차-추출-제외-필터/index.html",
+        ),
+    ),
+    (
+        "srpgstudio",
+        "SRPG Studio",
+        (
+            "guide/srpg-2차-추출-필터/index.html",
+        ),
+    ),
+    (
+        "livemaker",
+        "LiveMaker",
+        (
+            "guide/livemaker-폰트-설정/index.html",
         ),
     ),
     (
@@ -582,6 +627,7 @@ DUPLICATE_TEMPLATE_SECTION_TITLES = {
     "처음이라면",
     "무엇을 할 수 있나요?",
     "이 기능은 무엇인가요?",
+    "무엇을 조정하는 설정인가요?",
     "이 단계의 목적",
     "이 단계는 무엇인가요?",
     "이 엔진에서 확인할 것",
@@ -741,6 +787,7 @@ def _unwrap_existing_manual(value: str) -> str:
         r"<h2[^>]*>\s*고급 사용자 참고\s*</h2>",
         r"<h2[^>]*>\s*질문과 답변\s*</h2>",
         r"<h2[^>]*>\s*화면과 항목\s*</h2>",
+        r"<h2[^>]*>\s*화면/항목 설명\s*</h2>",
         r"<h2[^>]*>\s*참고 내용\s*</h2>",
         r"<h2[^>]*>\s*명령 코드 참고\s*</h2>",
     ]
@@ -815,6 +862,21 @@ PAGE_TYPE_BY_PATH: dict[str, str] = {
     "guide/index.html": "home",
     "guide/자주-나오는-질문/index.html": "troubleshooting",
     "guide/rpgmaker-명령코드-정리-작성-예정/index.html": "command_reference",
+    "guide/제외정규식-예외정규식/index.html": "feature",
+    "guide/치환용어설정/index.html": "feature",
+    "guide/기본폰트설정/index.html": "feature",
+    "guide/타이틀텍스트/index.html": "feature",
+    "guide/multiline-db/index.html": "feature",
+    "guide/extract-troop-names/index.html": "feature",
+    "guide/extract-names/index.html": "feature",
+    "guide/dbdic-include-extract-names/index.html": "feature",
+    "guide/merge-101-401/index.html": "feature",
+    "guide/apply-exclude-regex-to-401-block/index.html": "feature",
+    "guide/401-extract-mode/index.html": "feature",
+    "guide/flatten-mode/index.html": "feature",
+    "guide/include-text-type/index.html": "feature",
+    "guide/include-speaker-name/index.html": "feature",
+    "guide/401-block-unit-for-consistency-duplicate/index.html": "feature",
 }
 
 PAGE_METADATA: dict[str, dict[str, Any]] = {
@@ -878,12 +940,219 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["번역 설정과 빠른번역에서 선택한 모델이 사용되는지 확인합니다.", "오류가 나면 API 키, 모델명, 제공자 상태를 순서대로 확인합니다."],
     },
     "guide/번역-설정/index.html": {
-        "summary": "번역 설정은 어떤 번역 방식과 모델을 사용할지, 번역 결과를 어떤 방식으로 처리할지 정하는 핵심 설정입니다.",
-        "when": ["처음 번역 환경을 준비할 때", "번역 품질이나 속도를 조정하고 싶을 때", "모델을 바꿨는데 결과가 달라지는 이유를 확인할 때", "프롬프트, 용어사전, 번역 범위를 함께 점검할 때"],
-        "before": ["API KEY 설정에 사용할 키가 등록되어 있어야 합니다.", "AI-MODEL에서 사용할 제공자와 모델을 확인해야 합니다.", "게임 형식별 추출 설정이 번역 대상에 영향을 줄 수 있습니다."],
-        "steps": ["번역 엔진과 모델을 확인합니다.", "원문 언어와 번역 언어를 확인합니다.", "프롬프트, 용어사전, 후처리 옵션을 필요한 만큼 조정합니다.", "짧은 문장 또는 일부 파일로 먼저 테스트합니다.", "결과가 안정적이면 전체 번역을 진행합니다."],
-        "result": ["빠른번역으로 짧은 문장을 시험합니다.", "일부 파일만 번역해 문체와 용어가 유지되는지 봅니다.", "오류가 나면 API 키, 모델 선택, 요청 제한, 네트워크 상태를 확인합니다."],
-        "notices": [("중요", "번역 설정은 이후 번역 작업에 영향을 줍니다. 이미 번역된 결과 파일은 설정을 바꿔도 자동으로 다시 번역되지 않습니다.")],
+        "summary": "번역 설정은 AIMT가 어떤 번역 엔진과 모델을 사용하고, 요청 크기·속도·출력 형식·추론 옵션을 어떻게 적용할지 정하는 화면입니다.",
+        "when": ["처음 번역 환경을 준비할 때", "모델별로 화면에 표시된 설정의 의미를 확인할 때", "번역 결과가 잘리거나 요청 제한 오류가 날 때", "문맥 해석, 비용, 처리 속도를 조정하고 싶을 때"],
+        "before": ["API KEY 설정에 사용할 키가 등록되어 있어야 합니다.", "선택한 엔진과 모델에 따라 화면에 표시되는 항목이 달라질 수 있습니다.", "처음에는 권장값으로 작은 범위 시험 번역을 먼저 진행합니다."],
+        "steps": ["번역 엔진과 모델을 확인합니다.", "권장값을 적용하고 API 키 상태를 확인합니다.", "요청 크기, 출력 길이, 요청 속도를 필요한 만큼 조절합니다.", "화면에 표시되는 추론·캐시·출력 형식 옵션만 상황에 맞게 조정합니다.", "짧은 문장 또는 일부 파일로 먼저 테스트한 뒤 전체 번역을 진행합니다."],
+        "result": ["번역 결과가 잘리지 않는지 확인합니다.", "요청 제한이나 연속 오류가 발생하지 않는지 봅니다.", "문체와 용어가 유지되는지 일부 파일로 확인합니다.", "문제가 있으면 요청 크기, 출력 길이, 속도 제한, 추론 강도 순서로 하나씩 점검합니다."],
+        "notices": [("중요", "AIMT는 선택한 엔진과 모델에서 사용할 수 있는 설정을 중심으로 표시합니다. 보이지 않는 항목은 현재 모델에서 직접 조절할 필요가 없는 항목으로 이해하면 됩니다.")],
+    },
+    "guide/캐시-관리/index.html": {
+        "summary": "캐시 관리는 AIMT 작업 중 쌓인 임시 데이터, 로그, 백업, 엔진별 작업 상태를 선택해서 정리하는 실행형 도구입니다.",
+        "when": ["오래된 임시 결과나 로그를 정리할 때", "이전 작업 상태를 비우고 다시 점검할 때", "엔진별 보조 데이터나 검사 결과를 정리할 때", "문제 재현을 위해 중간 데이터를 비우고 새로 실행할 때"],
+        "before": ["추출, 번역, 적용 같은 작업이 진행 중이면 먼저 끝내거나 취소합니다.", "나중에 확인해야 할 로그나 백업이 있으면 바로 비우지 않습니다.", "번역 결과나 매핑 정보를 비우면 재추출, 재번역, 재검사가 필요할 수 있습니다."],
+        "steps": ["캐시 관리 화면을 엽니다.", "정리할 항목을 선택합니다.", "선택 항목이 현재 작업에 필요한 데이터인지 확인합니다.", "선택 항목 비우기를 누릅니다.", "확인창을 읽고 실행합니다.", "완료 메시지에서 삭제 수와 건너뜀 수를 확인합니다."],
+        "result": ["선택한 항목의 내부 내용이 정리되었는지 확인합니다.", "일부 항목이 건너뛰어졌다면 사용 중인 파일이나 권한 문제를 확인합니다.", "필요한 결과가 사라졌다면 관련 작업을 다시 실행합니다."],
+        "notices": [("주의", "백업, 매핑, 엔진별 상태는 이후 복구나 재작업에 영향을 줄 수 있습니다. 필요한 항목만 좁게 선택하세요.")],
+    },
+    "guide/제외정규식-예외정규식/index.html": {
+        "summary": "제외정규식 / 예외정규식은 MVMZ와 VXVXA 추출 과정에서 번역하지 않을 텍스트를 제외하고, 그중 반드시 남겨야 할 텍스트를 예외로 되살리는 설정입니다.",
+        "when": ["추출 결과에 시스템값, 제어문, 번역하면 안 되는 문자열이 많이 섞일 때", "넓은 제외 규칙을 쓰되 특정 문구만 번역 대상으로 남기고 싶을 때", "MVMZ 플러그인 파라미터, 이벤트 명령, 데이터베이스 메모처럼 위치별로 제외 범위를 조정할 때"],
+        "before": ["정규식은 적용 범위가 넓을 수 있으므로 작은 예시로 먼저 확인합니다.", "어느 카테고리에서 문제가 생겼는지 추출 결과의 파일명이나 항목명을 먼저 확인합니다.", "기존 추출 결과가 자동으로 바뀌지 않으므로 저장 후 다시 추출할 계획을 세웁니다."],
+        "steps": ["설정 화면에서 MVMZ 또는 VXVXA 영역의 제외정규식 버튼을 엽니다.", "왼쪽 목록에서 조정할 카테고리를 선택합니다.", "제외할 조건은 일반 패턴 영역에 추가합니다.", "제외 규칙에 걸리더라도 꼭 추출해야 하는 조건은 예외 패턴 영역에 추가합니다.", "필요한 줄만 ON으로 두고 저장합니다.", "추출을 다시 실행한 뒤 결과 샘플을 확인합니다."],
+        "result": ["다시 추출한 결과에서 제외하려던 문장이 빠졌는지 확인합니다.", "예외로 남겨야 하는 문장이 여전히 추출되는지 확인합니다.", "필요한 문장까지 빠졌다면 제외 규칙을 좁히거나 예외 패턴을 추가합니다."],
+        "notices": [("주의", "한 카테고리에 너무 넓은 정규식을 넣으면 필요한 대사까지 추출에서 빠질 수 있습니다. 처음에는 한 파일이나 한 구간만 확인하세요."), ("중요", "저장한 규칙은 보통 다음 추출부터 의미가 있습니다. 이미 만들어진 번역 결과를 즉시 고치는 기능은 아닙니다.")],
+        "confusion": [("추출정규식과 같은 기능인가요?", "아닙니다. 추출정규식은 주로 추출할 패턴 자체를 정하는 설정이고, 제외정규식은 이미 후보가 된 텍스트 중 빼거나 되살릴 대상을 정하는 설정입니다."), ("예외 패턴만 넣으면 모든 곳에서 살아나나요?", "예외 패턴도 선택한 카테고리 안에서 동작합니다. 다른 위치의 텍스트는 해당 위치의 카테고리를 따로 확인해야 합니다.")],
+    },
+    "guide/치환용어설정/index.html": {
+        "summary": "치환용어설정은 MVMZ 추출 과정에서 특정 문자열을 미리 다른 문자열로 바꿔 저장하도록 하는 간단한 치환 규칙입니다.",
+        "when": ["전각 영문, 기호, 자주 반복되는 표기를 추출 단계에서 정리하고 싶을 때", "원문에 같은 표기가 반복되어 번역 전에 통일해 두는 편이 좋을 때", "번역 모델에 넘기기 전에 특정 용어 표기를 사용자 기준으로 맞추고 싶을 때"],
+        "before": ["이 기능은 정규식이 아니라 일반 문자열 치환입니다.", "단어 전체 일치가 아니라 문장 안에 포함된 같은 문자열도 바뀔 수 있습니다.", "빈 값으로 지우는 용도보다는 다른 값으로 바꾸는 용도로 사용합니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 치환용어설정을 엽니다.", "원본 칸에 바꾸고 싶은 문자열을 입력합니다.", "치환 칸에 바뀐 뒤의 문자열을 입력합니다.", "필요 없는 줄은 삭제하고, 사용할 규칙만 남깁니다.", "저장한 뒤 추출을 다시 실행합니다.", "추출 결과에서 치환이 의도대로 적용되었는지 확인합니다."],
+        "result": ["다시 추출한 결과에서 원본 표기가 치환값으로 바뀌었는지 확인합니다.", "의도하지 않은 단어 일부가 바뀌지 않았는지 샘플 문장을 확인합니다.", "치환이 너무 넓게 적용되면 원본 문자열을 더 구체적으로 적습니다."],
+        "notices": [("주의", "짧은 문자열은 예상보다 많은 문장에 포함될 수 있습니다. 한 글자나 흔한 기호를 치환할 때는 특히 조심하세요."), ("중요", "저장 후 기존 추출 파일이나 번역 파일이 자동으로 다시 작성되지는 않습니다. 변경 후에는 필요한 범위를 다시 추출하세요.")],
+        "confusion": [("정규식을 쓸 수 있나요?", "아닙니다. 치환용어설정은 일반 문자열 기준으로 동작합니다. 패턴 조건이 필요하면 제외정규식이나 관련 정규식 설정을 확인하세요."), ("치환 칸을 비워서 글자를 삭제할 수 있나요?", "빈 치환값은 저장 대상에서 제외될 수 있습니다. 삭제 목적보다는 명확한 대체 문자열을 넣는 방식으로 사용하는 편이 안전합니다.")],
+    },
+    "guide/기본폰트설정/index.html": {
+        "summary": "기본폰트설정은 MVMZ 적용 시 사용할 메인 폰트, 숫자 폰트, 폰트 크기를 프리셋으로 관리하는 설정입니다.",
+        "when": ["MVMZ 적용 후 한글이 깨지거나 네모로 보일 때", "게임 분위기에 맞는 한글 폰트를 지정하고 싶을 때", "숫자만 다른 폰트로 표시하거나 폰트 크기를 조정해야 할 때"],
+        "before": ["한글 글리프가 포함된 폰트를 준비합니다.", "상업적 배포나 공유가 필요한 작업이라면 폰트 라이선스를 먼저 확인합니다.", "폰트 변경은 번역문 내용이 아니라 게임 화면의 글자 표시 방식에 영향을 줍니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 기본폰트설정을 엽니다.", "기존 프리셋을 선택하거나 새 프리셋을 만듭니다.", "메인 폰트와 숫자 폰트를 시스템 폰트 또는 파일 선택으로 지정합니다.", "폰트 크기를 확인하고 저장합니다.", "MVMZ 적용을 다시 실행합니다.", "게임을 실행해 실제 대사창, 메뉴, 숫자 표시를 확인합니다."],
+        "result": ["게임 실행 후 한글이 정상 표시되는지 확인합니다.", "대사창, 메뉴, 전투 화면처럼 글자 위치가 다른 화면을 함께 확인합니다.", "숫자 폭이나 줄바꿈이 어색하면 숫자 폰트와 폰트 크기를 다시 조정합니다."],
+        "notices": [("주의", "폰트가 바뀌면 글자 폭과 줄바꿈도 달라질 수 있습니다. 적용 후 실제 게임 화면에서 반드시 확인하세요."), ("권장", "처음에는 한글 지원이 확실한 폰트로 작은 범위를 적용해 보고, 화면 폭 문제가 없을 때 전체 작업에 사용하세요.")],
+        "confusion": [("기본 창에서 바로 값을 고치는 건가요?", "기본 창은 현재 프리셋 확인과 선택에 가깝습니다. 실제 값 편집은 새 프리셋 또는 수정 창에서 진행합니다."), ("폰트만 바꾸면 번역문도 바뀌나요?", "아닙니다. 폰트 설정은 표시 방식에 영향을 주며, 번역문 내용 자체를 바꾸지는 않습니다.")],
+    },
+    "guide/타이틀텍스트/index.html": {
+        "summary": "타이틀텍스트는 MVMZ 적용 시 게임 제목 뒤에 붙일 짧은 문구를 관리하는 설정입니다.",
+        "when": ["게임 제목에 한국어판, 한글 패치, 체험판 같은 표시를 붙이고 싶을 때", "배포 상태에 따라 제목 뒤 문구를 빠르게 바꿔야 할 때", "여러 후보 문구를 저장해 두고 하나만 선택해 사용하고 싶을 때"],
+        "before": ["제목 뒤에 붙일 문구만 짧게 입력합니다.", "한 번에 여러 문구를 켜는 구조가 아니라는 점을 확인합니다.", "저장 후 실제 반영은 MVMZ 적용 단계에서 확인합니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 타이틀텍스트를 엽니다.", "사용할 문구를 한 줄로 추가합니다.", "현재 적용할 문구만 ON으로 둡니다.", "필요 없는 후보는 삭제하거나 OFF로 둡니다.", "저장한 뒤 MVMZ 적용을 실행합니다.", "게임 제목 화면에서 문구가 붙었는지 확인합니다."],
+        "result": ["MVMZ 적용 후 게임 제목 뒤에 선택한 문구가 붙었는지 확인합니다.", "이미 같은 문구가 붙어 있는 제목에 중복으로 붙지 않았는지 확인합니다.", "문구가 필요 없으면 모든 후보를 OFF로 둔 뒤 다시 적용합니다."],
+        "notices": [("중요", "타이틀텍스트는 저장 즉시 게임 제목을 바꾸는 기능이 아니라, 다음 MVMZ 적용 때 사용할 문구를 정하는 기능입니다."), ("권장", "문구는 짧게 유지하세요. 긴 설명을 붙이면 제목 화면이나 창 제목에서 잘릴 수 있습니다.")],
+        "confusion": [("여러 문구를 동시에 붙일 수 있나요?", "이 설정은 후보를 여러 개 저장해 두고 현재 사용할 하나를 고르는 방식으로 이해하는 편이 안전합니다."), ("원본 제목을 직접 바꾸는 기능인가요?", "아닙니다. 적용 단계에서 제목 뒤에 선택 문구를 덧붙이는 용도입니다.")],
+    },
+    "guide/multiline-db/index.html": {
+        "summary": "Multiline-DB는 MVMZ 데이터베이스의 설명문이나 프로필처럼 줄바꿈이 들어갈 수 있는 항목을 줄 단위로 나눠 추출할지 정하는 설정입니다.",
+        "when": ["아이템 설명, 스킬 설명, 배우 프로필처럼 여러 줄 설명이 많은 게임을 작업할 때", "줄마다 따로 번역·검수하는 편이 편할 때", "반대로 설명 전체를 한 문맥으로 번역하고 싶어 설정을 비교해야 할 때"],
+        "before": ["기본값은 켜짐입니다.", "설정을 바꾸면 추출 결과의 항목 단위가 달라질 수 있으므로 다시 추출해야 합니다.", "이 설정은 이벤트 대사 401 처리와는 별개의 데이터베이스 설정입니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 Multiline-DB를 확인합니다.", "줄 단위로 다루고 싶으면 켭니다.", "설명 전체를 한 항목으로 보고 싶으면 끕니다.", "MVMZ 추출을 다시 실행합니다.", "데이터베이스 설명이나 프로필 추출 결과를 비교합니다.", "선택한 방식으로 번역과 적용을 진행합니다."],
+        "result": ["추출 결과에서 설명문이 줄 단위로 나뉘었는지 또는 한 항목으로 유지되는지 확인합니다.", "게임 적용 후 설명창의 줄바꿈이 원래 의도와 맞는지 확인합니다.", "문맥이 끊겨 번역 품질이 떨어지면 끈 상태도 비교합니다."],
+        "notices": [("중요", "이 설정은 추출 단위를 바꿉니다. 이미 번역한 뒤 바꾸면 기존 결과와 맞지 않을 수 있으므로 작업 초반에 정하는 편이 좋습니다."), ("권장", "설명이 짧고 줄마다 의미가 분명하면 켜짐, 긴 문단 흐름이 중요하면 꺼짐을 비교해 보세요.")],
+        "confusion": [("대사 401도 이 설정의 영향을 받나요?", "아닙니다. 이벤트 대사는 401-Extract Mode, Flatten Mode, merge 101-401 같은 설정에서 다룹니다."), ("켜면 줄바꿈이 사라지나요?", "아닙니다. 줄바꿈을 어떻게 추출 단위로 볼지 정하는 설정이며, 적용 후 화면 줄바꿈은 별도로 확인해야 합니다.")],
+    },
+    "guide/extract-troop-names/index.html": {
+        "summary": "Extract Troop Names는 MVMZ 데이터베이스의 Troops.name, 즉 전투 그룹 이름을 추출과 적용 대상에 포함할지 정하는 설정입니다.",
+        "when": ["전투 그룹 이름까지 번역 결과에 포함해야 할 때", "Troops 이벤트 본문은 처리하되 전투 그룹 이름은 따로 관리하고 싶을 때", "이전 번역 파일에 전투 그룹 이름 항목이 있어 적용 여부를 명확히 정해야 할 때"],
+        "before": ["기본값은 꺼짐입니다.", "꺼져 있어도 Troops 이벤트 본문 처리는 계속 진행될 수 있습니다.", "이 설정은 추출뿐 아니라 적용 시 전투 그룹 이름을 게임 데이터에 반영할지에도 영향을 줍니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 Extract Troop Names를 확인합니다.", "전투 그룹 이름을 번역 대상으로 포함하려면 켭니다.", "전투 그룹 이름을 원문 그대로 두려면 끕니다.", "MVMZ 추출을 다시 실행합니다.", "Database 계열 추출 결과에서 전투 그룹 이름 항목이 포함되었는지 확인합니다.", "번역 후 적용하고 전투 또는 관련 화면에서 이름 반영 여부를 확인합니다."],
+        "result": ["켜짐 상태에서는 전투 그룹 이름이 추출 결과에 포함되는지 확인합니다.", "꺼짐 상태에서는 이전 번역 파일에 전투 그룹 이름 항목이 있어도 적용 결과에 반영되지 않는지 확인합니다.", "전투 화면, 데이터베이스 표시, 관련 이벤트에서 이름 표기가 의도대로 유지되는지 확인합니다."],
+        "notices": [("중요", "Extract Troop Names가 꺼져 있으면 기존 번역 결과에 전투 그룹 이름 항목이 남아 있어도 적용 단계에서 게임 데이터에 쓰지 않습니다."), ("권장", "전투 그룹 이름이 플레이어에게 직접 보이는 작품인지 먼저 확인한 뒤 켜는 편이 좋습니다.")],
+        "confusion": [("Troops 이벤트 대사도 빠지나요?", "아닙니다. 이 설정은 전투 그룹의 DB 이름 항목을 다룹니다. Troops 이벤트 본문은 별도 흐름으로 처리됩니다."), ("Extract Names와 같은 기능인가요?", "아닙니다. Extract Troop Names는 전투 그룹 이름을 실제 추출·적용 대상에 포함하는 설정이고, Extract Names는 이름 검토용 목록을 만드는 보조 설정입니다.")],
+    },
+    "guide/extract-names/index.html": {
+        "summary": "Extract Names는 MVMZ 추출 시 이름이나 호칭으로 참고할 수 있는 텍스트를 별도로 모아 두는 보조 설정입니다.",
+        "when": ["캐릭터명, 적 이름, 호칭을 번역 전에 검토하고 싶을 때", "용어사전이나 인명 표기 기준을 만들기 위한 참고 목록이 필요할 때", "번역 대상 본문과 별도로 이름 계열 텍스트를 빠르게 확인하고 싶을 때"],
+        "before": ["기본값은 꺼짐입니다.", "이 설정으로 만들어지는 목록은 참고용 성격이 강합니다.", "파일 목록에 일반 번역 대상처럼 표시되지 않을 수 있습니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 Extract Names를 켭니다.", "MVMZ 추출을 다시 실행합니다.", "이름 참고 목록이 생성되었는지 확인합니다.", "필요한 표기를 용어사전이나 번역 기준에 반영합니다.", "번역 작업을 진행하면서 이름 표기가 유지되는지 확인합니다."],
+        "result": ["추출 후 이름 참고 목록에 검토할 이름이 모였는지 확인합니다.", "실제 번역 파일의 이름 표기와 참고 목록을 비교합니다.", "필요한 이름이 누락되면 일반 추출 결과와 엔진별 이름 위치를 함께 확인합니다."],
+        "notices": [("중요", "Extract Names는 번역 결과를 직접 바꾸는 기능이 아닙니다. 이름 표기를 정리하기 위한 참고 자료로 사용하세요."), ("권장", "대량 번역 전에 이 목록으로 주요 인명과 고유명사의 표기 기준을 먼저 정하면 후반 검수 비용이 줄어듭니다.")],
+        "confusion": [("켜면 이름이 자동으로 잘 번역되나요?", "아닙니다. 이름을 검토하기 쉬운 자료를 만드는 기능입니다. 실제 번역 기준은 용어사전, 프롬프트, 수동 검수로 맞춰야 합니다."), ("파일 목록에서 안 보이면 실패인가요?", "그렇지 않을 수 있습니다. 이 기능의 결과는 일반 번역 대상 목록과 다르게 참고용으로 생성될 수 있습니다.")],
+    },
+    "guide/dbdic-include-extract-names/index.html": {
+        "summary": "DBdic include Extract Names는 MVMZ DB사전을 자동 구성하거나 가져올 때 Extract Names로 만든 캐릭터명 목록을 함께 포함할지 정하는 설정입니다.",
+        "when": ["DB사전에도 캐릭터명 목록을 포함해 이름 표기 기준을 함께 관리하고 싶을 때", "Extract Names로 만든 이름 목록을 번역 프롬프트의 DB사전 정보와 함께 활용하고 싶을 때", "DB사전 가져오기 후 이름 항목이 빠지는지 확인해야 할 때"],
+        "before": ["기본값은 꺼짐입니다.", "먼저 Extract Names를 켜고 MVMZ 추출을 실행해 캐릭터명 목록을 만들어야 합니다.", "포함된 이름 항목은 DB사전에서 이름 계열 태그로 분류됩니다."],
+        "steps": ["Extract Names를 켜고 MVMZ 추출을 실행합니다.", "이름 참고 목록이 만들어졌는지 확인합니다.", "설정 화면에서 MVMZ 영역의 DBdic include Extract Names를 켭니다.", "DB사전 자동 구성 또는 가져오기를 실행합니다.", "DB사전 목록에서 이름 항목이 포함되었는지 확인합니다.", "번역 테스트에서 이름 표기 힌트가 의도대로 쓰이는지 확인합니다."],
+        "result": ["DB사전에 캐릭터명 항목이 추가되었는지 확인합니다.", "이름 항목이 중복되거나 불필요하게 섞이면 Extract Names 목록과 DB사전 항목을 정리합니다.", "번역 결과에서 이름 표기가 더 안정적인지 짧은 범위로 비교합니다."],
+        "notices": [("중요", "이 설정은 Extract Names 결과가 준비되어 있을 때 의미가 있습니다. 이름 목록이 없으면 포함할 항목도 없습니다."), ("권장", "DB사전을 번역 프롬프트에 함께 사용하는 작업에서는 이름 항목을 넣기 전에 표기 기준을 한 번 정리하세요.")],
+        "confusion": [("이 설정만 켜면 이름 목록이 만들어지나요?", "아닙니다. 이름 목록 생성은 Extract Names와 추출 단계에서 진행됩니다. 이 설정은 만들어진 이름 목록을 DB사전에 포함할지 정합니다."), ("DB사전의 모든 항목이 자동 번역되나요?", "아닙니다. DB사전은 번역 판단을 돕는 참고 정보입니다. 결과는 모델, 프롬프트, 용어 기준에 따라 달라질 수 있습니다.")],
+    },
+    "guide/merge-101-401/index.html": {
+        "summary": "merge 101-401은 MVMZ 이벤트 대사에서 101 계열 정보와 401 대사 줄을 같은 대화 흐름으로 묶어 다룰지 정하는 설정입니다.",
+        "when": ["화자명과 대사를 같은 흐름에서 보고 번역하고 싶을 때", "대화 문맥을 유지한 상태로 401 대사를 추출하고 싶을 때", "Include speaker name이나 401-Extract Mode와 함께 대사 구조를 정리하고 싶을 때"],
+        "before": ["기본값은 꺼짐입니다.", "설정을 바꾸면 추출 결과 구조가 달라질 수 있으므로 다시 추출해야 합니다.", "기존 번역 결과가 있다면 같은 구조로 만들어진 결과인지 확인합니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 merge 101-401을 확인합니다.", "화자 정보와 대사를 같은 흐름으로 다루려면 켭니다.", "화자 정보와 대사를 분리해서 관리하려면 끕니다.", "필요하면 401-Extract Mode를 함께 확인합니다.", "MVMZ 추출을 다시 실행합니다.", "대사 추출 결과가 원하는 구조로 만들어졌는지 확인합니다."],
+        "result": ["추출 결과에서 화자명과 대사가 의도한 파일/묶음으로 정리되었는지 확인합니다.", "번역 후 적용했을 때 화자명과 대사 줄 순서가 어긋나지 않는지 확인합니다.", "기존 번역 결과와 구조가 다르면 필요한 범위를 다시 번역합니다."],
+        "notices": [("중요", "이 설정은 대사 추출 구조에 영향을 줍니다. 번역을 많이 진행한 뒤 바꾸면 결과를 다시 맞춰야 할 수 있습니다."), ("권장", "처음 작업하는 MVMZ 프로젝트에서는 작은 이벤트 하나로 꺼짐/켜짐 결과를 비교한 뒤 전체 작업 방식을 정하세요.")],
+        "confusion": [("101과 401이 무엇인가요?", "사용자는 숫자를 외울 필요는 없습니다. 101은 대사 표시와 관련된 정보, 401은 실제 대사 줄이라고 이해하면 충분합니다."), ("켜면 모든 문장이 한 줄로 합쳐지나요?", "아닙니다. 묶는 방식은 401-Extract Mode와 함께 결정됩니다. 켜짐은 화자 정보와 대사 흐름을 함께 관리하기 쉽게 만드는 설정에 가깝습니다.")],
+    },
+    "guide/apply-exclude-regex-to-401-block/index.html": {
+        "summary": "Apply exclude regex to 401 block은 401 대사 한 줄에 걸린 제외/예외 규칙을 같은 대사 블록 전체로 확장할지 정하는 설정입니다.",
+        "when": ["한 줄만 보고 제외하면 같은 대화 블록의 나머지 줄이 어색하게 남을 때", "이름표, 제어용 줄, 특정 마커가 포함된 대사 블록 전체를 제외하고 싶을 때", "예외 규칙도 줄 하나가 아니라 같은 블록 전체에 적용하고 싶을 때"],
+        "before": ["기본값은 꺼짐입니다.", "제외정규식 / 예외정규식의 401 관련 규칙을 먼저 확인합니다.", "이 설정을 켜면 한 줄 조건이 대사 블록 전체에 영향을 줄 수 있습니다."],
+        "steps": ["제외정규식 / 예외정규식에서 401 관련 규칙을 준비합니다.", "설정 화면에서 MVMZ 영역의 Apply exclude regex to 401 block을 켭니다.", "MVMZ 추출을 다시 실행합니다.", "조건에 걸린 줄이 포함된 대사 블록 전체가 제외 또는 예외 처리되는지 확인합니다.", "필요한 대사까지 빠지면 규칙을 좁히거나 설정을 끕니다."],
+        "result": ["다시 추출한 결과에서 블록 전체가 의도대로 제외되었는지 확인합니다.", "예외 규칙을 쓴 경우 같은 블록 전체가 필요한 만큼 살아났는지 확인합니다.", "대사 누락이 생기면 제외정규식 조건을 좁히고 다시 추출합니다."],
+        "notices": [("주의", "한 줄 조건이 전체 대사 블록으로 확장되므로, 넓은 정규식과 함께 쓰면 필요한 대사가 통째로 빠질 수 있습니다."), ("중요", "이 설정은 추출 판단에 영향을 주므로 저장 후 다시 추출해야 결과를 확인할 수 있습니다.")],
+        "confusion": [("예외정규식에도 적용되나요?", "네. 제외뿐 아니라 예외로 반드시 추출하게 하는 판단에도 같은 블록 확장 개념이 적용될 수 있습니다."), ("이미 번역한 결과가 바로 바뀌나요?", "아닙니다. 추출 결과를 새로 만들고 필요한 범위를 다시 번역해야 합니다.")],
+    },
+    "guide/401-extract-mode/index.html": {
+        "summary": "401-Extract Mode는 MVMZ 이벤트 대사의 401 줄을 개별 항목 중심으로 추출할지, 이어지는 흐름을 묶음 중심으로 추출할지 정하는 설정입니다.",
+        "when": ["대사를 한 줄씩 세밀하게 수정하고 싶을 때", "여러 줄 대사를 문맥 단위로 보고 번역하고 싶을 때", "merge 101-401과 함께 대사 추출 구조를 처음 정할 때"],
+        "before": ["기본값은 list입니다.", "설정을 바꾸면 추출 결과 구조가 달라지므로 다시 추출해야 합니다.", "기존 번역 파일과 구조가 달라질 수 있으므로 작업 초반에 결정하는 편이 좋습니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 401-Extract Mode를 확인합니다.", "줄 단위 관리가 필요하면 list를 선택합니다.", "문맥 단위 관리가 필요하면 group을 선택합니다.", "필요하면 merge 101-401 설정도 함께 확인합니다.", "MVMZ 추출을 다시 실행합니다.", "대사 결과가 원하는 단위로 보이는지 확인합니다."],
+        "result": ["추출 결과에서 대사 줄이 개별 항목인지 묶음 항목인지 확인합니다.", "번역 후 적용했을 때 줄 순서와 대사 흐름이 유지되는지 확인합니다.", "번역 품질이 문맥 부족으로 흔들리면 group을 비교하고, 검수 편의가 떨어지면 list를 비교합니다."],
+        "notices": [("중요", "401-Extract Mode는 추출 구조를 바꾸는 설정입니다. 이미 번역을 많이 진행했다면 변경 전에 필요한 파일을 보관하세요."), ("권장", "대사량이 많고 문맥이 중요한 작품은 group을 시험하고, 짧은 반복 대사가 많은 작품은 list를 먼저 확인해 보세요.")],
+        "confusion": [("Flatten Mode와 같은 설정인가요?", "아닙니다. 401-Extract Mode는 추출 결과의 단위를 정하고, Flatten Mode는 번역 단계에서 AI에 넘기는 입력 단위를 조정합니다."), ("group을 선택하면 적용이 더 위험한가요?", "위험하다기보다 구조가 달라집니다. 번역 결과의 줄 수와 대사 흐름이 맞는지 확인하는 과정이 더 중요해집니다.")],
+    },
+    "guide/flatten-mode/index.html": {
+        "summary": "Flatten Mode는 MVMZ 401 대사를 번역할 때 추출된 대사 구조를 AI에 어떤 입력 단위로 전달할지 정하는 설정입니다.",
+        "when": ["대사 문맥을 더 길게 묶어 AI에 전달하고 싶을 때", "줄 단위 번역이 어색해 같은 블록을 한 번에 번역해 보고 싶을 때", "401-Extract Mode 결과에 맞춰 번역 입력 방식을 조정할 때"],
+        "before": ["기본값은 full입니다.", "화면에서 선택 가능한 항목만 현재 조합에서 사용할 수 있는 선택지로 보면 됩니다.", "이 설정은 추출 파일을 새로 만드는 기능이 아니라 번역 입력 방식을 조정하는 기능입니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 Flatten Mode를 확인합니다.", "기본 동작을 유지하려면 full을 선택합니다.", "대화 흐름을 묶어 번역하고 싶으면 group을 비교합니다.", "줄바꿈으로 이어진 401 블록을 한 번에 번역하고 싶으면 block을 비교합니다.", "같은 문장 일부로 시험 번역합니다.", "결과가 자연스럽고 줄 수가 유지되는지 확인한 뒤 전체 번역에 적용합니다."],
+        "result": ["시험 번역에서 대사 문맥이 더 자연스러워졌는지 확인합니다.", "번역 결과의 줄 수가 원문 구조와 크게 어긋나지 않는지 확인합니다.", "적용 후 실제 게임에서 대사창 줄바꿈과 순서를 확인합니다."],
+        "notices": [("주의", "묶어서 번역하면 문맥은 좋아질 수 있지만, 결과 줄 수가 달라져 적용이나 검수에서 확인할 항목이 늘어날 수 있습니다."), ("중요", "Flatten Mode 변경 후에는 기존 번역 결과를 그대로 믿지 말고 필요한 범위를 다시 번역해 비교하세요.")],
+        "confusion": [("추출 결과 파일 모양도 바뀌나요?", "아닙니다. 이 설정은 주로 번역 단계에서 AI에 전달하는 입력 단위를 조정합니다. 추출 구조는 401-Extract Mode에서 결정합니다."), ("항목이 비활성화되어 있으면 오류인가요?", "아닙니다. 현재 401-Extract Mode 조합에서 의미가 없는 선택지는 화면에서 제한될 수 있습니다.")],
+    },
+    "guide/include-text-type/index.html": {
+        "summary": "Include text type은 MVMZ 이벤트 대사를 AI에 보낼 때 해당 항목이 이름 계열인지 대사 계열인지 구분 힌트를 함께 전달하는 설정입니다.",
+        "when": ["이름과 대사가 섞인 번역에서 모델이 역할을 헷갈릴 때", "이름은 음역 또는 고유명사처럼, 대사는 자연스러운 문장처럼 다루게 하고 싶을 때", "프롬프트와 함께 텍스트 역할 정보를 더 분명히 주고 싶을 때"],
+        "before": ["기본값은 꺼짐입니다.", "이 설정은 원문 파일이나 게임 데이터를 바꾸지 않습니다.", "역할 힌트가 항상 번역 품질을 높이는 것은 아니므로 작은 범위로 비교합니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 Include text type을 켭니다.", "필요하면 401-Extract Mode와 Flatten Mode도 확인합니다.", "짧은 대사 파일로 시험 번역합니다.", "이름과 대사의 번역 방식이 더 안정적인지 비교합니다.", "효과가 있으면 필요한 범위에 적용합니다."],
+        "result": ["같은 샘플을 꺼짐/켜짐으로 번역해 이름 표기와 대사 자연스러움을 비교합니다.", "번역문에 역할 표시가 그대로 섞여 나오지 않는지 확인합니다.", "효과가 작거나 결과가 어색하면 끈 상태로 되돌립니다."],
+        "notices": [("권장", "이 설정은 대량 작업 전 짧은 이벤트로 비교해 보는 편이 좋습니다. 작품마다 체감 차이가 다를 수 있습니다."), ("중요", "Include text type은 번역 입력 힌트입니다. 이미 만들어진 추출 결과나 게임 데이터 구조를 바꾸는 설정은 아닙니다.")],
+        "confusion": [("켜면 이름 번역이 자동으로 고정되나요?", "아닙니다. 이름/대사 구분을 돕는 힌트일 뿐입니다. 고정 표기는 용어사전이나 프롬프트와 함께 관리하세요."), ("모든 엔진에 적용되나요?", "이 문서는 MVMZ 이벤트 대사 번역 흐름을 기준으로 설명합니다.")],
+    },
+    "guide/include-speaker-name/index.html": {
+        "summary": "Include speaker name은 MVMZ 이벤트 대사를 AI에 보낼 때 해당 문장을 말하는 화자명을 함께 전달하는 설정입니다.",
+        "when": ["화자에 따라 존댓말, 반말, 말투가 달라지는 작품을 번역할 때", "같은 문장도 누가 말하느냐에 따라 번역 느낌을 다르게 잡고 싶을 때", "merge 101-401이나 group 계열 설정과 함께 대화 문맥을 보강하고 싶을 때"],
+        "before": ["기본값은 꺼짐입니다.", "화자명이 비어 있는 대사는 이 설정의 체감 효과가 작을 수 있습니다.", "이 설정은 화자명을 게임 대사에 새로 써 넣는 기능이 아닙니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 Include speaker name을 켭니다.", "화자명이 있는 이벤트 대사 샘플을 선택합니다.", "짧은 범위로 시험 번역합니다.", "말투와 호칭이 더 안정적으로 유지되는지 비교합니다.", "필요하면 프롬프트나 용어사전의 인물 표기 기준도 함께 조정합니다."],
+        "result": ["화자별 말투가 의도대로 유지되는지 샘플 대사를 비교합니다.", "번역 결과에 화자명이 불필요하게 본문으로 들어가지 않았는지 확인합니다.", "화자명이 없는 이벤트에서는 기대한 변화가 없는지 확인합니다."],
+        "notices": [("권장", "말투 구분이 중요한 작품에서는 켠 상태로 짧은 이벤트를 먼저 번역해 보고, 인물별 표기 기준을 프롬프트와 함께 맞추세요."), ("중요", "이 설정은 AI 입력에 참고용 화자 정보를 붙이는 기능입니다. 게임 데이터의 화자명 자체를 수정하지 않습니다.")],
+        "confusion": [("MV와 MZ 모두 같은 효과인가요?", "화자 정보가 실제로 제공되는 방식은 프로젝트 구조에 따라 다를 수 있습니다. 화자명이 없는 데이터에서는 효과가 제한됩니다."), ("화자명을 번역문 앞에 붙이는 기능인가요?", "아닙니다. 화자명은 번역 판단을 돕는 정보로 전달되며, 본문에 표시하기 위한 접두어가 아닙니다.")],
+    },
+    "guide/401-block-unit-for-consistency-duplicate/index.html": {
+        "summary": "401 Block Unit for Consistency/Duplicate은 번역일관성과 추출중복 검사에서 MVMZ 401 대사를 한 줄씩이 아니라 같은 대사 블록 단위로 비교할지 정하는 설정입니다.",
+        "when": ["여러 줄 대사를 한 덩어리로 보고 일관성을 검사하고 싶을 때", "한 줄 단위 중복보다 대사 블록 전체의 반복 여부가 더 중요할 때", "번역일관성 또는 추출중복 도구의 결과가 너무 잘게 쪼개져 보일 때"],
+        "before": ["기본값은 꺼짐입니다.", "현재 추출 결과에 대사 블록 정보가 맞게 준비되어 있어야 합니다.", "이 설정은 추출 자체보다 검사 도구의 비교 단위에 영향을 줍니다."],
+        "steps": ["설정 화면에서 MVMZ 영역의 401 Block Unit for Consistency/Duplicate을 확인합니다.", "대사 블록 단위로 검사하고 싶으면 켭니다.", "줄 단위로 짧은 반복 표현을 찾고 싶으면 끕니다.", "번역일관성 또는 추출중복 도구를 실행합니다.", "검사 결과가 블록 단위로 표시되는지 확인합니다.", "필요한 경우 설정을 바꿔 다시 검사합니다."],
+        "result": ["번역일관성 결과에서 원문/번역 후보가 블록 단위로 묶여 보이는지 확인합니다.", "추출중복 결과에서 반복 블록이 의도한 단위로 잡히는지 확인합니다.", "수정 후 적용하거나 저장할 때 블록의 줄 수와 순서가 유지되는지 확인합니다."],
+        "notices": [("주의", "블록 단위 후보를 직접 수정할 때는 원래 블록의 줄 수와 순서를 최대한 유지하세요. 줄 수가 크게 달라지면 결과 반영이 어긋날 수 있습니다."), ("권장", "짧은 감탄사나 반복 단어를 찾을 때는 꺼짐, 긴 대사 흐름의 일관성을 볼 때는 켜짐을 비교하세요.")],
+        "confusion": [("추출 결과도 다시 만들어지나요?", "아닙니다. 이 설정은 주로 번역일관성, 추출중복 같은 검사 도구의 비교 단위를 바꿉니다."), ("모든 MVMZ 파일에 적용되나요?", "일반적인 이벤트 401 대사 검사를 기준으로 이해하면 됩니다. 다른 데이터베이스 텍스트는 별도 설정과 흐름을 따릅니다.")],
+    },
+    "guide/wolf-2차-추출-제외-필터/index.html": {
+        "summary": "WOLF 2차 추출 제외 필터는 1차 추출 결과 중 실제 번역 대상으로 다시 뽑을 항목을 규칙으로 선별하는 화면입니다.",
+        "when": ["2차 추출 결과에 불필요한 문장이 많이 섞일 때", "번역해야 할 문장이 누락되어 조건을 넓혀야 할 때", "파일, 명령, 이벤트, 텍스트 패턴 기준으로 추출 범위를 조정할 때"],
+        "before": ["1차 추출 결과가 준비되어 있어야 합니다.", "현재 2차 추출 결과의 누락/과다 추출 예시를 먼저 확인합니다.", "정규식은 작은 범위에서 시험한 뒤 전체 작업에 적용합니다."],
+        "steps": ["WOLF 2차 추출 제외 필터 화면을 엽니다.", "프리셋을 기준으로 규칙을 불러옵니다.", "필요한 규칙만 활성화합니다.", "파일, 경로, 명령 ID, 텍스트 조건을 확인합니다.", "저장한 뒤 2차 추출을 다시 실행합니다.", "추출 결과를 열어 의도한 항목이 들어왔는지 확인합니다."],
+        "result": ["추출 항목 수와 실제 샘플 문장을 함께 확인합니다.", "결과가 바뀌었다면 필요한 범위를 다시 번역합니다."],
+        "notices": [("중요", "필터 저장만으로 기존 추출/번역 결과가 자동 갱신되지는 않습니다.")],
+    },
+    "guide/vxvxa-message-block-unit/index.html": {
+        "summary": "Message Block Unit은 VXVXA의 401 메시지를 한 줄씩이 아니라 메시지 블록 단위로 추출하고 적용하도록 바꾸는 설정입니다.",
+        "when": ["VXVXA 대사가 여러 줄로 이어지고 줄 단위 번역이 문맥을 깨뜨릴 때", "401 대사를 MVMZ처럼 묶음 단위로 다루고 싶을 때", "번역 결과를 적용했을 때 줄 순서나 묶음이 어긋나는지 확인해야 할 때"],
+        "before": ["현재 엔진이 VXVXA인지 확인합니다.", "대상 파일에 메시지 블록 마커가 있는 경우에만 블록 단위 처리가 적용됩니다.", "기존 추출 결과와 방식이 달라지므로 설정 변경 후에는 다시 추출합니다."],
+        "steps": ["설정 화면에서 VXVXA 탭을 엽니다.", "Message Extract 영역의 Message Block Unit을 켜거나 끕니다.", "VXVXA 추출을 다시 실행합니다.", "code_401 결과가 대사 묶음 단위로 정리되었는지 확인합니다.", "번역 후 적용하고 실제 게임에서 줄 수와 대사 순서를 확인합니다."],
+        "result": ["여러 줄 대사가 하나의 번역 단위로 보이는지 확인합니다.", "적용 후 대사 줄 수가 어긋나지 않는지 확인합니다."],
+        "notices": [("중요", "블록 번역 결과의 줄 수가 원본과 맞지 않으면 해당 블록 적용이 건너뛰어질 수 있습니다.")],
+    },
+    "guide/cmd-122-2차-추출-중복처리/index.html": {
+        "summary": "Cmd 122 2차 추출 중복처리는 WOLF의 SET_STRING 명령 후보가 2차 추출에서 반복될 때 중복 처리를 보정하는 설정입니다.",
+        "when": ["WOLF 2차 추출 결과에서 같은 SET_STRING 후보가 반복될 때", "동일한 문자열 후보가 여러 위치에서 중복 번역 대상으로 잡힐 때", "SET_STRING 자체는 유지하면서 반복 후보만 줄이고 싶을 때"],
+        "before": ["현재 프로젝트가 WOLF 계열인지 확인합니다.", "반복 항목이 WOLF Command ID 122 또는 SET_STRING 후보인지 확인합니다.", "설정을 바꾼 뒤에는 2차 추출 결과를 다시 만들어 비교합니다."],
+        "steps": ["WOLF 2차 추출 결과에서 반복되는 SET_STRING 후보를 확인합니다.", "Cmd 122 2차 추출 중복처리 설정을 켜거나 끕니다.", "2차 추출을 다시 실행합니다.", "반복 항목이 줄었는지, 필요한 문장이 빠지지 않았는지 비교합니다."],
+        "result": ["SET_STRING 후보가 의도대로 정리되었는지 확인합니다.", "필요한 후보가 빠졌다면 설정을 끄고 결과를 비교합니다."],
+        "notices": [("주의", "이 문서의 122는 RPG Maker 명령 코드가 아니라 WOLF의 SET_STRING 명령 ID입니다.")],
+    },
+    "guide/ctf-이미지-고속-추출/index.html": {
+        "summary": "CTF 이미지 고속 추출은 CTF 이미지 추출 시 PNG 저장을 1 worker로 처리할지 2 worker로 병렬 처리할지 정하는 설정입니다.",
+        "when": ["CTF 이미지 추출 시간이 오래 걸릴 때", "이미지가 많아 PNG 저장 단계가 병목처럼 느껴질 때", "CPU, 메모리, 디스크 여유가 있어 병렬 저장을 시도할 때"],
+        "before": ["현재 프로젝트 형식이 CTF 계열인지 확인합니다.", "2 worker 사용 시 CPU, 메모리, 디스크 사용량이 늘 수 있습니다.", "저장 장치가 느리거나 다른 작업이 많다면 1 worker가 더 안정적일 수 있습니다."],
+        "steps": ["CTF 이미지 고속 추출 옵션을 켜거나 끕니다.", "CTF 이미지 추출을 실행합니다.", "추출 시간과 시스템 부하를 확인합니다.", "결과 이미지 샘플을 확인합니다.", "부하가 크면 1 worker 기준으로 다시 비교합니다."],
+        "result": ["PNG 저장 처리 속도와 시스템 부하를 함께 확인합니다.", "결과가 의심되면 1 worker와 2 worker 결과를 비교합니다."],
+        "notices": [("중요", "이 설정은 추출 범위를 바꾸는 기능이 아니라 이미지 저장 worker 수를 바꾸는 기능입니다.")],
+    },
+    "guide/ctf-2차-추출-제외-필터/index.html": {
+        "summary": "CTF 2차 추출 제외 필터는 ClickTeam Fusion 계열 프로젝트에서 2차 추출 대상으로 삼을 텍스트를 규칙으로 선별하는 화면입니다.",
+        "when": ["CTF 2차 추출 결과에 필요 없는 값이 많이 섞일 때", "특정 역할, 카테고리, 식별자에 해당하는 텍스트만 골라내고 싶을 때", "TextId, Context, Value 패턴으로 번역 대상을 조정할 때"],
+        "before": ["CTF 프로젝트의 1차 추출 결과가 준비되어 있어야 합니다.", "현재 2차 추출 결과에서 과다 추출/누락 예시를 먼저 확인합니다.", "정규식 조건은 작은 범위로 시험합니다."],
+        "steps": ["프리셋으로 기본 규칙을 불러옵니다.", "사용할 규칙만 활성화합니다.", "카테고리, Role, Source Kind, Identifier 조건을 확인합니다.", "TextId, Context, Value 정규식을 조정합니다.", "저장 후 2차 추출을 다시 실행합니다."],
+        "result": ["규칙이 의도대로 적용되었는지 샘플 문장으로 확인합니다.", "결과가 바뀌었다면 필요한 범위를 다시 번역합니다."],
+        "notices": [("중요", "필터 편집은 앞으로 만들 2차 추출 결과에 영향을 주며, 기존 결과를 자동으로 다시 고치지는 않습니다.")],
+    },
+    "guide/bakin-2차-추출-제외-필터/index.html": {
+        "summary": "Bakin 2차 추출 제외 필터는 조건과 일치하는 후보를 Bakin 추출2 결과에서 제외하는 규칙을 편집하는 화면입니다.",
+        "when": ["Bakin 추출2 결과에 번역하지 않을 후보가 섞일 때", "추출 파일명, domain, RBR 경로, 원문 정규식을 조합해 제외 조건을 만들 때", "기본 분류기만으로 현재 프로젝트의 제외 범위가 부족할 때"],
+        "before": ["Bakin 1차 추출과 추출2 결과가 준비되어 있어야 합니다.", "제외하려는 항목의 추출 파일명, domain, RBR 경로, 원문 예시를 먼저 확인합니다.", "규칙에 매칭된 항목은 mapping에도 들어가지 않을 수 있습니다."],
+        "steps": ["Bakin 2차 추출 제외 필터 화면을 엽니다.", "제외할 규칙만 활성화합니다.", "규칙 이름, 추출 파일, 도메인 정규식, RBR 경로 정규식, 원문 정규식을 확인합니다.", "저장 후 Bakin 추출2를 다시 실행합니다.", "제외 대상과 필요한 문장 누락 여부를 확인합니다."],
+        "result": ["제외 대상이 결과 JSON에서 빠졌는지 확인합니다.", "필요한 문장까지 빠지지 않았는지 샘플로 확인합니다."],
+        "notices": [("주의", "Bakin 2차 추출 제외 필터는 포함 규칙이 아니라 제외 규칙입니다. 조건을 너무 넓게 잡으면 필요한 문장도 빠질 수 있습니다.")],
+    },
+    "guide/srpg-2차-추출-필터/index.html": {
+        "summary": "SRPG 2차 추출 필터는 SRPG Studio 2차 추출에서 통과시킬 문자열 위치를 지정하는 설정입니다.",
+        "when": ["SRPG Studio 2차 추출에서 번역 대상이 너무 넓거나 좁을 때", "이벤트 명령, 이름/설명, 창/폰트, String Table, JS Plugin 일본어 등 특정 범위를 골라 추출하고 싶을 때", "파일명, JSON 경로, 텍스트 정규식 조건으로 추출 대상을 조정해야 할 때"],
+        "before": ["이 필터는 WOLF/CTF/Bakin의 제외 필터와 다르게, 먼저 추출할 대상을 지정하는 필터입니다.", "대상 파일, 경로 패턴, 텍스트 정규식은 포함 조건으로 이해합니다.", "제외 파일, 제외 경로, 제외 텍스트 정규식은 포함된 결과 안에서 다시 빼는 보조 조건입니다."],
+        "steps": ["설정 화면에서 SRPG Studio 탭을 엽니다.", "2차 추출 필터를 엽니다.", "프리셋을 기준으로 필요한 규칙을 불러옵니다.", "원본 종류, 대상 파일, 경로 패턴, 텍스트 정규식을 확인합니다.", "필요한 경우 제외 파일, 제외 경로, 제외 텍스트 정규식으로 통과 결과를 좁힙니다.", "저장 후 SRPG Studio 2차 추출을 다시 실행합니다."],
+        "result": ["추출 결과에 의도한 SRPG Studio 문자열 위치만 들어왔는지 확인합니다.", "필요한 문장이 빠졌다면 포함 조건을 넓히고, 불필요한 항목이 많다면 제외 조건을 추가합니다."],
+        "notices": [("중요", "SRPG 2차 추출 필터의 기본 방향은 제외가 아니라 추출 대상 지정입니다. 제외 항목은 통과된 결과를 다시 줄이는 보조 조건으로 다루세요.")],
+    },
+    "guide/livemaker-폰트-설정/index.html": {
+        "summary": "LiveMaker 폰트 설정은 LiveMaker 적용 과정에서 사용할 AIMT_LiveMaker_KR.ttf 생성용 원본 폰트를 선택하는 설정입니다.",
+        "when": ["LiveMaker 번역 후 한글이 네모나 빈 글자로 보일 때", "기본 한글 폰트를 찾지 못했다는 표시가 보일 때", "게임에 맞는 다른 한글 폰트를 사용하고 싶을 때", "FontMod 적용 후 실제 로드된 폰트를 확인해야 할 때"],
+        "before": ["한글 글리프가 포함된 ttf, otf, woff 폰트를 준비합니다.", "상업용 작품에 사용할 폰트라면 라이선스를 먼저 확인합니다.", "폰트 변경은 번역문 내용이 아니라 실행 중 글자 표시 방식에 영향을 줍니다."],
+        "steps": ["설정 화면에서 LiveMaker 탭을 엽니다.", "AIMT_LiveMaker_KR.ttf 생성용 폰트 항목을 확인합니다.", "System Fonts 또는 Select File로 사용할 폰트를 선택합니다.", "현재 선택 항목이 바뀌었는지 확인합니다.", "LiveMaker 적용을 다시 진행하고 게임에서 한글 표시를 확인합니다."],
+        "result": ["게임 실행 시 한글이 정상적으로 보이는지 확인합니다.", "필요하면 LiveMaker FontMod 로그 확인으로 로드된 폰트와 요청된 폰트를 비교합니다."],
+        "notices": [("주의", "폰트가 선택되어도 게임 화면 폭, 줄바꿈, 글리프 지원 여부는 실제 실행 화면에서 반드시 확인해야 합니다.")],
     },
     "guide/추출/index.html": {
         "summary": "추출은 게임 파일에서 번역할 수 있는 텍스트를 찾아 작업용 파일로 준비하는 단계입니다.",
@@ -1700,7 +1969,15 @@ def _append_settings_groups(
 
 
 def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    by_path = {str(entry["path"]): dict(entry) for entry in entries}
+    by_path: dict[str, dict[str, Any]] = {}
+    for entry in entries:
+        path = str(entry["path"])
+        normalized_path = RENAMED_PAGE_PATHS.get(path, path)
+        if normalized_path in by_path and path != normalized_path:
+            continue
+        nav_entry = dict(entry)
+        nav_entry["path"] = normalized_path
+        by_path[normalized_path] = nav_entry
     for path, title in {**GROUP_PAGES, **ADVANCED_SUBGROUP_PAGES, **SETTING_REFERENCE_GROUP_PAGES, **FEATURE_SUBGROUP_PAGES, **EXTERNAL_REFERENCE_PAGES}.items():
         by_path[path] = {"path": path, "title": title, "depth": 1, "order": -1, "hasChildren": True, "virtual": path in VIRTUAL_GROUP_PAGES}
     for path in SETTINGS_PAGE_CHILD_PATHS:
@@ -1877,6 +2154,19 @@ def _flatten_nested_card_styles() -> None:
         ".nav-single-group[open]>summary .nav-caret-static{transform:none}"
         ".nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current=\"page\"]) .nav-caret-static{color:var(--muted)}"
     )
+    guide_callout_style = (
+        ".guide-callout{--callout-color:#2563eb;--callout-bg:#eff6ff;--callout-border:#bfdbfe;--callout-title:#1d4ed8;--callout-text:#1e3a8a;--callout-shadow:rgba(30,58,138,.10);display:block;margin:18px 0;padding:16px 18px;border:1px solid var(--callout-border);border-radius:12px;background:var(--callout-bg);color:var(--callout-text);box-shadow:0 8px 24px var(--callout-shadow)}.guide-callout:before{content:none}.guide-callout-title{margin:0 0 6px;color:var(--callout-title);font-size:16px;font-weight:800;line-height:1.35}.guide-callout-body{min-width:0;color:var(--callout-text);font-size:14px;line-height:1.6}.guide-callout-body>:first-child{margi"
+        "n-top:0}.guide-callout-body>:last-child{margin-bottom:0}.guide-callout[data-callout=\"abstract\"],.guide-callout[data-callout=\"summary\"],.guide-callout[data-callout=\"tldr\"],.guide-callout[data-callout=\"tip\"],.guide-callout[data-callout=\"hint\"],.guide-callout[data-callout=\"important\"]{--callout-color:#0891b2;--callout-bg:#ecfeff;--callout-border:#a5f3fc;--callout-title:#0e7490;--callout-text:#164e63;--callout-shadow:rgba(14,116,144,.10)}.guide-callout[data-callout=\"success\"],.guide-callout[data-callout=\"check\"],.guide-callout[data-callout=\"done\"]{--callout-color:#16a34a;--callout-bg:#f0fdf4;--callout-border:#bbf7d0;--callout-title:#15803d;--callout-text:#14532d;--callout-shadow:rgba(21,128,61,.10)}.guide-callout[data-callout=\"question\"],.guide-callout[data-callout=\"help\"],.guide-callout[data-callout=\"faq\"],.guide-callout[data-callout=\"warning\"],.guide-callout[data-callout=\"caution\"],.guide-"
+        "callout[data-callout=\"attention\"]{--callout-color:#f59e0b;--callout-bg:#fffbeb;--callout-border:#fcd34d;--callout-title:#b45309;--callout-text:#78350f;--callout-shadow:rgba(120,53,15,.12)}.guide-callout[data-callout=\"failure\"],.guide-callout[data-callout=\"fail\"],.guide-callout[data-callout=\"missing\"],.guide-callout[data-callout=\"danger\"],.guide-callout[data-callout=\"error\"],.guide-callout[data-callout=\"bug\"]{--callout-color:#dc2626;--callout-bg:#fef2f2;--callout-border:#fecaca;--callout-title:#b91c1c;--callout-text:#7f1d1d;--callout-shadow:rgba(127,29,29,.12)}.guide-callout[data-callout=\"example\"]{--callout-color:#7c3aed;--callout-bg:#f5f3ff;--callout-border:#ddd6fe;--callout-title:#6d28d9;--callout-text:#4c1d95;--callout-shadow:rgba(76,29,149,.12)}.guide-callout[data-callout=\"quote\"],.guide-callout[data-callout=\"cite\"]{--callout-color:#64748b;--callout-bg:#f8fafc;--callout-border:#cbd5e"
+        "1;--callout-title:#475569;--callout-text:#334155;--callout-shadow:rgba(51,65,85,.10)}:root[data-theme=\"dark\"] .guide-callout,body[data-theme=\"dark\"] .guide-callout{--callout-color:#60a5fa;--callout-bg:rgba(37,99,235,.16);--callout-border:rgba(96,165,250,.46);--callout-title:#bfdbfe;--callout-text:#dbeafe;--callout-shadow:rgba(0,0,0,.22)}:root[data-theme=\"dark\"] .guide-callout[data-callout=\"abstract\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"summary\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"tldr\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"tip\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"hint\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"important\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"abstract\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"summary\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"tldr"
+        "\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"tip\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"hint\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"important\"]{--callout-color:#22d3ee;--callout-bg:rgba(8,145,178,.16);--callout-border:rgba(103,232,249,.42);--callout-title:#a5f3fc;--callout-text:#cffafe}:root[data-theme=\"dark\"] .guide-callout[data-callout=\"success\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"check\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"done\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"success\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"check\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"done\"]{--callout-color:#22c55e;--callout-bg:rgba(22,163,74,.16);--callout-border:rgba(134,239,172,.42);--callout-title:#bbf7d0;--callout-text:#dcfce7}:root[data-theme=\"dark\"] .guide-callout[data-callout=\"qu"
+        "estion\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"help\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"faq\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"warning\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"caution\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"attention\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"question\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"help\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"faq\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"warning\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"caution\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"attention\"]{--callout-color:#f59e0b;--callout-bg:rgba(245,158,11,.12);--callout-border:rgba(245,158,11,.55);--callout-title:#fbbf24;--callout-text:#fde68a}:root[data-theme=\"dark\"] .guide-callout[data-callout=\"failu"
+        "re\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"fail\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"missing\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"danger\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"error\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"bug\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"failure\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"fail\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"missing\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"danger\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"error\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"bug\"]{--callout-color:#ef4444;--callout-bg:rgba(220,38,38,.14);--callout-border:rgba(252,165,165,.44);--callout-title:#fca5a5;--callout-text:#fee2e2}:root[data-theme=\"dark\"] .guide-callout[data-callout=\"example\"],body[data-"
+        "theme=\"dark\"] .guide-callout[data-callout=\"example\"]{--callout-color:#a78bfa;--callout-bg:rgba(124,58,237,.16);--callout-border:rgba(196,181,253,.42);--callout-title:#ddd6fe;--callout-text:#ede9fe}:root[data-theme=\"dark\"] .guide-callout[data-callout=\"quote\"],:root[data-theme=\"dark\"] .guide-callout[data-callout=\"cite\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"quote\"],body[data-theme=\"dark\"] .guide-callout[data-callout=\"cite\"]{--callout-color:#94a3b8;--callout-bg:rgba(100,116,139,.16);--callout-border:rgba(203,213,225,.36);--callout-title:#e2e8f0;--callout-text:#cbd5e1}@media(prefers-color-scheme:dark){:root:not([data-theme=\"light\"]) .guide-callout{--callout-color:#60a5fa;--callout-bg:rgba(37,99,235,.16);--callout-border:rgba(96,165,250,.46);--callout-title:#bfdbfe;--callout-text:#dbeafe;--callout-shadow:rgba(0,0,0,.22)}:root:not([data-theme=\"light\"]) .guide-callout[data-callou"
+        "t=\"abstract\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"summary\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"tldr\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"tip\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"hint\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"important\"]{--callout-color:#22d3ee;--callout-bg:rgba(8,145,178,.16);--callout-border:rgba(103,232,249,.42);--callout-title:#a5f3fc;--callout-text:#cffafe}:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"success\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"check\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"done\"]{--callout-color:#22c55e;--callout-bg:rgba(22,163,74,.16);--callout-border:rgba(134,239,172,.42);--callout-title:#bbf7d0;--callout-text:#dcfce7}:root:not([data-theme=\"light\"]) .guide-callou"
+        "t[data-callout=\"question\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"help\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"faq\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"warning\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"caution\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"attention\"]{--callout-color:#f59e0b;--callout-bg:rgba(245,158,11,.12);--callout-border:rgba(245,158,11,.55);--callout-title:#fbbf24;--callout-text:#fde68a}:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"failure\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"fail\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"missing\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"danger\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"error\"],:root:not([data-theme=\"light\"])"
+        " .guide-callout[data-callout=\"bug\"]{--callout-color:#ef4444;--callout-bg:rgba(220,38,38,.14);--callout-border:rgba(252,165,165,.44);--callout-title:#fca5a5;--callout-text:#fee2e2}:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"example\"]{--callout-color:#a78bfa;--callout-bg:rgba(124,58,237,.16);--callout-border:rgba(196,181,253,.42);--callout-title:#ddd6fe;--callout-text:#ede9fe}:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"quote\"],:root:not([data-theme=\"light\"]) .guide-callout[data-callout=\"cite\"]{--callout-color:#94a3b8;--callout-bg:rgba(100,116,139,.16);--callout-border:rgba(203,213,225,.36);--callout-title:#e2e8f0;--callout-text:#cbd5e1}}"
+    )
     replacements = {
         "blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--soft);border-radius:12px}": "blockquote{margin:20px 0;padding:0 0 0 14px;border-left:3px solid var(--accent);background:transparent;border-radius:0}",
         ".callout{border-radius:12px;padding:1rem;background:var(--soft)}": ".callout{border-radius:0;padding:0;background:transparent}",
@@ -1897,6 +2187,8 @@ def _flatten_nested_card_styles() -> None:
         text = text.rstrip() + "\n" + code_block_style + "\n"
     if basic_workflow_nav_style not in text:
         text = text.rstrip() + "\n" + basic_workflow_nav_style + "\n"
+    if guide_callout_style not in text:
+        text = text.rstrip() + "\n" + guide_callout_style + "\n"
     edit_guide.write_text(css_path, text)
 
 

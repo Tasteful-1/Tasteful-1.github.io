@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apply exclude regex to 401 block · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Apply exclude regex to 401 block · AIMT Guide</title>
+<script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+<style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+<link href="../../guide/static/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<button aria-label="사이드바 열기" class="sidebar-expand sidebar-toggle" id="sidebarExpand" title="사이드바 열기" type="button">☰</button>
+<div class="search-overlay" hidden="" id="searchOverlay">
+<section aria-labelledby="searchTitle" aria-modal="true" class="search-dialog" role="dialog">
+<div class="search-header"><h2 id="searchTitle">문서 검색</h2><button aria-label="검색 닫기" class="search-close" id="searchClose" title="검색 닫기" type="button">×</button></div>
+<input autocomplete="off" class="search-input" id="guideSearch" placeholder="검색어 입력" type="search"/>
+<div class="search-results" hidden="" id="searchResults"></div>
+</section>
+</div>
+<div class="site-shell">
+<aside class="sidebar">
+<div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button aria-label="문서 검색" class="sidebar-toggle" id="searchOpen" title="문서 검색" type="button">⌕</button><button aria-label="테마 변경" class="theme-toggle" id="themeToggle" title="테마 변경" type="button">◐</button><button aria-label="사이드바 닫기" class="sidebar-toggle" id="sidebarCollapse" title="사이드바 닫기" type="button">←</button></div>
+<nav aria-label="문서 목록" class="nav-list">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
 <details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
@@ -67,7 +68,9 @@
 <a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
 <a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
 <a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
 <a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
@@ -76,13 +79,25 @@
 <a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
 <a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
 </div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/wolf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
 <a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95/index.html" data-depth="4">LiveMaker 폰트 설정</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
@@ -182,23 +197,71 @@
 </div></details>
 </div></details>
       </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
-<article class="guide-content"><h1>Apply exclude regex to 401 block</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>Apply exclude regex to 401 block은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<a href="../../guide/assets/apply-exclude-regex-to-401-block/image.png"><img src="../../guide/assets/apply-exclude-regex-to-401-block/image.png"/></a><p>제외정규식/예외정규식 중 401 에 대한 처리가 해당 대사블럭 전체로 확장됩니다.</p><script crossorigin="anonymous" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" referrerpolicy="no-referrer" rel="stylesheet"/><script crossorigin="anonymous" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script><pre><code>&lt;제이콥&gt;
-안녕! 나는 제이콥이야!
-오늘도 좋은 하루 보내!</code></pre><p>위와 같은 대사가 있다고 가정하고</p><p>&lt;제이콥&gt; 을 401에서 제외하도록 등록해 뒀을 때</p><p>위 옵션이 비활성화되어 있다면</p><pre><code>안녕! 나는 제이콥이야!
-오늘도 좋은 하루 보내!</code></pre><p>이처럼 첫번째 줄만 제외되지만 옵션이 활성화되어 있다면</p><p>해당 대사가 전부 한번에 제외됩니다.</p><p>이는 예외정규식에 등록하여 무조건적으로 추출하도록 할 때 역시 마찬가지입니다.</p>
+</aside>
+<div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
+<main class="content-shell">
+<article class="guide-content">
+<h1>Apply exclude regex to 401 block</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
+<p><img src="../../guide/assets/apply-exclude-regex-to-401-block/image%202.png" alt=""></p>
+<h2>무엇을 조정하는 설정인가요?</h2>
+<p>Apply exclude regex to 401 block은 401 대사 한 줄에 걸린 제외/예외 규칙을 같은 대사 블록 전체로 확장할지 정하는 설정입니다.</p>
+<h2>언제 사용하나요?</h2>
+<ul>
+<li>한 줄만 보고 제외하면 같은 대화 블록의 나머지 줄이 어색하게 남을 때</li>
+<li>이름표, 제어용 줄, 특정 마커가 포함된 대사 블록 전체를 제외하고 싶을 때</li>
+<li>예외 규칙도 줄 하나가 아니라 같은 블록 전체에 적용하고 싶을 때</li>
+</ul>
+<h2>사용 전 확인할 것</h2>
+<ul>
+<li>기본값은 꺼짐입니다.</li>
+<li>제외정규식 / 예외정규식의 401 관련 규칙을 먼저 확인합니다.</li>
+<li>이 설정을 켜면 한 줄 조건이 대사 블록 전체에 영향을 줄 수 있습니다.</li>
+</ul>
+<h2>기본 사용 순서</h2>
+<ol>
+<li>제외정규식 / 예외정규식에서 401 관련 규칙을 준비합니다.</li>
+<li>설정 화면에서 MVMZ 영역의 Apply exclude regex to 401 block을 켭니다.</li>
+<li>MVMZ 추출을 다시 실행합니다.</li>
+<li>조건에 걸린 줄이 포함된 대사 블록 전체가 제외 또는 예외 처리되는지 확인합니다.</li>
+<li>필요한 대사까지 빠지면 규칙을 좁히거나 설정을 끕니다.</li>
+</ol>
+<h2>화면/항목 설명</h2>
+<table>
+<thead><tr><th>상태</th><th>결과</th></tr></thead>
+<tbody>
+<tr><td>꺼짐</td><td>조건에 맞는 401 줄 중심으로 제외/예외가 적용됩니다.</td></tr>
+<tr><td>켜짐</td><td>조건에 맞는 줄이 속한 같은 대사 블록 전체에 제외/예외가 확장됩니다.</td></tr>
+<tr><td>적용 대상</td><td>MVMZ 이벤트 대사의 401 계열 추출 판단에 영향을 줍니다.</td></tr>
+</tbody>
+</table>
+<h2>결과 확인 방법</h2>
+<ul>
+<li>다시 추출한 결과에서 블록 전체가 의도대로 제외되었는지 확인합니다.</li>
+<li>예외 규칙을 쓴 경우 같은 블록 전체가 필요한 만큼 살아났는지 확인합니다.</li>
+<li>대사 누락이 생기면 제외정규식 조건을 좁히고 다시 추출합니다.</li>
+</ul>
+<h2>주의/중요/권장</h2>
+<div class="guide-callout" data-callout="warning">
+<div class="guide-callout-title">주의</div>
+<div class="guide-callout-body">
+<p>한 줄 조건이 전체 대사 블록으로 확장되므로, 넓은 정규식과 함께 쓰면 필요한 대사가 통째로 빠질 수 있습니다.</p>
+</div>
+</div>
+<div class="guide-callout" data-callout="important">
+<div class="guide-callout-title">중요</div>
+<div class="guide-callout-body">
+<p>이 설정은 추출 판단에 영향을 주므로 저장 후 다시 추출해야 결과를 확인할 수 있습니다.</p>
+</div>
+</div>
+<h2>자주 헷갈리는 점</h2>
+<ul>
+<li><strong>예외정규식에도 적용되나요?</strong><br>네. 제외뿐 아니라 예외로 반드시 추출하게 하는 판단에도 같은 블록 확장 개념이 적용될 수 있습니다.</li>
+<li><strong>이미 번역한 결과가 바로 바뀌나요?</strong><br>아닙니다. 추출 결과를 새로 만들고 필요한 범위를 다시 번역해야 합니다.</li>
+</ul>
 </article>
 </main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
+</div>
+<script src="../../guide/static/main.js"></script>
 </body>
 </html>
