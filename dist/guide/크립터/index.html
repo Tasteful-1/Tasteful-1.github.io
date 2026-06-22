@@ -199,29 +199,128 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>크립터 (CTF)</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>크립터 (CTF)은 해당 형식의 게임에서 추출, 번역, 적용을 진행할 때 필요한 준비와 주의사항을 안내합니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<h2>어떤 리소스를 다루나요?</h2><p>현재 CTF 탭에는 아래 버튼이 있습니다.</p><ul><li><code>이미지</code></li></ul><ul><li><code>폰트</code></li></ul><ul><li><code>사운드</code></li></ul><ul><li><code>셰이더</code></li></ul><ul><li><code>바이너리</code></li></ul><p>각 버튼을 누르면 다시 <code>추출</code> 또는 <code>적용</code>을 고르는 작은 선택창이 열립니다.</p><h2>실행 전에 무엇을 고르나요?</h2><p>현재 모든 CTF 리소스 작업은 먼저 source를 고릅니다.</p><ul><li><code>DAT</code></li></ul><ul><li><code>CCN</code></li></ul><ul><li><code>EXE</code></li></ul><p>즉, 현재 프로젝트 폴더를 자동으로 바로 쓰는 구조가 아니라, 매번 어떤 원본 파일을 대상으로 할지 먼저 선택하는 방식입니다.</p><h2>추출은 어디로 나가나요?</h2><p>현재 버전 기준 추출 결과는 현재 프로젝트의 <code>_Extract</code> 아래로 들어갑니다.</p><ul><li>이미지: <code>_Extract\\\\img</code></li></ul><ul><li>폰트: <code>_Extract\\\\font</code></li></ul><ul><li>사운드: <code>_Extract\\\\sound</code></li></ul><ul><li>셰이더: <code>_Extract\\\\shader</code></li></ul><ul><li>바이너리: <code>_Extract\\\\binary</code></li></ul><p>중요한 점은 현재 구현이 <code>같은 리소스 대상 폴더가 이미 있으면 먼저 지우고 다시 추출</code>하는 쪽이라는 것입니다.</p><p>즉, 같은 종류를 다시 추출하면 이전 결과 폴더 내용이 유지된 채 누적되는 구조로 보면 안 됩니다.</p><h2>적용은 어떻게 하나요?</h2><p>리소스 종류마다 입력 규칙이 조금 다릅니다.</p><h3>이미지 적용</h3><ul><li>선택 대상: <code>.png</code></li></ul><ul><li>여러 파일 선택 가능</li></ul><ul><li>파일명 앞의 숫자 index를 읽어 원본 리소스 위치를 맞춥니다</li></ul><p>즉, 추출 결과 파일명을 임의로 크게 바꾸면 적용 매칭이 깨질 수 있습니다.</p><h3>폰트 적용</h3><ul><li>선택 대상: <code>.json</code></li></ul><ul><li>한 번에 1개만 허용</li></ul><ul><li>현재 UI는 먼저 <code>_Extract\\\\font\\\\logFontInfo.json</code>을 자동으로 찾고, 없으면 파일 선택으로 넘어갑니다</li></ul><p>즉, 폰트는 보통 추출로 나온 JSON을 다시 쓰는 흐름으로 보는 편이 맞습니다.</p><h3>사운드 적용</h3><ul><li>선택 대상: <code>.wav</code>, <code>.ogg</code>, <code>.mp3</code>, <code>.aiff</code>, <code>.bin</code></li></ul><ul><li>여러 파일 선택 가능</li></ul><ul><li>이미지와 비슷하게 파일명 앞 숫자 index를 기준으로 매칭합니다</li></ul><h3>셰이더 적용</h3><p><code>셰이더 적용</code> 은 게임 번역과 무관한 영역이며, 현재 지원하고 있지 않습니다.</p><p>즉, 지금 사용자 화면 기준으로는 <code>셰이더는 추출만 가능</code>하다고 보는 편이 맞습니다.</p><h3>바이너리 적용</h3><p>현재 UI 기준으로는 수동 파일 선택보다 <code>현재 프로젝트 _Extract\\\\binary 폴더 전체</code>를 자동 입력으로 기대합니다.</p><p>즉, 먼저 binary 추출을 해 두지 않으면 적용 시작 전에 에러로 끝날 수 있습니다.</p><h2>적용 결과는 어디에 반영되나요?</h2><p>현재 구현은 source 종류에 따라 결과가 다를 수 있습니다.</p><ul><li>DAT/CCN 계열이면 패치된 결과를 그쪽 기준으로 다시 반영</li></ul><ul><li>EXE 계열이면 상황에 따라 companion DAT 수정 또는 <code>.translated.exe</code> 출력으로 이어질 수 있음</li></ul><ul><li>usable Fusion package 경로를 해석하지 못하는 일부 EXE는 실패 가능</li></ul><p>또 작업 전 기존 대상이 있으면 <code>%LocalAppData%\\\\CTF\\\\backup</code> 아래에 백업을 남기려 합니다.</p><p>중간 patched 산출물은 <code>%LocalAppData%\\\\CTF\\\\patched</code>를 거칠 수 있습니다.</p><p>다만 backup은 대상별 최근 2개만 유지하고, <code>patched</code>는 최신 쪽만 남기도록 정리됩니다.</p><h2>적용 파일이 없거나 실제 반영 수가 0이면 어떻게 되나요?</h2><p>현재 버전에서는 요청 파일 수가 0이면 시작 자체가 실패합니다.</p><p>반대로 작업은 돌았지만 실제 적용 수가 <code>0</code>이면, 성공으로 끝나더라도 백업과 출력 경로를 비워 두고 마무리할 수 있습니다.</p><p>즉, <code>성공 메시지 = 실제 파일이 반드시 바뀜</code>으로 단정하면 차이가 있습니다.</p>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
-<h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
-<h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+<article class="guide-content">
+  <h1>크립터 (CTF)</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+  <p><img src="../../guide/assets/%ED%81%AC%EB%A6%BD%ED%84%B0/image.png" alt=""></p>
+  <div class="guide-callout" data-callout="info" role="note">
+    <div class="guide-callout-title">수정이력</div>
+    <div class="guide-callout-body">
+      <p>1.14.0.0 | 신규 추가 | .</p>
+      <p>1.15.1.0 | 로직 개선 | PNG 추출 안정성 강화</p>
+    </div>
+  </div>
+  <h2>이 도구는 무엇인가요?</h2>
+  <p>크립터 (CTF)는 CTF 소스에서 이미지, 폰트, 사운드, 셰이더, 바이너리 리소스를 추출하거나 수정한 리소스를 다시 적용하는 CTF 리소스 작업 도구입니다. 각 리소스 버튼을 누르면 Extract 또는 Apply를 선택할 수 있습니다.<br></p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>CTF 게임의 이미지, 사운드, 폰트 같은 리소스를 꺼내 확인하거나 수정할 때</li>
+    <li>수정한 리소스를 원래 CTF 소스에 다시 반영해야 할 때</li>
+    <li>번역 작업 중 폰트, 이미지, 바이너리 리소스를 별도로 점검해야 할 때</li>
+    <li>CTF 리소스 적용 후 누락된 파일이나 적용 실패 항목을 CMD 로그로 확인하고 싶을 때</li>
+  </ul>
+  <h2>사용 전 확인할 것</h2>
+  <ul>
+    <li>CTF 소스인 DAT, CCN, EXE 중 작업할 대상을 선택할 수 있어야 합니다.</li>
+    <li>Extract 결과는 프로젝트의 <code>_Extract</code> 아래 리소스별 폴더에 저장됩니다.</li>
+    <li>Apply는 선택한 리소스를 CTF 소스에 반영합니다. 실행 전 원본을 보관하세요.</li>
+    <li>셰이더 Apply는 현재 사용할 수 없습니다. 셰이더는 추출 용도로만 확인하세요.</li>
+    <li>바이너리 Apply는 먼저 바이너리 Extract를 실행해 <code>_Extract/binary</code> 결과가 있어야 합니다.</li>
+  </ul>
+  <h2>기본 사용 순서</h2>
+  <ol>
+    <li>작업 도구의 CTF 영역에서 크립터를 확인합니다.</li>
+    <li>이미지, 폰트, 사운드, 셰이더, 바이너리 중 작업할 리소스 종류를 선택합니다.</li>
+    <li>열리는 선택 화면에서 Extract 또는 Apply를 고릅니다.</li>
+    <li>CTF 소스 선택 화면에서 DAT, CCN, EXE 중 대상 파일을 선택합니다.</li>
+    <li>Extract를 선택했다면 완료 후 리소스별 추출 폴더를 확인합니다.</li>
+    <li>Apply를 선택했다면 적용할 파일이나 폴더를 선택하고 완료 메시지를 확인합니다.</li>
+    <li>Console 로그에서 적용 개수, 건너뛴 항목, 백업과 출력 위치를 확인합니다.</li>
+    <li>게임을 실행해 리소스가 의도대로 표시되거나 재생되는지 확인합니다.</li>
+  </ol>
+  <div>
+    <div class="guide-callout" data-callout="tip" role="note">
+      <div class="guide-callout-title">팁</div>
+      <div class="guide-callout-body">
+        <p></p>
+        <ul>
+          <li>이미지 번역을 적용할 때는 수정한 파일들만 별도 폴더에 모아두고, 적용할 때 그 수정파일들만 선택하면 모든 이미지를 전부 적용하는 것보다 훨씬 쾌적할 수 있습니다.</li>
+          <li>분명 이미지가 맞는데 이미지 추출 시에 찾는 이미지가 없다면 바이너리로 패키징되었을 가능성이 높습니다.</li>
+          <li>폰트를 변경하려는데 설정파일을 고쳐서 적용해도 반영이 안된다면 ttc 파일을 새로 빌드해서 넣어야할 수 있습니다. <a href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html"><code>TTC 빌드</code></a>를 참고해보세요.</li>
+        </ul>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <tbody>
+      <tr>
+        <th>이미지</th>
+        <td>이미지 리소스를 추출하거나 PNG 파일을 다시 적용합니다.</td>
+      </tr>
+      <tr>
+        <th>폰트</th>
+        <td>폰트 리소스를 추출하거나 폰트 적용용 JSON 정보를 기준으로 반영합니다.</td>
+      </tr>
+      <tr>
+        <th>사운드</th>
+        <td>WAV, OGG, MP3, AIFF, BIN 등 사운드 리소스를 추출하거나 적용합니다.</td>
+      </tr>
+      <tr>
+        <th>셰이더</th>
+        <td>셰이더 리소스를 추출합니다. Apply는 현재 비활성화되어 있습니다.</td>
+      </tr>
+      <tr>
+        <th>바이너리</th>
+        <td>바이너리 리소스를 추출하거나, 먼저 추출해 둔 <code>_Extract/binary</code> 결과를 적용합니다.</td>
+      </tr>
+      <tr>
+        <th>Extract</th>
+        <td>선택한 CTF 소스에서 리소스를 꺼내 리소스별 추출 폴더에 저장합니다.</td>
+      </tr>
+      <tr>
+        <th>Apply</th>
+        <td>수정한 리소스를 선택한 CTF 소스에 반영하고 백업과 출력 결과를 남깁니다.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>결과 확인 방법</h2>
+  <ul>
+    <li>Extract 후 리소스별 추출 폴더에 파일이 생성되었는지 확인합니다.</li>
+    <li>Apply 후 Console 로그에서 <code>applied_count</code>와 건너뛴 항목 수를 확인합니다.</li>
+    <li>백업과 출력 위치가 표시되면 필요한 파일을 보관합니다.</li>
+    <li>게임을 실행해 이미지, 폰트, 사운드 등이 정상적으로 표시되거나 재생되는지 확인합니다.</li>
+  </ul>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="important">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>Apply는 CTF 소스에 리소스를 다시 반영하는 작업입니다. 대상 파일을 닫고 원본을 보관한 뒤 실행하세요.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">주의</div>
+    <div class="guide-callout-body">
+      <p>셰이더는 현재 Apply를 사용할 수 없습니다. 셰이더 버튼은 추출과 확인 용도로 사용하세요.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>처음 적용할 때는 리소스 일부만 바꿔 게임 실행 결과를 확인한 뒤 전체 범위로 넓히세요.</p>
+    </div>
+  </div>
+  <h2>자주 헷갈리는 점</h2>
+  <h3>크립터가 CTF 파일 전체를 암호화하거나 복호화하는 기능인가요?</h3>
+  <p>아닙니다. 이 페이지의 크립터는 CTF 리소스의 추출과 적용을 다루는 작업 도구입니다.</p>
+  <h3>바이너리 Apply가 실패해요</h3>
+  <p>바이너리 Apply는 먼저 바이너리 Extract 결과가 있어야 합니다. <code>_Extract/binary</code> 폴더가 준비되어 있는지 확인하세요.</p>
+  <h3>셰이더 파일도 다시 넣을 수 있나요?</h3>
+  <p>현재 셰이더 Apply는 사용할 수 없습니다. 셰이더는 Extract로 내용을 확인하는 용도로 사용하세요.</p>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

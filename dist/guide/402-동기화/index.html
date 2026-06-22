@@ -199,17 +199,29 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>402 동기화</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>402 동기화은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<h2>이 기능은 무엇인가요?</h2><p><code>402 동기화</code>는 선택지의 <code>102</code> 텍스트를 기준으로, 연결된 <code>402</code> 결과 텍스트를 다시 맞추는 도구입니다.</p><p>즉, 새 번역을 만드는 기능이라기보다 <code>102</code>와 <code>402</code>가 서로 다를 때 <code>402</code> 쪽을 정리하는 보정 기능에 가깝습니다.</p><p>단, <code>402</code> 는 게임 플레이와는 무관한 코드라 따로 관심이 있으신 경우가 아니라면 신경쓰지 않으셔도 번역 자체엔 크게 지장이 없습니다.</p><h2>무엇을 기준으로 처리하나요?</h2><p>현재 버전에서는 처리 대상은 <code>CommonEvents.json</code>, <code>Troops.json</code>, <code>Scenario.json</code>, <code>Map001.json</code> 같은 이벤트 계열 파일입니다.</p><p>처리할 때는 각 이벤트 리스트 안에서 <code>102</code>를 먼저 보고, 같은 들여쓰기 기준의 <code>402</code>가 있으면 선택지 번호에 맞는 텍스트로 비교합니다.</p><h2>결과는 어디에 반영되나요?</h2><p>현재 버전에서는 결과는 다른 폴더에 따로 생기지 않고, 현재 프로젝트 이벤트 JSON에 바로 다시 저장됩니다.</p><p>또한 동기화가 성공하면 뒤이어 <code>라인메이커</code>가 자동으로 실행됩니다.</p><h2>자주 헷갈리는 점</h2><h3><code>402 동기화</code>는 무엇을 바꾸나요?</h3><p>현재 버전에서는 <code>402</code> 텍스트를 <code>102</code>의 선택지 내용에 맞게 고칩니다.</p><p>간단히 말하면 <code>선택지 목록은 A/B/C인데</code>, 아래 <code>402</code> 결과 텍스트가 예전 값으로 남아 있으면 그것을 현재 <code>102</code> 기준으로 다시 맞추는 쪽입니다.</p><h3><code>102</code>도 같이 바꾸나요?</h3><p>그렇게 보는 기능은 아닙니다.</p><p>현재 버전에서는 <code>102</code>를 기준값으로 보고, <code>402</code>가 다를 때 <code>402</code> 쪽을 수정합니다.</p><h3>선택지 번역을 새로 생성하나요?</h3><p>아닙니다.</p><p>현재 버전에서는 이미 있는 <code>102</code> 선택지 텍스트를 기준으로 <code>402</code>를 맞추는 기능입니다.</p><h3>아무 <code>402</code>나 전부 고치나요?</h3><p>그렇지는 않습니다.</p><p>현재 버전에서는 같은 이벤트 흐름 안에서 부모 <code>102</code>를 찾을 수 있어야 하고, <code>402</code>의 선택지 번호도 범위 안에 있어야 합니다.</p><p>부모 <code>102</code>가 없거나, <code>402</code> 인덱스가 맞지 않으면 그 항목은 수정하지 않고 통계로만 남길 수 있습니다.</p><h3>결과 파일이 따로 생기나요?</h3><p>아닙니다.</p><p>현재 버전에서는 처리한 이벤트 JSON을 같은 위치에 다시 저장합니다.</p><h3><code>402 동기화</code>가 필요한 경우는 언제인가요?</h3><p>현재 버전에서는 <code>102</code> 선택지 내용은 바뀌었는데, 아래 <code>402</code> 결과 텍스트가 예전 상태로 남아 있어 불일치가 생겼을 때 쓰는 쪽에 가깝습니다.</p><h2>알아둘 점</h2><ul><li><code>402 동기화</code>는 <code>102</code>를 기준으로 <code>402</code> 텍스트를 다시 맞추는 보정 도구입니다.</li></ul><ul><li>새 번역 생성보다 <code>102/402 불일치 정리</code>로 보는 편이 맞습니다.</li></ul><ul><li>AIMT 번역 적용 과정에 이미 이 기능이 자동처리로 포함된 상태입니다.</li></ul><ul><li>결과는 현재 프로젝트 이벤트 JSON에 직접 반영되고, 성공 뒤 <code>라인메이커</code>가 자동 실행됩니다.</li></ul>
+<article class="guide-content">
+<h1>402 동기화</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+<h2>이 도구는 무엇인가요?</h2><p>MVMZ 선택지 관련 402 항목이 번역 결과와 어긋나지 않도록 맞춰 주는 도구입니다.</p>
+<h2>언제 사용하나요?</h2>
+<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<h2>사용 전 확인할 것</h2>
+<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<h2>기본 사용 순서</h2>
+<ol><li>작업 도구에서 402 동기화을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<h2>화면/항목 설명</h2>
+<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 선택지와 402 분기 항목</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>선택지와 연결된 항목의 표시가 서로 맞도록 정리됩니다.</td></tr></tbody></table>
+<h2>결과 확인 방법</h2>
+<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>선택지와 연결된 항목의 표시가 서로 맞도록 정리됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<h2>주의/중요/권장</h2>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>선택지 순서가 바뀌면 게임 진행에 영향을 줄 수 있으니 실행 후 실제 선택 장면을 확인하세요.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
+<h2>자주 헷갈리는 점</h2>
+<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
+<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

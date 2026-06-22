@@ -199,29 +199,31 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>NOTEPAD++</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>NOTEPAD++은 AIMT 사용 중 필요한 작업을 더 정확하게 진행하기 위한 기능입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<p><strong>주의:</strong> 개인적으론 AIMT 와 Notepad++ 을 함께 사용하는 것을 권장하지 않습니다.</p><p>- 가급적이면 VSCode 를 이용해주세요.</p><hr><h2>사전준비는 뭘 하면 되나요?</h2><a href="../../guide/assets/notepad/image.png"><img src="../../guide/assets/notepad/image.png"/></a><a href="../../guide/assets/notepad/image%201.png"><img src="../../guide/assets/notepad/image%201.png"/></a><p>Notepad++ 를 실행해 환경설정 &gt; 기타 &gt; 세션 파일 확장자를 nps 로 설정하면 준비가 끝납니다.</p><p>다만, AIMT 에서 연계하는 Notepad++ 의 세션 기능은 Notepad++ 자체의 이슈로 인해 경로 상 한글이 포함되어 있을 경우 정상적으로 동작하지 못합니다.</p><p>때문에 NotePad++ 의 바로가기를 활용하고자 하실 경우엔 필히 AIMT 는 물론이거니와 지정하는 프로젝트의 경로 역시 한글이 없도록 신경을 써주셔야 합니다.</p><a href="../../guide/assets/notepad/image%202.png"><img src="../../guide/assets/notepad/image%202.png"/></a><p>만약 경로에 한글이 포함되어 있을 경우엔 그에 따른 알림이 우하단에 표시되니<br/>그에 맞춰 조정해 주시면 됩니다.</p><h2>버튼별로 무엇을 여나요?</h2><h3><code>추출 폴더</code></h3><p><code>AIMT_Extract</code> 작업 폴더를 엽니다.</p><p>추출된 작업 파일을 바로 확인하거나 수정할 때 쓰는 버튼입니다.</p><h3><code>번역 폴더</code></h3><p><code>AIMT_Translated</code> 작업 폴더를 엽니다.</p><p>번역 결과 파일을 Notepad++에서 바로 볼 때 쓰는 버튼입니다.</p><h3><code>프로젝트</code></h3><p>현재 엔진 기준 프로젝트 작업 위치를 엽니다.</p><p>일반 구조에서는 보통 <code>data</code>, <code>js</code> 쪽을 열고, 시나리오형 엔진에서는 시나리오 작업 폴더를 여는 식으로 달라질 수 있습니다.</p><p>즉, <code>프로젝트</code>는 현재 엔진에 맞는 실제 작업 대상 쪽을 여는 버튼으로 이해하면 됩니다.</p><h3><code>RAW</code></h3><p>이 버튼은 모든 엔진에서 보이지 않습니다.</p><p>현재 버전에서는 <code>WOLF</code>, <code>VXVXA</code>에서만 보입니다.</p><p><code>WOLF</code>에서는 raw 작업 위치를, <code>VXVXA</code>에서는 legacy 계열 원본 작업 위치를 여는 전용 버튼에 가깝습니다.</p><h3><code>로그</code></h3><p>앱 로그 폴더를 엽니다.</p><p>즉, 현재 프로젝트 내부 로그보다 AIMT 자체 작업 기록이나 오류 로그를 확인할 때 쓰는 버튼입니다.</p>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
+<article class="guide-content">
+<h1>NOTEPAD++</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+<h2>이 도구는 무엇인가요?</h2><p>선택한 텍스트 파일을 Notepad++로 열어 가볍게 확인하거나 수정할 때 쓰는 바로가기입니다.</p>
+<h2></h2><div class="guide-callout" data-callout="important" role="note"><div class="guide-callout-title">매우 중요</div><div class="guide-callout-body"><p>Notepad++ 바로가기를 이용하고자 할 경우엔 꼭 다음 설명을 따라 사전준비를 해주셔야 합니다.</p><p>1. 윈도우 사용자명이 한글이라면 영어로 고쳐주세요. 사용자명이 한글일 경우 바로가기 실행에 실패하게 됩니다.</p><p style="margin-bottom: 0px;">이에 관해선 좋은 설명들이 시중에 많이 풀려있기에 본 가이드에선 별도로 서술하지 않습니다.<br>구글에 <code style="background: none 0% 0% / auto repeat scroll padding-box border-box rgb(29, 41, 66); color: rgb(200, 212, 255);">윈도우 사용자 폴더 이름 변경</code> 를 검색해보세요.</p><p>2. Notepad++ 를 실행해 환경설정을 열어주세요.</p>
+<p><a href="../../guide/assets/notepad/image.png"><img src="../../guide/assets/notepad/image.png"></a></p><p>3. 환경설정 중 기타에 들어가 세션 파일 확장자를 nps 로 입력해주세요.</p>
+<p><a href="../../guide/assets/notepad/image%201.png"><img src="../../guide/assets/notepad/image%201.png"></a></p></div></div><p><a href="../../guide/assets/notepad/image%202.png"></a></p>
+<h2>언제 사용하나요?</h2>
+<ul><li>단일 파일 내용을 빠르게 확인할 때</li><li>인코딩이나 줄바꿈 상태를 눈으로 확인할 때</li><li>작은 수정만 외부 편집기로 처리할 때</li></ul>
+<h2>사용 전 확인할 것</h2>
+<ul><li>외부 프로그램이 설치되어 있는지 확인합니다.</li><li>열 파일이나 폴더가 현재 작업 대상이 맞는지 확인합니다.</li><li>외부에서 저장한 뒤 AIMT 화면을 다시 확인할 준비를 합니다.</li></ul>
+<h2>기본 사용 순서</h2>
+<ol><li>작업 도구에서 NOTEPAD++을 엽니다.</li><li>열 대상 파일이나 폴더를 확인합니다.</li><li>외부 프로그램에서 내용을 확인하거나 수정합니다.</li><li>저장 후 AIMT로 돌아와 필요한 경우 목록을 새로고침합니다.</li></ol>
+<h2>화면/항목 설명</h2>
+<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>선택한 텍스트 파일</td></tr><tr><th>실행 기준</th><td>작업 도구 화면에서 실행하는 보조 기능입니다.</td></tr><tr><th>결과</th><td>대상 파일이 Notepad++에서 열립니다.</td></tr></tbody></table>
+<h2>결과 확인 방법</h2>
+<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>대상 파일이 Notepad++에서 열립니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
 <h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
-<h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>외부에서 저장한 내용은 AIMT 화면에 즉시 반영되지 않을 수 있으므로 다시 불러오기를 확인하세요.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div><h2><div class="guide-callout" data-callout="abstract" role="note"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p><span style="font-weight: normal;">문서작업이 익숙치 않으신 분들께는 개인적으로 Notepad++ 보다 VSCode 를 이용하시는 걸 권장드립니다.<br>물론 Notepad++ 를 이미 충분히 완숙하게 사용하시는 분들께서는 그대로 이용하셔도 괜찮습니다.</span></p></div></div></h2><h2>자주 헷갈리는 점</h2>
+<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
+<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

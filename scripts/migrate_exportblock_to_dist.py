@@ -19,6 +19,7 @@ DIST_ROOT = SITE_ROOT / "dist"
 GUIDE_ROOT = DIST_ROOT / "guide"
 STATIC_ROOT = GUIDE_ROOT / "static"
 ASSET_ROOT = GUIDE_ROOT / "assets"
+MAIN_JS_VERSION = "search-url-cache-fix-2026-06-22-02"
 UUID_RE = re.compile(r"([0-9a-f]{32})", re.IGNORECASE)
 LOCAL_SCHEMES = {"", None}
 
@@ -303,7 +304,7 @@ def render_page(page: Page, pages: list[Page], body: str) -> str:
     version = html.escape(page.version, quote=False)
     edited_at = html.escape(page.edited_at, quote=False)
     css_href = relative_href(page.output_path, STATIC_ROOT / "styles.css")
-    js_href = relative_href(page.output_path, STATIC_ROOT / "main.js")
+    js_href = f'{relative_href(page.output_path, STATIC_ROOT / "main.js")}?v={MAIN_JS_VERSION}'
     home_href = relative_href(page.output_path, GUIDE_ROOT / "index.html")
     return f"""<!doctype html>
 <html lang="ko">
@@ -863,7 +864,7 @@ def write_404(pages: list[Page]) -> None:
       </article>
     </main>
   </div>
-  <script src="guide/static/main.js"></script>
+  <script src="guide/static/main.js?v={MAIN_JS_VERSION}"></script>
 </body>
 </html>
 """

@@ -201,64 +201,88 @@
 <div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
 <main class="content-shell">
 <article class="guide-content">
-<h1>Extract Names</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
-<p><img src="../../guide/assets/extract-names/image%203.png" alt=""></p>
-<h2>무엇을 조정하는 설정인가요?</h2>
-<p>Extract Names는 MVMZ 추출 시 이름이나 호칭으로 참고할 수 있는 텍스트를 별도로 모아 두는 보조 설정입니다.</p><p></p><div class="guide-callout" data-callout="info" role="note"><div class="guide-callout-title">수정이력</div><div class="guide-callout-body"><p>1.12.0.0 | 신규 추가 | .</p><p>1.15.2.0 | 로직 개선 | .json 으로 변경 및 파일리스트에 노출되도록 조정</p></div></div><p></p><h2>언제 사용하나요?</h2>
-<ul>
-<li>캐릭터명, 적 이름, 호칭을 번역 전에 검토하고 싶을 때</li>
-<li>용어사전이나 인명 표기 기준을 만들기 위한 참고 목록이 필요할 때</li>
-<li>번역 대상 본문과 별도로 이름 계열 텍스트를 빠르게 확인하고 싶을 때</li>
-</ul>
-<h2>사용 전 확인할 것</h2>
-<ul>
-<li>기본값은 꺼짐입니다.</li>
-<li>이 설정으로 만들어지는 목록은 참고용 성격이 강합니다.</li>
-</ul>
-<h2>기본 사용 순서</h2>
-<ol>
-<li>설정 화면에서 MVMZ 영역의 Extract Names를 켭니다.</li>
-<li>MVMZ 추출을 다시 실행합니다.</li>
-<li><code>AIMT_Extract/Event</code> 에 이름 참고 목록이 생성되었는지 확인합니다.</li>
-<li>필요한 표기를 용어사전이나 번역 기준에 반영합니다.</li>
-<li>번역 작업을 진행하면서 이름 표기가 유지되는지 확인합니다.</li>
-</ol>
-<h2>화면/항목 설명</h2>
-<table>
-<thead><tr><th>항목</th><th>이해 방법</th></tr></thead>
-<tbody>
-<tr><td>켜짐</td><td>추출 과정에서 이름 참고용 목록을 함께 만듭니다.</td></tr>
-<tr><td>꺼짐</td><td>일반 추출 결과만 만들고 별도 이름 참고 목록은 만들지 않습니다.</td></tr>
-<tr><td>사용 목적</td><td>번역 적용용 본문이라기보다 이름 검토와 용어 정리용 자료로 이해하면 됩니다.</td></tr>
-</tbody>
-</table>
-<h2>결과 확인 방법</h2>
-<ul>
-<li>추출 후 이름 참고 목록에 검토할 이름이 모였는지 확인합니다.</li>
-<li>실제 번역 파일의 이름 표기와 참고 목록을 비교합니다.</li>
-<li>필요한 이름이 누락되면 일반 추출 결과와 엔진별 이름 위치를 함께 확인합니다.</li>
-</ul>
-<h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="important">
-<div class="guide-callout-title">중요</div>
-<div class="guide-callout-body">
-<p>Extract Names는 번역 결과를 직접 바꾸는 기능이 아닙니다. 이름 표기를 정리하기 위한 참고 자료로 사용하세요.</p>
-</div>
-</div>
-<div class="guide-callout" data-callout="tip">
-<div class="guide-callout-title">권장</div>
-<div class="guide-callout-body">
-<p>대량 번역 전에 이 목록으로 주요 인명과 고유명사의 표기 기준을 먼저 정하면 후반 검수 비용이 줄어듭니다.</p>
-</div>
-</div>
-<h2>자주 헷갈리는 점</h2>
-<ul>
-<li><strong>켜면 이름이 자동으로 잘 번역되나요?</strong><br>아닙니다. 이름을 검토하기 쉬운 자료를 만드는 기능입니다. 실제 번역 기준은 용어사전, 프롬프트, 수동 검수로 맞춰야 합니다.</li>
-</ul>
+  <h1>Extract Names</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
+  <p><img src="../../guide/assets/extract-names/image%203.png" alt=""></p>
+  <h2>무엇을 조정하는 설정인가요?</h2>
+  <p>Extract Names는 MVMZ 추출 시 이름이나 호칭으로 참고할 수 있는 텍스트를 별도로 모아 두는 보조 설정입니다.</p>
+  <p></p>
+  <div class="guide-callout" data-callout="info" role="note">
+    <div class="guide-callout-title">수정이력</div>
+    <div class="guide-callout-body">
+      <p>1.12.0.0 | 신규 추가 | .</p>
+      <p>1.15.2.0 | 로직 개선 | .json 으로 변경 및 파일리스트에 노출되도록 조정</p>
+    </div>
+  </div>
+  <p></p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>캐릭터명, 적 이름, 호칭을 번역 전에 검토하고 싶을 때</li>
+    <li>용어사전이나 인명 표기 기준을 만들기 위한 참고 목록이 필요할 때</li>
+    <li>번역 대상 본문과 별도로 이름 계열 텍스트를 빠르게 확인하고 싶을 때</li>
+  </ul>
+  <h2>사용 전 확인할 것</h2>
+  <ul>
+    <li>기본값은 꺼짐입니다.</li>
+    <li>이 설정으로 만들어지는 목록은 참고용 성격이 강합니다.</li>
+  </ul>
+  <h2>기본 사용 순서</h2>
+  <ol>
+    <li>설정 화면에서 MVMZ 영역의 Extract Names를 켭니다.</li>
+    <li>MVMZ 추출을 다시 실행합니다.</li>
+    <li><code>AIMT_Extract/Event</code> 에 이름 참고 목록이 생성되었는지 확인합니다.</li>
+    <li>필요한 표기를 용어사전이나 번역 기준에 반영합니다.</li>
+    <li>번역 작업을 진행하면서 이름 표기가 유지되는지 확인합니다.</li>
+  </ol>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>이해 방법</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>켜짐</td>
+        <td>추출 과정에서 이름 참고용 목록을 함께 만듭니다.</td>
+      </tr>
+      <tr>
+        <td>꺼짐</td>
+        <td>일반 추출 결과만 만들고 별도 이름 참고 목록은 만들지 않습니다.</td>
+      </tr>
+      <tr>
+        <td>사용 목적</td>
+        <td>번역 적용용 본문이라기보다 이름 검토와 용어 정리용 자료로 이해하면 됩니다.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>결과 확인 방법</h2>
+  <ul>
+    <li>추출 후 이름 참고 목록에 검토할 이름이 모였는지 확인합니다.</li>
+    <li>실제 번역 파일의 이름 표기와 참고 목록을 비교합니다.</li>
+    <li>필요한 이름이 누락되면 일반 추출 결과와 엔진별 이름 위치를 함께 확인합니다.</li>
+  </ul>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="important">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>Extract Names는 번역 결과를 직접 바꾸는 기능이 아닙니다. 이름 표기를 정리하기 위한 참고 자료로 사용하세요.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>대량 번역 전에 이 목록으로 주요 인명과 고유명사의 표기 기준을 먼저 정하면 후반 검수 비용이 줄어듭니다.</p>
+    </div>
+  </div>
+  <h2>자주 헷갈리는 점</h2>
+  <ul>
+    <li><strong>켜면 이름이 자동으로 잘 번역되나요?</strong><br>아닙니다. 이름을 검토하기 쉬운 자료를 만드는 기능입니다. 실제 번역 기준은 용어사전, 프롬프트, 수동 검수로 맞춰야 합니다.</li>
+  </ul>
 </article>
 </main>
 </div>
-<script src="../../guide/static/main.js"></script>
+<script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

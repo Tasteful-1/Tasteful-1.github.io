@@ -199,17 +199,31 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>401 병합 &amp; 분할</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>이 참고 문서의 범위</h2>
-<p>401 병합 &amp; 분할은 일반 작업 흐름보다 세밀한 설정이나 파일 내용을 확인할 때 참고하는 문서입니다.</p>
-<h2>변경 전 확인할 중요 사항</h2>
-<p><strong>중요:</strong> 값을 바꾸기 전에는 기존 설정, 원문 파일, 적용 전 결과를 먼저 확인하세요.</p>
-<h2>참고 내용</h2>
-<a href="../../guide/assets/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/image.png"><img src="../../guide/assets/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/image.png"/></a><h2>이 기능은 무엇인가요?</h2><p><code>401 병합</code>은 연속된 <code>401</code> 대사 줄을 하나로 합치는 도구이고, <code>401 분할</code>은 그렇게 합쳐진 줄을 다시 나누는 도구입니다.</p><p>현재 버전에서는 현재 프로젝트의 이벤트 JSON에서 <code>401</code> 코드만 찾아 처리합니다.</p><h2>무엇을 기준으로 처리하나요?</h2><p>현재 버전에서는 처리 대상은 <code>CommonEvents.json</code>, <code>Troops.json</code>, <code>Scenario.json</code>, <code>Map001.json</code> 같은 이벤트 계열 파일입니다.</p><p>즉, DB 전체를 정리하는 기능은 아니고 <code>401</code> 대사 줄이 들어 있는 이벤트 목록을 대상으로 봐야 합니다.</p><h2>결과는 어디에 반영되나요?</h2><p>현재 버전에서는 결과는 다른 폴더에 따로 생기지 않고, 현재 프로젝트 파일에 바로 다시 저장됩니다.</p><p>또한 <code>401 병합</code>이나 <code>401 분할</code>이 성공하면 뒤이어 <code>라인메이커</code>가 자동으로 실행됩니다.</p><h2>자주 헷갈리는 점</h2><h3><code>merge 101-401</code> 설정과 같은 기능인가요?</h3><p>아닙니다.</p><p><code>merge 101-401</code>은 추출 구조 설정에 가깝고, 여기의 <code>401 병합 &amp; 분할</code>은 현재 프로젝트 이벤트 JSON 자체를 직접 바꾸는 도구입니다.</p><h3><code>401 병합</code>은 어떻게 합치나요?</h3><p>현재 UI 기준으로 병합 방식은 세 가지입니다.</p><ul><li><code>개행</code>: 줄바꿈 문자 <code>\\n</code>으로 이어 붙입니다.</li></ul><ul><li><code>반각공백</code>: 한 칸 공백으로 이어 붙입니다.</li></ul><ul><li><code>직접연결</code>: 구분자 없이 바로 붙입니다.</li></ul><p>간단한 예시:</p><ul><li>병합 전: <code>안녕</code><br/>다음 401: <code>반가워</code></li></ul><ul><li><code>개행</code> 병합 후: <code>안녕\\n반가워</code></li></ul><ul><li><code>반각공백</code> 병합 후: <code>안녕 반가워</code></li></ul><ul><li><code>직접연결</code> 병합 후: <code>안녕반가워</code></li></ul><h3><code>401 분할</code>은 아무 병합 방식이나 되돌릴 수 있나요?</h3><p>그렇게 보면 안 됩니다.</p><p>현재 코드와 툴팁 기준으로 <code>401 분할</code>은 사실상 <code>개행</code>으로 병합한 경우를 다시 나누는 쪽으로 보는 편이 안전합니다.</p><p><code>반각공백</code>, <code>직접연결</code>처럼 병합하면 나중에 <code>401 분할</code>로 정확히 다시 나누기 어렵습니다.</p><p>간단한 예시:</p><ul><li>현재 401 한 줄: <code>안녕\\n반가워</code></li></ul><ul><li><code>401 분할</code> 후: 401 한 줄 <code>안녕</code> + 다음 401 한 줄 <code>반가워</code></li></ul><h3><code>401 분할</code>은 왜 원본 폴더를 고르라고 하나요?</h3><p>현재 UI 기준으로는 분할 전에 원본 폴더를 선택하는 흐름이 들어 있습니다.</p><p>현재 버전에서는 원본 폴더를 주면 분할 뒤 빈 401 코드 복원까지 같이 시도할 수 있습니다.</p><p>병합 후 번역할 경우 <code>401</code> 의 총 항목수가 원본과 달라질 수 있기 때문입니다.</p><h3>결과 파일이 따로 생기나요?</h3><p>아닙니다.</p><p>현재 버전에서는 처리한 이벤트 JSON을 같은 위치에 다시 저장합니다.</p><h3>아무 파일이나 전부 처리하나요?</h3><p>그렇지는 않습니다.</p><p>현재 버전에서는 <code>401</code>이 들어 있을 수 있는 이벤트 계열 파일만 검사합니다.</p><h2>알아둘 점</h2><ul><li><code>401 병합</code>은 연속된 <code>401</code> 줄을 하나로 합칩니다.</li></ul><ul><li><code>401 분할</code>은 합쳐진 <code>401</code> 줄을 다시 나누는 도구입니다.</li></ul><ul><li>병합 방식은 <code>개행</code>, <code>반각공백</code>, <code>직접연결</code> 세 가지입니다.</li></ul><ul><li>분할은 <code>개행</code> 병합 복원 기준으로 보는 편이 안전합니다.</li></ul><ul><li>결과는 현재 프로젝트 이벤트 JSON에 직접 반영되고, 성공 뒤 <code>라인메이커</code>가 자동 실행됩니다.</li></ul><ul><li>번역된 텍스트 사이사이에 있는 \n 의 위치가 곧 가독성과 직결되기 때문에<br/>번역 이후 직접 검수를 하며 한 줄에 표시되는 텍스트들의 글자수를 조정하거나<br/><a href="https://github.com/Tasteful-1/TFL_AutoWordWrap">TFL_AutoWordWrap</a> 과 같은 텍스트 표시 보조 플러그인을 활용하는 것을 권장합니다.</li></ul>
+<article class="guide-content">
+<h1>401 병합 &amp; 분할</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+<h2>이 도구는 무엇인가요?</h2><p>MVMZ 이벤트 대사 코드인 401 항목을 작업하기 쉬운 단위로 병합하거나 다시 분할하는 도구입니다.</p>
+<h2>화면 참고 이미지</h2>
+<p><a href="../../guide/assets/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/image.png"><img src="../../guide/assets/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/image.png"/></a></p>
+<h2>언제 사용하나요?</h2>
+<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<h2>사용 전 확인할 것</h2>
+<ul><li>현재 게임 형식이 MVMZ 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<h2>기본 사용 순서</h2>
+<ol><li>작업 도구에서 401 병합 &amp; 분할을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<h2>화면/항목 설명</h2>
+<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>MVMZ 이벤트의 401 대사 항목</td></tr><tr><th>실행 기준</th><td>MVMZ 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>대사 항목이 선택한 기준에 맞춰 병합 또는 분할됩니다.</td></tr></tbody></table>
+<h2>결과 확인 방법</h2>
+<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>대사 항목이 선택한 기준에 맞춰 병합 또는 분할됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<h2>주의/중요/권장</h2>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>대사 순서와 줄 수가 적용 결과에 영향을 줄 수 있으므로 실행 후 표본 확인이 필요합니다.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
+<h2>자주 헷갈리는 점</h2>
+<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
+<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

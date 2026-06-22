@@ -199,29 +199,29 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>EXE 패치</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>EXE 패치은 AIMT 사용 중 필요한 작업을 더 정확하게 진행하기 위한 기능입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<h2>무엇을 기준으로 찾나요?</h2><p>현재 버전에서는 <code>Game.exe</code>는 현재 프로젝트 기준 후보 경로를 순서대로 찾습니다.</p><p>대표적으로:</p><ul><li>프로젝트 루트의 <code>Game.exe</code></li></ul><ul><li><code>Data</code> 폴더를 쓰는 구조면 그 상위의 <code>Game.exe</code></li></ul><ul><li>일부 레이아웃에서는 <code>Data</code> 쪽 후보</li></ul><p>즉, 별도 파일 선택 창으로 EXE를 직접 고르는 기능은 아닙니다.</p><p>프로젝트 경로가 올바르지 않거나 <code>Game.exe</code>가 없으면 시작하지 못합니다.</p><h2>어떻게 패치하나요?</h2><p>현재 버전에서는:</p><ol start="1" type="1"><li><code>Game.exe</code> payload를 읽음</li></ol><ol start="2" type="1"><li>감지된 형식에 맞는 패치 엔진을 선택함</li></ol><ol start="3" type="1"><li>알려진 binary/string 패턴을 바꿈</li></ol><ol start="4" type="1"><li>변경 결과를 검증함</li></ol><ol start="5" type="1"><li>원본을 <code>.bak</code>로 백업하고 <code>Game_Kor.exe</code>를 생성함</li></ol><p>즉, 임의 바이트 편집이라기보다 <code>알려진 WOLF EXE 패턴</code>에 맞는 규칙형 패치입니다.</p><h2>항상 바로 실행되나요?</h2><p>항상은 아닙니다.</p><p>현재 버전에서는 감지 결과가 <code>unknown</code>이면 바로 강행하지 않고 한 번 더 확인을 묻습니다.</p><p>이 경우 안내 문구는 대체로:</p><ul><li>현재 형식은 검증 범위가 충분하지 않음</li></ul><ul><li>결과를 보장하기 어려움</li></ul><ul><li>그래도 <code>Game_Kor.exe</code>를 만들지 확인</li></ul><p>에 가깝습니다.</p><p>즉, 지원이 애매한 EXE는 <code>강제 진행 여부</code>를 사용자가 직접 판단하게 하는 구조입니다.</p><h2>실패하거나 변화가 없을 때는 어떻게 되나요?</h2><p>현재 버전에서는 아래 같은 경우가 있습니다.</p><ul><li><code>Game.exe</code>를 찾지 못함</li></ul><ul><li>이미 <code>Game.exe.bak</code>가 존재함</li></ul><ul><li>알려진 패치 패턴을 찾지 못함</li></ul><ul><li>지원하지 않는 버전이거나 이미 패치된 상태</li></ul><p>특히 이미 <code>Game.exe.bak</code>가 있으면 현재 구현은 새 백업으로 덮어쓰지 않고 실패합니다.</p><p>또 패턴 변경이 <code>0건</code>이면 리포트는 남길 수 있어도 실제 성공으로 끝나지 않을 수 있습니다.</p><h2>결과는 어디에 남나요?</h2><p>현재 버전에서는 주요 산출물은 아래입니다.</p><ul><li>감지된 <code>Game.exe</code>와 같은 위치의 <code>Game.exe.bak</code></li></ul><ul><li>감지된 <code>Game.exe</code>와 같은 위치의 <code>Game_Kor.exe</code></li></ul><ul><li>WOLF state 폴더의 EXE 패치 리포트 JSON</li></ul><p>리포트 경로와 출력 경로는 완료 로그에 같이 남을 수 있습니다.</p>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
+<article class="guide-content">
+<h1>EXE 패치</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+<h2>이 도구는 무엇인가요?</h2><p>WOLF 실행 파일 쪽 표시 정보나 필요한 값을 보정할 때 사용하는 도구입니다.</p>
+<h2>언제 사용하나요?</h2>
+<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
+<h2>사용 전 확인할 것</h2>
+<ul><li>현재 게임 형식이 WOLF 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
+<h2>기본 사용 순서</h2>
+<ol><li>작업 도구에서 EXE 패치을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
+<h2>화면/항목 설명</h2>
+<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>WOLF 실행 파일</td></tr><tr><th>실행 기준</th><td>WOLF 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>선택한 패치 내용이 실행 파일에 반영됩니다.</td></tr></tbody></table>
+<h2>결과 확인 방법</h2>
+<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>선택한 패치 내용이 실행 파일에 반영됩니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
 <h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
+<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>실행 파일 패치는 되돌리기 어려울 수 있으므로 반드시 원본 EXE를 보관하세요.</p></div></div>
+<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
 <h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
+<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
 </article>
 </main>
   </div>
-  <script src="../../guide/static/main.js"></script>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>
