@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>치환용어설정 · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>치환용어설정 · AIMT Guide</title>
+<script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+<style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+<link href="../../guide/static/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<button aria-label="사이드바 열기" class="sidebar-expand sidebar-toggle" id="sidebarExpand" title="사이드바 열기" type="button">☰</button>
+<div class="search-overlay" hidden="" id="searchOverlay">
+<section aria-labelledby="searchTitle" aria-modal="true" class="search-dialog" role="dialog">
+<div class="search-header"><h2 id="searchTitle">문서 검색</h2><button aria-label="검색 닫기" class="search-close" id="searchClose" title="검색 닫기" type="button">×</button></div>
+<input autocomplete="off" class="search-input" id="guideSearch" placeholder="검색어 입력" type="search"/>
+<div class="search-results" hidden="" id="searchResults"></div>
+</section>
+</div>
+<div class="site-shell">
+<aside class="sidebar">
+<div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button aria-label="문서 검색" class="sidebar-toggle" id="searchOpen" title="문서 검색" type="button">⌕</button><button aria-label="테마 변경" class="theme-toggle" id="themeToggle" title="테마 변경" type="button">◐</button><button aria-label="사이드바 닫기" class="sidebar-toggle" id="sidebarCollapse" title="사이드바 닫기" type="button">←</button></div>
+<nav aria-label="문서 목록" class="nav-list">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
 <details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
@@ -67,7 +68,9 @@
 <a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
 <a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
 <a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
 <a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
@@ -76,13 +79,25 @@
 <a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
 <a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
 </div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/wolf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
 <a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95/index.html" data-depth="4">LiveMaker 폰트 설정</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
@@ -126,6 +141,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -182,35 +198,127 @@
 </div></details>
 </div></details>
       </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
-<article class="guide-content"><h1>치환용어설정</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-<h2>무엇을 할 수 있나요?</h2>
-<p>치환용어설정은 AIMT의 동작 방식과 번역 결과에 영향을 주는 값을 확인하고 조정하는 화면입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<a href="../../guide/assets/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/image.png"><img src="../../guide/assets/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/image.png"/></a><h2>화면 구성</h2><p>창 안에는 보통 아래 요소가 있습니다.</p><ul><li>규칙 목록</li></ul><ul><li>각 줄의 <code>원본</code> 입력칸</li></ul><ul><li>각 줄의 <code>치환</code> 입력칸</li></ul><ul><li>개별 삭제 버튼 <code>✕</code></li></ul><ul><li><code>+ 규칙 추가</code></li></ul><ul><li><code>저장</code></li></ul><ul><li><code>취소</code></li></ul><p>규칙 한 줄은 <code>원본 -&gt; 치환</code> 한 쌍으로 이루어집니다.</p><p>예를 들어:</p><script crossorigin="anonymous" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" referrerpolicy="no-referrer" rel="stylesheet"/><pre><code>ＥＸ -&gt; EX
-ＨＰ -&gt; HP
-アイテム -&gt; 아이템</code></pre><p>처럼 적어 두면, 추출 중 해당 글자가 보였을 때 오른쪽 값으로 바꿉니다.</p><h2>규칙은 어떻게 적용되나요?</h2><p>이 기능은 <code>정규식</code>이 아니라 일반 문자열 치환입니다.</p><p>즉:</p><ul><li><code>원본</code>에 적은 글자가 그대로 들어 있을 때</li></ul><ul><li>그 부분을 <code>치환</code> 값으로 바꾸는 방식입니다.</li></ul><p>예를 들어 <code>원본</code>에 <code>勇者</code>, <code>치환</code>에 <code>용사</code>를 적으면,<br/>추출 대상 안에 <code>勇者</code>가 들어 있는 부분이 자동으로 <code>용사</code>로 바뀔 수 있습니다.</p><p>중요:</p><p>이 기능은 단어 전체 일치만 보는 것이 아닙니다. 긴 문장 안에 같은 글자가 포함되어 있어도 바뀔 수 있습니다.</p><h2>저장 방식</h2><p><code>저장</code>을 누르면 현재 화면의 규칙 목록이 파일로 저장되고, <code>마지막 업데이트</code> 시각도 함께 갱신됩니다.</p><p>현재 버전에서는 저장할 때는 아래처럼 처리됩니다.</p><ul><li><code>원본</code>과 <code>치환</code>이 둘 다 채워진 줄만 저장됩니다.</li></ul><ul><li>빈 줄은 저장 대상에서 빠집니다.</li></ul><ul><li>입력값의 앞뒤 공백은 저장 전에 정리됩니다.</li></ul><p>즉, 일부러 빈 줄을 남겨 두거나 앞뒤 공백까지 정확히 보존하는 용도로 쓰기는 어렵습니다.</p><p>또한 <code>치환</code>을 빈칸으로 두는 줄도 저장되지 않으므로, 이 기능으로 어떤 글자를 <code>완전히 없애는</code> 방식은 바로 쓰기 어렵습니다.</p><h2>저장하면 언제 반영되나요?</h2><p><code>저장</code>을 눌렀다고 해서 이미 만들어진 추출 파일이나 번역 파일이 자동으로 바뀌지는 않습니다.</p><p>보통 변화는 <code>다음 추출</code>에서 확인하게 됩니다.</p><p>즉:</p><ul><li>이미 추출된 파일은 그대로 남고</li></ul><ul><li>다시 추출해야 바뀐 규칙이 반영됩니다.</li></ul><h2>어떤 텍스트에 적용되나요?</h2><p>현재 버전에서는 <code>MVMZ</code> 추출 중 일부 노트, 맵 메모, 이벤트 이름, 이벤트 메모, 일부 이벤트 코드 텍스트를 저장할 때 이 규칙이 적용됩니다.</p><p>사용자 입장에서는 <code>추출 파일에 들어가기 전에 미리 바뀌는 글자 규칙</code>으로 이해하면 충분합니다.</p><p>반대로 번역이 끝난 결과물을 한꺼번에 다시 바꾸는 기능으로 생각하면 맞지 않을 수 있습니다.</p><h2>규칙이 여러 개일 때 주의할 점</h2><p>규칙은 저장된 순서대로 차례대로 적용됩니다.</p><p>그래서 아래처럼 서로 겹치는 규칙은 결과가 예상과 다를 수 있습니다.</p><pre><code>Ａ	B
-B	C</code></pre><p>이런 경우에는 먼저 한 번 바뀐 결과가 다음 규칙에 다시 걸릴 수 있습니다.</p><p>또한 같은 <code>원본</code>을 여러 줄에 반복해서 넣으면 실제 추출기에서는 뒤에 읽힌 값이 앞 값을 덮어쓰는 형태가 됩니다.</p><p>즉, 같은 <code>원본</code>은 한 번만 쓰는 편이 안전합니다.</p><h2><code>저장</code>, <code>취소</code>, 닫기</h2><ul><li><code>저장</code><br/>현재 규칙 목록을 저장하고 창을 닫습니다.</li></ul><ul><li><code>취소</code><br/>저장하지 않고 닫습니다.</li></ul><ul><li>바깥 영역 클릭 또는 <code>Esc</code><br/>저장하지 않고 닫습니다.</li></ul><p>현재 버전에서는 저장하지 않은 변경사항을 따로 경고하지 않습니다.</p><p>즉, <code>취소</code>, 바깥 클릭, <code>Esc</code>로 닫으면 방금 수정한 내용이 그대로 사라질 수 있습니다.</p>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
-<h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
-<h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+</aside>
+<div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
+<main class="content-shell">
+<article class="guide-content">
+  <h1>치환용어설정</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
+  <p><img src="../../guide/assets/%EC%B9%98%ED%99%98%EC%9A%A9%EC%96%B4%EC%84%A4%EC%A0%95/image%204.png" alt=""></p>
+  <h2>무엇을 조정하는 설정인가요?</h2>
+  <p>치환용어설정은 MVMZ 추출 과정에서 특정 문자열을 미리 다른 문자열로 바꿔 저장하도록 하는 간단한 치환 규칙입니다.</p>
+  <h2>언제 사용하나요?</h2>
+  <ul>
+    <li>일본어 커맨드, 기호, 자주 반복되는 표기를 추출 단계에서 정리하고 싶을 때</li>
+    <li>원문에 같은 표기가 반복되어 번역 전에 통일해 두는 편이 좋을 때</li>
+    <li>번역 모델에 넘기기 전에 특정 용어 표기를 사용자 기준으로 맞추고 싶을 때</li>
+  </ul>
+  <h2>사용 전 확인할 것</h2>
+  <ul>
+    <li>이 기능은 정규식이 아니라 일반 문자열 치환입니다.</li>
+    <li>단어 전체 일치가 아니라 문장 안에 포함된 같은 문자열도 바뀔 수 있습니다.</li>
+    <li>빈 값으로 지우는 용도보다는 다른 값으로 바꾸는 용도로 사용합니다.</li>
+  </ul>
+  <div>
+    <div class="guide-callout" data-callout="important" role="note">
+      <div class="guide-callout-title">Important</div>
+      <div class="guide-callout-body">
+        <p>이 기능은 모든 추출파일들을 대상으로 하는 기능이 아닙니다. 이 기능을 통해 치환이 적용되는 대상은 다음과 같습니다.</p>
+        <p></p>
+        <ul>
+          <li>각종 노트들 (DB, Map, Event)</li>
+          <li>code_108-408</li>
+          <li>code_356</li>
+        </ul>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <h2>기본 사용 순서</h2>
+  <ol>
+    <li>설정 화면에서 MVMZ 영역의 치환용어설정을 엽니다.</li>
+    <li>원본 칸에 바꾸고 싶은 문자열을 입력합니다.</li>
+    <li>치환 칸에 바뀐 뒤의 문자열을 입력합니다.</li>
+    <li>필요 없는 줄은 삭제하고, 사용할 규칙만 남깁니다.</li>
+    <li>저장한 뒤 추출을 다시 실행합니다.</li>
+    <li>추출 결과에서 치환이 의도대로 적용되었는지 확인합니다.</li>
+  </ol>
+  <h2>화면/항목 설명</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>설명</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>원본</td>
+        <td>추출 중 발견되면 바꿀 대상 문자열입니다.</td>
+      </tr>
+      <tr>
+        <td>치환</td>
+        <td>원본 문자열 대신 들어갈 문자열입니다.</td>
+      </tr>
+      <tr>
+        <td>규칙 추가</td>
+        <td>새 원본/치환 쌍을 한 줄 더 만듭니다.</td>
+      </tr>
+      <tr>
+        <td>삭제</td>
+        <td>해당 줄의 규칙을 목록에서 제거합니다.</td>
+      </tr>
+      <tr>
+        <td>저장</td>
+        <td>원본과 치환이 모두 채워진 규칙을 저장합니다.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>결과 확인 방법</h2>
+  <ul>
+    <li>다시 추출한 결과에서 원본 표기가 치환값으로 바뀌었는지 확인합니다.</li>
+    <li>의도하지 않은 단어 일부가 바뀌지 않았는지 샘플 문장을 확인합니다.</li>
+    <li>치환이 너무 넓게 적용되면 원본 문자열을 더 구체적으로 적습니다.</li>
+  </ul>
+  <h2>주의/중요/권장</h2>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">주의</div>
+    <div class="guide-callout-body">
+      <p>짧은 문자열은 예상보다 많은 문장에 포함될 수 있습니다. 한 글자나 흔한 기호를 치환할 때는 특히 조심하세요.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="important">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>저장 후 기존 추출 파일이나 번역 파일이 자동으로 다시 작성되지는 않습니다. 변경 후에는 필요한 범위를 다시 추출하세요.</p>
+    </div>
+  </div>
+  <div>
+    <div class="guide-callout" data-callout="tip" role="note">
+      <div class="guide-callout-title">Tip</div>
+      <div class="guide-callout-body">
+        <p>MVMZ 를 번역할 때 따로 신경써야하는 것들이 몇 가지 있는데, 그 중 하나가 플러그인 커맨드 입니다.</p>
+        <p>이 치환용어설정에서 다루는 파일들이 곧 그런 플러그인 커맨드들이 위치한 곳이라 할 수 있습니다.</p>
+        <p>AI 를 비롯한 기계번역에선 이런 명령어를 온전히 구분하지 못하기에 명령어에 일본어가 섞여있으면 아무 의심없이 번역해버리곤 합니다.</p>
+        <p>예를 들면&nbsp;実績表示 는 실적 화면을 여는 명령어입니다만, 번역 도중에 그만 이것이&nbsp;<code>실적표시</code> 라고 번역되었다고 가정해봅시다.</p>
+        <p>게다가 번역이 마무리될 때까지 그를 눈치채지 못했다고 한다면, 결국 실제로 게임을 플레이할 때 실적 화면을 열 수 없게되는 오류가 발생하게 됩니다.</p>
+        <p><br></p>
+        <p>하지만 다행스럽게도 일본어 번역 시 영어는 대체로 통과되는 경향이 있고, 플러그인들을 구현하는 프로그래밍 언어는 영어로 이루어져있으며,</p>
+        <p>근래의 플러그인 개발자들은 상당수가 해외의 개발자들을 위한 영어 커맨드를 함께 마련해두는 편입니다.</p>
+        <p>그 덕분에 커맨드를 미리 영어로 바꿔두면, 비교적 신경을 덜 써도 오류 발생 리스크를 크게 줄일 수 있는 것입니다.</p>
+        <p><br></p>
+        <p>언제나 그렇듯이 맹신은 위험하지만, 경험상으로도 실제로도 알게모르게 많은 도움을 받은 기능인지라 많이 애용해주시면 좋겠습니다.</p>
+      </div>
+    </div>
+  </div>
+  <h2>자주 헷갈리는 점</h2>
+  <ul>
+    <li><strong>정규식을 쓸 수 있나요?</strong><br>아닙니다. 치환용어설정은 일반 문자열 기준으로 동작합니다. 패턴 조건이 필요하면 제외정규식이나 관련 정규식 설정을 확인하세요.</li>
+    <li><strong>치환 칸을 비워서 글자를 삭제할 수 있나요?</strong><br>빈 치환값은 저장 대상에서 제외될 수 있습니다. 삭제 목적보다는 명확한 대체 문자열을 넣는 방식으로 사용하는 편이 안전합니다.</li>
+  </ul>
 </article>
 </main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
+</div>
+<script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

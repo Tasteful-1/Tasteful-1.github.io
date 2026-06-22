@@ -1,26 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>작업 도구 · AIMT Guide</title>
-  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
-  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
-  <link rel="stylesheet" href="../../guide/static/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>작업 도구 · AIMT Guide</title>
+<script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+<style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+<link href="../../guide/static/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
-  <div id="searchOverlay" class="search-overlay" hidden>
-    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
-      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
-      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
-      <div id="searchResults" class="search-results" hidden></div>
-    </section>
-  </div>
-  <div class="site-shell">
-    <aside class="sidebar">
-      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
-      <nav class="nav-list" aria-label="문서 목록">
+<button aria-label="사이드바 열기" class="sidebar-expand sidebar-toggle" id="sidebarExpand" title="사이드바 열기" type="button">☰</button>
+<div class="search-overlay" hidden="" id="searchOverlay">
+<section aria-labelledby="searchTitle" aria-modal="true" class="search-dialog" role="dialog">
+<div class="search-header"><h2 id="searchTitle">문서 검색</h2><button aria-label="검색 닫기" class="search-close" id="searchClose" title="검색 닫기" type="button">×</button></div>
+<input autocomplete="off" class="search-input" id="guideSearch" placeholder="검색어 입력" type="search"/>
+<div class="search-results" hidden="" id="searchResults"></div>
+</section>
+</div>
+<div class="site-shell">
+<aside class="sidebar">
+<div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button aria-label="문서 검색" class="sidebar-toggle" id="searchOpen" title="문서 검색" type="button">⌕</button><button aria-label="테마 변경" class="theme-toggle" id="themeToggle" title="테마 변경" type="button">◐</button><button aria-label="사이드바 닫기" class="sidebar-toggle" id="sidebarCollapse" title="사이드바 닫기" type="button">←</button></div>
+<nav aria-label="문서 목록" class="nav-list">
 <details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
 <details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
 <details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
@@ -67,7 +68,9 @@
 <a class="nav-link" href="../../guide/%EA%B8%B0%EB%B3%B8%ED%8F%B0%ED%8A%B8%EC%84%A4%EC%A0%95/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%ED%85%8D%EC%8A%A4%ED%8A%B8/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
 <a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
 <a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
 <a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
@@ -76,13 +79,25 @@
 <a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
 <a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
 </div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">2차 추출 필터</a>
+<a class="nav-link" href="../../guide/wolf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
 <a class="nav-link" href="../../guide/cmd-122-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5%EC%B2%98%EB%A6%AC/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ctf-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EC%86%8D-%EC%B6%94%EC%B6%9C/index.html" data-depth="4">CTF 이미지 고속 추출</a>
-<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0-%ED%8E%B8%EC%A7%91/index.html" data-depth="4">CTF 2차 추출 필터 편집</a>
+<a class="nav-link" href="../../guide/ctf-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%EC%A0%9C%EC%99%B8-%ED%95%84%ED%84%B0/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-2%EC%B0%A8-%EC%B6%94%EC%B6%9C-%ED%95%84%ED%84%B0/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95/index.html" data-depth="4">LiveMaker 폰트 설정</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/index.html" data-depth="4">로그 관리</a>
@@ -126,6 +141,7 @@
 <a class="nav-link" href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
 <a class="nav-link" href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html" data-depth="5">Data 복호화</a>
 <a class="nav-link" href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/%EC%97%90%EB%8B%88%EA%B7%B8%EB%A7%88-%EC%96%B8%ED%8C%A9/index.html" data-depth="5">에니그마 언팩</a>
 </div></details>
 <details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/%EC%96%B8%ED%8C%A9/index.html" data-depth="5">언팩</a>
@@ -182,94 +198,169 @@
 </div></details>
 </div></details>
       </nav>
-    </aside>
-    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
-    <main class="content-shell">
+</aside>
+<div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
+<main class="content-shell">
 <article class="guide-content">
   <h1>작업 도구</h1>
-  <p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
-  <h2>무엇을 할 수 있나요?</h2>
-  <p>작업 도구는 번역 작업 중 텍스트를 정리하거나 결과를 점검할 때 쓰는 보조 기능을 모은 화면입니다.</p>
-  <h2>언제 필요한가요?</h2>
-  <ul>
-    <li>번역 결과를 점검하거나 정리할 때</li>
-    <li>사용자사전, 일관성, 코드 복원처럼 보조 기능이 필요할 때</li>
-    <li>엔진별 보조 도구로 이동해야 할 때</li>
-  </ul>
-  <h2>시작 전에 확인할 것</h2>
-  <ul>
-    <li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li>
-    <li>어떤 파일이나 결과를 수정하려는지 먼저 확인합니다.</li>
-    <li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li>
-  </ul>
-  <h2>따라 하기</h2>
-  <ol>
-    <li>필요한 도구 묶음을 확인합니다.</li>
-    <li>사용할 기능 문서로 이동합니다.</li>
-    <li>기능별 안내에 따라 실행합니다.</li>
-    <li>완료 메시지와 결과 파일을 확인합니다.</li>
-  </ol>
-  <h2>화면과 항목</h2>
-  <p><img src="../../guide/assets/%EB%8F%84%EA%B5%AC/image%202.png" alt=""></p>
-  <p>번역을 보조하기 위한 각종 도구들을 활용할 수 있습니다.</p>
-  <h2>유틸리티</h2>
-  <ul>
-    <li>
-      <details open="">
-        <summary>유틸리티</summary>
+  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+  <h2>이 영역에서 할 수 있는 것</h2>
+  <p>작업 도구는 번역 결과를 정리하고, 누락이나 코드 손상을 점검하고, 엔진별 보조 작업을 실행하기 위해 모아 둔 영역입니다. 기본 번역 흐름을 대신하는 화면이라기보다, 추출·번역·적용 사이에서 결과를 더 안전하게 다듬는 보조 작업 공간으로 이해하면 됩니다.</p>
+  <h2>화면 참고 이미지</h2>
+  <p><img alt="" src="../../guide/assets/%EB%8F%84%EA%B5%AC/image%202.png"></p>
+  <h2>바로 이동</h2>
+  <div class="guide-callout" data-callout="info" role="note">
+    <div class="guide-callout-title">유틸리티</div>
+    <div class="guide-callout-body">
+      <ul>
+        <li><a href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html">빈칸채우기</a></li>
+        <li><a href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html">사용자사전 &amp; 전후처리</a></li>
+        <li><a href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html">적용취소</a></li>
+        <li><a href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html">번역일관성</a></li>
+        <li><a href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html">추출 중복</a></li>
+        <li><a href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html">이스케이프</a></li>
+        <li><a href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html">일본어체크</a></li>
+        <li><a href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html">받침정리</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="info" role="note">
+    <div class="guide-callout-title">바로가기</div>
+    <div class="guide-callout-body">
+      <ul>
+        <li><a href="../../guide/vscode/index.html">VSCODE</a></li>
+        <li><a href="../../guide/notepad/index.html">NOTEPAD++</a></li>
+        <li><a href="../../guide/appdata/index.html">APPDATA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="info" role="note">
+    <div class="guide-callout-title">엔진별 보조 도구</div>
+    <div class="guide-callout-body">
+      <ul>
+        <h4>MVMZ</h4>
         <ul>
-          <li><a href="../../guide/%EB%B9%88%EC%B9%B8%EC%B1%84%EC%9A%B0%EA%B8%B0/index.html">빈칸채우기</a></li>
-          <li><a href="../../guide/%EC%82%AC%EC%9A%A9%EC%9E%90%EC%82%AC%EC%A0%84-%EC%A0%84%ED%9B%84%EC%B2%98%EB%A6%AC/index.html">사용자사전 &amp; 전후처리</a></li>
-          <li><a href="../../guide/%EC%A0%81%EC%9A%A9%EC%B7%A8%EC%86%8C/index.html">적용취소</a></li>
+          <li><a href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4/index.html">라인메이커 (MVMZ)</a></li>
+          <li><a href="../../guide/%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%B6%94%EA%B0%80/index.html">플러그인추가</a></li>
+          <li><a href="../../guide/401-%EB%B3%91%ED%95%A9-%EB%B6%84%ED%95%A0/index.html">401 병합 &amp; 분할</a></li>
+          <li><a href="../../guide/402-%EB%8F%99%EA%B8%B0%ED%99%94/index.html">402 동기화</a></li>
+          <li><a href="../../guide/%EC%9D%B4%EB%A6%84-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html">이름 일관성</a></li>
+          <li><a href="../../guide/%ED%86%B5%ED%95%A9-%EC%9D%BC%EA%B4%80%EC%84%B1/index.html">통합 일관성</a></li>
+          <li><a href="../../guide/%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%9B%90/index.html">코드 복원</a></li>
+          <li><a href="../../guide/%EB%B2%88%EC%97%AD-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html">번역 가져오기</a></li>
+          <li><a href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84-data/index.html">이스케이프 (data)</a></li>
+          <li><a href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%98%A4%EB%94%94%EC%98%A4/index.html">크립터 (이미지 / 오디오)</a></li>
+          <li><a href="../../guide/data-%EB%B3%B5%ED%98%B8%ED%99%94/index.html">Data 복호화</a></li>
+          <li><a href="../../guide/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B3%80%ED%99%98/index.html">프로젝트 변환</a></li>
         </ul>
-      </details>
-    </li>
-  </ul>
-  <ul>
-    <li>
-      <details open="">
-        <summary>종합검사</summary>
+        <h4>VXVXA</h4>
         <ul>
-          <li><a href="../../guide/%EB%B2%88%EC%97%AD%EC%9D%BC%EA%B4%80%EC%84%B1/index.html">번역일관성</a></li>
-          <li><a href="../../guide/%EC%B6%94%EC%B6%9C-%EC%A4%91%EB%B3%B5/index.html">추출 중복</a></li>
-          <li><a href="../../guide/%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84/index.html">이스케이프</a></li>
-          <li><a href="../../guide/%EC%9D%BC%EB%B3%B8%EC%96%B4%EC%B2%B4%ED%81%AC/index.html">일본어체크</a></li>
-          <li><a href="../../guide/%EB%B0%9B%EC%B9%A8%EC%A0%95%EB%A6%AC/index.html">받침정리</a></li>
+          <li><a href="../../guide/%EC%96%B8%ED%8C%A9/index.html">언팩</a></li>
+          <li><a href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80%EB%B3%80%EA%B2%BD/index.html">타이틀변경 (VXVXA)</a></li>
+          <li><a href="../../guide/%EB%9D%BC%EC%9D%B8%EB%A9%94%EC%9D%B4%EC%BB%A4-2948edda/index.html">라인메이커 (VXVXA)</a></li>
+          <li><a href="../../guide/%EC%A0%84%EC%9A%A9%EC%B6%94%EC%B6%9C/index.html">전용추출</a></li>
+          <li><a href="../../guide/imbook%ED%8C%A8%EC%B9%98-bbtext%ED%8C%A8%EC%B9%98-missions%ED%8C%A8%EC%B9%98/index.html">imbook패치, bbtext패치, missions패치</a></li>
+          <li><a href="../../guide/mv%EB%B3%80%ED%99%98/index.html">MV변환</a></li>
         </ul>
-      </details>
-    </li>
-  </ul>
-  <h2>바로가기</h2>
-  <ul>
-    <li><a href="../../guide/vscode/index.html">VSCODE</a></li>
-    <li><a href="../../guide/notepad/index.html">NOTEPAD++</a></li>
-    <li><a href="../../guide/appdata/index.html">APPDATA</a></li>
-  </ul>
-  <h2>엔진별 특화 기능</h2>
-  <h2>기타</h2>
-  <ul>
+        <h4>WOLF</h4>
+        <ul>
+          <li><a href="../../guide/%EC%96%B8%ED%8C%A9-%EB%A6%AC%ED%8C%A9/index.html">언팩/리팩</a></li>
+          <li><a href="../../guide/%ED%86%B5%ED%95%A9-%EC%B9%98%ED%99%98/index.html">통합 치환</a></li>
+          <li><a href="../../guide/exe-%ED%8C%A8%EC%B9%98/index.html">EXE 패치</a></li>
+          <li><a href="../../guide/raw-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%B9%98%ED%99%98/index.html">RAW/파일명 치환</a></li>
+        </ul>
+        <h4>CTF</h4>
+        <ul>
+          <li><a href="../../guide/%EB%A9%94%ED%83%80%EC%A0%95%EB%B3%B4-%ED%99%95%EC%9D%B8/index.html">메타정보 확인</a></li>
+          <li><a href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/index.html">타이틀 변경 (CTF)</a></li>
+          <li><a href="../../guide/%EC%96%B8%EC%96%B4-%EB%B3%80%EA%B2%BD/index.html">언어 변경</a></li>
+          <li><a href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0/index.html">크립터 (CTF)</a></li>
+        </ul>
+        <h4>Tyrano</h4>
+        <ul>
+          <li><a href="../../guide/asar-47c728f5/index.html">ASAR (Tyrano 계열)</a></li>
+          <li><a href="../../guide/%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD-2ccdb6d4/index.html">타이틀 변경 (Tyrano)</a></li>
+        </ul>
+        <h4>Kirikiri</h4>
+        <ul>
+          <li><a href="../../guide/utf-16le-%EB%B3%80%ED%99%98/index.html">UTF-16LE 변환</a></li>
+        </ul>
+        <h4>PGMMV</h4>
+        <ul>
+          <li><a href="../../guide/%ED%81%AC%EB%A6%BD%ED%84%B0-16cf2cb1/index.html">크립터 (PGMMV)</a></li>
+        </ul>
+        <h4>Electron</h4>
+        <ul>
+          <li><a href="../../guide/asar/index.html">ASAR (Electron)</a></li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="info" role="note">
+    <div class="guide-callout-title">기타</div>
+    <div class="guide-callout-body">
+      <ul>
     <li><a href="../../guide/ttc-%EB%B9%8C%EB%93%9C/index.html">TTC 빌드</a></li>
     <li><a href="../../guide/%EC%84%B8%EC%9D%B4%EB%B8%8C-%EC%97%90%EB%94%94%ED%84%B0/index.html">세이브 에디터</a></li>
     <li><a href="../../guide/llama-server/index.html">llama-server</a></li>
-  </ul>
-  <h2>완료 후 확인</h2>
+      </ul>
+    </div>
+  </div>
+  <h2>처음이라면</h2>
+  <ol>
+    <li>번역 결과가 비어 있지 않은지 확인하려면 빈칸채우기부터 확인합니다.</li>
+    <li>제어코드나 태그가 걱정된다면 이스케이프 검사를 먼저 실행합니다.</li>
+    <li>표현이 흔들리면 번역일관성, 이름 일관성, 통합 일관성 순서로 범위를 넓혀 봅니다.</li>
+    <li>엔진 파일을 직접 바꾸는 도구는 해당 엔진 그룹의 문서를 먼저 읽고 작은 범위로 시험합니다.</li>
+  </ol>
+  <h2>사용 전 공통 확인</h2>
   <ul>
-    <li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li>
-    <li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li>
-    <li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li>
+    <li>현재 AIMT 프로젝트가 맞는지 확인합니다.</li>
+    <li>대상 파일이나 폴더가 원본인지 작업본인지 구분합니다.</li>
+    <li>적용, 패치, 변환 계열 도구는 실행 전 원본을 보관합니다.</li>
+    <li>작업 결과는 AIMT 화면뿐 아니라 실제 게임 실행으로도 확인합니다.</li>
   </ul>
+  <h2>도구 선택 기준</h2>
+  <table>
+    <tbody>
+      <tr>
+        <th>텍스트 누락</th>
+        <td>빈칸채우기, 이스케이프</td>
+      </tr>
+      <tr>
+        <th>표현 흔들림</th>
+        <td>사용자사전, 전후처리, 번역일관성&nbsp;<code>MVMZ</code> 이름 일관성, 통합 일관성<br></td>
+      </tr>
+      <tr>
+        <th>코드/태그 손상</th>
+        <td>이스케이프, 적용취소&nbsp;<code style="background: none 0% 0% / auto repeat scroll padding-box border-box rgb(29, 41, 66); color: rgb(200, 212, 255);">MVMZ</code> 이스케이프 (data), 코드 복원</td>
+      </tr>
+      <tr>
+        <th>파일 변환/패치</th>
+        <td>엔진별 보조 도구</td>
+      </tr>
+      <tr>
+        <th>직접 편집</th>
+        <td><code>바로가기</code> VSCODE, NOTEPAD++, WINMERGE, APPDATA</td>
+      </tr>
+    </tbody>
+  </table>
   <h2>주의/중요/권장</h2>
-  <p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-  <p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-  <p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
-  <h2>자주 헷갈리는 점</h2>
-  <h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3>
-  <p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p>
-  <h3>어떤 문서를 먼저 읽어야 하나요?</h3>
-  <p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>작업 도구 중 일부는 파일을 직접 바꾸거나 패치합니다. 실행 전 대상과 백업 상태를 확인하세요.</p>
+    </div>
+  </div>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>처음 쓰는 도구는 전체 파일에 바로 적용하지 말고, 작은 범위에서 결과를 확인한 뒤 확대하는 편이 안전합니다.</p>
+    </div>
+  </div>
 </article>
 </main>
-  </div>
-  <script src="../../guide/static/main.js"></script>
+</div>
+<script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
 </html>

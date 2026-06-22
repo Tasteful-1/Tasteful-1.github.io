@@ -18,6 +18,14 @@ DEFAULT_START_PATH = "/guide/"
 class QuietStaticHandler(SimpleHTTPRequestHandler):
     """Static file handler with concise request logs."""
 
+    def end_headers(self) -> None:
+        """Send no-cache headers so local guide edits appear immediately."""
+
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
+
     def log_message(self, format: str, *args: object) -> None:
         sys.stderr.write(f"{self.address_string()} - {format % args}\n")
 

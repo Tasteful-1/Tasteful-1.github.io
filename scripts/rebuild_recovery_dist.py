@@ -19,6 +19,7 @@ SITE_ROOT = find_site_root()
 DIST_ROOT = SITE_ROOT / "dist"
 GUIDE_ROOT = DIST_ROOT / "guide"
 STATIC_ROOT = GUIDE_ROOT / "static"
+MAIN_JS_VERSION = "search-url-cache-fix-2026-06-22-02"
 
 
 @dataclass(frozen=True)
@@ -124,7 +125,7 @@ def page_body(page: PageSpec) -> str:
 def render_page(page: PageSpec) -> str:
     path = page.path
     css_href = relative_href(path, STATIC_ROOT / "styles.css")
-    js_href = relative_href(path, STATIC_ROOT / "main.js")
+    js_href = f'{relative_href(path, STATIC_ROOT / "main.js")}?v={MAIN_JS_VERSION}'
     home_href = relative_href(path, GUIDE_ROOT / "index.html")
     nav = make_nav(path)
     title = html.escape(page.title, quote=False)
