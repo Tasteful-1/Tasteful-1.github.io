@@ -33,30 +33,37 @@ ADVANCED_SUBGROUP_PAGES: dict[str, str] = {}
 SETTING_REFERENCE_GROUP_PAGES: dict[str, str] = {}
 
 EXTERNAL_REFERENCE_PAGES: dict[str, str] = {
-    "guide/외부-유틸리티/index.html": "외부 유틸리티",
-    "guide/제공자별-참고-링크/index.html": "제공자별 참고 링크",
+    "guide/external-utilities/index.html": "외부 유틸리티",
+    "guide/provider-reference-links/index.html": "제공자별 참고 링크",
 }
 
 NAV_ONLY_EXCLUDE_PATHS: set[str] = set()
 
 WORKFLOW_PATHS = {
-    "guide/새-프로젝트-프로젝트-지정/index.html",
-    "guide/추출/index.html",
-    "guide/번역/index.html",
-    "guide/적용과-즉시적용/index.html",
+    "guide/project-selection/index.html",
+    "guide/extraction/index.html",
+    "guide/translation/index.html",
+    "guide/apply-and-instant-apply/index.html",
 }
 
-ENGINE_PATHS = {
-    "guide/rpg-maker-mvmz-개정1/index.html",
-    "guide/rpg-maker-vxvxa-개정1/index.html",
+ENGINE_NAV_PATHS: tuple[str, ...] = (
+    "guide/rpg-maker-mvmz/index.html",
+    "guide/rpg-maker-vxvxa/index.html",
     "guide/wolf-rpg-editor/index.html",
-    "guide/tyranobuilder-tyranoscript-개정1/index.html",
-    "guide/pixel-game-maker-mv-アクションゲームツクール-mv/index.html",
-    "guide/clickteam-fusion-multimedia-fusion-작성예정/index.html",
-}
+    "guide/clickteam-fusion-coming-soon/index.html",
+    "guide/tyranobuilder-tyranoscript/index.html",
+    "guide/pixel-game-maker-mv/index.html",
+    "guide/srpg-studio/index.html",
+    "guide/livemaker/index.html",
+    "guide/bakin/index.html",
+    "guide/renpy/index.html",
+)
+
+ENGINE_PATHS = set(ENGINE_NAV_PATHS)
+ENGINE_NAV_ORDER = {path: index for index, path in enumerate(ENGINE_NAV_PATHS)}
 
 TROUBLESHOOTING_PATHS = {
-    "guide/자주-나오는-질문/index.html",
+    "guide/faq/index.html",
 }
 
 EXCLUDE_FROM_NAV_PATHS = VIRTUAL_GROUP_PAGES | {
@@ -80,6 +87,8 @@ EXCLUDE_FROM_NAV_PATHS = VIRTUAL_GROUP_PAGES | {
     "guide/features-external-tools/index.html",
     "guide/features-settings/index.html",
     "guide/winmerge-check/index.html",
+    "guide/editor-word-wrap/index.html",
+    "guide/escape-diff-viewer/index.html",
 }
 
 DELETE_DIST_PATHS = EXCLUDE_FROM_NAV_PATHS | VIRTUAL_GROUP_PAGES
@@ -107,37 +116,49 @@ ADVANCED_KEYWORDS = (
 
 TITLE_OVERRIDES = {
     "guide/index.html": "AIMT 사용설명서",
-    "guide/도구/index.html": "작업 도구",
-    "guide/설정/index.html": "설정 화면",
-    "guide/clickteam-fusion-multimedia-fusion-작성예정/index.html": "ClickTeam Fusion 준비 중",
-    "guide/rpgmaker-명령코드-정리-작성-예정/index.html": "RPG Maker 명령 코드 참고",
+    "guide/workspace-tools/index.html": "작업 도구",
+    "guide/settings-screen/index.html": "설정 화면",
+    "guide/clickteam-fusion-coming-soon/index.html": "ClickTeam Fusion 준비 중",
+    "guide/renpy/index.html": "Ren'Py 번역 가이드",
+    "guide/livemaker/index.html": "LiveMaker 번역 가이드",
+    "guide/srpg-studio/index.html": "SRPG Studio 번역 가이드",
+    "guide/bakin/index.html": "Bakin 번역 가이드",
+    "guide/rpg-maker-command-code-reference/index.html": "RPG Maker 명령 코드 참고",
     "guide/advanced-reference/index.html": "참고 자료",
-    "guide/외부-유틸리티/index.html": "외부 유틸리티",
-    "guide/화면전환/index.html": "화면전환",
-    "guide/wolf-2차-추출-제외-필터/index.html": "WOLF 2차 추출 제외 필터",
+    "guide/external-utilities/index.html": "외부 유틸리티",
+    "guide/view-switching/index.html": "화면전환",
+    "guide/wolf-secondary-exclusion-filter/index.html": "WOLF 2차 추출 제외 필터",
     "guide/vxvxa-message-block-unit/index.html": "Message Block Unit",
     "guide/extract-troop-names/index.html": "Extract Troop Names",
     "guide/dbdic-include-extract-names/index.html": "DBdic include Extract Names",
-    "guide/srpg-2차-추출-필터/index.html": "SRPG 2차 추출 필터",
-    "guide/livemaker-폰트-설정/index.html": "LiveMaker 폰트 설정",
-    "guide/asar-47c728f5/index.html": "ASAR (Tyrano 계열)",
+    "guide/srpg-secondary-extraction-filter/index.html": "SRPG 2차 추출 필터",
+    "guide/livemaker-font-settings/index.html": "LiveMaker 폰트 설정",
+    "guide/asar-tyrano/index.html": "ASAR (Tyrano 계열)",
     "guide/asar/index.html": "ASAR (Electron)",
-    "guide/라인메이커/index.html": "라인메이커 (MVMZ)",
-    "guide/라인메이커-2948edda/index.html": "라인메이커 (VXVXA)",
-    "guide/타이틀변경/index.html": "타이틀변경 (VXVXA)",
-    "guide/타이틀-변경/index.html": "타이틀 변경 (CTF)",
-    "guide/타이틀-변경-2ccdb6d4/index.html": "타이틀 변경 (Tyrano)",
-    "guide/크립터/index.html": "크립터 (CTF)",
-    "guide/크립터-16cf2cb1/index.html": "크립터 (PGMMV)",
+    "guide/line-maker-mvmz/index.html": "라인메이커 (MVMZ)",
+    "guide/line-maker-vxvxa/index.html": "라인메이커 (VXVXA)",
+    "guide/title-change-vxvxa/index.html": "타이틀변경 (VXVXA)",
+    "guide/title-change-ctf/index.html": "타이틀 변경 (CTF)",
+    "guide/title-change-tyrano/index.html": "타이틀 변경 (Tyrano)",
+    "guide/ctf-crypter/index.html": "크립터 (CTF)",
+    "guide/pgmmv-crypter/index.html": "크립터 (PGMMV)",
+    "guide/renpy-crypter/index.html": "크립터 (Ren'Py)",
+    "guide/renpy-tag-check/index.html": "태그 검사",
+    "guide/renpy-font-replacement/index.html": "폰트 교체",
+    "guide/srpg-studio-unpack/index.html": "언팩",
+    "guide/srpg-studio-manual-build/index.html": "수동 빌드",
+    "guide/srk-crypter/index.html": "SRK 크립터",
+    "guide/extract-python-data-strings/index.html": "Extract Python data strings",
+    "guide/include-tl-translations/index.html": "Include tl translations",
 }
 
 RENAMED_PAGE_PATHS = {
-    "guide/2차-추출-필터/index.html": "guide/wolf-2차-추출-제외-필터/index.html",
-    "guide/2차-추출-제외-필터/index.html": "guide/wolf-2차-추출-제외-필터/index.html",
-    "guide/ctf-2차-추출-필터-편집/index.html": "guide/ctf-2차-추출-제외-필터/index.html",
-    "guide/bakin-2차-추출-필터-편집/index.html": "guide/bakin-2차-추출-제외-필터/index.html",
-    "guide/ctf-2차-추출-제외-필터-편집/index.html": "guide/ctf-2차-추출-제외-필터/index.html",
-    "guide/bakin-2차-추출-제외-필터-편집/index.html": "guide/bakin-2차-추출-제외-필터/index.html",
+    "guide/2차-추출-필터/index.html": "guide/wolf-secondary-exclusion-filter/index.html",
+    "guide/2차-추출-제외-필터/index.html": "guide/wolf-secondary-exclusion-filter/index.html",
+    "guide/ctf-2차-추출-필터-편집/index.html": "guide/ctf-secondary-exclusion-filter/index.html",
+    "guide/bakin-2차-추출-필터-편집/index.html": "guide/bakin-secondary-exclusion-filter/index.html",
+    "guide/ctf-2차-추출-제외-필터-편집/index.html": "guide/ctf-secondary-exclusion-filter/index.html",
+    "guide/bakin-2차-추출-제외-필터-편집/index.html": "guide/bakin-secondary-exclusion-filter/index.html",
 }
 
 ADVANCED_REGEX_PATHS = {
@@ -153,10 +174,10 @@ ADVANCED_AI_PATHS = {
 }
 
 ADVANCED_DIRECT_PATHS = {
-    "guide/rpgmaker-명령코드-정리-작성-예정/index.html",
-    "guide/추출-파일별-설명/index.html",
-    "guide/외부-유틸리티/index.html",
-    "guide/제공자별-참고-링크/index.html",
+    "guide/rpg-maker-command-code-reference/index.html",
+    "guide/extraction-files-reference/index.html",
+    "guide/external-utilities/index.html",
+    "guide/provider-reference-links/index.html",
 }
 
 FEATURE_SUBGROUP_PAGES: dict[str, str] = {
@@ -164,9 +185,9 @@ FEATURE_SUBGROUP_PAGES: dict[str, str] = {
 }
 
 MERGED_SCREEN_PAGE_PATHS: set[str] = {
-    "guide/상단부/index.html",
-    "guide/중단부/index.html",
-    "guide/하단부/index.html",
+    "guide/top-area/index.html",
+    "guide/middle-area/index.html",
+    "guide/bottom-area/index.html",
 }
 
 SCREEN_AREA_LINK_ONLY_PATHS: set[str] = {
@@ -174,27 +195,27 @@ SCREEN_AREA_LINK_ONLY_PATHS: set[str] = {
 }
 
 FEATURE_SCREEN_PATHS: set[str] = {
-    "guide/화면전환/index.html",
+    "guide/view-switching/index.html",
 }
 
 SCREEN_AREA_SECTIONS: tuple[tuple[str, str, str, tuple[tuple[str, str], ...]], ...] = (
     (
         "영역1 사이드바",
         "프로젝트 지정, 파일 목록 갱신, 프롬프트, 빠른번역, 설정, 화면 전환처럼 작업을 시작하거나 화면 상태를 바꾸는 영역입니다.",
-        "guide/assets/상단부/image.png",
+        "guide/assets/top-area/image.png",
         (
-            ("guide/새-프로젝트-프로젝트-지정/index.html", "새 프로젝트 / 프로젝트 지정"),
-            ("guide/파일목록-새로고침/index.html", "파일목록 새로고침"),
-            ("guide/화면전환/index.html", "화면전환"),
-            ("guide/프롬프트/index.html", "프롬프트"),
-            ("guide/빠른번역/index.html", "빠른번역"),
-            ("guide/설정/index.html", "설정 화면"),
+            ("guide/project-selection/index.html", "새 프로젝트 / 프로젝트 지정"),
+            ("guide/refresh-file-list/index.html", "파일목록 새로고침"),
+            ("guide/view-switching/index.html", "화면전환"),
+            ("guide/prompt/index.html", "프롬프트"),
+            ("guide/quick-translation/index.html", "빠른번역"),
+            ("guide/settings-screen/index.html", "설정 화면"),
         ),
     ),
     (
         "영역2 메인뷰",
         "선택한 파일과 작업 대상의 내용을 확인하는 영역입니다. 목록에서 대상을 고르고, 필요한 경우 Viewer 화면으로 세부 내용을 확인합니다.",
-        "guide/assets/중단부/image 3.png",
+        "guide/assets/middle-area/image 3.png",
         (
             ("guide/viewer/index.html", "Viewer"),
             ("guide/console/index.html", "Console"),
@@ -203,13 +224,13 @@ SCREEN_AREA_SECTIONS: tuple[tuple[str, str, str, tuple[tuple[str, str], ...]], .
     (
         "영역3 커맨드바",
         "추출, 번역, 적용, 도구, 퀵슬롯처럼 실제 작업을 실행하는 영역입니다. 작업 단계가 바뀔 때 가장 자주 사용하는 버튼들이 모여 있습니다.",
-        "guide/assets/하단부/image 1.png",
+        "guide/assets/bottom-area/image 1.png",
         (
-            ("guide/추출/index.html", "추출"),
-            ("guide/번역/index.html", "번역"),
-            ("guide/적용과-즉시적용/index.html", "적용과 즉시적용"),
-            ("guide/도구/index.html", "작업 도구"),
-            ("guide/퀵슬롯/index.html", "퀵슬롯"),
+            ("guide/extraction/index.html", "추출"),
+            ("guide/translation/index.html", "번역"),
+            ("guide/apply-and-instant-apply/index.html", "적용과 즉시적용"),
+            ("guide/workspace-tools/index.html", "작업 도구"),
+            ("guide/quickslot/index.html", "퀵슬롯"),
         ),
     ),
 )
@@ -219,11 +240,11 @@ SCREEN_AREA_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "sidebar",
         "영역1 사이드바",
         (
-            "guide/새-프로젝트-프로젝트-지정/index.html",
-            "guide/파일목록-새로고침/index.html",
-            "guide/화면전환/index.html",
-            "guide/프롬프트/index.html",
-            "guide/빠른번역/index.html",
+            "guide/project-selection/index.html",
+            "guide/refresh-file-list/index.html",
+            "guide/view-switching/index.html",
+            "guide/prompt/index.html",
+            "guide/quick-translation/index.html",
         ),
     ),
     (
@@ -238,9 +259,9 @@ SCREEN_AREA_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "commandbar",
         "영역3 커맨드바",
         (
-            "guide/추출/index.html",
-            "guide/번역/index.html",
-            "guide/적용과-즉시적용/index.html",
+            "guide/extraction/index.html",
+            "guide/translation/index.html",
+            "guide/apply-and-instant-apply/index.html",
         ),
     ),
 )
@@ -251,10 +272,10 @@ SCREEN_AREA_NAV_CHILD_PATHS: set[str] = {
     for child_path in child_paths
 }
 
-SETTINGS_PAGE_PATH = "guide/설정/index.html"
+SETTINGS_PAGE_PATH = "guide/settings-screen/index.html"
 
 ELEVATED_SETTINGS_PAGE_CHILD_PATHS: tuple[str, ...] = (
-    "guide/번역-설정/index.html",
+    "guide/translation-settings/index.html",
 )
 
 SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
@@ -262,10 +283,10 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "general",
         "일반",
         (
-            "guide/테마/index.html",
-            "guide/추출정규식/index.html",
-            "guide/이스케이프패턴/index.html",
-            "guide/언어패턴설정/index.html",
+            "guide/theme/index.html",
+            "guide/extraction-regex/index.html",
+            "guide/escape-patterns/index.html",
+            "guide/language-pattern-settings/index.html",
         ),
     ),
     (
@@ -273,17 +294,17 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "번역설정",
         (
             "guide/ai-model/index.html",
-            "guide/api-key-설정/index.html",
+            "guide/api-key-settings/index.html",
         ),
     ),
     (
         "mvmz",
         "MVMZ",
         (
-            "guide/제외정규식-예외정규식/index.html",
-            "guide/치환용어설정/index.html",
-            "guide/기본폰트설정/index.html",
-            "guide/타이틀텍스트/index.html",
+            "guide/exclude-exception-regex/index.html",
+            "guide/replacement-terms/index.html",
+            "guide/default-font-settings/index.html",
+            "guide/title-text/index.html",
             "guide/multiline-db/index.html",
             "guide/extract-troop-names/index.html",
             "guide/extract-names/index.html",
@@ -308,60 +329,68 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "wolf",
         "WOLF",
         (
-            "guide/wolf-2차-추출-제외-필터/index.html",
-            "guide/cmd-122-2차-추출-중복처리/index.html",
+            "guide/wolf-secondary-exclusion-filter/index.html",
+            "guide/cmd-122-secondary-duplicate-handling/index.html",
         ),
     ),
     (
         "ctf",
         "CTF",
         (
-            "guide/ctf-이미지-고속-추출/index.html",
-            "guide/ctf-2차-추출-제외-필터/index.html",
-        ),
-    ),
-    (
-        "bakin",
-        "Bakin",
-        (
-            "guide/bakin-2차-추출-제외-필터/index.html",
+            "guide/ctf-fast-image-extraction/index.html",
+            "guide/ctf-secondary-exclusion-filter/index.html",
         ),
     ),
     (
         "srpgstudio",
         "SRPG Studio",
         (
-            "guide/srpg-2차-추출-필터/index.html",
+            "guide/srpg-secondary-extraction-filter/index.html",
         ),
     ),
     (
         "livemaker",
         "LiveMaker",
         (
-            "guide/livemaker-폰트-설정/index.html",
+            "guide/livemaker-font-settings/index.html",
+        ),
+    ),
+    (
+        "bakin",
+        "Bakin",
+        (
+            "guide/bakin-secondary-exclusion-filter/index.html",
+        ),
+    ),
+    (
+        "renpy",
+        "Ren'Py",
+        (
+            "guide/extract-python-data-strings/index.html",
+            "guide/include-tl-translations/index.html",
         ),
     ),
     (
         "log-backup",
         "로그/백업",
         (
-            "guide/로그-관리/index.html",
-            "guide/백업-관리/index.html",
-            "guide/캐시-관리/index.html",
+            "guide/log-management/index.html",
+            "guide/backup-management/index.html",
+            "guide/cache-management/index.html",
         ),
     ),
     (
         "help",
         "도움말",
         (
-            "guide/도움말/index.html",
+            "guide/help-settings/index.html",
         ),
     ),
     (
         "etc",
         "기타",
         (
-            "guide/기타/index.html",
+            "guide/misc-settings/index.html",
         ),
     ),
 )
@@ -380,26 +409,26 @@ FEATURE_SETTINGS_PATHS = {
 }
 
 FEATURE_WORKSPACE_TOOL_PATHS = {
-    "guide/도구/index.html",
-    "guide/파일목록-새로고침/index.html",
-    "guide/빠른번역/index.html",
-    "guide/적용취소/index.html",
-    "guide/번역-가져오기/index.html",
-    "guide/빈칸채우기/index.html",
-    "guide/사용자사전-전후처리/index.html",
-    "guide/번역일관성/index.html",
-    "guide/추출-중복/index.html",
-    "guide/일본어체크/index.html",
-    "guide/받침정리/index.html",
-    "guide/코드-복원/index.html",
-    "guide/세이브-에디터/index.html",
-    "guide/ttc-빌드/index.html",
+    "guide/workspace-tools/index.html",
+    "guide/refresh-file-list/index.html",
+    "guide/quick-translation/index.html",
+    "guide/undo-apply/index.html",
+    "guide/import-translation/index.html",
+    "guide/fill-blanks/index.html",
+    "guide/user-dictionary-prepost/index.html",
+    "guide/translation-consistency/index.html",
+    "guide/extraction-duplicates/index.html",
+    "guide/japanese-check/index.html",
+    "guide/final-consonant-cleanup/index.html",
+    "guide/code-restore/index.html",
+    "guide/save-editor/index.html",
+    "guide/ttc-build/index.html",
     "guide/vscode/index.html",
     "guide/notepad/index.html",
 }
 
 WORKSPACE_TOOL_LINK_ONLY_PATHS: set[str] = {
-    "guide/빠른번역-77499184/index.html",
+    "guide/quickslot-quick-translation/index.html",
 }
 
 FEATURE_ENGINE_TOOL_PATHS = {
@@ -411,29 +440,37 @@ FEATURE_ENGINE_TOOL_PATHS = {
     "guide/kirikiri/index.html",
     "guide/pgmmv/index.html",
     "guide/electron/index.html",
-    "guide/라인메이커/index.html",
-    "guide/라인메이커-2948edda/index.html",
-    "guide/플러그인추가/index.html",
-    "guide/이름-일관성/index.html",
-    "guide/통합-일관성/index.html",
-    "guide/크립터-이미지-오디오/index.html",
-    "guide/data-복호화/index.html",
-    "guide/프로젝트-변환/index.html",
-    "guide/에니그마-언팩/index.html",
-    "guide/언팩/index.html",
-    "guide/타이틀변경/index.html",
-    "guide/전용추출/index.html",
-    "guide/imbook패치-bbtext패치-missions패치/index.html",
-    "guide/mv변환/index.html",
-    "guide/언팩-리팩/index.html",
-    "guide/통합-치환/index.html",
-    "guide/exe-패치/index.html",
-    "guide/메타정보-확인/index.html",
-    "guide/타이틀-변경/index.html",
-    "guide/타이틀-변경-2ccdb6d4/index.html",
-    "guide/언어-변경/index.html",
-    "guide/크립터/index.html",
-    "guide/크립터-16cf2cb1/index.html",
+    "guide/renpy-tools/index.html",
+    "guide/srpg-studio-tools/index.html",
+    "guide/line-maker-mvmz/index.html",
+    "guide/line-maker-vxvxa/index.html",
+    "guide/add-plugin/index.html",
+    "guide/name-consistency/index.html",
+    "guide/integrated-consistency/index.html",
+    "guide/mvmz-media-crypter/index.html",
+    "guide/data-decryption/index.html",
+    "guide/project-conversion/index.html",
+    "guide/enigma-unpack/index.html",
+    "guide/vxvxa-unpack/index.html",
+    "guide/title-change-vxvxa/index.html",
+    "guide/dedicated-extraction/index.html",
+    "guide/imbook-bbtext-missions-patch/index.html",
+    "guide/mv-conversion/index.html",
+    "guide/wolf-unpack-repack/index.html",
+    "guide/integrated-replacement/index.html",
+    "guide/exe-patch/index.html",
+    "guide/metadata-check/index.html",
+    "guide/title-change-ctf/index.html",
+    "guide/title-change-tyrano/index.html",
+    "guide/language-change/index.html",
+    "guide/ctf-crypter/index.html",
+    "guide/pgmmv-crypter/index.html",
+    "guide/renpy-crypter/index.html",
+    "guide/renpy-tag-check/index.html",
+    "guide/renpy-font-replacement/index.html",
+    "guide/srpg-studio-unpack/index.html",
+    "guide/srpg-studio-manual-build/index.html",
+    "guide/srk-crypter/index.html",
 }
 
 FEATURE_ENGINE_TOOL_PARENT_PATHS: tuple[str, ...] = (
@@ -444,6 +481,8 @@ FEATURE_ENGINE_TOOL_PARENT_PATHS: tuple[str, ...] = (
     "guide/tyrano/index.html",
     "guide/kirikiri/index.html",
     "guide/pgmmv/index.html",
+    "guide/srpg-studio-tools/index.html",
+    "guide/renpy-tools/index.html",
     "guide/electron/index.html",
 )
 
@@ -455,87 +494,99 @@ FEATURE_ENGINE_TOOL_GROUP_TITLES: dict[str, str] = {
     "guide/tyrano/index.html": "Tyrano",
     "guide/kirikiri/index.html": "Kirikiri",
     "guide/pgmmv/index.html": "PGMMV",
+    "guide/srpg-studio-tools/index.html": "SRPG Studio",
+    "guide/renpy-tools/index.html": "Ren'Py",
     "guide/electron/index.html": "Electron",
 }
 
 FEATURE_QUICKSLOT_PATHS = {
-    "guide/퀵슬롯/index.html",
-    "guide/메모장/index.html",
-    "guide/빠른번역-77499184/index.html",
+    "guide/quickslot/index.html",
+    "guide/memo/index.html",
+    "guide/quickslot-quick-translation/index.html",
 }
 
 FEATURE_QUICKSLOT_PARENT_PATHS: tuple[str, ...] = (
-    "guide/퀵슬롯/index.html",
+    "guide/quickslot/index.html",
 )
 
 FEATURE_NESTED_CHILD_PATHS_BY_PARENT: dict[str, tuple[str, ...]] = {
-    "guide/도구/index.html": (
-        "guide/빈칸채우기/index.html",
-        "guide/사용자사전-전후처리/index.html",
-        "guide/적용취소/index.html",
-        "guide/번역일관성/index.html",
-        "guide/추출-중복/index.html",
-        "guide/이스케이프/index.html",
-        "guide/일본어체크/index.html",
-        "guide/받침정리/index.html",
+    "guide/workspace-tools/index.html": (
+        "guide/fill-blanks/index.html",
+        "guide/user-dictionary-prepost/index.html",
+        "guide/undo-apply/index.html",
+        "guide/translation-consistency/index.html",
+        "guide/extraction-duplicates/index.html",
+        "guide/escape-check/index.html",
+        "guide/final-consonant-cleanup/index.html",
         "guide/vscode/index.html",
         "guide/notepad/index.html",
         "guide/appdata/index.html",
-        "guide/ttc-빌드/index.html",
-        "guide/세이브-에디터/index.html",
+        "guide/ttc-build/index.html",
+        "guide/save-editor/index.html",
         "guide/llama-server/index.html",
     ),
     "guide/mvmz/index.html": (
-        "guide/라인메이커/index.html",
-        "guide/플러그인추가/index.html",
-        "guide/401-병합-분할/index.html",
-        "guide/402-동기화/index.html",
-        "guide/이름-일관성/index.html",
-        "guide/통합-일관성/index.html",
-        "guide/코드-복원/index.html",
-        "guide/번역-가져오기/index.html",
-        "guide/이스케이프-data/index.html",
-        "guide/크립터-이미지-오디오/index.html",
-        "guide/data-복호화/index.html",
-        "guide/프로젝트-변환/index.html",
-        "guide/에니그마-언팩/index.html",
+        "guide/line-maker-mvmz/index.html",
+        "guide/add-plugin/index.html",
+        "guide/401-merge-split/index.html",
+        "guide/402-sync/index.html",
+        "guide/name-consistency/index.html",
+        "guide/integrated-consistency/index.html",
+        "guide/japanese-check/index.html",
+        "guide/code-restore/index.html",
+        "guide/import-translation/index.html",
+        "guide/escape-data/index.html",
+        "guide/mvmz-media-crypter/index.html",
+        "guide/data-decryption/index.html",
+        "guide/project-conversion/index.html",
+        "guide/enigma-unpack/index.html",
     ),
     "guide/vxvxa/index.html": (
-        "guide/언팩/index.html",
-        "guide/타이틀변경/index.html",
-        "guide/라인메이커-2948edda/index.html",
-        "guide/전용추출/index.html",
-        "guide/imbook패치-bbtext패치-missions패치/index.html",
-        "guide/mv변환/index.html",
+        "guide/vxvxa-unpack/index.html",
+        "guide/title-change-vxvxa/index.html",
+        "guide/line-maker-vxvxa/index.html",
+        "guide/dedicated-extraction/index.html",
+        "guide/imbook-bbtext-missions-patch/index.html",
+        "guide/mv-conversion/index.html",
     ),
     "guide/wolf/index.html": (
-        "guide/언팩-리팩/index.html",
-        "guide/통합-치환/index.html",
-        "guide/exe-패치/index.html",
-        "guide/raw-파일명-치환/index.html",
+        "guide/wolf-unpack-repack/index.html",
+        "guide/integrated-replacement/index.html",
+        "guide/exe-patch/index.html",
+        "guide/raw-filename-replacement/index.html",
     ),
     "guide/ctf/index.html": (
-        "guide/메타정보-확인/index.html",
-        "guide/타이틀-변경/index.html",
-        "guide/언어-변경/index.html",
-        "guide/크립터/index.html",
+        "guide/metadata-check/index.html",
+        "guide/title-change-ctf/index.html",
+        "guide/language-change/index.html",
+        "guide/ctf-crypter/index.html",
     ),
     "guide/tyrano/index.html": (
-        "guide/asar-47c728f5/index.html",
-        "guide/타이틀-변경-2ccdb6d4/index.html",
+        "guide/asar-tyrano/index.html",
+        "guide/title-change-tyrano/index.html",
     ),
     "guide/kirikiri/index.html": (
-        "guide/utf-16le-변환/index.html",
+        "guide/utf-16le-conversion/index.html",
     ),
     "guide/pgmmv/index.html": (
-        "guide/크립터-16cf2cb1/index.html",
+        "guide/pgmmv-crypter/index.html",
     ),
     "guide/electron/index.html": (
         "guide/asar/index.html",
     ),
-    "guide/퀵슬롯/index.html": (
-        "guide/메모장/index.html",
-        "guide/빠른번역-77499184/index.html",
+    "guide/renpy-tools/index.html": (
+        "guide/renpy-crypter/index.html",
+        "guide/renpy-tag-check/index.html",
+        "guide/renpy-font-replacement/index.html",
+    ),
+    "guide/srpg-studio-tools/index.html": (
+        "guide/srpg-studio-unpack/index.html",
+        "guide/srpg-studio-manual-build/index.html",
+        "guide/srk-crypter/index.html",
+    ),
+    "guide/quickslot/index.html": (
+        "guide/memo/index.html",
+        "guide/quickslot-quick-translation/index.html",
     ),
 }
 
@@ -544,14 +595,13 @@ WORKSPACE_TOOL_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "workspace-utilities",
         "유틸리티",
         (
-            "guide/빈칸채우기/index.html",
-            "guide/사용자사전-전후처리/index.html",
-            "guide/적용취소/index.html",
-            "guide/번역일관성/index.html",
-            "guide/추출-중복/index.html",
-            "guide/이스케이프/index.html",
-            "guide/일본어체크/index.html",
-            "guide/받침정리/index.html",
+            "guide/fill-blanks/index.html",
+            "guide/user-dictionary-prepost/index.html",
+            "guide/undo-apply/index.html",
+            "guide/translation-consistency/index.html",
+            "guide/extraction-duplicates/index.html",
+            "guide/escape-check/index.html",
+            "guide/final-consonant-cleanup/index.html",
         ),
     ),
     (
@@ -572,8 +622,8 @@ WORKSPACE_TOOL_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "workspace-etc",
         "기타",
         (
-            "guide/ttc-빌드/index.html",
-            "guide/세이브-에디터/index.html",
+            "guide/ttc-build/index.html",
+            "guide/save-editor/index.html",
             "guide/llama-server/index.html",
         ),
     ),
@@ -586,7 +636,7 @@ WORKSPACE_ENGINE_TOOL_PAGE_PATHS: tuple[str, ...] = tuple(
 )
 
 WORKSPACE_TOOL_PAGE_PATHS: tuple[str, ...] = (
-    "guide/도구/index.html",
+    "guide/workspace-tools/index.html",
     *(child_path for _group_id, _title, child_paths in WORKSPACE_TOOL_NAV_GROUPS for child_path in child_paths),
     *WORKSPACE_ENGINE_TOOL_PAGE_PATHS,
 )
@@ -874,12 +924,12 @@ PAGE_TYPE_TEMPLATES: dict[str, tuple[str, ...]] = {
 
 PAGE_TYPE_BY_PATH: dict[str, str] = {
     "guide/index.html": "home",
-    "guide/자주-나오는-질문/index.html": "troubleshooting",
-    "guide/rpgmaker-명령코드-정리-작성-예정/index.html": "command_reference",
-    "guide/제외정규식-예외정규식/index.html": "feature",
-    "guide/치환용어설정/index.html": "feature",
-    "guide/기본폰트설정/index.html": "feature",
-    "guide/타이틀텍스트/index.html": "feature",
+    "guide/faq/index.html": "troubleshooting",
+    "guide/rpg-maker-command-code-reference/index.html": "command_reference",
+    "guide/exclude-exception-regex/index.html": "feature",
+    "guide/replacement-terms/index.html": "feature",
+    "guide/default-font-settings/index.html": "feature",
+    "guide/title-text/index.html": "feature",
     "guide/multiline-db/index.html": "feature",
     "guide/extract-troop-names/index.html": "feature",
     "guide/extract-names/index.html": "feature",
@@ -890,13 +940,15 @@ PAGE_TYPE_BY_PATH: dict[str, str] = {
     "guide/flatten-mode/index.html": "feature",
     "guide/include-text-type/index.html": "feature",
     "guide/include-speaker-name/index.html": "feature",
+    "guide/extract-python-data-strings/index.html": "feature",
+    "guide/include-tl-translations/index.html": "feature",
     "guide/401-block-unit-for-consistency-duplicate/index.html": "feature",
 }
 
 PAGE_TYPE_BY_PATH.update(
-    {path: "feature" for path in WORKSPACE_TOOL_PAGE_PATHS if path != "guide/도구/index.html"}
+    {path: "feature" for path in WORKSPACE_TOOL_PAGE_PATHS if path != "guide/workspace-tools/index.html"}
 )
-PAGE_TYPE_BY_PATH["guide/도구/index.html"] = "hub"
+PAGE_TYPE_BY_PATH["guide/workspace-tools/index.html"] = "hub"
 
 PAGE_METADATA: dict[str, dict[str, Any]] = {
     "guide/index.html": {
@@ -919,30 +971,83 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
             "확인: 게임을 실행해 누락, 깨짐, 오역, 적용 실패를 점검합니다.",
         ],
         "engine_links": [
-            ("guide/rpg-maker-mvmz-개정1/index.html", "RPG Maker MV/MZ"),
-            ("guide/rpg-maker-vxvxa-개정1/index.html", "RPG Maker VX/VXA"),
+            ("guide/rpg-maker-mvmz/index.html", "RPG Maker MV/MZ"),
+            ("guide/rpg-maker-vxvxa/index.html", "RPG Maker VX/VXA"),
             ("guide/wolf-rpg-editor/index.html", "WOLF RPG Editor"),
-            ("guide/tyranobuilder-tyranoscript-개정1/index.html", "TyranoBuilder/TyranoScript"),
-            ("guide/pixel-game-maker-mv-アクションゲームツクール-mv/index.html", "Pixel Game Maker MV"),
+            ("guide/clickteam-fusion-coming-soon/index.html", "ClickTeam Fusion"),
+            ("guide/tyranobuilder-tyranoscript/index.html", "TyranoBuilder/TyranoScript"),
+            ("guide/pixel-game-maker-mv/index.html", "Pixel Game Maker MV"),
+            ("guide/srpg-studio/index.html", "SRPG Studio"),
+            ("guide/livemaker/index.html", "LiveMaker"),
+            ("guide/bakin/index.html", "Bakin"),
+            ("guide/renpy/index.html", "Ren'Py"),
         ],
         "frequent_links": [
-            ("guide/api-key-설정/index.html", "API KEY 설정"),
+            ("guide/api-key-settings/index.html", "API KEY 설정"),
             ("guide/ai-model/index.html", "AI-MODEL"),
-            ("guide/번역-설정/index.html", "번역 설정"),
-            ("guide/추출/index.html", "추출"),
-            ("guide/번역/index.html", "번역"),
-            ("guide/적용과-즉시적용/index.html", "적용과 즉시적용"),
-            ("guide/자주-나오는-질문/index.html", "자주 나오는 질문"),
+            ("guide/translation-settings/index.html", "번역 설정"),
+            ("guide/extraction/index.html", "추출"),
+            ("guide/translation/index.html", "번역"),
+            ("guide/apply-and-instant-apply/index.html", "적용과 즉시적용"),
+            ("guide/faq/index.html", "자주 나오는 질문"),
         ],
         "notices": [("주의", "게임 형식마다 추출 가능한 텍스트와 적용 방식이 다릅니다. 처음 작업하는 형식은 엔진별 가이드를 먼저 확인하세요.")],
     },
-    "guide/도구/index.html": {
+    "guide/workspace-tools/index.html": {
         "summary": "작업 도구는 번역 작업 중 텍스트를 정리하거나 결과를 점검할 때 쓰는 보조 기능을 모은 화면입니다.",
         "when": ["번역 결과를 점검하거나 정리할 때", "사용자사전, 일관성, 코드 복원처럼 보조 기능이 필요할 때", "엔진별 보조 도구로 이동해야 할 때"],
         "before": ["작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.", "어떤 파일이나 결과를 수정하려는지 먼저 확인합니다.", "결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다."],
         "steps": ["필요한 도구 묶음을 확인합니다.", "사용할 기능 문서로 이동합니다.", "기능별 안내에 따라 실행합니다.", "완료 메시지와 결과 파일을 확인합니다."],
     },
-    "guide/타이틀-변경-2ccdb6d4/index.html": {
+    "guide/livemaker/index.html": {
+        "summary": "LiveMaker 번역 가이드는 LiveMaker 게임을 AIMT에서 추출, 번역, 적용할 때 확인해야 할 흐름을 정리한 문서입니다.",
+        "when": ["LiveMaker 게임을 처음 번역할 때", "적용 후 한글 폰트나 표시 문제가 있는지 확인해야 할 때", "LiveMaker 전용 설정과 기본 작업 흐름을 함께 봐야 할 때"],
+        "before": ["작업할 게임이 LiveMaker 계열인지 확인합니다.", "원본 파일과 작업본을 분리해 보관합니다.", "한글 표시 확인을 위해 테스트 실행이 가능한 상태로 준비합니다."],
+        "steps": ["AIMT에서 프로젝트를 지정합니다.", "LiveMaker 형식으로 추출을 진행합니다.", "추출 결과 일부를 열어 대사, 선택지, UI 문구가 들어왔는지 확인합니다.", "필요한 번역 설정을 확인하고 번역합니다.", "적용 후 게임을 실행해 글자 표시와 줄바꿈을 확인합니다."],
+        "result": ["대사와 메뉴가 게임 화면에서 정상적으로 표시되는지 확인합니다.", "한글이 깨지거나 네모로 보이면 LiveMaker 폰트 설정을 확인합니다.", "누락 문장이 있으면 추출 범위와 원본 파일 상태를 다시 확인합니다."],
+        "notices": [("권장", "처음에는 짧은 구간만 번역해 적용과 실행 확인까지 진행한 뒤 전체 작업으로 넓히세요.")],
+    },
+    "guide/srpg-studio/index.html": {
+        "summary": "SRPG Studio 번역 가이드는 SRPG Studio 게임의 추출 범위, 2차 추출 필터, 적용 후 확인 흐름을 정리한 문서입니다.",
+        "when": ["SRPG Studio 게임을 처음 번역할 때", "이벤트, 이름/설명, String Table, JS Plugin 문구의 추출 범위를 조정해야 할 때", "2차 추출 결과가 너무 넓거나 좁을 때"],
+        "before": ["작업할 게임이 SRPG Studio 계열인지 확인합니다.", "원본과 작업본을 분리해 보관합니다.", "2차 추출 필터는 제외 필터가 아니라 추출할 대상을 지정하는 설정임을 확인합니다."],
+        "steps": ["AIMT에서 프로젝트를 지정합니다.", "SRPG Studio 형식으로 1차 추출을 진행합니다.", "필요하면 SRPG 2차 추출 필터에서 추출할 대상을 조정합니다.", "2차 추출 결과에서 실제 번역 대상이 들어왔는지 확인합니다.", "번역과 적용을 진행한 뒤 게임에서 이벤트와 메뉴를 확인합니다."],
+        "result": ["필요한 이벤트 문장과 이름/설명이 추출되었는지 확인합니다.", "불필요한 항목이 많으면 2차 추출 필터 조건을 좁힙니다.", "필요한 문장이 빠지면 포함 조건을 넓히고 다시 추출합니다."],
+        "notices": [("중요", "SRPG 2차 추출 필터는 기본적으로 포함할 대상을 지정합니다. 다른 엔진의 제외 필터처럼 이해하지 않도록 주의하세요.")],
+    },
+    "guide/bakin/index.html": {
+        "summary": "Bakin 번역 가이드는 Bakin 게임의 추출, 2차 추출 제외 필터, 번역 적용 후 확인 흐름을 정리한 문서입니다.",
+        "when": ["Bakin 게임을 처음 번역할 때", "2차 추출 결과에 불필요한 후보가 많이 섞일 때", "추출 파일, domain, RBR 경로, 원문 패턴을 기준으로 번역 범위를 조정해야 할 때"],
+        "before": ["작업할 게임이 Bakin 계열인지 확인합니다.", "원본과 작업본을 분리해 보관합니다.", "2차 추출 제외 필터는 조건과 일치하는 후보를 제외하는 설정임을 확인합니다."],
+        "steps": ["AIMT에서 프로젝트를 지정합니다.", "Bakin 형식으로 1차 추출을 진행합니다.", "필요하면 Bakin 2차 추출 제외 필터에서 제외 대상을 조정합니다.", "2차 추출 결과에서 필요한 문장이 남아 있는지 확인합니다.", "번역과 적용을 진행한 뒤 게임 실행 화면에서 결과를 확인합니다."],
+        "result": ["필요한 문장이 추출 결과에 남아 있는지 확인합니다.", "불필요한 항목이 많으면 제외 필터 조건을 좁혀 다시 추출합니다.", "필요한 문장이 빠지면 제외 조건이 너무 넓지 않은지 확인합니다."],
+        "notices": [("주의", "Bakin 2차 추출 제외 필터는 조건과 일치하는 항목을 빼는 방식입니다. 필요한 문장이 함께 제외되지 않도록 작은 범위로 먼저 확인하세요.")],
+    },
+    "guide/srpg-studio-unpack/index.html": {
+        "summary": "언팩은 SRPG Studio 프로젝트의 패키지 파일을 작업 가능한 형태로 풀어 번역 준비를 돕는 보조 도구입니다.",
+        "when": ["SRPG Studio 게임 파일을 바로 추출하기 어렵거나 패키지 상태로 묶여 있을 때", "번역 전에 내부 데이터와 리소스 구성을 확인해야 할 때", "수동 빌드나 SRK 크립터 작업 전에 원본 구성을 풀어야 할 때"],
+        "before": ["현재 대상이 SRPG Studio 계열인지 확인합니다.", "언팩 전 원본 파일을 따로 보관합니다.", "출력 폴더에 기존 작업 결과가 있다면 덮어쓰기나 혼선을 피하도록 정리합니다."],
+        "steps": ["작업 도구의 SRPG Studio 영역에서 언팩을 선택합니다.", "언팩할 원본 파일 또는 폴더를 확인합니다.", "출력 위치와 완료 메시지를 확인합니다.", "생성된 파일 구성을 열어 추출 대상이 준비되었는지 확인합니다."],
+        "result": ["출력 폴더에 필요한 데이터와 리소스가 풀렸는지 확인합니다.", "AIMT 추출이 가능한 상태인지 작은 범위로 먼저 확인합니다.", "실패하면 원본 파일 형식과 파일 잠금 상태를 확인합니다."],
+        "notices": [("중요", "언팩은 원본 구조를 작업용으로 푸는 단계입니다. 원본을 직접 덮어쓰지 않도록 작업본을 분리하세요.")],
+    },
+    "guide/srpg-studio-manual-build/index.html": {
+        "summary": "수동 빌드는 SRPG Studio 작업 결과를 사용자가 확인한 파일 구성으로 다시 묶거나 실행 가능한 작업본으로 정리할 때 사용하는 보조 도구입니다.",
+        "when": ["자동 적용 후 직접 파일 구성을 확인하며 빌드해야 할 때", "언팩한 결과를 수정한 뒤 다시 실행 가능한 형태로 정리해야 할 때", "적용 결과를 단계별로 비교하며 마무리해야 할 때"],
+        "before": ["번역 적용 결과가 준비되어 있어야 합니다.", "빌드 대상 폴더와 출력 위치를 구분합니다.", "빌드 전 현재 작업본을 보관하고, 원본 파일과 섞이지 않도록 확인합니다."],
+        "steps": ["작업 도구의 SRPG Studio 영역에서 수동 빌드를 선택합니다.", "빌드에 사용할 작업 폴더를 확인합니다.", "출력 위치와 빌드 옵션을 확인합니다.", "빌드를 실행하고 완료 메시지를 확인합니다.", "생성된 결과를 실행해 번역문과 리소스 로딩 상태를 확인합니다."],
+        "result": ["빌드 결과물이 지정한 위치에 생성되었는지 확인합니다.", "게임을 실행해 시작 화면, 이벤트, 메뉴 표시를 확인합니다.", "누락 파일이나 로딩 오류가 있으면 빌드 대상 폴더 구성을 다시 확인합니다."],
+        "notices": [("권장", "수동 빌드는 작은 수정본으로 먼저 시험한 뒤 전체 작업본에 적용하면 문제 위치를 찾기 쉽습니다.")],
+    },
+    "guide/srk-crypter/index.html": {
+        "summary": "SRK 크립터는 SRPG Studio 계열 작업에서 SRK 파일을 암호화하거나 복호화해야 할 때 사용하는 보조 도구입니다.",
+        "when": ["SRK 파일 내용을 확인하거나 수정해야 할 때", "언팩 또는 빌드 과정에서 SRK 파일 처리가 필요할 때", "적용 후 SRK 관련 리소스가 정상적으로 읽히는지 확인해야 할 때"],
+        "before": ["처리할 파일이 SRK 형식인지 확인합니다.", "복호화 또는 암호화 전 원본 파일을 보관합니다.", "잘못된 방향으로 처리하면 게임에서 파일을 읽지 못할 수 있으므로 작업 방향을 먼저 정합니다."],
+        "steps": ["작업 도구의 SRPG Studio 영역에서 SRK 크립터를 선택합니다.", "처리할 SRK 파일 또는 폴더를 확인합니다.", "복호화 또는 암호화 작업 방향을 선택합니다.", "실행 후 완료 메시지와 출력 파일을 확인합니다.", "필요하면 게임 실행으로 리소스 로딩 상태를 확인합니다."],
+        "result": ["출력 파일이 생성되었는지 확인합니다.", "복호화 결과는 열람 또는 후속 작업이 가능한지 확인합니다.", "암호화 결과는 게임에서 정상적으로 읽히는지 확인합니다."],
+        "notices": [("주의", "SRK 파일은 작업 방향이 중요합니다. 원본 보관 없이 덮어쓰지 말고, 처리 후 실행 확인까지 진행하세요.")],
+    },
+    "guide/title-change-tyrano/index.html": {
         "summary": "타이틀 변경 (Tyrano)은 Tyrano 계열 프로젝트의 Config.tjs에서 ;System.title= 값을 찾아 새 타이틀로 바꾸는 도구입니다.",
         "when": ["번역본의 게임 제목을 원문 제목에서 번역 제목으로 바꾸고 싶을 때", "Tyrano 프로젝트의 Config.tjs에 남아 있는 제목만 빠르게 수정하고 싶을 때", "적용 후 실행 창 제목이 의도한 이름으로 표시되는지 확인하고 싶을 때"],
         "before": ["현재 프로젝트가 Tyrano 계열 작업본인지 확인합니다.", "프로젝트 안에 Config.tjs가 있어야 합니다.", "Config.tjs는 UTF-8로 읽을 수 있어야 합니다.", "Config.tjs 안에 ;System.title= 항목이 있어야 합니다.", "이 도구는 대상 파일을 직접 저장하므로 실행 전 현재 작업본을 보관해 두세요."],
@@ -951,7 +1056,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "이 도구는 Config.tjs를 직접 수정합니다. 실행 전 작업본을 보관하고, 변경 후 실제 실행 화면을 확인하세요."), ("주의", "Config.tjs가 UTF-8이 아니거나 ;System.title= 항목이 없으면 변경할 수 없습니다. 이 경우 파일 구조를 먼저 확인해야 합니다."), ("권장", "제목만 바꾸는 기능입니다. 창 아이콘, 실행 파일 이름, 패키지 메타데이터까지 바꾸려면 별도로 확인하세요.")],
         "confusion": [("게임 안의 모든 제목 이미지도 바뀌나요?", "아닙니다. 이 도구는 Config.tjs의 텍스트 타이틀 값을 바꿉니다. 타이틀 화면 이미지나 로고 이미지가 따로 있으면 별도로 수정해야 합니다."), ("현재 타이틀이 알 수 없음으로 표시됩니다", "Config.tjs를 찾지 못했거나, 파일을 UTF-8로 읽지 못했거나, ;System.title= 항목이 없을 수 있습니다."), ("변경 후에도 실행 화면 제목이 그대로입니다", "게임이 다른 파일에서 제목을 다시 지정하거나 패키징된 결과물을 보고 있을 수 있습니다. 현재 작업본의 Config.tjs가 실제 실행 대상인지 확인하세요.")],
     },
-    "guide/utf-16le-변환/index.html": {
+    "guide/utf-16le-conversion/index.html": {
         "summary": "UTF-16LE 변환은 선택한 폴더 아래의 Kirikiri 계열 스크립트 파일을 찾아 UTF-16LE 형식으로 저장하는 도구입니다.",
         "when": ["Kirikiri 스크립트 파일을 UTF-16LE 인코딩으로 맞춰야 할 때", "번역 또는 편집 후 스크립트 파일의 글자가 깨져 보일 때", ".ks, .tjs, .ma, .asd 파일을 한 폴더 단위로 정리하고 싶을 때"],
         "before": ["변환할 폴더가 Kirikiri 스크립트 파일을 포함하고 있는지 확인합니다.", "이 도구는 선택한 폴더 아래를 재귀적으로 검사합니다. 하위 폴더의 대상 확장자 파일도 함께 처리될 수 있습니다.", "변환 대상 파일은 같은 위치에 다시 저장됩니다. 실행 전 원본을 보관해 두세요.", "이미 UTF-16LE로 판정된 파일은 스킵됩니다.", "대상 확장자 파일이 하나도 없으면 변환할 파일이 없다는 오류가 표시됩니다."],
@@ -960,7 +1065,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "이 도구는 대상 파일을 같은 위치에 다시 저장합니다. 변환 전 폴더를 보관하고, 변환 후 일부 파일을 직접 열어 확인하세요."), ("주의", "줄바꿈은 변환 과정에서 정리될 수 있습니다. 줄바꿈 차이가 중요한 스크립트는 변환 전후를 비교하세요."), ("권장", "처음에는 전체 프로젝트가 아니라 스크립트 일부 폴더로 시험한 뒤, 글자 표시와 실행 결과가 정상인지 확인하고 범위를 넓히세요.")],
         "confusion": [("모든 파일을 UTF-16LE로 바꾸나요?", "아닙니다. .ks, .tjs, .ma, .asd 파일만 대상입니다."), ("이미 UTF-16LE인 파일도 다시 저장되나요?", "아닙니다. 이미 UTF-16LE로 판정된 파일은 스킵됩니다."), ("폴더를 잘못 선택하면 어떻게 되나요?", "선택한 폴더 아래에서 대상 확장자를 찾습니다. 대상 파일이 없으면 변환할 파일이 없다고 표시되고, 대상 파일이 있으면 해당 파일이 처리됩니다."), ("실패 항목이 있으면 전체 변환이 실패한 건가요?", "아닙니다. 파일별로 변환 결과가 나뉩니다. 실패한 파일은 따로 인코딩과 파일 잠금 상태를 확인하세요.")],
     },
-    "guide/라인메이커/index.html": {
+    "guide/line-maker-mvmz/index.html": {
         "summary": "라인메이커 (MVMZ)는 RPG Maker MV/MZ 프로젝트의 data JSON 파일과 plugins.js를 AIMT가 다루기 쉬운 줄 구성으로 다시 정리하는 도구입니다.",
         "when": ["MVMZ 적용이나 수동 편집 후 JSON이 한 줄로 길게 붙어 있어 확인하기 어려울 때", "Map, CommonEvents, Troops, Scenario 같은 이벤트 명령 목록을 줄 단위로 보기 좋게 정리하고 싶을 때", "plugins.js의 플러그인 목록과 parameters 구조를 다시 정리해야 할 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "프로젝트 안에 data 폴더가 있어야 합니다.", "전체 실행 시 대상 JSON과 plugins.js가 같은 위치에 다시 저장됩니다. 실행 전 작업본을 보관하세요.", "라인메이커는 내용 번역이나 코드 의미 변경을 목적으로 하는 도구가 아닙니다."],
@@ -969,7 +1074,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "라인메이커는 대상 파일을 같은 위치에 다시 저장합니다. 실행 전 현재 작업본을 보관하세요."), ("주의", "라인메이커는 게임 화면의 대사 줄 길이를 자동으로 맞추는 도구가 아닙니다. 실제 표시 줄바꿈은 게임 실행 화면에서 별도로 확인해야 합니다."), ("권장", "적용 결과를 비교하거나 수동 검수하기 전에 실행하면 변경 위치를 읽기 쉬워집니다.")],
         "confusion": [("대사 줄바꿈을 화면 폭에 맞춰 주나요?", "아닙니다. 파일 구조를 보기 좋게 정리하는 도구입니다. 대사 표시 폭과 줄바꿈은 게임에서 직접 확인해야 합니다."), ("모든 JSON 파일을 처리하나요?", "아닙니다. MVMZ에서 사용하는 주요 데이터 파일과 Map, Scenario 파일을 중심으로 처리합니다."), ("plugins.js도 항상 처리되나요?", "전체 실행에서는 plugins.js가 있으면 함께 처리합니다. 특정 파일만 대상으로 실행되는 흐름에서는 플러그인 파일 처리가 제외될 수 있습니다.")],
     },
-    "guide/플러그인추가/index.html": {
+    "guide/add-plugin/index.html": {
         "summary": "플러그인추가는 AIMT가 제공하거나 사용자가 가져온 MVMZ용 플러그인 파일을 현재 프로젝트에 추가하는 도구입니다.",
         "when": ["MVMZ 프로젝트에 번역 보조용 플러그인을 추가해야 할 때", "현재 프로젝트의 plugins.js에 플러그인 등록이 필요할 때", "이미 등록된 플러그인을 교체할지 확인해야 할 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "프로젝트 안에 js 폴더와 plugins.js를 쓸 수 있어야 합니다.", "기존 플러그인과 이름이 같거나 이미 등록되어 있으면 덮어쓰기 확인이 표시될 수 있습니다.", "플러그인 충돌 가능성이 있으므로 실행 전 프로젝트를 보관하세요."],
@@ -978,7 +1083,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "플러그인추가는 파일 복사와 plugins.js 수정을 함께 수행할 수 있습니다. 실행 전 프로젝트를 보관하세요."), ("주의", "같은 이름의 플러그인을 덮어쓰면 기존 플러그인 내용이 바뀔 수 있습니다. 덮어쓰기 전 대상이 맞는지 확인하세요."), ("권장", "플러그인을 추가한 직후에는 게임을 한 번 실행해 콘솔 오류와 플러그인 충돌 여부를 확인하세요.")],
         "confusion": [("파일만 복사하나요?", "아닙니다. 새 플러그인을 추가할 때는 파일 복사와 함께 plugins.js 등록도 시도합니다."), ("이미 등록된 플러그인은 어떻게 되나요?", "이미 등록되어 있거나 파일이 존재하면 덮어쓰기 확인이 표시될 수 있습니다. 취소하면 변경하지 않습니다."), ("플러그인을 추가하면 바로 게임에 적용되나요?", "프로젝트 파일에는 반영되지만, 실제 동작 여부는 게임 실행으로 확인해야 합니다.")],
     },
-    "guide/401-병합-분할/index.html": {
+    "guide/401-merge-split/index.html": {
         "summary": "401 병합 & 분할은 MVMZ 이벤트 명령의 401 대사 줄을 합치거나 다시 나누는 도구입니다.",
         "when": ["여러 줄로 나뉜 401 대사를 한 번에 번역하거나 검수하기 쉬운 단위로 합치고 싶을 때", "병합된 401 텍스트를 게임 적용 전 원래처럼 여러 401 줄로 다시 나눠야 할 때", "CommonEvents, Troops, Scenario, Map 파일의 401 대사 구조를 정리해야 할 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "대상 파일은 CommonEvents, Troops, Scenario, Map 계열 JSON입니다.", "병합과 분할은 프로젝트 JSON을 직접 수정합니다. 실행 전 작업본을 보관하세요.", "분할은 기본적으로 텍스트 안의 줄바꿈을 기준으로 나눕니다."],
@@ -987,7 +1092,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "401 병합과 분할은 이벤트 명령 목록을 직접 수정합니다. 실행 전 작업본을 보관하고, 처리 후 실제 대사 장면을 확인하세요."), ("주의", "None 방식은 줄 사이 구분자가 사라집니다. 문장이 붙어도 괜찮은 경우에만 사용하세요."), ("권장", "번역 품질을 위해 병합했다면 적용 전에는 Split 401으로 구조를 되돌린 뒤 게임 화면을 확인하는 흐름이 안전합니다.")],
         "confusion": [("101 대사 표시 명령도 같이 바뀌나요?", "이 도구는 401 대사 줄을 대상으로 합니다. 101과 401을 함께 다루는 설정은 별도의 merge 101-401 설정을 확인하세요."), ("분할하면 항상 원본과 같은 줄 수가 되나요?", "기본 분할은 줄바꿈 기준입니다. 원본 기준 보충이 필요한 경우에는 원본 데이터와 비교해 부족한 401을 전각공백으로 보충할 수 있습니다."), ("모든 401이 하나로 합쳐지나요?", "아닙니다. 같은 들여쓰기에서 연속된 401 그룹만 병합됩니다.")],
     },
-    "guide/402-동기화/index.html": {
+    "guide/402-sync/index.html": {
         "summary": "402 동기화는 MVMZ 선택지 명령의 102 항목과 그 결과 분기인 402 항목의 표시 텍스트를 맞추는 도구입니다.",
         "when": ["선택지 번역 후 402 분기 이름이 원문이나 이전 값으로 남아 있을 때", "선택지 표시문과 분기 조건 텍스트가 서로 다르게 보일 때", "Map, CommonEvents, Troops, Scenario 파일의 선택지 구조를 적용 전에 정리하고 싶을 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "선택지 명령 102와 분기 명령 402가 포함된 JSON 파일이 있어야 합니다.", "이 도구는 402의 표시 텍스트를 102 선택지 기준으로 직접 수정합니다.", "선택지 순서나 인덱스가 이미 손상된 경우 일부 402는 범위 밖 항목으로 처리될 수 있습니다."],
@@ -996,7 +1101,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "402 동기화는 선택지 분기 텍스트를 직접 수정합니다. 실행 전 작업본을 보관하고, 처리 후 실제 선택 장면을 확인하세요."), ("주의", "이 도구는 선택지 순서를 새로 판단하지 않습니다. 402 인덱스가 이미 잘못되어 있으면 범위 밖 항목으로 남을 수 있습니다."), ("권장", "선택지 번역을 수정한 뒤 적용 전에 Sync 402를 실행하면 선택지와 분기 표시가 어긋나는 문제를 줄일 수 있습니다.")],
         "confusion": [("선택지 순서도 자동으로 고치나요?", "아닙니다. 402가 가진 선택지 번호를 기준으로 텍스트만 맞춥니다."), ("102가 없는 402도 고쳐지나요?", "아닙니다. 기준이 될 102 선택지 목록을 찾지 못하면 누락 항목으로 집계되고 건너뜁니다."), ("선택지 번역 자체를 새로 번역하나요?", "아닙니다. 이미 저장된 102 선택지 텍스트를 기준으로 402 텍스트를 맞추는 도구입니다.")],
     },
-    "guide/이름-일관성/index.html": {
+    "guide/name-consistency/index.html": {
         "summary": "이름 일관성은 RPG Maker MV/MZ 이벤트 대사의 \\N<이름>, \\n<이름> 형식 이름 태그가 번역 후 여러 표기로 갈라졌는지 확인하고, 필요한 경우 한 표기로 맞추는 도구입니다.",
         "when": ["같은 이름 태그가 장면마다 서로 다른 번역으로 표시될 때", "번역 적용 전에 대사창 이름 표기를 한 번에 점검하고 싶을 때", "자동 번역 후 인물 이름 표기가 흔들렸는지 확인해야 할 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "원문 기준으로 비교하려면 번역 전 원본 data 폴더를 선택할 수 있어야 합니다.", "통일 적용은 현재 프로젝트 파일을 수정할 수 있으므로 실행 전 작업본을 보관합니다.", "이 도구는 일반 문장 속 고유명사가 아니라 대사 이름 태그를 중심으로 검사합니다."],
@@ -1005,7 +1110,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "같은 원문 이름 태그라도 장면에 따라 별칭, 가명, 호칭을 다르게 써야 할 수 있습니다. 적용 전 위치 목록을 확인하세요."), ("권장", "전체 통일을 한 번에 실행하기보다 불일치가 많은 이름부터 순서대로 확인하면 의도하지 않은 변경을 줄일 수 있습니다.")],
         "confusion": [("문장 속 인물 이름도 찾아 주나요?", "아닙니다. 이 도구는 대사 이름창에 쓰이는 이름 태그를 중심으로 검사합니다."), ("원문 폴더를 꼭 선택해야 하나요?", "원문 태그 기준으로 정확히 비교하려면 선택하는 편이 좋습니다. 원문 폴더가 없으면 현재 프로젝트에서 발견되는 태그를 기준으로 확인합니다."), ("자동 통일을 쓰면 항상 안전한가요?", "자동 통일은 사용 빈도와 표기 형태를 기준으로 후보를 고릅니다. 캐릭터 설정상 다른 표기가 필요한 경우에는 수동으로 확인하세요.")],
     },
-    "guide/통합-일관성/index.html": {
+    "guide/integrated-consistency/index.html": {
         "summary": "통합 일관성은 RPG Maker MV/MZ 이벤트 명령의 주요 텍스트 파라미터를 한꺼번에 검사해, 같은 원문이 여러 번역 표기로 갈라진 항목을 찾아 주는 도구입니다.",
         "when": ["대사, 선택지, 주석, 스크립트, 플러그인 명령 등 여러 영역의 번역 표기를 함께 점검할 때", "대규모 번역 후 같은 원문이 다른 번역으로 저장된 항목을 찾고 싶을 때", "적용 전에 반복 표현과 명령 파라미터 번역을 넓게 검수해야 할 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "원문 기준 비교가 필요하면 번역 전 원본 data 폴더를 준비합니다.", "이 도구는 여러 명령 코드를 대상으로 하므로, 적용 전 수정 범위를 반드시 확인합니다.", "같은 원문이라도 문맥에 따라 다른 번역이 필요한 항목은 통일 대상에서 제외합니다."],
@@ -1014,7 +1119,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "통합 일관성은 넓은 범위를 다룹니다. 같은 원문이라도 명령 종류나 장면에 따라 다른 번역이 필요한지 먼저 확인하세요."), ("권장", "먼저 검사 결과를 그룹별로 좁혀 보고, 대사나 선택지처럼 눈에 보이는 항목부터 통일하는 흐름이 안전합니다.")],
         "confusion": [("모든 텍스트를 검사하나요?", "아닙니다. MVMZ 이벤트 명령에서 AIMT가 지원하는 주요 텍스트 파라미터를 검사합니다."), ("이름 일관성과 무엇이 다른가요?", "이름 일관성은 대사 이름 태그에 집중합니다. 통합 일관성은 대사, 선택지, 주석, 스크립트, 플러그인 명령 등 여러 명령 그룹을 함께 봅니다."), ("자동 통일 후 바로 적용해도 되나요?", "자동 통일은 후보를 빠르게 고르는 보조 기능입니다. 실제 문맥이 맞는지는 결과 목록과 게임 화면에서 확인해야 합니다.")],
     },
-    "guide/코드-복원/index.html": {
+    "guide/code-restore/index.html": {
         "summary": "코드 복원은 원본 data 폴더의 특정 RPG Maker MV/MZ 명령 코드 라인을 현재 프로젝트의 같은 위치로 가져와 덮어쓰는 도구입니다.",
         "when": ["번역 또는 수동 편집 중 특정 명령 코드 라인이 손상되어 원본으로 되돌려야 할 때", "선택지, 변수, 조건, 플러그인 명령 같은 기능 명령을 원본 구조로 복구해야 할 때", "적용 전 특정 코드 계열을 원본과 같은 명령 라인으로 맞추고 싶을 때"],
         "before": ["현재 프로젝트와 원본 data 폴더가 같은 게임 버전, 같은 파일 구성인지 확인합니다.", "복원할 코드가 들어 있는 원본 폴더를 선택할 수 있어야 합니다.", "복원 대상 명령 코드를 정확히 선택합니다. 선택한 코드 라인은 현재 프로젝트에서 원본 내용으로 덮어써질 수 있습니다.", "파일의 줄 수나 선택 코드 개수가 맞지 않는 파일은 건너뛸 수 있습니다."],
@@ -1023,7 +1128,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "코드 복원은 선택한 명령 코드 라인 전체를 원본으로 덮어쓸 수 있습니다. 해당 라인에 번역문이 들어 있다면 번역도 함께 사라질 수 있습니다."), ("권장", "처음에는 필요한 코드 번호만 좁게 선택하고, 처리 후 변경 파일을 비교해 의도한 라인만 바뀌었는지 확인하세요.")],
         "confusion": [("제어문자만 골라서 복원하나요?", "아닙니다. 선택한 명령 코드에 해당하는 JSON 라인을 원본 라인으로 교체하는 방식입니다."), ("원본과 현재 파일의 줄 수가 다르면 어떻게 되나요?", "안전하게 맞출 수 없는 파일은 건너뜁니다. 먼저 Line Maker나 구조 정리 도구로 파일 구조를 맞춘 뒤 다시 확인하세요."), ("복원 후 왜 대사가 원문으로 돌아갔나요?", "대사 코드인 401이나 405를 선택하면 해당 라인 전체가 원본으로 돌아갈 수 있습니다. 번역을 유지해야 한다면 대사 코드는 신중하게 선택하세요.")],
     },
-    "guide/번역-가져오기/index.html": {
+    "guide/import-translation/index.html": {
         "summary": "번역 가져오기는 이전 작업의 원본 폴더와 번역된 폴더를 비교해 번역 대응표를 만들고, 현재 MVMZ 프로젝트에서 같은 원문을 찾으면 기존 번역을 가져오는 도구입니다.",
         "when": ["같은 게임의 새 작업본에 이전 번역을 최대한 재사용하고 싶을 때", "업데이트판이나 재추출 프로젝트에 기존 번역을 옮기고 싶을 때", "대사, 선택지, DB, 시스템, 노트 등 필요한 영역만 골라 가져오고 싶을 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "이전 작업의 원본 data 폴더와 이전 작업의 번역 완료 data 폴더를 모두 준비합니다.", "가져올 대상 프리셋을 필요한 범위로만 선택합니다.", "게임 버전이 크게 다르면 일치하지 않는 항목이 늘어날 수 있습니다."],
@@ -1032,7 +1137,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "번역 가져오기는 같은 원문을 기준으로 이전 번역을 재사용합니다. 현재 프로젝트에서 문맥이 달라진 항목은 가져온 뒤 반드시 검수하세요."), ("권장", "처음에는 Message나 Choice처럼 확인하기 쉬운 범위부터 가져오고, 결과가 안정적이면 DB와 System 범위로 넓히세요.")],
         "confusion": [("이전 번역 파일 하나만 있으면 되나요?", "아닙니다. 이전 원본과 이전 번역본이 모두 있어야 어떤 원문이 어떤 번역으로 바뀌었는지 비교할 수 있습니다."), ("빈 번역이나 코드만 있는 줄도 가져오나요?", "빈 번역은 가져오지 않습니다. 이벤트 대사 쪽에서는 제어코드만 있는 줄도 불필요한 치환을 피하기 위해 건너뛸 수 있습니다."), ("맵 표시 이름이 왜 안 바뀌나요?", "현재 프로젝트의 맵 표시 이름이 이전 원본과 다르면 같은 항목으로 보기 어려워 건너뛸 수 있습니다. 현재 원문과 이전 원문이 같은지 확인하세요.")],
     },
-    "guide/이스케이프-data/index.html": {
+    "guide/escape-data/index.html": {
         "summary": "이스케이프 (data)는 원본 data 폴더와 현재 프로젝트 data 폴더의 주요 명령 파라미터를 비교해, 이스케이프 코드나 특수 표기가 번역 과정에서 깨졌는지 검사하고 수정 후보를 만드는 도구입니다.",
         "when": ["번역 후 대사, 선택지, 변수, 주석, 플러그인 명령 등의 제어 표기가 깨진 것처럼 보일 때", "원본에는 있던 이스케이프 코드가 번역 결과에서 빠졌는지 확인하고 싶을 때", "적용 전 원본 data 기준으로 위험 항목을 따로 뽑아 비교하고 싶을 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "번역 전 원본 data 폴더를 선택할 수 있어야 합니다.", "검사 결과는 check 영역의 data 복사본에 만들어지며, 현재 프로젝트 data를 바로 고치는 기능이 아닙니다.", "이전 검사 결과가 남아 있으면 새 검사 전에 정리될 수 있습니다."],
@@ -1041,7 +1146,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "이스케이프 불일치가 큰 항목은 원본 텍스트 전체를 수정 후보로 사용할 수 있습니다. 번역을 유지해야 하는 문장은 비교 후 수동으로 조정하세요."), ("권장", "검사 결과를 바로 믿기보다 원본, 현재 번역, 수정 후보를 나란히 확인한 뒤 필요한 항목만 반영하는 흐름이 안전합니다.")],
         "confusion": [("현재 프로젝트 data를 바로 수정하나요?", "아닙니다. 수정 후보는 check 영역의 data 복사본에 만들어집니다. 실제 반영은 비교 후 사용자가 판단해야 합니다."), ("일반 이스케이프 검사와 무엇이 다른가요?", "이스케이프 (data)는 번역 전 원본 data 폴더와 현재 프로젝트 data를 비교 기준으로 사용합니다."), ("수정 후보가 원문으로 돌아간 것처럼 보여요", "이스케이프 구조가 맞지 않으면 안전하게 원본 텍스트를 후보로 둘 수 있습니다. 해당 항목은 번역문과 제어코드를 함께 보며 수동으로 정리하세요.")],
     },
-    "guide/크립터-이미지-오디오/index.html": {
+    "guide/mvmz-media-crypter/index.html": {
         "summary": "크립터 (이미지 / 오디오)는 RPG Maker MV/MZ의 암호화된 이미지와 오디오 리소스를 복호화하거나, 복호화된 리소스를 다시 암호화하는 도구입니다.",
         "when": ["암호화된 이미지 파일을 PNG로 확인하거나 편집해야 할 때", "암호화된 오디오 파일을 OGG 또는 M4A로 확인해야 할 때", "수정한 이미지나 오디오를 게임에서 사용할 수 있도록 다시 암호화해야 할 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "복호화할 파일은 암호화 작업 폴더에, 다시 암호화할 파일은 복호화 작업 폴더에 있어야 합니다.", "복호화에는 이미지 또는 오디오 파일에서 찾을 수 있는 암호화 키가 필요합니다.", "암호화 작업은 프로젝트의 System.json에서 암호화 키를 읽을 수 있어야 합니다."],
@@ -1050,7 +1155,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "작업 대상 폴더의 기존 결과 파일은 새 작업 전에 정리될 수 있습니다. 필요한 파일은 실행 전에 따로 보관하세요."), ("권장", "먼저 소수의 이미지나 오디오로 복호화와 재암호화가 정상 동작하는지 확인한 뒤 전체 파일을 처리하세요.")],
         "confusion": [("게임 폴더의 모든 리소스를 자동으로 찾아 처리하나요?", "아닙니다. 크립터 작업 폴더에 있는 지원 확장자 파일을 대상으로 처리합니다."), ("키를 직접 입력해야 하나요?", "일반적으로 복호화는 System.json이나 암호화된 파일에서 키를 찾고, 암호화는 현재 프로젝트의 System.json 키를 사용합니다. 키를 찾지 못하면 작업이 실패합니다."), ("이미지와 오디오는 함께 처리되나요?", "아닙니다. 이미지와 오디오는 선택한 파일 유형별로 따로 처리합니다.")],
     },
-    "guide/data-복호화/index.html": {
+    "guide/data-decryption/index.html": {
         "summary": "Data 복호화는 현재 RPG Maker MV/MZ 프로젝트의 data JSON 파일이 특수 암호화 방식으로 저장되어 있을 때, 읽을 수 있는 JSON으로 복호화해 같은 위치에 덮어쓰는 도구입니다.",
         "when": ["data 폴더의 JSON 파일이 일반 텍스트 JSON처럼 열리지 않을 때", "MVMZ 추출 전에 data 파일을 먼저 읽을 수 있는 형태로 바꿔야 할 때", "게임이 별도 로더로 암호화된 data를 읽는 구조라 AIMT 추출이 실패할 때"],
         "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "프로젝트 안에 data 폴더와 System.json이 있어야 합니다.", "이 도구는 data JSON을 같은 위치에 덮어씁니다. 실행 전 프로젝트를 보관하세요.", "복호화 방식에 따라 js 폴더의 로더 파일도 평문 data를 읽도록 함께 수정될 수 있습니다."],
@@ -1059,7 +1164,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "Data 복호화는 현재 프로젝트의 data JSON을 같은 위치에 덮어씁니다. 실행 전 반드시 프로젝트를 보관하세요."), ("주의", "복호화와 함께 로더 JS가 수정될 수 있습니다. 복호화 후 게임 실행 확인을 먼저 하고 다음 작업으로 넘어가세요.")],
         "confusion": [("이미지나 오디오도 복호화하나요?", "아닙니다. Data 복호화는 data JSON 중심입니다. 이미지와 오디오는 크립터 (이미지 / 오디오)를 사용합니다."), ("복호화 결과가 별도 폴더에 만들어지나요?", "아닙니다. 최종 결과는 현재 프로젝트 data 폴더에 같은 이름으로 반영됩니다."), ("실패하면 일부 파일만 바뀔 수 있나요?", "작업 중 오류가 발생하면 원래 파일로 되돌리도록 처리됩니다. 그래도 작업 전 프로젝트 보관은 필수입니다.")],
     },
-    "guide/프로젝트-변환/index.html": {
+    "guide/project-conversion/index.html": {
         "summary": "프로젝트 변환은 RPG Maker MV/MZ 배포본이나 data/www 구조의 게임 폴더를 AIMT에서 작업하기 쉬운 프로젝트 폴더로 복사하고, 암호화된 이미지와 오디오가 있으면 함께 복호화하는 도구입니다.",
         "when": ["배포된 MV/MZ 게임을 작업용 프로젝트 형태로 따로 만들고 싶을 때", "입력 경로가 게임 루트, www 폴더, data 폴더 중 어느 쪽인지 헷갈릴 때", "암호화된 이미지나 오디오를 함께 풀어 작업 가능한 복사본을 만들고 싶을 때"],
         "before": ["변환 소스 폴더에는 data/System.json을 찾을 수 있어야 합니다.", "출력 기준 폴더는 이미 존재하는 폴더여야 합니다.", "출력 기준 폴더를 입력 프로젝트 내부로 지정하면 안 됩니다.", "변환 결과는 원본을 직접 바꾸지 않고 새 Project 계열 폴더로 만들어집니다."],
@@ -1068,7 +1173,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "출력 기준 폴더는 원본 게임 폴더 밖으로 지정하세요. 원본 안에 결과를 만들면 변환이 실패하거나 파일 구분이 어려워집니다."), ("권장", "변환 후에는 새로 만들어진 Project 폴더를 작업 대상으로 사용하고, 원본 배포본은 그대로 보관하세요.")],
         "confusion": [("원본 프로젝트를 직접 바꾸나요?", "아닙니다. 소스 폴더를 복사해 출력 기준 폴더 아래에 새 Project 계열 폴더를 만듭니다."), ("data 폴더만 선택해도 되나요?", "data/System.json을 찾을 수 있으면 data 폴더, www 폴더, 게임 루트 중 하나를 선택할 수 있습니다."), ("텍스트 번역까지 자동으로 되나요?", "아닙니다. 프로젝트 변환은 작업 가능한 복사본을 만드는 단계입니다. 변환 후 프로젝트 지정, 추출, 번역, 적용 흐름을 진행해야 합니다.")],
     },
-    "guide/에니그마-언팩/index.html": {
+    "guide/enigma-unpack/index.html": {
         "summary": "에니그마 언팩은 Enigma Virtual Box로 패키징된 RPG Maker MV/MZ 실행 파일에서 포함된 VFS 파일을 선택한 출력 폴더로 풀어내는 도구입니다.",
         "when": ["게임 파일이 EXE 하나에 묶여 있어 data, js, img, audio 폴더를 바로 확인할 수 없을 때", "MVMZ 추출이나 프로젝트 변환을 진행하기 전에 패키징된 실행 파일의 내부 파일을 꺼내야 할 때", "Enigma Virtual Box 계열 패키징으로 보이는 실행 파일을 별도 출력 폴더에 풀어 확인하고 싶을 때"],
         "before": ["패키징된 EXE 파일을 선택할 수 있어야 합니다.", "출력 폴더는 이미 존재하는 폴더여야 합니다.", "출력 폴더 안에 같은 이름의 파일이 있으면 언팩 결과가 덮어쓸 수 있으므로, 빈 폴더나 새로 준비한 폴더를 사용하는 것이 좋습니다.", "이 도구는 Enigma Virtual Box VFS 형식을 대상으로 합니다. 다른 패키징 방식의 실행 파일은 실패할 수 있습니다."],
@@ -1077,7 +1182,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "출력 폴더는 기존 폴더를 선택해야 하며, 같은 이름의 파일이 있으면 결과 파일이 덮어써질 수 있습니다. 새 작업용 폴더를 준비한 뒤 실행하세요."), ("주의", "지원하지 않는 패키징 방식이거나 VFS 정보를 찾을 수 없는 실행 파일은 언팩에 실패할 수 있습니다."), ("권장", "언팩이 끝난 뒤 바로 원본 EXE를 지우지 말고, 언팩 결과로 추출과 실행 확인이 가능한지 먼저 확인하세요.")],
         "confusion": [("에니그마 언팩이 번역까지 해주나요?", "아닙니다. 실행 파일 안의 파일을 꺼내는 준비 단계입니다. 언팩 후 프로젝트 지정, 추출, 번역, 적용 흐름을 진행해야 합니다."), ("출력 폴더를 새로 만들어 주나요?", "아닙니다. 사용자가 기존 폴더를 선택해야 합니다. 빈 작업용 폴더를 먼저 만들어 두면 결과를 구분하기 쉽습니다."), ("모든 EXE 파일을 풀 수 있나요?", "아닙니다. Enigma Virtual Box VFS 형식으로 패키징된 실행 파일을 대상으로 합니다. 다른 보호 도구나 다른 패키징 방식은 지원되지 않을 수 있습니다.")],
     },
-    "guide/메타정보-확인/index.html": {
+    "guide/metadata-check/index.html": {
         "summary": "메타정보 확인은 CTF 소스의 게임 이름, Fusion 버전, 패키징 형태, 언어, 코드페이지, EXE 전용 여부와 청크 정보를 읽어 보여 주는 확인 도구입니다.",
         "when": ["CTF 작업 대상이 어떤 언어와 코드페이지로 구성되어 있는지 확인할 때", "타이틀 변경이나 언어 변경을 실행하기 전에 현재 메타데이터 값을 확인할 때", "DAT, CCN, EXE 중 실제로 어떤 소스를 기준으로 작업해야 할지 판단할 때", "CTF 적용 결과가 의도한 파일에 반영되었는지 CMD 로그와 함께 점검할 때"],
         "before": ["확인할 CTF 소스인 DAT, CCN, EXE 파일을 선택할 수 있어야 합니다.", "이 도구는 읽기 전용 확인 기능입니다. 파일 내용을 직접 바꾸지 않습니다.", "EXE를 선택한 경우 구조에 따라 연결된 DAT 또는 해석된 소스 기준으로 정보가 표시될 수 있습니다.", "메타정보가 비어 있거나 형식을 읽지 못하면 일부 항목이 알 수 없음으로 표시될 수 있습니다."],
@@ -1086,7 +1191,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "메타정보 확인은 파일을 수정하지 않습니다. 실제 변경은 타이틀 변경이나 언어 변경에서 진행합니다."), ("주의", "EXE 구조에 따라 표시되는 정보가 동반 DAT 또는 해석된 소스 기준일 수 있습니다. 작업 전후 CMD 로그의 대상 정보를 같이 확인하세요."), ("권장", "타이틀 변경, 언어 변경 전후로 이 도구를 한 번씩 실행하면 변경된 값을 비교하기 쉽습니다.")],
         "confusion": [("메타정보 확인만으로 언어가 바뀌나요?", "아닙니다. 이 도구는 현재 값을 읽어 보여 줍니다. 언어 값 변경은 언어 변경 도구에서 진행합니다."), ("codepage와 LCID는 같은 값인가요?", "아닙니다. codepage는 문자 해석 기준이고 LCID는 앱 언어 식별값입니다. 언어 변경 도구는 두 값을 언어 프리셋에 맞춰 함께 설정합니다."), ("게임 이름이 비어 있으면 오류인가요?", "항상 오류는 아닙니다. 일부 CTF 소스는 게임 이름 메타데이터가 비어 있을 수 있습니다. 필요하면 타이틀 변경으로 값을 지정하세요.")],
     },
-    "guide/타이틀-변경/index.html": {
+    "guide/title-change-ctf/index.html": {
         "summary": "타이틀 변경 (CTF)은 CTF 소스의 메타데이터에 저장된 game_name 값을 사용자가 입력한 제목으로 패치하는 도구입니다.",
         "when": ["번역본의 게임 이름 메타데이터를 새 제목으로 바꾸고 싶을 때", "메타정보 확인에서 game_name이 비어 있거나 원문 제목으로 남아 있을 때", "CTF 작업본의 표시 제목을 번역본 기준으로 정리할 때", "언어 변경과 함께 CTF 메타데이터를 배포용 값으로 맞추고 싶을 때"],
         "before": ["타이틀을 바꿀 DAT, CCN, EXE 소스를 선택할 수 있어야 합니다.", "입력할 제목은 비워 둘 수 없으며 260자를 넘기지 않아야 합니다.", "이 도구는 CTF 메타데이터를 직접 패치합니다. 실행 전 대상 파일을 보관하세요.", "게임 로고 이미지나 타이틀 화면 이미지는 이 기능으로 바뀌지 않습니다.", "다른 프로그램이 대상 DAT 또는 EXE를 사용 중이면 패치에 실패할 수 있습니다."],
@@ -1095,7 +1200,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "타이틀 변경은 CTF 메타데이터를 직접 패치합니다. 대상 파일을 닫고 원본을 보관한 뒤 실행하세요."), ("주의", "이 기능은 game_name 값을 바꿉니다. 타이틀 화면 이미지, 로고, 실행 파일 이름은 자동으로 바뀌지 않습니다."), ("권장", "변경 전후로 메타정보 확인을 실행해 game_name 값이 의도대로 바뀌었는지 비교하세요.")],
         "confusion": [("게임 안의 타이틀 이미지도 바뀌나요?", "아닙니다. 이 도구는 CTF 메타데이터의 게임 이름 값을 바꿉니다. 이미지 리소스는 별도로 수정해야 합니다."), ("빈 제목으로 지울 수 있나요?", "아닙니다. 제목 입력값은 비워 둘 수 없습니다."), ("EXE를 선택해도 되나요?", "가능합니다. 다만 EXE 구조에 따라 동반 DAT 또는 재패킹 결과가 실제 적용 대상이 될 수 있으므로 CMD 로그의 출력 정보를 확인하세요.")],
     },
-    "guide/언어-변경/index.html": {
+    "guide/language-change/index.html": {
         "summary": "언어 변경은 CTF 소스의 메타데이터에 저장된 코드페이지와 언어 LCID를 선택한 언어 프리셋으로 패치하는 도구입니다.",
         "when": ["CTF 작업본의 코드페이지와 LCID가 번역 언어와 맞지 않을 때", "한글 번역본인데 메타정보가 일본어 또는 다른 언어로 남아 있을 때", "문자열 표시나 리소스 해석이 언어 설정의 영향을 받는 프로젝트를 정리할 때", "타이틀 변경과 함께 CTF 메타데이터를 번역본 기준으로 맞추고 싶을 때"],
         "before": ["현재 작업 대상이 CTF 계열인지 확인합니다.", "언어 값을 바꿀 DAT, CCN, EXE 소스를 선택할 수 있어야 합니다.", "이 도구는 코드페이지와 LCID를 실제로 패치합니다. 실행 전 대상 파일을 보관하세요.", "언어 변경은 번역문 자체를 바꾸지 않습니다. 이미 저장된 텍스트 내용은 별도로 확인해야 합니다.", "다른 프로그램이 대상 DAT 또는 EXE를 사용 중이면 패치에 실패할 수 있습니다."],
@@ -1105,7 +1210,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "언어 변경은 CTF 메타데이터를 직접 패치합니다. 실행 전 대상 파일을 닫고 원본을 보관하세요."), ("주의", "코드페이지와 LCID를 바꿔도 이미 잘못 저장된 텍스트가 자동으로 다시 번역되거나 복구되지는 않습니다."), ("권장", "언어 변경 전후로 메타정보 확인을 실행해 codepage와 lcid가 의도대로 바뀌었는지 비교하세요.")],
         "confusion": [("언어 변경을 하면 번역문도 바뀌나요?", "아닙니다. 이 도구는 CTF 메타데이터의 코드페이지와 LCID를 바꿉니다. 번역문 내용은 바꾸지 않습니다."), ("한국어를 고르면 어떤 값이 들어가나요?", "한국어 프리셋은 codepage 949, LCID 1042를 적용합니다."), ("EXE를 선택해도 되나요?", "가능합니다. 다만 EXE 구조에 따라 동반 DAT 또는 재패킹 결과가 실제 적용 대상이 될 수 있으므로 CMD 로그의 출력 정보를 확인하세요.")],
     },
-    "guide/크립터/index.html": {
+    "guide/ctf-crypter/index.html": {
         "summary": "크립터 (CTF)는 CTF 소스에서 이미지, 폰트, 사운드, 셰이더, 바이너리 리소스를 추출하거나 수정한 리소스를 다시 적용하는 CTF 리소스 작업 도구입니다.",
         "when": ["CTF 게임의 이미지, 사운드, 폰트 같은 리소스를 꺼내 확인하거나 수정할 때", "수정한 리소스를 원래 CTF 소스에 다시 반영해야 할 때", "번역 작업 중 폰트, 이미지, 바이너리 리소스를 별도로 점검해야 할 때", "CTF 리소스 적용 후 누락된 파일이나 적용 실패 항목을 CMD 로그로 확인하고 싶을 때"],
         "before": ["CTF 소스인 DAT, CCN, EXE 중 작업할 대상을 선택할 수 있어야 합니다.", "Extract 결과는 프로젝트의 _Extract 아래 리소스별 폴더에 저장됩니다.", "Apply는 선택한 리소스를 CTF 소스에 반영합니다. 실행 전 원본을 보관하세요.", "셰이더 Apply는 현재 사용할 수 없습니다. 셰이더는 추출 용도로 확인하세요.", "바이너리 Apply는 먼저 바이너리 Extract를 실행해 _Extract/binary 결과가 있어야 합니다."],
@@ -1115,7 +1220,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "Apply는 CTF 소스에 리소스를 다시 반영하는 작업입니다. 대상 파일을 닫고 원본을 보관한 뒤 실행하세요."), ("주의", "셰이더는 현재 Apply를 사용할 수 없습니다. 셰이더 버튼은 추출과 확인 용도로 사용하세요."), ("권장", "처음 적용할 때는 리소스 일부만 바꿔 게임 실행 결과를 확인한 뒤 전체 범위로 넓히세요.")],
         "confusion": [("크립터가 CTF 파일 전체를 암호화하거나 복호화하는 기능인가요?", "아닙니다. 이 페이지의 크립터는 CTF 리소스의 추출과 적용을 다루는 작업 도구입니다."), ("바이너리 Apply가 실패해요", "바이너리 Apply는 먼저 바이너리 Extract 결과가 있어야 합니다. _Extract/binary 폴더가 준비되어 있는지 확인하세요."), ("셰이더 파일도 다시 넣을 수 있나요?", "현재 셰이더 Apply는 사용할 수 없습니다. 셰이더는 Extract로 내용을 확인하는 용도로 사용하세요.")],
     },
-    "guide/크립터-16cf2cb1/index.html": {
+    "guide/pgmmv-crypter/index.html": {
         "summary": "크립터 (PGMMV)는 Pixel Game Maker MV 프로젝트의 Resources 파일을 복호화하거나, 작업 후 다시 암호화하는 보조 도구입니다.",
         "when": ["PGMMV 프로젝트의 Resources가 암호화되어 있어 먼저 복호화해야 할 때", "번역 적용이나 리소스 수정 후 원래 암호화 대상 파일을 다시 암호화해야 할 때", "PGMMV 작업 흐름에서 복호화, 추출, 번역, 적용, 암호화 순서를 정리해야 할 때"],
         "before": ["현재 프로젝트가 PGMMV 계열인지 확인합니다.", "프로젝트 안에 Resources와 Resources/data/info.json이 있어야 합니다.", "Decrypt는 원본 Resources를 백업한 뒤 현재 프로젝트의 파일을 제자리에서 복호화합니다.", "Encrypt는 복호화 때 보관된 원본 백업을 기준으로, 원래 암호화되어 있던 파일만 다시 암호화합니다.", "암호화 시 key type 선택이 필요하면 타입1 또는 타입2를 선택하는 창이 표시될 수 있습니다."],
@@ -1124,7 +1229,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "Decrypt는 현재 프로젝트의 Resources를 제자리에서 복호화합니다. 실행 전 원본 보관 상태를 확인하고, 중간 작업본과 배포용 작업본을 구분하세요."), ("주의", "Encrypt는 원본 백업을 기준으로 원래 암호화되어 있던 파일만 다시 암호화합니다. 복호화 백업이 없거나 현재 프로젝트 파일이 누락되어 있으면 실패할 수 있습니다."), ("권장", "Decrypt 후 바로 추출과 적용을 진행하고, 최종 확인 직전에 Encrypt를 실행하는 흐름으로 관리하면 중간 상태를 파악하기 쉽습니다.")],
         "confusion": [("Decrypt는 파일을 새 폴더로 복사하나요?", "아닙니다. 원본을 백업한 뒤 현재 프로젝트의 Resources 파일을 제자리에서 복호화합니다."), ("Encrypt는 모든 파일을 암호화하나요?", "아닙니다. 복호화 때 보관된 원본 백업을 기준으로 원래 암호화되어 있던 파일만 다시 암호화합니다. 이미 암호화된 파일이나 원래 평문이었던 파일은 건너뛸 수 있습니다."), ("타입1과 타입2는 언제 선택하나요?", "PGMMV 키 정보를 자동으로 확정하기 어려울 때 선택 창이 표시됩니다. 프로젝트에 맞는 key type을 선택해야 이후 암호화 결과가 정상적으로 열립니다."), ("암호화할 파일이 없다고 나오면 실패인가요?", "항상 실패는 아닙니다. 다시 암호화할 대상이 없거나 이미 암호화된 상태일 수 있습니다. 작업 순서와 백업 상태를 확인하세요.")],
     },
-    "guide/번역일관성/index.html": {
+    "guide/translation-consistency/index.html": {
         "summary": "번역일관성은 같은 원문이 여러 위치에서 서로 다른 번역으로 저장된 항목을 찾아 보여 주고, 선택한 번역 후보로 해당 원문의 번역을 통일하는 검수 도구입니다.",
         "when": ["같은 원문이 파일이나 위치마다 다르게 번역된 것 같을 때", "반복 대사, 시스템 문구, 메뉴 문구의 표현을 하나로 맞추고 싶을 때", "전체 적용 전에 번역 결과 JSON의 표현 흔들림을 검수할 때", "MVMZ 401 대사 블록 단위 설정을 켠 뒤 대사 블록의 번역 일관성을 확인할 때"],
         "before": ["추출 결과와 번역 결과가 모두 준비되어 있어야 합니다.", "일반 작업에서는 System, Event, data 계열의 원문/번역 결과를 검사합니다.", "시나리오 계열 작업에서는 Scenario 결과를 중심으로 검사하며, 일부 엔진은 System 결과도 함께 검사할 수 있습니다.", "같은 원문에 서로 다른 번역 후보가 2개 이상 있을 때만 목록에 표시됩니다.", "선택 적용과 Auto Select는 번역 결과 파일을 실제로 수정합니다. 넓은 범위에 실행하기 전 현재 번역 결과를 보관해 두세요."],
@@ -1133,7 +1238,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "후보 선택과 Auto Select는 단순 표시 변경이 아니라 번역 결과 JSON을 수정하는 작업입니다. 실행 전 현재 번역 결과를 보관해 두세요."), ("주의", "같은 원문이라도 화자, 장면, 선택지 위치에 따라 일부러 다른 번역이 필요할 수 있습니다. 대사와 선택지는 Preview로 문맥을 확인한 뒤 통일하세요."), ("권장", "Auto Select는 예외 문자가 적은 후보, 더 자주 사용된 후보, 목록에서 앞에 있는 후보를 우선합니다. 자동 기준이 문맥 판단을 대신하지는 않으므로 적용 후 샘플 확인을 권장합니다.")],
         "confusion": [("용어사전처럼 앞으로의 번역 규칙을 만드는 기능인가요?", "아닙니다. 번역일관성은 이미 만들어진 번역 결과를 검사해 같은 원문에 저장된 여러 번역 후보를 정리하는 도구입니다. 앞으로의 번역 규칙을 관리하려면 사용자사전이나 번역 설정을 함께 확인하세요."), ("Edit로 후보를 고치면 바로 파일이 바뀌나요?", "아닙니다. Edit는 모달 안의 후보 문장을 먼저 고치는 동작입니다. 수정한 후보를 선택해야 해당 원문의 위치들에 실제로 반영됩니다."), ("Revert Application은 전체 자동 선택을 모두 되돌리나요?", "아닙니다. 현재 표시 중인 항목을 기존 후보별 위치 기준으로 되돌리는 용도입니다. 여러 항목을 한꺼번에 자동 처리했다면 별도로 보관해 둔 번역 결과와 비교해 확인하는 편이 안전합니다."), ("검사 결과가 없으면 번역 검수가 끝난 건가요?", "아닙니다. 같은 원문에 여러 번역이 섞인 항목이 없다는 뜻입니다. 오역, 누락, 줄 길이, 화면 넘침, 제어코드 손상은 별도로 확인해야 합니다.")],
     },
-    "guide/추출-중복/index.html": {
+    "guide/extraction-duplicates/index.html": {
         "summary": "추출 중복은 추출 결과 안에서 같은 원문이 여러 위치에 반복되는 항목을 찾아 보여 주고, 필요하면 중복 위치에 같은 수정값이나 번역값을 반영하는 도구입니다.",
         "when": ["같은 안내문, 시스템 문구, 메뉴 문구가 여러 파일에 반복될 때", "전체 번역 전에 반복 원문만 먼저 정리해 번역량을 줄이고 싶을 때", "중복 문구의 등장 위치와 파일별 개수를 확인하고 싶을 때", "같은 원문을 같은 번역으로 통일해도 되는지 검수할 때"],
         "before": ["추출 결과가 먼저 준비되어 있어야 합니다.", "일반 모드에서는 System, Event, data 계열 추출 결과를 검사합니다.", "시나리오 계열에서는 Scenario 추출 결과를 중심으로 검사하며, 일부 엔진은 System 결과도 함께 검사할 수 있습니다.", "최소 중복 횟수는 기본값 5입니다. 너무 낮게 잡으면 검토해야 할 항목이 크게 늘어날 수 있습니다.", "선택 파일을 지정하지 않으면 현재 모드의 전체 대상에서 중복을 찾습니다.", "MVMZ 401 대사를 블록 단위로 다루는 설정을 켠 경우, 일부 대사는 줄 단위가 아니라 블록 단위로 중복 판정될 수 있습니다."],
@@ -1142,7 +1247,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "같은 원문이라도 장면, 말투, 변수 위치에 따라 다른 번역이 필요할 수 있습니다. 대사나 선택지는 자동 일괄 반영 전에 문맥을 확인하세요."), ("주의", "번역 모드는 중복 후보를 찾아 바로 번역과 반영까지 진행합니다. 처음에는 선택 파일과 최소 중복 횟수로 범위를 좁혀 테스트하세요."), ("권장", "반복되는 UI 문구, 시스템 문구, 고정 안내문처럼 문맥 차이가 적은 항목부터 처리하면 검수 부담을 줄이기 쉽습니다.")],
         "confusion": [("파일이 중복되어 있는지 찾는 기능인가요?", "아닙니다. 파일 자체의 중복을 찾는 기능이 아니라, 추출 결과 안에서 같은 원문 텍스트가 여러 위치에 반복되는지 찾는 기능입니다."), ("검사 결과에서 문구를 고치면 모든 비슷한 문장이 바뀌나요?", "아닙니다. 결과 항목에 묶인 같은 원문 위치를 기준으로 반영합니다. 현재 값이 이미 달라진 위치는 건너뛸 수 있습니다."), ("중복 번역은 일반 번역을 대체하나요?", "대체하지 않습니다. 반복 원문을 먼저 처리하는 보조 흐름으로 이해하세요. 남은 일반 문장은 기존 번역 흐름으로 처리해야 합니다.")],
     },
-    "guide/이스케이프/index.html": {
+    "guide/escape-check/index.html": {
         "summary": "이스케이프는 원문 추출 결과와 번역 결과를 비교해 제어문자, 태그, 이스케이프 패턴이 번역 중 손상되었는지 검사하는 도구입니다.",
         "when": ["적용 전에 제어코드나 태그가 원문과 같은 구조로 남아 있는지 확인할 때", "게임 화면에 _CTRL 같은 임시 표식이나 <c0/> 형태의 태그가 그대로 보일 때", "번역 후 앞쪽 전각공백, 후행 공백, 닫는 문장부호 위치가 의심될 때", "이스케이프패턴 설정을 바꾼 뒤 검사 결과를 다시 확인할 때"],
         "before": ["추출 결과와 번역 결과가 모두 준비되어 있어야 합니다.", "일반 엔진에서는 System, Event, data 계열의 원문/번역 파일 쌍을 검사합니다.", "시나리오 계열에서는 Scenario 계열을 중심으로 검사하며, 일부 엔진은 System 계열도 함께 검사할 수 있습니다.", "검사 시작 시 이전 Check 결과는 새 결과와 섞이지 않도록 정리됩니다.", "원문과 번역문의 구조나 항목 수가 크게 다르면 해당 파일은 검사에서 제외될 수 있습니다.", "이스케이프 (data)는 원본 게임 data 폴더를 선택해 비교하는 별도 도구입니다."],
@@ -1151,7 +1256,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "Check 결과는 그대로 전부 덮어쓰라는 뜻이 아닙니다. 이스케이프가 깨진 항목을 안전하게 비교하기 위한 확인용 결과로 보고, 필요한 항목만 반영하세요."), ("주의", "전각공백과 일부 문장부호 보정은 번역 결과 파일에 직접 저장될 수 있습니다. 실행 전후 차이를 확인할 수 있도록 작업 범위를 관리하세요."), ("권장", "이스케이프 오류는 적용 실패보다 게임 실행 중 표시 깨짐으로 드러나는 경우가 많습니다. 적용 전 검사하고, 적용 후 실제 화면도 함께 확인하세요.")],
         "confusion": [("이스케이프 (data)와 같은 기능인가요?", "아닙니다. 이 페이지의 이스케이프는 AIMT의 추출 결과와 번역 결과를 비교합니다. 이스케이프 (data)는 사용자가 선택한 원본 data 폴더와 현재 프로젝트 data를 비교하는 별도 도구입니다."), ("Check 결과가 생기면 자동으로 적용된 건가요?", "아닙니다. Check 결과는 비교와 검수용입니다. 필요한 차이를 확인한 뒤 실제 번역 결과나 적용 결과에 반영해야 합니다."), ("수정 라인이 0이면 검수가 끝난 건가요?", "아닙니다. 이스케이프 기준으로 발견된 문제가 없다는 뜻입니다. 오역, 누락, 줄 길이, 화면 넘침은 별도로 확인해야 합니다.")],
     },
-    "guide/받침정리/index.html": {
+    "guide/final-consonant-cleanup/index.html": {
         "summary": "받침정리는 번역 결과 JSON 안의 한글 문자열을 NFC 기준으로 정규화하고, 잘못 분리되어 남은 단독 종성 문자를 정리하는 도구입니다.",
         "when": ["번역 결과에 한글 자모가 분리되어 보이는 글자가 있을 때", "외부 편집기나 AI 번역 결과 때문에 한글 유니코드 조합이 깨진 것처럼 보일 때", "적용 전에 Translated 쪽 JSON 텍스트를 한 번 정리하고 싶을 때"],
         "before": ["번역 결과가 준비되어 있어야 합니다.", "System, Event, Data, Scenario 계열의 Translated JSON을 검사합니다.", "수정이 필요한 파일은 원래 번역 결과 파일에도 다시 저장됩니다."],
@@ -1160,7 +1265,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "받침정리는 한국어 조사 교정 도구가 아닙니다. 은/는, 이/가, 을/를을 문맥에 맞게 고르는 기능이 아니라 잘못 분리된 한글 자모와 단독 종성을 정리하는 기능입니다."), ("주의", "단독 종성 문자는 정규화 후에도 남아 있으면 제거됩니다. 특수한 목적으로 해당 문자를 일부러 넣은 경우라면 실행 전 대상 파일을 보관하세요.")],
         "confusion": [("받침에 맞춰 은/는, 이/가를 고쳐 주나요?", "아닙니다. 이 도구는 조사 선택 기능이 아니라 한글 자모 정규화 도구입니다."), ("수정할 한글 자모가 없다고 나오면 실패인가요?", "아닙니다. 검사 범위에서 정규화할 항목이나 단독 종성이 발견되지 않았다는 뜻입니다.")],
     },
-    "guide/일본어체크/index.html": {
+    "guide/japanese-check/index.html": {
         "summary": "일본어체크는 현재 프로젝트의 데이터베이스 JSON과 Map 이벤트 JSON을 읽어 일본어로 판정되는 텍스트의 수와 비율을 보여 주는 검사 도구입니다.",
         "when": ["현재 프로젝트 데이터에 일본어 텍스트가 어느 정도 남아 있는지 빠르게 확인하고 싶을 때", "RPG Maker 계열처럼 data 폴더에 JSON 데이터베이스와 Map 파일이 있는 프로젝트를 점검할 때", "데이터베이스 쪽과 이벤트 쪽 중 어느 묶음에 일본어가 더 많이 남았는지 비교할 때"],
         "before": ["검사 대상은 현재 프로젝트의 data 계열 JSON입니다.", "데이터베이스 파일과 Map*.json 이벤트 파일이 있어야 의미 있는 결과가 나옵니다.", "번역 결과 파일 자체를 고치지 않으며 검사 후 파일을 수정하지 않습니다.", "한자도 일본어 판정 범위에 포함되므로 고유명사나 중국어/한자 표기가 함께 잡힐 수 있습니다."],
@@ -1169,7 +1274,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "일본어체크는 검사 도구입니다. 번역문을 수정하거나 미번역 문장을 자동으로 교체하지 않습니다."), ("주의", "일본어 판정에는 한자 범위가 포함됩니다. 따라서 한자 고유명사, 중국어 문장, 일부 한자어도 일본어 텍스트로 계산될 수 있습니다.")],
         "confusion": [("번역 결과 파일을 검사하나요?", "이 도구는 현재 프로젝트의 data 계열 JSON을 기준으로 검사합니다. 일반적인 번역 결과 JSON 전체를 대상으로 직접 수정하는 도구로 이해하면 안 됩니다."), ("비율이 0이면 검수가 끝난 건가요?", "아닙니다. 일본어 문자 기준으로 남은 항목이 없다는 뜻일 뿐입니다. 오역, 누락, 코드 손상은 별도로 확인해야 합니다.")],
     },
-    "guide/api-key-설정/index.html": {
+    "guide/api-key-settings/index.html": {
         "summary": "API KEY 설정은 Gemini, OpenAI, Claude, DeepSeek, OpenRouter, DeepL 같은 번역 제공자에 접속하기 위한 인증 정보를 등록하고 관리하는 화면입니다.",
         "when": ["AI 번역 또는 DeepL 번역을 처음 준비할 때", "기존 키를 새 키로 교체할 때", "번역 요청이 인증 오류로 실패할 때", "여러 키의 사용 여부를 켜거나 끌 때"],
         "before": ["API 키는 각 제공자 계정에서 직접 발급해야 합니다.", "어떤 모델을 쓸지는 AI-MODEL 또는 번역 설정에서 따로 선택합니다.", "무료 키를 여러 개 동시에 사용하는 경우 제공자의 이용 약관과 할당량 정책을 먼저 확인하세요."],
@@ -1185,7 +1290,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "steps": ["사용할 제공자를 선택합니다.", "메인 모델을 선택합니다.", "필요하면 예비 모델을 선택합니다.", "저장한 뒤 짧은 문장으로 번역을 시험합니다."],
         "result": ["번역 설정과 빠른번역에서 선택한 모델이 사용되는지 확인합니다.", "오류가 나면 API 키, 모델명, 제공자 상태를 순서대로 확인합니다."],
     },
-    "guide/번역-설정/index.html": {
+    "guide/translation-settings/index.html": {
         "summary": "번역 설정은 AIMT가 어떤 번역 엔진과 모델을 사용하고, 요청 크기·속도·출력 형식·추론 옵션을 어떻게 적용할지 정하는 화면입니다.",
         "when": ["처음 번역 환경을 준비할 때", "모델별로 화면에 표시된 설정의 의미를 확인할 때", "번역 결과가 잘리거나 요청 제한 오류가 날 때", "문맥 해석, 비용, 처리 속도를 조정하고 싶을 때"],
         "before": ["API KEY 설정에 사용할 키가 등록되어 있어야 합니다.", "선택한 엔진과 모델에 따라 화면에 표시되는 항목이 달라질 수 있습니다.", "처음에는 권장값으로 작은 범위 시험 번역을 먼저 진행합니다."],
@@ -1193,7 +1298,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["번역 결과가 잘리지 않는지 확인합니다.", "요청 제한이나 연속 오류가 발생하지 않는지 봅니다.", "문체와 용어가 유지되는지 일부 파일로 확인합니다.", "문제가 있으면 요청 크기, 출력 길이, 속도 제한, 추론 강도 순서로 하나씩 점검합니다."],
         "notices": [("중요", "AIMT는 선택한 엔진과 모델에서 사용할 수 있는 설정을 중심으로 표시합니다. 보이지 않는 항목은 현재 모델에서 직접 조절할 필요가 없는 항목으로 이해하면 됩니다.")],
     },
-    "guide/캐시-관리/index.html": {
+    "guide/cache-management/index.html": {
         "summary": "캐시 관리는 AIMT 작업 중 쌓인 임시 데이터, 로그, 백업, 엔진별 작업 상태를 선택해서 정리하는 실행형 도구입니다.",
         "when": ["오래된 임시 결과나 로그를 정리할 때", "이전 작업 상태를 비우고 다시 점검할 때", "엔진별 보조 데이터나 검사 결과를 정리할 때", "문제 재현을 위해 중간 데이터를 비우고 새로 실행할 때"],
         "before": ["추출, 번역, 적용 같은 작업이 진행 중이면 먼저 끝내거나 취소합니다.", "나중에 확인해야 할 로그나 백업이 있으면 바로 비우지 않습니다.", "번역 결과나 매핑 정보를 비우면 재추출, 재번역, 재검사가 필요할 수 있습니다."],
@@ -1201,7 +1306,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["선택한 항목의 내부 내용이 정리되었는지 확인합니다.", "일부 항목이 건너뛰어졌다면 사용 중인 파일이나 권한 문제를 확인합니다.", "필요한 결과가 사라졌다면 관련 작업을 다시 실행합니다."],
         "notices": [("주의", "백업, 매핑, 엔진별 상태는 이후 복구나 재작업에 영향을 줄 수 있습니다. 필요한 항목만 좁게 선택하세요.")],
     },
-    "guide/제외정규식-예외정규식/index.html": {
+    "guide/exclude-exception-regex/index.html": {
         "summary": "제외정규식 / 예외정규식은 MVMZ와 VXVXA 추출 과정에서 번역하지 않을 텍스트를 제외하고, 그중 반드시 남겨야 할 텍스트를 예외로 되살리는 설정입니다.",
         "when": ["추출 결과에 시스템값, 제어문, 번역하면 안 되는 문자열이 많이 섞일 때", "넓은 제외 규칙을 쓰되 특정 문구만 번역 대상으로 남기고 싶을 때", "MVMZ 플러그인 파라미터, 이벤트 명령, 데이터베이스 메모처럼 위치별로 제외 범위를 조정할 때"],
         "before": ["정규식은 적용 범위가 넓을 수 있으므로 작은 예시로 먼저 확인합니다.", "어느 카테고리에서 문제가 생겼는지 추출 결과의 파일명이나 항목명을 먼저 확인합니다.", "기존 추출 결과가 자동으로 바뀌지 않으므로 저장 후 다시 추출할 계획을 세웁니다."],
@@ -1210,7 +1315,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("주의", "한 카테고리에 너무 넓은 정규식을 넣으면 필요한 대사까지 추출에서 빠질 수 있습니다. 처음에는 한 파일이나 한 구간만 확인하세요."), ("중요", "저장한 규칙은 보통 다음 추출부터 의미가 있습니다. 이미 만들어진 번역 결과를 즉시 고치는 기능은 아닙니다.")],
         "confusion": [("추출정규식과 같은 기능인가요?", "아닙니다. 추출정규식은 주로 추출할 패턴 자체를 정하는 설정이고, 제외정규식은 이미 후보가 된 텍스트 중 빼거나 되살릴 대상을 정하는 설정입니다."), ("예외 패턴만 넣으면 모든 곳에서 살아나나요?", "예외 패턴도 선택한 카테고리 안에서 동작합니다. 다른 위치의 텍스트는 해당 위치의 카테고리를 따로 확인해야 합니다.")],
     },
-    "guide/치환용어설정/index.html": {
+    "guide/replacement-terms/index.html": {
         "summary": "치환용어설정은 MVMZ 추출 과정에서 특정 문자열을 미리 다른 문자열로 바꿔 저장하도록 하는 간단한 치환 규칙입니다.",
         "when": ["전각 영문, 기호, 자주 반복되는 표기를 추출 단계에서 정리하고 싶을 때", "원문에 같은 표기가 반복되어 번역 전에 통일해 두는 편이 좋을 때", "번역 모델에 넘기기 전에 특정 용어 표기를 사용자 기준으로 맞추고 싶을 때"],
         "before": ["이 기능은 정규식이 아니라 일반 문자열 치환입니다.", "단어 전체 일치가 아니라 문장 안에 포함된 같은 문자열도 바뀔 수 있습니다.", "빈 값으로 지우는 용도보다는 다른 값으로 바꾸는 용도로 사용합니다."],
@@ -1219,7 +1324,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("주의", "짧은 문자열은 예상보다 많은 문장에 포함될 수 있습니다. 한 글자나 흔한 기호를 치환할 때는 특히 조심하세요."), ("중요", "저장 후 기존 추출 파일이나 번역 파일이 자동으로 다시 작성되지는 않습니다. 변경 후에는 필요한 범위를 다시 추출하세요.")],
         "confusion": [("정규식을 쓸 수 있나요?", "아닙니다. 치환용어설정은 일반 문자열 기준으로 동작합니다. 패턴 조건이 필요하면 제외정규식이나 관련 정규식 설정을 확인하세요."), ("치환 칸을 비워서 글자를 삭제할 수 있나요?", "빈 치환값은 저장 대상에서 제외될 수 있습니다. 삭제 목적보다는 명확한 대체 문자열을 넣는 방식으로 사용하는 편이 안전합니다.")],
     },
-    "guide/기본폰트설정/index.html": {
+    "guide/default-font-settings/index.html": {
         "summary": "기본폰트설정은 MVMZ 적용 시 사용할 메인 폰트, 숫자 폰트, 폰트 크기를 프리셋으로 관리하는 설정입니다.",
         "when": ["MVMZ 적용 후 한글이 깨지거나 네모로 보일 때", "게임 분위기에 맞는 한글 폰트를 지정하고 싶을 때", "숫자만 다른 폰트로 표시하거나 폰트 크기를 조정해야 할 때"],
         "before": ["한글 글리프가 포함된 폰트를 준비합니다.", "상업적 배포나 공유가 필요한 작업이라면 폰트 라이선스를 먼저 확인합니다.", "폰트 변경은 번역문 내용이 아니라 게임 화면의 글자 표시 방식에 영향을 줍니다."],
@@ -1228,7 +1333,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("주의", "폰트가 바뀌면 글자 폭과 줄바꿈도 달라질 수 있습니다. 적용 후 실제 게임 화면에서 반드시 확인하세요."), ("권장", "처음에는 한글 지원이 확실한 폰트로 작은 범위를 적용해 보고, 화면 폭 문제가 없을 때 전체 작업에 사용하세요.")],
         "confusion": [("기본 창에서 바로 값을 고치는 건가요?", "기본 창은 현재 프리셋 확인과 선택에 가깝습니다. 실제 값 편집은 새 프리셋 또는 수정 창에서 진행합니다."), ("폰트만 바꾸면 번역문도 바뀌나요?", "아닙니다. 폰트 설정은 표시 방식에 영향을 주며, 번역문 내용 자체를 바꾸지는 않습니다.")],
     },
-    "guide/타이틀텍스트/index.html": {
+    "guide/title-text/index.html": {
         "summary": "타이틀텍스트는 MVMZ 적용 시 게임 제목 뒤에 붙일 짧은 문구를 관리하는 설정입니다.",
         "when": ["게임 제목에 한국어판, 한글 패치, 체험판 같은 표시를 붙이고 싶을 때", "배포 상태에 따라 제목 뒤 문구를 빠르게 바꿔야 할 때", "여러 후보 문구를 저장해 두고 하나만 선택해 사용하고 싶을 때"],
         "before": ["제목 뒤에 붙일 문구만 짧게 입력합니다.", "한 번에 여러 문구를 켜는 구조가 아니라는 점을 확인합니다.", "저장 후 실제 반영은 MVMZ 적용 단계에서 확인합니다."],
@@ -1336,7 +1441,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("주의", "블록 단위 후보를 직접 수정할 때는 원래 블록의 줄 수와 순서를 최대한 유지하세요. 줄 수가 크게 달라지면 결과 반영이 어긋날 수 있습니다."), ("권장", "짧은 감탄사나 반복 단어를 찾을 때는 꺼짐, 긴 대사 흐름의 일관성을 볼 때는 켜짐을 비교하세요.")],
         "confusion": [("추출 결과도 다시 만들어지나요?", "아닙니다. 이 설정은 주로 번역일관성, 추출중복 같은 검사 도구의 비교 단위를 바꿉니다."), ("모든 MVMZ 파일에 적용되나요?", "일반적인 이벤트 401 대사 검사를 기준으로 이해하면 됩니다. 다른 데이터베이스 텍스트는 별도 설정과 흐름을 따릅니다.")],
     },
-    "guide/wolf-2차-추출-제외-필터/index.html": {
+    "guide/wolf-secondary-exclusion-filter/index.html": {
         "summary": "WOLF 2차 추출 제외 필터는 1차 추출 결과 중 실제 번역 대상으로 다시 뽑을 항목을 규칙으로 선별하는 화면입니다.",
         "when": ["2차 추출 결과에 불필요한 문장이 많이 섞일 때", "번역해야 할 문장이 누락되어 조건을 넓혀야 할 때", "파일, 명령, 이벤트, 텍스트 패턴 기준으로 추출 범위를 조정할 때"],
         "before": ["1차 추출 결과가 준비되어 있어야 합니다.", "현재 2차 추출 결과의 누락/과다 추출 예시를 먼저 확인합니다.", "정규식은 작은 범위에서 시험한 뒤 전체 작업에 적용합니다."],
@@ -1352,7 +1457,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["여러 줄 대사가 하나의 번역 단위로 보이는지 확인합니다.", "적용 후 대사 줄 수가 어긋나지 않는지 확인합니다."],
         "notices": [("중요", "블록 번역 결과의 줄 수가 원본과 맞지 않으면 해당 블록 적용이 건너뛰어질 수 있습니다.")],
     },
-    "guide/cmd-122-2차-추출-중복처리/index.html": {
+    "guide/cmd-122-secondary-duplicate-handling/index.html": {
         "summary": "Cmd 122 2차 추출 중복처리는 WOLF의 SET_STRING 명령 후보가 2차 추출에서 반복될 때 중복 처리를 보정하는 설정입니다.",
         "when": ["WOLF 2차 추출 결과에서 같은 SET_STRING 후보가 반복될 때", "동일한 문자열 후보가 여러 위치에서 중복 번역 대상으로 잡힐 때", "SET_STRING 자체는 유지하면서 반복 후보만 줄이고 싶을 때"],
         "before": ["현재 프로젝트가 WOLF 계열인지 확인합니다.", "반복 항목이 WOLF Command ID 122 또는 SET_STRING 후보인지 확인합니다.", "설정을 바꾼 뒤에는 2차 추출 결과를 다시 만들어 비교합니다."],
@@ -1360,7 +1465,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["SET_STRING 후보가 의도대로 정리되었는지 확인합니다.", "필요한 후보가 빠졌다면 설정을 끄고 결과를 비교합니다."],
         "notices": [("주의", "이 문서의 122는 RPG Maker 명령 코드가 아니라 WOLF의 SET_STRING 명령 ID입니다.")],
     },
-    "guide/ctf-이미지-고속-추출/index.html": {
+    "guide/ctf-fast-image-extraction/index.html": {
         "summary": "CTF 이미지 고속 추출은 CTF 이미지 추출 시 PNG 저장을 1 worker로 처리할지 2 worker로 병렬 처리할지 정하는 설정입니다.",
         "when": ["CTF 이미지 추출 시간이 오래 걸릴 때", "이미지가 많아 PNG 저장 단계가 병목처럼 느껴질 때", "CPU, 메모리, 디스크 여유가 있어 병렬 저장을 시도할 때"],
         "before": ["현재 프로젝트 형식이 CTF 계열인지 확인합니다.", "2 worker 사용 시 CPU, 메모리, 디스크 사용량이 늘 수 있습니다.", "저장 장치가 느리거나 다른 작업이 많다면 1 worker가 더 안정적일 수 있습니다."],
@@ -1368,7 +1473,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["PNG 저장 처리 속도와 시스템 부하를 함께 확인합니다.", "결과가 의심되면 1 worker와 2 worker 결과를 비교합니다."],
         "notices": [("중요", "이 설정은 추출 범위를 바꾸는 기능이 아니라 이미지 저장 worker 수를 바꾸는 기능입니다.")],
     },
-    "guide/ctf-2차-추출-제외-필터/index.html": {
+    "guide/ctf-secondary-exclusion-filter/index.html": {
         "summary": "CTF 2차 추출 제외 필터는 ClickTeam Fusion 계열 프로젝트에서 2차 추출 대상으로 삼을 텍스트를 규칙으로 선별하는 화면입니다.",
         "when": ["CTF 2차 추출 결과에 필요 없는 값이 많이 섞일 때", "특정 역할, 카테고리, 식별자에 해당하는 텍스트만 골라내고 싶을 때", "TextId, Context, Value 패턴으로 번역 대상을 조정할 때"],
         "before": ["CTF 프로젝트의 1차 추출 결과가 준비되어 있어야 합니다.", "현재 2차 추출 결과에서 과다 추출/누락 예시를 먼저 확인합니다.", "정규식 조건은 작은 범위로 시험합니다."],
@@ -1376,7 +1481,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["규칙이 의도대로 적용되었는지 샘플 문장으로 확인합니다.", "결과가 바뀌었다면 필요한 범위를 다시 번역합니다."],
         "notices": [("중요", "필터 편집은 앞으로 만들 2차 추출 결과에 영향을 주며, 기존 결과를 자동으로 다시 고치지는 않습니다.")],
     },
-    "guide/bakin-2차-추출-제외-필터/index.html": {
+    "guide/bakin-secondary-exclusion-filter/index.html": {
         "summary": "Bakin 2차 추출 제외 필터는 조건과 일치하는 후보를 Bakin 추출2 결과에서 제외하는 규칙을 편집하는 화면입니다.",
         "when": ["Bakin 추출2 결과에 번역하지 않을 후보가 섞일 때", "추출 파일명, domain, RBR 경로, 원문 정규식을 조합해 제외 조건을 만들 때", "기본 분류기만으로 현재 프로젝트의 제외 범위가 부족할 때"],
         "before": ["Bakin 1차 추출과 추출2 결과가 준비되어 있어야 합니다.", "제외하려는 항목의 추출 파일명, domain, RBR 경로, 원문 예시를 먼저 확인합니다.", "규칙에 매칭된 항목은 mapping에도 들어가지 않을 수 있습니다."],
@@ -1384,7 +1489,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["제외 대상이 결과 JSON에서 빠졌는지 확인합니다.", "필요한 문장까지 빠지지 않았는지 샘플로 확인합니다."],
         "notices": [("주의", "Bakin 2차 추출 제외 필터는 포함 규칙이 아니라 제외 규칙입니다. 조건을 너무 넓게 잡으면 필요한 문장도 빠질 수 있습니다.")],
     },
-    "guide/srpg-2차-추출-필터/index.html": {
+    "guide/srpg-secondary-extraction-filter/index.html": {
         "summary": "SRPG 2차 추출 필터는 SRPG Studio 2차 추출에서 통과시킬 문자열 위치를 지정하는 설정입니다.",
         "when": ["SRPG Studio 2차 추출에서 번역 대상이 너무 넓거나 좁을 때", "이벤트 명령, 이름/설명, 창/폰트, String Table, JS Plugin 일본어 등 특정 범위를 골라 추출하고 싶을 때", "파일명, JSON 경로, 텍스트 정규식 조건으로 추출 대상을 조정해야 할 때"],
         "before": ["이 필터는 WOLF/CTF/Bakin의 제외 필터와 다르게, 먼저 추출할 대상을 지정하는 필터입니다.", "대상 파일, 경로 패턴, 텍스트 정규식은 포함 조건으로 이해합니다.", "제외 파일, 제외 경로, 제외 텍스트 정규식은 포함된 결과 안에서 다시 빼는 보조 조건입니다."],
@@ -1392,7 +1497,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["추출 결과에 의도한 SRPG Studio 문자열 위치만 들어왔는지 확인합니다.", "필요한 문장이 빠졌다면 포함 조건을 넓히고, 불필요한 항목이 많다면 제외 조건을 추가합니다."],
         "notices": [("중요", "SRPG 2차 추출 필터의 기본 방향은 제외가 아니라 추출 대상 지정입니다. 제외 항목은 통과된 결과를 다시 줄이는 보조 조건으로 다루세요.")],
     },
-    "guide/livemaker-폰트-설정/index.html": {
+    "guide/livemaker-font-settings/index.html": {
         "summary": "LiveMaker 폰트 설정은 LiveMaker 적용 과정에서 사용할 AIMT_LiveMaker_KR.ttf 생성용 원본 폰트를 선택하는 설정입니다.",
         "when": ["LiveMaker 번역 후 한글이 네모나 빈 글자로 보일 때", "기본 한글 폰트를 찾지 못했다는 표시가 보일 때", "게임에 맞는 다른 한글 폰트를 사용하고 싶을 때", "FontMod 적용 후 실제 로드된 폰트를 확인해야 할 때"],
         "before": ["한글 글리프가 포함된 ttf, otf, woff 폰트를 준비합니다.", "상업용 작품에 사용할 폰트라면 라이선스를 먼저 확인합니다.", "폰트 변경은 번역문 내용이 아니라 실행 중 글자 표시 방식에 영향을 줍니다."],
@@ -1400,35 +1505,51 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["게임 실행 시 한글이 정상적으로 보이는지 확인합니다.", "필요하면 LiveMaker FontMod 로그 확인으로 로드된 폰트와 요청된 폰트를 비교합니다."],
         "notices": [("주의", "폰트가 선택되어도 게임 화면 폭, 줄바꿈, 글리프 지원 여부는 실제 실행 화면에서 반드시 확인해야 합니다.")],
     },
-    "guide/추출/index.html": {
+    "guide/extract-python-data-strings/index.html": {
+        "summary": "Extract Python data strings는 Ren'Py 프로젝트의 Python 데이터 안에 들어 있는 문자열을 번역 대상으로 함께 추출할지 정하는 설정입니다.",
+        "when": ["대사 파일이 아닌 Python 데이터 안의 이름, 설명, UI 문구가 원문으로 남을 때", "Ren'Py 추출 결과에 데이터성 문자열을 포함해야 할 때", "일반 스크립트 추출만으로 누락되는 문장을 확인할 때"],
+        "before": ["현재 프로젝트가 Ren'Py 계열인지 확인합니다.", "Python 데이터 문자열은 코드와 가까운 위치에 있을 수 있으므로 추출 후 샘플을 꼭 확인합니다.", "설정을 바꾸면 기존 추출 결과가 자동으로 바뀌지 않으므로 다시 추출해야 합니다."],
+        "steps": ["설정 화면에서 Ren'Py 그룹을 확인합니다.", "Extract Python data strings를 켜거나 끕니다.", "Ren'Py 추출을 다시 실행합니다.", "추출 결과에서 데이터성 문자열이 의도대로 포함되었는지 확인합니다."],
+        "result": ["이름, 설명, UI 문구처럼 누락되던 문자열이 추출 결과에 들어왔는지 확인합니다.", "코드 조각이나 번역하면 안 되는 값이 섞이면 설정을 끄고 결과를 비교합니다."],
+        "notices": [("주의", "Python 데이터 문자열은 실제 코드와 가까울 수 있습니다. 번역 결과를 적용한 뒤 실행 오류가 없는지 확인하세요.")],
+    },
+    "guide/include-tl-translations/index.html": {
+        "summary": "Include tl translations는 Ren'Py의 tl 번역 블록에 있는 문장을 추출 대상에 포함할지 정하는 설정입니다.",
+        "when": ["이미 tl 블록이 있는 프로젝트에서 기존 번역문도 함께 검토해야 할 때", "원문 스크립트와 tl 영역의 번역 상태를 비교하고 싶을 때", "기존 번역본을 기반으로 재번역하거나 검수할 때"],
+        "before": ["현재 프로젝트가 Ren'Py 계열인지 확인합니다.", "tl 블록은 이미 번역된 문장을 포함할 수 있으므로 원문과 번역문을 구분해 확인합니다.", "설정을 바꾼 뒤에는 Ren'Py 추출을 다시 실행해야 합니다."],
+        "steps": ["설정 화면에서 Ren'Py 그룹을 확인합니다.", "Include tl translations를 켜거나 끕니다.", "Ren'Py 추출을 다시 실행합니다.", "tl 블록의 문장이 추출 결과에 포함되는지 확인합니다."],
+        "result": ["기존 tl 번역문이 필요한 만큼 추출되었는지 확인합니다.", "중복 번역 대상이 늘었다면 설정을 끄고 일반 추출 결과와 비교합니다."],
+        "notices": [("권장", "새 번역을 처음 만드는 경우에는 tl 블록 포함 여부가 필요한지 먼저 작은 범위로 확인하세요.")],
+    },
+    "guide/extraction/index.html": {
         "summary": "추출은 게임 파일에서 번역할 수 있는 텍스트를 찾아 작업용 파일로 준비하는 단계입니다.",
         "when": ["새 프로젝트를 시작할 때", "게임 파일이 바뀐 뒤 번역 대상을 다시 만들 때", "누락된 문장이 있는지 확인할 때"],
         "before": ["프로젝트 폴더가 올바른지 확인합니다.", "게임 형식에 맞는 엔진별 가이드를 확인합니다.", "이전 추출 결과를 덮어쓸 수 있으므로 필요한 파일을 보관합니다."],
         "steps": ["프로젝트와 게임 형식을 확인합니다.", "추출 옵션을 확인합니다.", "추출을 실행합니다.", "완료 메시지와 생성된 파일을 확인합니다."],
         "result": ["추출 결과 목록에 번역 대상이 표시되는지 확인합니다.", "예상보다 항목이 적으면 엔진별 제한과 추출 옵션을 확인합니다."],
     },
-    "guide/번역/index.html": {
+    "guide/translation/index.html": {
         "summary": "번역은 추출된 원문을 선택한 번역 방식으로 번역하는 단계입니다.",
         "when": ["추출 결과가 준비되었을 때", "일부 파일만 다시 번역할 때", "번역 설정을 바꾼 뒤 결과를 새로 만들 때"],
         "before": ["API 키, 모델, 번역 설정을 확인합니다.", "원문 언어와 결과 언어를 확인합니다.", "먼저 작은 범위로 테스트할 준비를 합니다."],
         "steps": ["번역할 파일이나 범위를 선택합니다.", "번역 설정을 확인합니다.", "번역을 실행합니다.", "오류 메시지와 생성 결과를 확인합니다."],
         "result": ["번역 결과 파일이 생성되었는지 확인합니다.", "일부 문장을 열어 용어와 문체가 유지되는지 확인합니다.", "오류가 나면 키, 모델, 요청 제한을 확인합니다."],
     },
-    "guide/적용과-즉시적용/index.html": {
+    "guide/apply-and-instant-apply/index.html": {
         "summary": "적용과 즉시적용은 번역 결과를 게임 프로젝트에 반영하는 단계입니다.",
         "when": ["번역 결과를 실제 게임에서 확인하려 할 때", "일부 결과만 빠르게 반영해야 할 때", "적용 후 문제가 생겨 다시 확인해야 할 때"],
         "before": ["번역 결과가 준비되어 있어야 합니다.", "게임을 실행 중이라면 파일 잠금 문제가 없는지 확인합니다.", "되돌릴 수 있도록 적용 전 파일을 보관합니다."],
         "steps": ["적용할 결과와 대상 프로젝트를 확인합니다.", "적용 또는 즉시적용을 선택합니다.", "완료 메시지를 확인합니다.", "게임을 실행해 실제 화면을 확인합니다."],
         "result": ["게임 화면에 번역문이 반영되었는지 확인합니다.", "깨짐, 누락, 적용 실패가 있으면 적용 대상과 엔진별 제한을 확인합니다."],
     },
-    "guide/빠른번역/index.html": {
+    "guide/quick-translation/index.html": {
         "summary": "빠른번역은 짧은 문장이나 일부 내용을 빠르게 번역해 설정과 모델 상태를 확인하는 기능입니다.",
         "when": ["API 키와 모델이 정상인지 시험할 때", "짧은 문장을 즉시 번역해야 할 때", "전체 번역 전에 문체와 용어를 확인할 때"],
         "before": ["API 키와 모델이 준비되어 있어야 합니다.", "원문 언어와 결과 언어를 확인합니다.", "프롬프트나 용어사전이 결과에 영향을 줄 수 있습니다."],
         "steps": ["번역할 문장을 입력합니다.", "사용할 번역 방식과 모델을 확인합니다.", "빠른번역을 실행합니다.", "결과와 오류 메시지를 확인합니다."],
         "result": ["짧은 문장이 정상 번역되는지 확인합니다.", "실패하면 API 키, 모델, 네트워크 상태를 확인합니다."],
     },
-    "guide/자주-나오는-질문/index.html": {
+    "guide/faq/index.html": {
         "before": ["프로젝트 폴더가 올바른지 확인합니다.", "추출, 번역, 적용 중 어느 단계에서 문제가 생겼는지 구분합니다.", "오류 메시지가 있다면 문구를 그대로 확인합니다.", "API 관련 문제는 키, 모델, 사용량, 네트워크를 순서대로 확인합니다."],
         "steps": ["최근에 바꾼 설정을 확인합니다.", "작은 범위로 다시 실행해 같은 문제가 반복되는지 확인합니다.", "화면에 표시된 오류 메시지와 작업 단계를 함께 확인합니다.", "엔진별 가이드에서 해당 형식의 제한 사항을 확인합니다."],
         "followup": "문의할 때는 사용한 AIMT 버전, 게임 형식, 어느 단계에서 실패했는지, 표시된 오류 메시지, 재현 순서를 함께 정리하면 원인을 더 빠르게 찾을 수 있습니다.",
@@ -1842,7 +1963,7 @@ def _render_article(path: str, title: str, original_article: str) -> str:
     page_type = _infer_page_type(path, title)
     metadata = _metadata_for(path, title, page_type)
     content = _prepare_content(page_type, original_article) if page_type != "home" else ""
-    if path == "guide/설정/index.html":
+    if path == "guide/settings-screen/index.html":
         content = _normalize_settings_page_content(content)
     if path in FEATURE_NESTED_PARENT_PATHS or page_type == "command_reference":
         content = _normalize_parent_page_link_lists(content)
@@ -1867,7 +1988,7 @@ def _screen_area_article() -> str:
     parts = [
         '<article class="guide-content"><h1>화면 영역</h1>',
         _doc_version(),
-        _image_block(from_path, "guide/assets/하단부/image.png", "AIMT 화면 전체"),
+        _image_block(from_path, "guide/assets/bottom-area/image.png", "AIMT 화면 전체"),
         "<h2>전체 화면</h2>",
         _p("AIMT 화면은 크게 영역1 사이드바, 영역2 메인뷰, 영역3 커맨드바로 나누어 볼 수 있습니다. 먼저 전체 화면의 위치 관계를 확인한 뒤, 필요한 영역의 설명과 관련 문서로 이동하세요."),
     ]
@@ -1961,10 +2082,10 @@ def _build_group_articles() -> dict[str, str]:
             "기본 작업 흐름",
             "프로젝트를 지정한 뒤 추출, 번역, 적용, 확인까지 이어지는 일반적인 작업 순서입니다.",
             [
-                ("guide/새-프로젝트-프로젝트-지정/index.html", "새 프로젝트 / 프로젝트 지정"),
-                ("guide/추출/index.html", "추출"),
-                ("guide/번역/index.html", "번역"),
-                ("guide/적용과-즉시적용/index.html", "적용과 즉시적용"),
+                ("guide/project-selection/index.html", "새 프로젝트 / 프로젝트 지정"),
+                ("guide/extraction/index.html", "추출"),
+                ("guide/translation/index.html", "번역"),
+                ("guide/apply-and-instant-apply/index.html", "적용과 즉시적용"),
             ],
         ),
         "guide/engine-guides/index.html": _hub_article(
@@ -1972,10 +2093,16 @@ def _build_group_articles() -> dict[str, str]:
             "엔진별 가이드",
             "게임 제작 도구나 엔진별로 다른 준비사항과 작업 흐름을 확인하는 영역입니다.",
             [
-                ("guide/rpg-maker-mvmz-개정1/index.html", "RPG Maker MV/MZ"),
-                ("guide/rpg-maker-vxvxa-개정1/index.html", "RPG Maker VX/VXA"),
+                ("guide/rpg-maker-mvmz/index.html", "RPG Maker MV/MZ"),
+                ("guide/rpg-maker-vxvxa/index.html", "RPG Maker VX/VXA"),
                 ("guide/wolf-rpg-editor/index.html", "WOLF RPG Editor"),
-                ("guide/tyranobuilder-tyranoscript-개정1/index.html", "TyranoBuilder/TyranoScript"),
+                ("guide/clickteam-fusion-coming-soon/index.html", "ClickTeam Fusion"),
+                ("guide/tyranobuilder-tyranoscript/index.html", "TyranoBuilder/TyranoScript"),
+                ("guide/pixel-game-maker-mv/index.html", "Pixel Game Maker MV"),
+                ("guide/srpg-studio/index.html", "SRPG Studio"),
+                ("guide/livemaker/index.html", "LiveMaker"),
+                ("guide/bakin/index.html", "Bakin"),
+                ("guide/renpy/index.html", "Ren'Py"),
             ],
         ),
         "guide/features/index.html": _hub_article(
@@ -1984,14 +2111,14 @@ def _build_group_articles() -> dict[str, str]:
             "AIMT 화면의 각 영역과 도구별 기능을 찾아보는 영역입니다.",
             [
                 ("guide/features-screen/index.html", "화면 영역"),
-                ("guide/설정/index.html", "설정 화면"),
-                ("guide/도구/index.html", "작업 도구"),
-                ("guide/퀵슬롯/index.html", "퀵슬롯"),
+                ("guide/settings-screen/index.html", "설정 화면"),
+                ("guide/workspace-tools/index.html", "작업 도구"),
+                ("guide/quickslot/index.html", "퀵슬롯"),
             ],
         ),
         "guide/features-screen/index.html": _screen_area_article(),
-        "guide/화면전환/index.html": _hub_article(
-            "guide/화면전환/index.html",
+        "guide/view-switching/index.html": _hub_article(
+            "guide/view-switching/index.html",
             "화면전환",
             "AIMT의 화면 표시 방식과 명령 입력 화면으로 이동하는 기능을 함께 확인하는 영역입니다.",
             [
@@ -2004,7 +2131,7 @@ def _build_group_articles() -> dict[str, str]:
             "문제 해결",
             "오류, 적용 실패, 결과 이상, 사용량 문제처럼 작업 중 막히는 상황을 확인하는 영역입니다.",
             [
-                ("guide/자주-나오는-질문/index.html", "자주 나오는 질문"),
+                ("guide/faq/index.html", "자주 나오는 질문"),
             ],
         ),
         "guide/advanced-reference/index.html": _hub_article(
@@ -2012,14 +2139,14 @@ def _build_group_articles() -> dict[str, str]:
             "참고 자료",
             "AIMT에서 함께 참고하기 좋은 외부 사이트, API 제공자 문서, 출처 링크를 모은 영역입니다.",
             [
-                ("guide/rpgmaker-명령코드-정리-작성-예정/index.html", "RPG Maker 명령 코드 참고"),
-                ("guide/추출-파일별-설명/index.html", "추출 파일별 설명"),
-                ("guide/외부-유틸리티/index.html", "외부 유틸리티"),
-                ("guide/제공자별-참고-링크/index.html", "제공자별 참고 링크"),
+                ("guide/rpg-maker-command-code-reference/index.html", "RPG Maker 명령 코드 참고"),
+                ("guide/extraction-files-reference/index.html", "추출 파일별 설명"),
+                ("guide/external-utilities/index.html", "외부 유틸리티"),
+                ("guide/provider-reference-links/index.html", "제공자별 참고 링크"),
             ],
         ),
-        "guide/제공자별-참고-링크/index.html": _render_article_body(
-            "guide/제공자별-참고-링크/index.html",
+        "guide/provider-reference-links/index.html": _render_article_body(
+            "guide/provider-reference-links/index.html",
             "제공자별 참고 링크",
             "advanced_reference",
             {
@@ -2187,7 +2314,7 @@ def _append_settings_groups(
     for group_id, title, child_paths in SETTINGS_NAV_GROUPS:
         parent_path = ""
         if group_id == "translation":
-            parent_path = "guide/번역-설정/index.html"
+            parent_path = "guide/translation-settings/index.html"
             _ensure_path_entry(by_path, parent_path)
         children: list[dict[str, Any]] = []
         for child_path in child_paths:
@@ -2230,6 +2357,10 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
         _ensure_path_entry(by_path, path)
     for path in SCREEN_AREA_NAV_CHILD_PATHS:
         _ensure_path_entry(by_path, path)
+    for path in ENGINE_PATHS:
+        _ensure_path_entry(by_path, path)
+    for path in FEATURE_ENGINE_TOOL_PATHS:
+        _ensure_path_entry(by_path, path)
     for path in FEATURE_QUICKSLOT_PATHS:
         _ensure_path_entry(by_path, path)
     for path, title in TITLE_OVERRIDES.items():
@@ -2253,9 +2384,9 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
     settings_page_children: list[dict[str, Any]] = []
     feature_buckets: dict[str, list[dict[str, Any]]] = {
         "guide/features-screen/index.html": [],
-        "guide/도구/index.html": [],
+        "guide/workspace-tools/index.html": [],
         "guide/features-engine-tools/index.html": [],
-        "guide/퀵슬롯/index.html": [],
+        "guide/quickslot/index.html": [],
         "guide/features/index.html": [],
     }
     for path, entry in list(by_path.items()):
@@ -2271,7 +2402,7 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         if path in GROUP_PAGES or path in ADVANCED_SUBGROUP_PAGES or path in FEATURE_SUBGROUP_PAGES or path in settings_reference_parent_paths:
             continue
-        if path == "guide/퀵슬롯/index.html":
+        if path == "guide/quickslot/index.html":
             continue
         title = str(entry["title"])
         settings_parent = ""
@@ -2311,13 +2442,13 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     feature_buckets["guide/features-screen/index.html"].append(entry)
                 elif path in FEATURE_WORKSPACE_TOOL_PATHS:
                     entry["depth"] = 3
-                    feature_buckets["guide/도구/index.html"].append(entry)
+                    feature_buckets["guide/workspace-tools/index.html"].append(entry)
                 elif path in FEATURE_ENGINE_TOOL_PATHS:
                     entry["depth"] = 3
                     feature_buckets["guide/features-engine-tools/index.html"].append(entry)
                 elif path in FEATURE_QUICKSLOT_PATHS:
                     entry["depth"] = 3
-                    feature_buckets["guide/퀵슬롯/index.html"].append(entry)
+                    feature_buckets["guide/quickslot/index.html"].append(entry)
                 else:
                     feature_buckets["guide/features/index.html"].append(entry)
             else:
@@ -2328,13 +2459,19 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
         group_entry = dict(by_path[group_path])
         group_entry["depth"] = 1
         nav.append(group_entry)
-        children = sorted(buckets[group_path], key=_sort_key)
+        if group_path == "guide/engine-guides/index.html":
+            children = sorted(
+                buckets[group_path],
+                key=lambda item: (ENGINE_NAV_ORDER.get(str(item["path"]), 999999), _sort_key(item)),
+            )
+        else:
+            children = sorted(buckets[group_path], key=_sort_key)
         if group_path == "guide/features/index.html":
             for subgroup_path in [
                 "guide/features-screen/index.html",
                 SETTINGS_PAGE_PATH,
-                "guide/도구/index.html",
-                "guide/퀵슬롯/index.html",
+                "guide/workspace-tools/index.html",
+                "guide/quickslot/index.html",
             ]:
                 subgroup_entry = dict(by_path[subgroup_path])
                 subgroup_entry["depth"] = 2
@@ -2345,7 +2482,7 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 if subgroup_path == "guide/features-screen/index.html":
                     _append_screen_area_groups(nav, by_path, 2)
                     continue
-                if subgroup_path == "guide/도구/index.html":
+                if subgroup_path == "guide/workspace-tools/index.html":
                     _append_workspace_tool_groups(
                         nav,
                         by_path,
