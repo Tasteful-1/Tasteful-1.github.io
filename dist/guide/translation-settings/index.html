@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>번역 설정 · AIMT Guide</title>
+  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+  <link rel="stylesheet" href="../../guide/static/styles.css">
+</head>
+<body>
+  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div id="searchOverlay" class="search-overlay" hidden>
+    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
+      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
+      <div id="searchResults" class="search-results" hidden></div>
+    </section>
+  </div>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      <nav class="nav-list" aria-label="문서 목록">
+<details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
+<details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="2">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript/index.html" data-depth="2">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv/index.html" data-depth="2">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/srpg-studio/index.html" data-depth="2">SRPG Studio 번역 가이드</a>
+<a class="nav-link" href="../../guide/livemaker/index.html" data-depth="2">LiveMaker 번역 가이드</a>
+<a class="nav-link" href="../../guide/bakin/index.html" data-depth="2">Bakin 번역 가이드</a>
+<a class="nav-link" href="../../guide/renpy/index.html" data-depth="2">Ren'Py 번역 가이드</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
+<details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/refresh-file-list/index.html" data-depth="4">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/view-switching/index.html" data-depth="4">화면전환</a>
+<a class="nav-link" href="../../guide/prompt/index.html" data-depth="4">프롬프트</a>
+<a class="nav-link" href="../../guide/quick-translation/index.html" data-depth="4">빠른번역</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-mainview"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역2 메인뷰</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/viewer/index.html" data-depth="4">Viewer</a>
+<a class="nav-link" href="../../guide/console/index.html" data-depth="4">Console</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-commandbar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역3 커맨드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/extraction/index.html" data-depth="4">추출</a>
+<a class="nav-link" href="../../guide/translation/index.html" data-depth="4">번역</a>
+<a class="nav-link" href="../../guide/apply-and-instant-apply/index.html" data-depth="4">적용과 즉시적용</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/settings-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/settings-screen/index.html" data-depth="2">설정 화면</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-general"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">일반</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/theme/index.html" data-depth="4">테마</a>
+<a class="nav-link" href="../../guide/extraction-regex/index.html" data-depth="4">추출정규식</a>
+<a class="nav-link" href="../../guide/escape-patterns/index.html" data-depth="4">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/language-pattern-settings/index.html" data-depth="4">언어패턴설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="guide/translation-settings/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/translation-settings/index.html" data-depth="3">번역 설정</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="4">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-settings/index.html" data-depth="4">API KEY 설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-mvmz"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/exclude-exception-regex/index.html" data-depth="4">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/replacement-terms/index.html" data-depth="4">치환용어설정</a>
+<a class="nav-link" href="../../guide/default-font-settings/index.html" data-depth="4">기본폰트설정</a>
+<a class="nav-link" href="../../guide/title-text/index.html" data-depth="4">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="4">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="4">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/wolf-secondary-exclusion-filter/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-secondary-duplicate-handling/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-secondary-exclusion-filter/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-secondary-extraction-filter/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-font-settings/index.html" data-depth="4">LiveMaker 폰트 설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-secondary-exclusion-filter/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/extract-python-data-strings/index.html" data-depth="4">Extract Python data strings</a>
+<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Include tl translations</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/log-management/index.html" data-depth="4">로그 관리</a>
+<a class="nav-link" href="../../guide/backup-management/index.html" data-depth="4">백업 관리</a>
+<a class="nav-link" href="../../guide/cache-management/index.html" data-depth="4">캐시 관리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-help"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">도움말</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/help-settings/index.html" data-depth="4">도움말</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/misc-settings/index.html" data-depth="4">기타</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/workspace-tools/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/workspace-tools/index.html" data-depth="2">작업 도구</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-utilities"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">유틸리티</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/fill-blanks/index.html" data-depth="4">빈칸채우기</a>
+<a class="nav-link" href="../../guide/user-dictionary-prepost/index.html" data-depth="4">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/undo-apply/index.html" data-depth="4">적용취소</a>
+<a class="nav-link" href="../../guide/translation-consistency/index.html" data-depth="4">번역일관성</a>
+<a class="nav-link" href="../../guide/extraction-duplicates/index.html" data-depth="4">추출 중복</a>
+<a class="nav-link" href="../../guide/escape-check/index.html" data-depth="4">이스케이프</a>
+<a class="nav-link" href="../../guide/final-consonant-cleanup/index.html" data-depth="4">받침정리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-shortcuts"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">바로가기</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="4">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="4">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="4">APPDATA</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-engine-tools"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">엔진별 보조 도구</span></summary><div class="nav-children">
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-mvmz-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/line-maker-mvmz/index.html" data-depth="5">라인메이커 (MVMZ)</a>
+<a class="nav-link" href="../../guide/add-plugin/index.html" data-depth="5">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-merge-split/index.html" data-depth="5">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-sync/index.html" data-depth="5">402 동기화</a>
+<a class="nav-link" href="../../guide/name-consistency/index.html" data-depth="5">이름 일관성</a>
+<a class="nav-link" href="../../guide/integrated-consistency/index.html" data-depth="5">통합 일관성</a>
+<a class="nav-link" href="../../guide/japanese-check/index.html" data-depth="5">일본어체크</a>
+<a class="nav-link" href="../../guide/code-restore/index.html" data-depth="5">코드 복원</a>
+<a class="nav-link" href="../../guide/import-translation/index.html" data-depth="5">번역 가져오기</a>
+<a class="nav-link" href="../../guide/escape-data/index.html" data-depth="5">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/mvmz-media-crypter/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-decryption/index.html" data-depth="5">Data 복호화</a>
+<a class="nav-link" href="../../guide/project-conversion/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/enigma-unpack/index.html" data-depth="5">에니그마 언팩</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-unpack/index.html" data-depth="5">언팩</a>
+<a class="nav-link" href="../../guide/title-change-vxvxa/index.html" data-depth="5">타이틀변경 (VXVXA)</a>
+<a class="nav-link" href="../../guide/line-maker-vxvxa/index.html" data-depth="5">라인메이커 (VXVXA)</a>
+<a class="nav-link" href="../../guide/dedicated-extraction/index.html" data-depth="5">전용추출</a>
+<a class="nav-link" href="../../guide/imbook-bbtext-missions-patch/index.html" data-depth="5">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv-conversion/index.html" data-depth="5">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-wolf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/wolf-unpack-repack/index.html" data-depth="5">언팩/리팩</a>
+<a class="nav-link" href="../../guide/integrated-replacement/index.html" data-depth="5">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-patch/index.html" data-depth="5">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-filename-replacement/index.html" data-depth="5">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-ctf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/metadata-check/index.html" data-depth="5">메타정보 확인</a>
+<a class="nav-link" href="../../guide/title-change-ctf/index.html" data-depth="5">타이틀 변경 (CTF)</a>
+<a class="nav-link" href="../../guide/language-change/index.html" data-depth="5">언어 변경</a>
+<a class="nav-link" href="../../guide/ctf-crypter/index.html" data-depth="5">크립터 (CTF)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-tyrano-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Tyrano</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-tyrano/index.html" data-depth="5">ASAR (Tyrano 계열)</a>
+<a class="nav-link" href="../../guide/title-change-tyrano/index.html" data-depth="5">타이틀 변경 (Tyrano)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-kirikiri-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Kirikiri</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-conversion/index.html" data-depth="5">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-pgmmv-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">PGMMV</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/pgmmv-crypter/index.html" data-depth="5">크립터 (PGMMV)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-srpg-studio-tools-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-studio-unpack/index.html" data-depth="5">언팩</a>
+<a class="nav-link" href="../../guide/srpg-studio-manual-build/index.html" data-depth="5">수동 빌드</a>
+<a class="nav-link" href="../../guide/srk-crypter/index.html" data-depth="5">SRK 크립터</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-renpy-tools-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Ren'Py</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/renpy-crypter/index.html" data-depth="5">크립터 (Ren'Py)</a>
+<a class="nav-link" href="../../guide/renpy-tag-check/index.html" data-depth="5">태그 검사</a>
+<a class="nav-link" href="../../guide/renpy-font-replacement/index.html" data-depth="5">폰트 교체</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-electron-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Electron</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="5">ASAR (Electron)</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ttc-build/index.html" data-depth="4">TTC 빌드</a>
+<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">세이브 에디터</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/quickslot/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/quickslot/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/memo/index.html" data-depth="3">메모장</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/troubleshooting/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">문제 해결</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/faq/index.html" data-depth="2">자주 나오는 질문</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/advanced-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">참고 자료</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/external-utilities/index.html" data-depth="2">외부 유틸리티</a>
+<a class="nav-link" href="../../guide/provider-reference-links/index.html" data-depth="2">제공자별 참고 링크</a>
+<a class="nav-link" href="../../guide/extraction-files-reference/index.html" data-depth="2">추출 파일별 설명</a>
+<a class="nav-link" href="../../guide/rpg-maker-command-code-reference/index.html" data-depth="2">RPG Maker 명령 코드 참고</a>
+</div></details>
+</div></details>
+      </nav>
+    </aside>
+    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
+    <main class="content-shell">
+<article class="guide-content">
+  <h1>번역 설정</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.16 계열<br>최종 편집 일시: 2026-07-03</p>
+  <p><img src="../../guide/assets/translation-settings/image%203.png" alt=""></p>
+
+  <h2>뭘 하는 곳인가요?</h2>
+  <p><strong>번역 설정</strong>은 AIMT가 어떤 번역 엔진과 모델을 사용하고, 한 번에 어느 정도의 문장을 보내며, 결과를 어떤 형식으로 받을지 정하는 화면입니다.</p>
+  <p>이 화면의 설정은 번역 품질, 속도, 비용, 오류 발생 빈도에 직접 영향을 줍니다. 처음에는 권장값으로 시작하고, 시험 번역 결과를 보면서 필요한 항목만 조절하는 방식이 가장 안전합니다.</p>
+
+  <div class="guide-callout" data-callout="important">
+    <div class="guide-callout-title">중요</div>
+    <div class="guide-callout-body">
+      <p>AIMT는 선택한 엔진과 모델에서 사용할 수 있는 설정을 중심으로 화면에 표시합니다. 따라서 보이지 않는 항목은 현재 선택한 모델에서 직접 조절할 필요가 없는 항목으로 이해하면 됩니다.</p>
+    </div>
+  </div>
+
+  <h2>처음 열었을 때 먼저 볼 것</h2>
+  <ol>
+    <li>사용할 번역 엔진과 모델이 맞는지 확인합니다.</li>
+    <li>API 키가 필요한 엔진이라면 키가 등록되어 있는지 확인합니다.</li>
+    <li><code>권장값 적용</code>으로 기본값을 맞춘 뒤, 작은 범위로 시험 번역합니다.</li>
+    <li>결과가 잘리면 <code>Max Output Tokens</code>와 <code>Chunk Size</code>를 확인합니다.</li>
+    <li>요청 제한 오류가 나오면 <code>Rate Limit per Minute</code>, <code>Cooldown Time</code>, <code>Max Requests</code>를 조절합니다.</li>
+    <li>문맥 판단이 부족하면 현재 모델에 표시되는 추론 관련 옵션을 낮은 단계부터 올려 봅니다.</li>
+  </ol>
+
+  <h2>화면 구성</h2>
+  <p>번역 설정 화면은 크게 <strong>엔진/모델 선택</strong>, <strong>요청 크기와 속도</strong>, <strong>생성 파라미터</strong>, <strong>출력 형식</strong>, <strong>추론/캐시 옵션</strong>, <strong>저장과 실행 버튼</strong>으로 나뉩니다.</p>
+  <ul>
+    <li>위쪽 영역에서는 번역 엔진, 모델, API 키, 권장값을 확인합니다.</li>
+    <li>가운데 영역에서는 요청 크기, 속도 제한, 오류 허용 범위, 생성 파라미터를 조절합니다.</li>
+    <li>아래쪽 영역에서는 추론, 캐시, 제공자별 부가 옵션과 실행 버튼을 확인합니다.</li>
+  </ul>
+
+  <h2>버튼과 저장 방식</h2>
+  <h3><code>권장값 적용</code></h3>
+  <p>현재 선택한 엔진과 모델에 맞는 기본값을 불러옵니다. 설정을 많이 바꾼 뒤 결과가 불안정해졌다면 먼저 권장값으로 되돌리고 다시 시험 번역하세요.</p>
+
+  <h3><code>API 키</code></h3>
+  <p>API 키가 필요한 번역 엔진을 사용할 때 키를 등록하거나 확인합니다. 키를 새로 만든 뒤에는 <a href="../../guide/api-key-settings/index.html">API KEY 설정</a> 문서도 함께 확인하세요.</p>
+
+  <h3><code>적용</code>, <code>저장</code>, <code>시작</code>, <code>취소</code></h3>
+  <ul>
+    <li><code>적용</code>: 현재 화면의 설정을 이번 작업에 반영합니다.</li>
+    <li><code>저장</code>: 다음에 다시 열었을 때도 같은 설정을 사용하도록 저장합니다.</li>
+    <li><code>시작</code>: 현재 설정으로 번역을 시작합니다.</li>
+    <li><code>취소</code>: 설정 변경이나 번역 진행을 중단합니다.</li>
+  </ul>
+
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>큰 작업을 시작하기 전에는 설정을 저장한 뒤 일부 파일이나 짧은 구간으로 시험 번역을 먼저 진행하세요.</p><p>문제가 생겼을 때 어느 설정을 바꿨는지 추적하기 쉽습니다. 추적이 어렵다면 %localappdata%/AIMT/logs 의 .log 파일들을 지참하여 문의해주세요.</p>
+    </div>
+  </div>
+
+  <h2>항목을 어떻게 이해하면 되나요?</h2>
+
+  <h3>엔진과 모델</h3>
+  <p>엔진은 번역을 처리할 제공자나 방식을 뜻하고, 모델은 그 엔진 안에서 실제로 번역을 수행하는 AI 또는 번역 서비스를 뜻합니다. 모델을 바꾸면 아래에 표시되는 옵션도 함께 달라질 수 있습니다.</p>
+  <ul>
+    <li>빠른 확인이 목적이면 비용과 속도가 가벼운 모델로 시작합니다.</li>
+    <li>문맥 해석, 말투 유지, 긴 문장 처리 품질이 중요하면 더 강한 모델을 선택합니다.</li>
+    <li>로컬 서버나 OpenAI 호환 엔진은 엔드포인트와 모델명이 정확해야 합니다.</li>
+  </ul>
+
+  <h3>요청 크기와 출력 길이</h3>
+  <p>이 그룹은 AIMT가 번역할 문장을 몇 개씩 묶어 보내고, 모델이 얼마나 긴 답변을 돌려줄 수 있는지 정합니다.</p>
+
+  <h3><code>Chunk Size</code></h3>
+  <p>한 번의 요청에 포함할 번역 단위의 크기입니다. 크게 잡으면 요청 횟수는 줄지만, 한 번에 실패했을 때 다시 처리해야 하는 양도 커집니다.</p>
+  <ul>
+    <li>처음 쓰는 게임 형식이나 모델은 작은 값으로 시험합니다.</li>
+    <li>번역이 자주 잘리거나 누락되면 값을 줄입니다.</li>
+    <li>속도가 너무 느리고 결과가 안정적이면 조금씩 늘려 봅니다.</li>
+  </ul>
+
+  <h3><code>Chunk Division Count</code></h3>
+  <p>큰 묶음을 여러 부분으로 나누어 처리하는 정도입니다. 긴 텍스트를 안정적으로 처리하고 싶을 때 사용합니다.</p>
+  <ul>
+    <li>긴 이벤트, 긴 대사, 설명문이 많은 게임에서 유용합니다.</li>
+    <li>나누는 수가 많아지면 요청 관리가 안정적일 수 있지만 전체 처리 시간은 늘 수 있습니다.</li>
+  </ul>
+
+  <h3><code>Max Output Tokens</code></h3>
+  <p>모델이 한 번에 출력할 수 있는 최대 길이입니다. 번역 결과가 중간에서 끊기거나 JSON 결과가 닫히지 않는다면 먼저 확인할 항목입니다.</p>
+  <ul>
+    <li>결과가 잘리면 값을 늘리거나 <code>Chunk Size</code>를 줄입니다.</li>
+    <li>값을 크게 잡으면 비용과 처리 시간이 늘 수 있습니다.</li>
+    <li>모델마다 허용 가능한 최대 출력 길이가 다릅니다.</li>
+  </ul>
+
+  <h3>요청 속도와 중단 기준</h3>
+  <p>이 그룹은 API 제한에 걸리지 않도록 요청 속도를 조절하고, 오류가 반복될 때 작업을 어디까지 계속할지 정합니다.</p>
+
+  <h3><code>Rate Limit per Minute</code></h3>
+  <p>1분 동안 보낼 요청 수의 기준입니다. 제공자에서 속도 제한 오류가 나오면 이 값을 낮춰야 합니다.</p>
+
+  <h3><code>Cooldown Time</code></h3>
+  <p>요청 사이에 기다리는 시간입니다. 짧게 잡으면 빠르지만 제한에 걸리기 쉽고, 길게 잡으면 느리지만 안정적입니다.</p>
+
+  <h3><code>Max Requests</code></h3>
+  <p>동시에 진행하거나 연속 처리할 요청 수의 기준입니다. 대량 번역에서 속도를 높이고 싶을 때 조절하지만, 제한 오류가 늘면 낮추는 편이 좋습니다.</p>
+
+  <h3><code>Max Errors/Min</code></h3>
+  <p>1분 동안 허용할 오류 수입니다. 짧은 시간에 오류가 몰리면 일시적인 제한이나 네트워크 문제가 있을 수 있으므로 작업을 멈추고 확인하도록 돕는 기준입니다.</p>
+
+  <h3><code>Max Consecutive Errors</code></h3>
+  <p>연속 오류가 몇 번 발생하면 작업을 중단할지 정합니다. API 키, 모델명, 네트워크, 요청 제한 문제가 있을 때 무한 반복을 막는 역할을 합니다.</p>
+
+  <h3>문장 생성 성향</h3>
+  <p>생성 파라미터는 모델이 문장을 고르는 방식을 조절합니다. AIMT는 현재 모델에서 조절 가능한 항목을 화면에 표시하므로, 보이는 항목만 필요한 만큼 바꾸면 됩니다.</p>
+
+  <h3><code>Temperature</code></h3>
+  <p>값이 낮을수록 안정적이고 일관된 번역에 가까워지고, 값이 높을수록 표현이 다양해질 수 있습니다. 사용설명서 기준으로는 대사 번역도 먼저 낮은 값에서 시작하는 것을 권장합니다.</p>
+
+  <h3><code>Top K</code>, <code>Top P</code>, <code>Min P</code>, <code>Typical P</code></h3>
+  <p>모델이 후보 단어를 고르는 범위를 조절합니다. 기본값으로도 문제가 없다면 건드리지 않는 편이 좋습니다.</p>
+  <ul>
+    <li>문장이 지나치게 흔들리면 후보 범위를 좁히는 방향으로 조절합니다.</li>
+    <li>표현이 너무 단조롭다면 조금 넓혀 시험합니다.</li>
+    <li>여러 값을 동시에 크게 바꾸면 원인을 찾기 어려우므로 하나씩 조절합니다.</li>
+  </ul>
+
+  <h3><code>Frequency Penalty</code>, <code>Presence Penalty</code>, <code>Repeat Penalty</code></h3>
+  <p>같은 표현이 반복되는 정도를 조절합니다. 반복 번역, 같은 단어 남발, 대사 말투가 어색하게 되풀이될 때 확인합니다.</p>
+
+  <h3><code>Timeout</code></h3>
+  <p>요청 하나를 얼마나 오래 기다릴지 정합니다. 긴 문장, 강한 추론, 느린 로컬 서버를 사용할 때는 너무 짧게 잡지 않는 것이 좋습니다.</p>
+
+  <h3><code>Verbosity</code></h3>
+  <p>지원 모델에서 답변의 자세한 정도를 조절합니다. 번역 작업에서는 설명이 길어지는 것보다 번역 결과가 정확히 돌아오는 것이 중요하므로 기본값으로 먼저 확인하세요.</p>
+
+  <h3>출력 형식</h3>
+  <h3><code>Response Format</code></h3>
+  <p>번역 결과를 어떤 형식으로 받을지 정합니다. 일반 텍스트, JSON 형식, 구조화 출력처럼 모델이 지원하는 방식이 표시될 수 있습니다.</p>
+  <ul>
+    <li>일반 텍스트는 확인하기 쉽지만 자동 처리에는 불리할 수 있습니다.</li>
+    <li>JSON 형식은 결과를 항목별로 다시 읽어들이기 좋습니다.</li>
+    <li>구조화 출력은 지원 모델에서 정해진 구조를 더 안정적으로 따르게 할 때 사용합니다.</li>
+  </ul>
+  <p>번역 결과가 깨지거나 일부 항목을 읽어오지 못한다면 <code>Response Format</code>, <code>Max Output Tokens</code>, <code>Chunk Size</code>를 함께 확인하세요.</p>
+
+  <h3>추론 제어</h3>
+  <p>추론 제어는 모델이 답을 만들기 전에 문맥을 얼마나 깊게 검토할지 정하는 항목입니다. AIMT는 현재 선택한 모델에서 의미 있는 추론 옵션을 표시하므로, 화면에 보이는 항목을 기준으로 조절하면 됩니다.</p>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장</div>
+    <div class="guide-callout-body">
+      <p>추론 강도를 높이면 어려운 문맥에서는 도움이 될 수 있지만, 모든 번역에서 무조건 품질이 좋아지는 것은 아닙니다. 속도와 비용이 늘 수 있으므로 기본값으로 시험한 뒤 필요한 경우에만 올리세요.</p>
+    </div>
+  </div>
+
+  <h3><code>Use Extended Thinking</code></h3>
+  <p>Claude 계열처럼 확장 추론을 지원하는 모델에서 표시될 수 있습니다. 긴 문맥, 복잡한 말장난, 인물 관계를 고려해야 하는 문장에 도움이 될 수 있습니다.</p>
+
+  <h3><code>Output Effort</code></h3>
+  <p>지원 모델에서 추론 또는 답변 작성에 들이는 노력을 단계로 조절합니다. 낮은 값은 빠르고 가볍고, 높은 값은 더 오래 검토하지만 비용과 시간이 늘 수 있습니다.</p>
+
+  <h3><code>Thinking Budget</code></h3>
+  <p>지원 모델에서 추론에 사용할 예산을 숫자로 조절합니다. 너무 크게 잡으면 처리 시간이 길어질 수 있으므로 기본값에서 시작해 필요한 경우에만 조금씩 조절하세요.</p>
+
+  <h3><code>Thinking Level</code></h3>
+  <p>Gemini 계열처럼 추론 강도를 단계로 고르는 모델에서 표시될 수 있습니다. 일반 번역은 기본값으로 충분한 경우가 많고, 문맥 해석이 부족할 때만 높여 봅니다.</p>
+
+  <h3><code>Reasoning Effort</code></h3>
+  <p>OpenAI, xAI, OpenRouter 경유 모델 등에서 표시될 수 있는 추론 강도 항목입니다. 낮은 값은 빠른 번역에, 높은 값은 복잡한 문맥 검토에 적합합니다.</p>
+
+  <h3><code>Service Tier</code></h3>
+  <p>지원 제공자에서 요청 처리 우선순위나 비용 단계를 선택하는 항목입니다. 빠른 처리가 필요할 때만 조정하고, 일반 작업은 기본값으로 시작하는 것을 권장합니다.</p>
+
+  <h3>캐시와 대량 처리</h3>
+  <p>캐시와 대량 처리 옵션은 반복되는 긴 지시문이나 많은 요청을 다룰 때 효과가 큽니다. 짧은 시험 번역에서는 체감이 작을 수 있습니다.</p>
+
+  <h3><code>Gemini Request Mode</code></h3>
+  <p>Gemini 요청 방식을 선택합니다. <code>Realtime</code>은 바로 결과를 받아 확인하는 방식이고, <code>Batch API</code>는 많은 요청을 모아서 처리하는 방식입니다.</p>
+  <ul>
+    <li>설정 확인과 시험 번역은 <code>Realtime</code>이 적합합니다.</li>
+    <li>대량 번역은 <code>Batch API</code>가 비용과 처리 방식 면에서 유리할 수 있습니다.</li>
+    <li>Batch 작업은 즉시 끝나지 않을 수 있으므로 결과 확인 시간이 필요합니다.</li>
+  </ul>
+
+  <h3><code>Gemini-Cache</code></h3>
+  <p>Gemini에서 반복되는 긴 프롬프트나 참고 문맥을 재사용할 때 비용과 시간을 줄이는 데 도움이 됩니다. 짧은 요청이나 매번 내용이 달라지는 요청에서는 효과가 작을 수 있습니다.</p>
+
+  <h3><code>Claude-Cache</code></h3>
+  <p>Claude에서 반복되는 시스템 지시문, 용어집, 긴 참고 문맥을 재사용할 때 활용합니다. 캐시 효과는 요청 구조와 입력 길이에 따라 달라질 수 있습니다.</p>
+
+  <h3>기타 옵션</h3>
+  <h3><code>Use TOON-Format</code></h3>
+  <p>번역 요청을 더 압축된 구조로 보내기 위한 옵션입니다. 토큰 사용량을 줄이고 싶을 때 확인하지만, 결과가 달라질 수 있으므로 시험 번역으로 먼저 확인하세요.</p>
+
+  <h3><code>Control Extractor</code></h3>
+  <p>제어 문자, 태그, 특수 표기처럼 번역 과정에서 보존해야 하는 요소를 처리하는 옵션입니다. 결과에서 제어문이 깨지거나 사라질 때 확인합니다.</p>
+
+  <h3><code>Vertex 리전</code></h3>
+  <p>Vertex AI를 사용할 때 요청을 보낼 지역을 선택합니다. 계정, 프로젝트, 모델 제공 지역에 맞게 선택해야 합니다.</p>
+
+  <h3>웹 번역기 언어 방향</h3>
+  <p>웹 번역기를 사용할 때 원문 언어와 번역할 언어 방향을 정합니다. 원문 언어를 잘못 고르면 번역 품질이 크게 떨어질 수 있습니다.</p>
+
+  <h2>상황별 조정 기준</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>상황</th>
+        <th>먼저 확인할 항목</th>
+        <th>권장 조치</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>번역 결과가 중간에서 끊김</td>
+        <td><code>Max Output Tokens</code>, <code>Chunk Size</code>, <code>Response Format</code></td>
+        <td>출력 길이를 늘리거나 요청 묶음을 줄입니다.</td>
+      </tr>
+      <tr>
+        <td>요청 제한 또는 과부하 오류가 자주 발생</td>
+        <td><code>Rate Limit per Minute</code>, <code>Cooldown Time</code>, <code>Max Requests</code></td>
+        <td>요청 속도를 낮추고 대기 시간을 늘립니다.</td>
+      </tr>
+      <tr>
+        <td>문맥 이해가 부족함</td>
+        <td><code>Reasoning Effort</code>, <code>Thinking Level</code>, <code>Output Effort</code></td>
+        <td>현재 모델에 표시되는 추론 옵션을 한 단계씩 올려 시험합니다.</td>
+      </tr>
+      <tr>
+        <td>표현이 너무 흔들림</td>
+        <td><code>Temperature</code>, <code>Top P</code>, penalty 계열</td>
+        <td>생성 범위를 낮추고 한 번에 하나의 항목만 조절합니다.</td>
+      </tr>
+      <tr>
+        <td>대량 작업 시간이 너무 김</td>
+        <td><code>Gemini Request Mode</code>, 캐시 옵션, <code>Chunk Size</code></td>
+        <td>시험 번역 후 대량 작업에 적합한 요청 방식과 캐시를 검토합니다.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>제공자별로 무엇이 달라지나요?</h2>
+  <p>제공자별 옵션은 “지원하지 않는 것을 잘못 켜지 않기 위한 목록”이 아니라, <strong>화면에 보이는 항목을 어떤 기준으로 해석할지</strong>를 돕기 위한 참고입니다.</p>
+  <ul>
+    <li><strong>OpenAI:</strong> 추론 모델에서는 <code>Reasoning Effort</code>, 구조화 출력, 출력 길이 설정을 함께 봅니다. 최신 모델별 지원 항목은 공식 문서를 확인하세요.</li>
+    <li><strong>Claude:</strong> 확장 추론, effort, cache 관련 항목이 모델별로 다르게 보일 수 있습니다. 긴 문맥 번역에서는 추론과 캐시를 함께 검토합니다.</li>
+    <li><strong>Gemini:</strong> <code>Thinking Budget</code>, <code>Thinking Level</code>, <code>Gemini Request Mode</code>, <code>Gemini-Cache</code>가 작업 규모에 영향을 줍니다.</li>
+    <li><strong>OpenRouter:</strong> 선택한 모델과 라우팅된 제공자에 따라 reasoning, cache, 출력 형식 지원이 달라질 수 있습니다. AIMT 화면에 보이는 항목을 기준으로 조절하세요.</li>
+    <li><strong>xAI:</strong> reasoning 모델에서는 추론 강도와 출력 길이를 중심으로 확인합니다. 모델별 제한은 공식 문서를 참고합니다.</li>
+    <li><strong>DeepSeek:</strong> OpenAI 호환 방식으로 사용할 때 모델명, 엔드포인트, 요청 한도를 함께 확인합니다.</li>
+    <li><strong>DeepL, Google Translation, Papago:</strong> AI 생성 파라미터보다 언어 방향, 인증, 사용량 제한이 더 중요합니다.</li>
+    <li><strong>로컬 서버:</strong> 모델 파일, 서버 주소, 컨텍스트 길이, 처리 속도가 결과에 직접 영향을 줍니다.</li>
+  </ul>
+
+  <h2>번역 시작 직전에 달라지는 점</h2>
+  <p>번역을 시작하기 직전에는 현재 프로젝트, 선택한 파일, 번역 엔진, 모델 상태에 따라 일부 항목이 잠기거나 표시가 달라질 수 있습니다. 이는 현재 작업에서 의미 있는 설정만 확인하도록 하기 위한 동작입니다.</p>
+  <ul>
+    <li>번역 중에는 안전을 위해 일부 설정을 바꾸지 못할 수 있습니다.</li>
+    <li>모델을 바꾸면 이전 모델에서만 보이던 항목이 사라질 수 있습니다.</li>
+    <li>권장값을 다시 적용하면 사용자가 직접 조절한 값이 바뀔 수 있습니다.</li>
+  </ul>
+
+  <h2>자주 헷갈리는 점</h2>
+  <h3>설정이 화면에 없어요.</h3>
+  <p>현재 선택한 엔진이나 모델에서 직접 조절할 필요가 없는 항목일 가능성이 큽니다. 모델을 바꾸면 표시되는 항목도 달라질 수 있습니다.</p>
+
+  <h3>추론 옵션은 높을수록 좋은가요?</h3>
+  <p>항상 그렇지는 않습니다. 복잡한 문맥에는 도움이 될 수 있지만, 일반 번역에서는 비용과 시간이 늘어나는 것에 비해 차이가 작을 수 있습니다.</p><p>오히려 불필요한 검열이 발생할 가능성이 높아지기도 합니다.</p>
+
+  <h3>캐시는 항상 켜야 하나요?</h3>
+  <p>반복되는 긴 프롬프트, 용어집, 참고 문맥이 있을 때 유용합니다. 짧은 요청이나 매번 내용이 다른 요청에서는 효과가 작을 수 있습니다.</p><p>사용자 개인이 직접 커스텀한 프롬프트는 대체로 그 분량이 긴 경우가 많고, 단어사전이나 DB사전까지 포함된다면 효과가 아주 큽니다.</p><p>비용절감을 위하여 유료 API 사용자라면 반필수적으로 켜두는 편이 좋습니다.</p>
+
+  <h3>권장값을 적용하면 기존 설정이 사라지나요?</h3>
+  <p>현재 화면의 주요 값이 권장값으로 바뀔 수 있습니다. 직접 맞춘 값이 있다면 적용 전에 어떤 값을 바꿨는지 확인하세요.</p>
+
+  <h2>제공자별 참고 링크</h2>
+  <ul>
+    <li>OpenAI 인증: <a href="https://platform.openai.com/docs/api-reference/authentication">https://platform.openai.com/docs/api-reference/authentication</a></li>
+    <li>OpenAI Reasoning: <a href="https://platform.openai.com/docs/guides/reasoning">https://platform.openai.com/docs/guides/reasoning</a></li>
+    <li>OpenAI Structured Outputs: <a href="https://platform.openai.com/docs/guides/structured-outputs">https://platform.openai.com/docs/guides/structured-outputs</a></li>
+    <li>Claude 모델: <a href="https://docs.anthropic.com/en/docs/about-claude/models/overview">https://docs.anthropic.com/en/docs/about-claude/models/overview</a></li>
+    <li>Claude Extended Thinking: <a href="https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking">https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking</a></li>
+    <li>Claude Prompt Caching: <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching">https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching</a></li>
+    <li>Gemini API 키: <a href="https://ai.google.dev/gemini-api/docs/api-key">https://ai.google.dev/gemini-api/docs/api-key</a></li>
+    <li>Gemini 모델: <a href="https://ai.google.dev/gemini-api/docs/models">https://ai.google.dev/gemini-api/docs/models</a></li>
+    <li>Gemini Thinking: <a href="https://ai.google.dev/gemini-api/docs/thinking">https://ai.google.dev/gemini-api/docs/thinking</a></li>
+    <li>Gemini Caching: <a href="https://ai.google.dev/gemini-api/docs/caching">https://ai.google.dev/gemini-api/docs/caching</a></li>
+    <li>Gemini Batch API: <a href="https://ai.google.dev/gemini-api/docs/batch-api">https://ai.google.dev/gemini-api/docs/batch-api</a></li>
+    <li>Vertex AI 리전: <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations">https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations</a></li>
+    <li>OpenRouter 파라미터: <a href="https://openrouter.ai/docs/api-reference/parameters">https://openrouter.ai/docs/api-reference/parameters</a></li>
+    <li>OpenRouter Reasoning Tokens: <a href="https://openrouter.ai/docs/use-cases/reasoning-tokens">https://openrouter.ai/docs/use-cases/reasoning-tokens</a></li>
+    <li>OpenRouter Provider Routing: <a href="https://openrouter.ai/docs/features/provider-routing">https://openrouter.ai/docs/features/provider-routing</a></li>
+    <li>xAI 모델: <a href="https://docs.x.ai/docs/models">https://docs.x.ai/docs/models</a></li>
+    <li>xAI Reasoning: <a href="https://docs.x.ai/docs/guides/reasoning">https://docs.x.ai/docs/guides/reasoning</a></li>
+    <li>DeepSeek API: <a href="https://api-docs.deepseek.com/">https://api-docs.deepseek.com/</a></li>
+    <li>DeepL 인증: <a href="https://developers.deepl.com/docs/getting-started/auth">https://developers.deepl.com/docs/getting-started/auth</a></li>
+    <li>Google Cloud Translation 언어: <a href="https://cloud.google.com/translate/docs/languages">https://cloud.google.com/translate/docs/languages</a></li>
+    <li>Papago NMT: <a href="https://developers.naver.com/docs/nmt/reference/">https://developers.naver.com/docs/nmt/reference/</a></li>
+    <li>llama.cpp: <a href="https://github.com/ggml-org/llama.cpp">https://github.com/ggml-org/llama.cpp</a></li>
+  </ul>
+
+  <h2>주의/중요/권장</h2>
+  <p><strong>주의:</strong> 큰 작업을 바로 시작하지 말고, 먼저 작은 범위로 번역과 적용 결과를 확인하세요.</p>
+  <p><strong>중요:</strong> 모델을 바꾸면 표시되는 설정과 권장값이 달라질 수 있습니다. 모델 변경 후에는 권장값을 다시 확인하세요.</p>
+  <p><strong>권장:</strong> 문제가 생겼을 때는 한 번에 여러 값을 바꾸지 말고, 요청 크기, 출력 길이, 속도 제한, 추론 강도 순서로 하나씩 점검하세요.</p>
+</article>
+</main>
+  </div>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
+</body>
+</html>

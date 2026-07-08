@@ -5,6 +5,8 @@ import html
 import json
 import mimetypes
 import re
+import threading
+import webbrowser
 from html.parser import HTMLParser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -26,14 +28,14 @@ GROUP_PAGES = {
 
 FEATURE_SUBGROUP_PAGES = {
     "guide/features-screen/index.html",
-    "guide/퀵슬롯/index.html",
+    "guide/quickslot/index.html",
 }
 
 SETTING_REFERENCE_GROUP_PAGES = set()
 
 EXTERNAL_REFERENCE_PAGES = {
-    "guide/외부-유틸리티/index.html",
-    "guide/제공자별-참고-링크/index.html",
+    "guide/external-utilities/index.html",
+    "guide/provider-reference-links/index.html",
 }
 
 EXCLUDE_FROM_NAV_PATHS = {
@@ -61,6 +63,8 @@ EXCLUDE_FROM_NAV_PATHS = {
     "guide/features-quickslot/index.html",
     "guide/용어사전/index.html",
     "guide/winmerge-check/index.html",
+    "guide/editor-word-wrap/index.html",
+    "guide/escape-diff-viewer/index.html",
 }
 
 STRUCTURE_MANAGED_PATHS = GROUP_PAGES | FEATURE_SUBGROUP_PAGES | SETTING_REFERENCE_GROUP_PAGES | EXTERNAL_REFERENCE_PAGES
@@ -750,8 +754,10 @@ class GuideEditorHandler(BaseHTTPRequestHandler):
 def main() -> int:
     if not DIST_ROOT.exists():
         raise SystemExit("dist가 없습니다. 먼저 dist를 복원하거나 가이드를 재생성해주세요.")
+    url = f"http://{HOST}:{PORT}/"
     server = ThreadingHTTPServer((HOST, PORT), GuideEditorHandler)
-    print(f"AIMT Guide Editor: http://{HOST}:{PORT}/")
+    print(f"AIMT Guide Editor: {url}")
+    threading.Timer(0.2, lambda: webbrowser.open_new_tab(url)).start()
     server.serve_forever()
     return 0
 
