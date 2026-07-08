@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API KEY 설정 · AIMT Guide</title>
+  <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
+  <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
+  <link rel="stylesheet" href="../../guide/static/styles.css">
+</head>
+<body>
+  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
+  <div id="searchOverlay" class="search-overlay" hidden>
+    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
+      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">
+      <div id="searchResults" class="search-results" hidden></div>
+    </section>
+  </div>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
+      <nav class="nav-list" aria-label="문서 목록">
+<details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
+<details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="1" data-nav-key="guide/basic-workflow/index.html"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span><a class="nav-link" href="../../guide/basic-workflow/index.html" data-depth="1">기본 작업 흐름</a></summary></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="2">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript/index.html" data-depth="2">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv/index.html" data-depth="2">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/srpg-studio/index.html" data-depth="2">SRPG Studio 번역 가이드</a>
+<a class="nav-link" href="../../guide/livemaker/index.html" data-depth="2">LiveMaker 번역 가이드</a>
+<a class="nav-link" href="../../guide/bakin/index.html" data-depth="2">Bakin 번역 가이드</a>
+<a class="nav-link" href="../../guide/renpy/index.html" data-depth="2">Ren'Py 번역 가이드</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
+<details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/refresh-file-list/index.html" data-depth="4">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/view-switching/index.html" data-depth="4">화면전환</a>
+<a class="nav-link" href="../../guide/prompt/index.html" data-depth="4">프롬프트</a>
+<a class="nav-link" href="../../guide/quick-translation/index.html" data-depth="4">빠른번역</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-mainview"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역2 메인뷰</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/viewer/index.html" data-depth="4">Viewer</a>
+<a class="nav-link" href="../../guide/console/index.html" data-depth="4">Console</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-commandbar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역3 커맨드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/extraction/index.html" data-depth="4">추출</a>
+<a class="nav-link" href="../../guide/translation/index.html" data-depth="4">번역</a>
+<a class="nav-link" href="../../guide/apply-and-instant-apply/index.html" data-depth="4">적용과 즉시적용</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/settings-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/settings-screen/index.html" data-depth="2">설정 화면</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-general"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">일반</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/theme/index.html" data-depth="4">테마</a>
+<a class="nav-link" href="../../guide/extraction-regex/index.html" data-depth="4">추출정규식</a>
+<a class="nav-link" href="../../guide/escape-patterns/index.html" data-depth="4">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/language-pattern-settings/index.html" data-depth="4">언어패턴설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="guide/translation-settings/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/translation-settings/index.html" data-depth="3">번역 설정</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="4">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-settings/index.html" data-depth="4">API KEY 설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-mvmz"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/exclude-exception-regex/index.html" data-depth="4">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/replacement-terms/index.html" data-depth="4">치환용어설정</a>
+<a class="nav-link" href="../../guide/default-font-settings/index.html" data-depth="4">기본폰트설정</a>
+<a class="nav-link" href="../../guide/title-text/index.html" data-depth="4">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="4">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="4">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/wolf-secondary-exclusion-filter/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-secondary-duplicate-handling/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-secondary-exclusion-filter/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-secondary-extraction-filter/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-font-settings/index.html" data-depth="4">LiveMaker 폰트 설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-secondary-exclusion-filter/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/extract-python-data-strings/index.html" data-depth="4">Extract Python data strings</a>
+<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Include tl translations</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/log-management/index.html" data-depth="4">로그 관리</a>
+<a class="nav-link" href="../../guide/backup-management/index.html" data-depth="4">백업 관리</a>
+<a class="nav-link" href="../../guide/cache-management/index.html" data-depth="4">캐시 관리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-help"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">도움말</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/help-settings/index.html" data-depth="4">도움말</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/misc-settings/index.html" data-depth="4">기타</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/workspace-tools/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/workspace-tools/index.html" data-depth="2">작업 도구</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-utilities"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">유틸리티</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/fill-blanks/index.html" data-depth="4">빈칸채우기</a>
+<a class="nav-link" href="../../guide/user-dictionary-prepost/index.html" data-depth="4">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/undo-apply/index.html" data-depth="4">적용취소</a>
+<a class="nav-link" href="../../guide/translation-consistency/index.html" data-depth="4">번역일관성</a>
+<a class="nav-link" href="../../guide/extraction-duplicates/index.html" data-depth="4">추출 중복</a>
+<a class="nav-link" href="../../guide/escape-check/index.html" data-depth="4">이스케이프</a>
+<a class="nav-link" href="../../guide/final-consonant-cleanup/index.html" data-depth="4">받침정리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-shortcuts"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">바로가기</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="4">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="4">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="4">APPDATA</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-engine-tools"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">엔진별 보조 도구</span></summary><div class="nav-children">
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-mvmz-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/line-maker-mvmz/index.html" data-depth="5">라인메이커 (MVMZ)</a>
+<a class="nav-link" href="../../guide/add-plugin/index.html" data-depth="5">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-merge-split/index.html" data-depth="5">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-sync/index.html" data-depth="5">402 동기화</a>
+<a class="nav-link" href="../../guide/name-consistency/index.html" data-depth="5">이름 일관성</a>
+<a class="nav-link" href="../../guide/integrated-consistency/index.html" data-depth="5">통합 일관성</a>
+<a class="nav-link" href="../../guide/japanese-check/index.html" data-depth="5">일본어체크</a>
+<a class="nav-link" href="../../guide/code-restore/index.html" data-depth="5">코드 복원</a>
+<a class="nav-link" href="../../guide/import-translation/index.html" data-depth="5">번역 가져오기</a>
+<a class="nav-link" href="../../guide/escape-data/index.html" data-depth="5">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/mvmz-media-crypter/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-decryption/index.html" data-depth="5">Data 복호화</a>
+<a class="nav-link" href="../../guide/project-conversion/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/enigma-unpack/index.html" data-depth="5">에니그마 언팩</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-unpack/index.html" data-depth="5">언팩</a>
+<a class="nav-link" href="../../guide/title-change-vxvxa/index.html" data-depth="5">타이틀변경 (VXVXA)</a>
+<a class="nav-link" href="../../guide/line-maker-vxvxa/index.html" data-depth="5">라인메이커 (VXVXA)</a>
+<a class="nav-link" href="../../guide/dedicated-extraction/index.html" data-depth="5">전용추출</a>
+<a class="nav-link" href="../../guide/imbook-bbtext-missions-patch/index.html" data-depth="5">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv-conversion/index.html" data-depth="5">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-wolf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/wolf-unpack-repack/index.html" data-depth="5">언팩/리팩</a>
+<a class="nav-link" href="../../guide/integrated-replacement/index.html" data-depth="5">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-patch/index.html" data-depth="5">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-filename-replacement/index.html" data-depth="5">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-ctf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/metadata-check/index.html" data-depth="5">메타정보 확인</a>
+<a class="nav-link" href="../../guide/title-change-ctf/index.html" data-depth="5">타이틀 변경 (CTF)</a>
+<a class="nav-link" href="../../guide/language-change/index.html" data-depth="5">언어 변경</a>
+<a class="nav-link" href="../../guide/ctf-crypter/index.html" data-depth="5">크립터 (CTF)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-tyrano-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Tyrano</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-tyrano/index.html" data-depth="5">ASAR (Tyrano 계열)</a>
+<a class="nav-link" href="../../guide/title-change-tyrano/index.html" data-depth="5">타이틀 변경 (Tyrano)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-kirikiri-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Kirikiri</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-conversion/index.html" data-depth="5">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-pgmmv-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">PGMMV</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/pgmmv-crypter/index.html" data-depth="5">크립터 (PGMMV)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-srpg-studio-tools-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-studio-unpack/index.html" data-depth="5">언팩</a>
+<a class="nav-link" href="../../guide/srpg-studio-manual-build/index.html" data-depth="5">수동 빌드</a>
+<a class="nav-link" href="../../guide/srk-crypter/index.html" data-depth="5">SRK 크립터</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-renpy-tools-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Ren'Py</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/renpy-crypter/index.html" data-depth="5">크립터 (Ren'Py)</a>
+<a class="nav-link" href="../../guide/renpy-tag-check/index.html" data-depth="5">태그 검사</a>
+<a class="nav-link" href="../../guide/renpy-font-replacement/index.html" data-depth="5">폰트 교체</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-electron-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Electron</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="5">ASAR (Electron)</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ttc-build/index.html" data-depth="4">TTC 빌드</a>
+<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">세이브 에디터</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/quickslot/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/quickslot/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/memo/index.html" data-depth="3">메모장</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/troubleshooting/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">문제 해결</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/faq/index.html" data-depth="2">자주 나오는 질문</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/advanced-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">참고 자료</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/external-utilities/index.html" data-depth="2">외부 유틸리티</a>
+<a class="nav-link" href="../../guide/provider-reference-links/index.html" data-depth="2">제공자별 참고 링크</a>
+<a class="nav-link" href="../../guide/extraction-files-reference/index.html" data-depth="2">추출 파일별 설명</a>
+<a class="nav-link" href="../../guide/rpg-maker-command-code-reference/index.html" data-depth="2">RPG Maker 명령 코드 참고</a>
+</div></details>
+</div></details>
+      </nav>
+    </aside>
+    <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
+    <main class="content-shell">
+<article class="guide-content"><h1>API KEY 설정</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
+<h2>무엇을 할 수 있나요?</h2>
+<p>API KEY 설정은 Gemini, OpenAI, Claude, DeepSeek, OpenRouter, DeepL 같은 번역 제공자에 접속하기 위한 인증 정보를 등록하고 관리하는 화면입니다.</p>
+<h2>화면과 항목</h2>
+<p><img src="../../guide/assets/api-key-settings/image%202.png" alt=""></p><h3></h3><div class="guide-callout" data-callout="caution" role="alert"><div class="guide-callout-title">Caution</div><div class="guide-callout-body"><ol start="1" type="1"><li>무료키를 2개 이상 동시에 사용하는 것은 유료키를 2개 이상 사용하는 것과 달리 구글AI API규정을 위반하는 이용 약관 위반 사유로 판단될 수 있습니다. 여러 키를 함께 사용할 때는 제공자의 이용 약관과 할당량 정책을 먼저 확인하세요.</li></ol><ol start="2" type="1"><li>유료 Gemini API는 Gemini Pro 를 번역모델로써 사용할 수 있으나, 무료 API는 Pro의 사용이 제한될 수 있습니다.</li></ol><ol start="3" type="1"><li>각 API 별 KEY 설정에서 ON으로 되어 있는 키들은 번역 요청 중 각각 저마다의 동시 처리를 통해 처리됩니다. 이는 곧 키가 많을수록 시간적 효율이 높아진다라고 이해될 수 있습니다. 단, API오류 및 통신안정성의 문제로 4개보다 많은 키를 사용하는 것은 권장하지 않습니다.</li></ol></div></div><h2>화면 구성</h2><p>창 안에는 보통 아래 요소가 있습니다.</p><ul><li>왼쪽 카테고리 탭</li></ul><ul><li>오른쪽 키 목록 영역</li></ul><ul><li>그룹 영역</li></ul><ul><li>그룹 밖 목록 영역</li></ul><ul><li>각 키의 ON/OFF 스위치</li></ul><ul><li>하단 버튼</li></ul><p>카테고리마다 따로 관리되므로, 예를 들어 OpenAI 키를 넣었다고 Claude 키까지 같이 준비되는 것은 아닙니다.</p><h2>저장과 취소에 관하여</h2><ul><li><code>저장</code><br>현재 편집 중인 모든 카테고리 변경사항을 한 번에 저장합니다.</li></ul><ul><li><code>취소</code><br>저장하지 않고 닫습니다.</li></ul><p>이 창은 <code>임시 편집 상태</code>와 <code>실제 저장 상태</code>가 나뉘어 있습니다.</p><p>즉, 편집 중에 창을 닫으려고 하면 <code>저장하지 않은 변경사항이 있다</code>는 확인창이 뜰 수 있습니다.</p><p>그 상태에서 닫기를 진행하면 방금 바꾼 내용은 버려집니다.</p><h2>새 항목을 추가하면 바로 ON/OFF 할 수 있나요?</h2><p>아직 저장하지 않은 새 항목은 바로 ON/OFF를 바꿀 수 없습니다.</p><ul><li>먼저 값을 입력하고</li></ul><ul><li><code>저장</code>으로 실제 항목으로 만든 뒤</li></ul><ul><li>그다음 ON/OFF를 조절하는 흐름입니다.</li></ul><p>따라서 새로 만든 빈 항목에서 토글을 먼저 눌렀는데 안 되는 것은 정상입니다.</p><h2>빈 입력칸은 어떻게 되나요?</h2><p>값이 비어 있는 입력칸은 저장할 때 자동으로 건너뛰어질 수 있습니다.</p><p>즉:</p><ul><li>빈 칸만 만들고 저장하면<br>실제 저장 대상이 되지 않을 수 있습니다.</li></ul><ul><li>꼭 쓸 항목만 채워 넣고 저장하는 편이 좋습니다.</li></ul><p>특히 유효한 값이 하나도 없으면 <code>저장</code>을 눌러도 경고만 뜨고 실제 저장은 진행되지 않습니다.</p><h2>카테고리별로 무엇을 넣나요?</h2><h3>일반 API 키 카테고리</h3><p>아래 카테고리는 보통 <code>키 값</code>을 직접 넣는 구조입니다.</p><ul><li><code>Gemini</code></li></ul><ul><li><code>OpenAI</code></li></ul><ul><li><code>OpenAI-compatible</code></li></ul><ul><li><code>Claude</code></li></ul><ul><li><code>xAI</code></li></ul><ul><li><code>DeepSeek</code></li></ul><ul><li><code>OpenRouter</code></li></ul><ul><li><code>DeepL</code></li></ul><p>사용자 입장에서는 보통 <code>제공자에서 발급받은 키 문자열</code>을 넣는다고 이해하시면 됩니다.</p><h3><code>Vertex</code></h3><p><code>Vertex</code>는 일반 API 키 문자열을 넣는 탭이라기보다 <code>Project ID</code>를 관리하는 쪽에 더 가깝습니다.</p><p>화면에서도 일반 키가 아니라 <code>Google Cloud Project ID</code> 입력칸처럼 보일 수 있습니다.</p><p>즉, Vertex를 쓸 때는 보통:</p><ul><li>Vertex 탭의 Project ID</li></ul><ul><li>현재 리전 설정</li></ul><ul><li>실행 환경의 Google 인증 상태</li></ul><p>를 같이 맞춰야 하는 경우가 많습니다.</p><p>그래서 Vertex가 안 될 때는 <code>키가 틀렸나?</code>보다 <code>Project ID와 인증 준비가 맞나?</code>를 먼저 보는 편이 정확합니다.</p><h3><code>OpenAI-compatible</code></h3><p>이 탭의 키는 일반 OpenAI 키와는 별개입니다.</p><p>즉, <code>OpenAI-compatible</code> 쪽을 쓰려면:</p><ul><li>여기서 해당 서버용 키를 넣고</li></ul><ul><li><code>AI모델</code> 쪽에서 그 서버용 모델과 엔드포인트를 맞춰야 정상적으로 연결되는 구조입니다.</li></ul><ul><li>만약 키가 필요없는 엔드포인트라면 적당히 아무런 값이나 넣어두셔도 무방합니다.</li></ul><h3>이 창에 없는 제공자</h3><p>현재 버전에서는 이 창에는 <code>Google</code>, <code>Papago</code> 탭이 없습니다.</p><p>따라서 모든 번역기가 여기서 키를 넣는 구조는 아닙니다.</p><h2>ON/OFF는 무엇을 의미하나요?</h2><p>각 항목의 ON/OFF는 <code>이 키를 실제로 사용할 후보에 포함할지</code> 정하는 스위치입니다.</p><p>쉽게 말하면:</p><ul><li>ON<br>사용 가능 후보로 둠</li></ul><ul><li>OFF<br>저장은 남겨 두되, 지금은 사용하지 않음</li></ul><p>즉, 키를 지우지 않고 잠깐 쉬게 하고 싶을 때 OFF로 두면 됩니다.</p><h2>키가 여러 개 있을 때는 왜 필요한가요?</h2><p>같은 제공자에 키를 여러 개 넣는 이유는 보통 아래와 같습니다.</p><ul><li>키를 번갈아 관리하고 싶을 때</li></ul><ul><li>특정 키만 잠깐 끄고 싶을 때</li></ul><ul><li>작업용/테스트용 키를 나눠 두고 싶을 때</li></ul><ul><li>계정별로 묶어서 관리하고 싶을 때</li></ul><p>여러 키가 있을 때는 <code>활성화 상태</code>와 <code>배치 순서</code>가 실제 사용 흐름에 영향을 줄 수 있습니다.</p><p>주로 사용할 키는 알아보기 쉽게 정리해 두는 편이 좋습니다.</p><p>그래서 주로 쓸 키는 ON으로 두고, 정리도 알아보기 쉽게 해 두는 편이 좋습니다.</p><h2>그룹은 무엇인가요?</h2><p>그룹은 키를 폴더처럼 묶어서 관리하는 기능입니다.</p><p>쉽게 말하면:</p><ul><li>메인 키 묶음</li></ul><ul><li>테스트 키 묶음</li></ul><ul><li>예비 키 묶음</li></ul><p>처럼 이름을 붙여 정리할 수 있습니다.</p><p>그룹 안에서는:</p><ul><li>그룹 이름 바꾸기</li></ul><ul><li>그룹 삭제</li></ul><ul><li>그룹 접기/펼치기</li></ul><ul><li>그룹 전체 ON</li></ul><ul><li>그룹 전체 OFF</li></ul><ul><li>그룹 순서 바꾸기</li></ul><p>가 가능합니다.</p><p>중요:</p><p>그룹을 삭제해도 그 안의 키까지 같이 지워지는 구조는 아닙니다.</p><p>현재 버전에서는 그룹을 지우면 안에 있던 키는 <code>Ungrouped</code> 쪽으로 이동합니다.</p><h2>그룹 밖 목록은 무엇인가요?</h2><p>그룹에 넣지 않은 키는 <code>Ungrouped</code> 영역에 따로 보입니다.</p><p>즉, 꼭 그룹을 만들어야만 키를 저장할 수 있는 것은 아닙니다.</p><p>간단히 몇 개만 쓰는 경우에는 그룹 없이 두고, 많아졌을 때만 그룹으로 나눠도 됩니다.</p><h2>그룹의 색 막대와 <code>(활성/전체)</code> 표시는 무엇인가요?</h2><p>그룹 제목 옆에는 보통 <code>현재 켜져 있는 키 수 / 전체 키 수</code>가 같이 표시됩니다.</p><p>예를 들어 <code>(2/5)</code>처럼 보이면:</p><ul><li>전체 5개 중</li></ul><ul><li>현재 2개가 ON</li></ul><p>이라는 뜻입니다.</p><p>색 막대도 같은 정보를 보기 쉽게 보여 주는 용도입니다.</p><p>즉, 그룹을 열지 않아도 <code>이 그룹이 지금 얼마나 활성화돼 있는지</code> 빠르게 확인할 수 있습니다.</p><h2>우클릭 메뉴로 할 수 있는 일</h2><p>키 항목을 우클릭하면 보통 아래 작업을 할 수 있습니다.</p><ul><li>키 복사</li></ul><ul><li>그룹 밖으로 이동</li></ul><ul><li>다른 그룹으로 이동</li></ul><ul><li>새 그룹을 만든 뒤 바로 이동</li></ul><ul><li>키 삭제</li></ul><p>그룹 제목을 우클릭하면 보통 아래 작업을 할 수 있습니다.</p><ul><li>그룹 안 키 전체 ON</li></ul><ul><li>그룹 안 키 전체 OFF</li></ul><ul><li>그룹 위로 이동</li></ul><ul><li>그룹 아래로 이동</li></ul><p>즉, 이 창은 단순 입력창이 아니라 <code>정리와 관리</code>까지 같이 하는 창입니다.</p><h2>저장하면 바로 무엇이 일어나나요?</h2><p><code>저장</code>에 성공하면 보통 아래 흐름이 이어집니다.</p><ul><li>현재 편집 내용이 실제 저장값으로 반영되고</li></ul><ul><li>창이 닫히고</li></ul><ul><li>API 준비 상태를 다시 확인하거나 다시 초기화합니다</li></ul><p>따라서 <code>저장</code>은 단순 메모가 아니라 실제 번역 준비 상태를 바꾸는 동작이라고 보시면 됩니다.</p><h2>참고 사이트</h2><p>API KEY 는 각 모델별 공식 사이트에서 발급받을 수 있습니다.</p><p>Gemini : <a href="https://aistudio.google.com/apikey">https://aistudio.google.com/apikey</a></p><p>Claude : <a href="https://console.anthropic.com/settings/keys">https://console.anthropic.com/settings/keys</a></p><p>OpenAI : <a href="https://platform.openai.com/api-keys">https://platform.openai.com/api-keys</a></p><p>xAI : <a href="https://console.x.ai/">https://console.x.ai</a></p><p>DeepSeek : <a href="https://platform.deepseek.com/api_keys">https://platform.deepseek.com/api_keys</a></p><p>DeepL : <a href="https://www.deepl.com/ko/pro-api">https://www.deepl.com/ko/pro-api</a></p><p>등등</p>
+<h2>완료 후 확인</h2>
+<ul><li>저장 후 오류 메시지가 없는지 확인합니다.</li><li>빠른번역에서 짧은 문장을 번역해 키가 정상인지 확인합니다.</li><li>실패하면 키 값, 제공자 선택, 모델 선택, 네트워크 상태를 순서대로 확인합니다.</li></ul>
+<h2>주의/중요/권장</h2>
+<p><strong>주의:</strong> API 키는 개인 인증 정보입니다. 공개 문서, 스크린샷, 커뮤니티 글에 그대로 노출하지 마세요.</p>
+<p><strong>권장:</strong> 업데이트 이후 등록했던 API 키들이 표시되지 않게 되었다면 개발자에게 문의해주시길 바랍니다.</p>
+</article>
+</main>
+  </div>
+  <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
+</body>
+</html>
