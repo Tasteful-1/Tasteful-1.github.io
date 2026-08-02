@@ -57,6 +57,8 @@ ENGINE_NAV_PATHS: tuple[str, ...] = (
     "guide/livemaker/index.html",
     "guide/bakin/index.html",
     "guide/renpy/index.html",
+    "guide/csv-tsv/index.html",
+    "guide/multi-regex-engines/index.html",
 )
 
 ENGINE_PATHS = set(ENGINE_NAV_PATHS)
@@ -153,6 +155,8 @@ TITLE_OVERRIDES = {
     "guide/extract-python-data-strings/index.html": "Extract Python data strings",
     "guide/include-tl-translations/index.html": "Ren'Py TL 준비와 기존 번역 사용",
     "guide/save-editor/index.html": "Save Editor",
+    "guide/csv-tsv/index.html": "CSV/TSV 번역 가이드",
+    "guide/multi-regex-engines/index.html": "범용 정규식 엔진 가이드",
 }
 
 RENAMED_PAGE_PATHS = {
@@ -984,6 +988,8 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
             ("guide/livemaker/index.html", "LiveMaker"),
             ("guide/bakin/index.html", "Bakin"),
             ("guide/renpy/index.html", "Ren'Py"),
+            ("guide/csv-tsv/index.html", "CSV/TSV"),
+            ("guide/multi-regex-engines/index.html", "HTML·범용 정규식 엔진"),
         ],
         "frequent_links": [
             ("guide/api-key-settings/index.html", "API KEY 설정"),
@@ -1025,6 +1031,22 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "steps": ["AIMT에서 프로젝트를 지정합니다.", "Bakin 형식으로 1차 추출을 진행합니다.", "필요하면 Bakin 2차 추출 제외 필터에서 제외 대상을 조정합니다.", "2차 추출 결과에서 필요한 문장이 남아 있는지 확인합니다.", "번역과 적용을 진행한 뒤 게임 실행 화면에서 결과를 확인합니다."],
         "result": ["필요한 문장이 추출 결과에 남아 있는지 확인합니다.", "불필요한 항목이 많으면 제외 필터 조건을 좁혀 다시 추출합니다.", "필요한 문장이 빠지면 제외 조건이 너무 넓지 않은지 확인합니다."],
         "notices": [("주의", "Bakin 2차 추출 제외 필터는 조건과 일치하는 항목을 빼는 방식입니다. 필요한 문장이 함께 제외되지 않도록 작은 범위로 먼저 확인하세요.")],
+    },
+    "guide/csv-tsv/index.html": {
+        "summary": "CSV/TSV 번역 가이드는 프로젝트 아래의 표 형식 파일에서 지정한 열을 추출하고 번역 결과를 원하는 열에 적용하는 흐름을 설명합니다.",
+        "when": ["CSV 또는 TSV 파일을 직접 번역할 때", "원문 열과 번역문 열을 나누어 적용할 때", "Project Viewer의 직접 편집이 아니라 추출, 번역, 적용 흐름이 필요할 때"],
+        "before": ["Project Hub에서 CSV/TSV 엔진과 프로젝트 루트를 선택합니다.", "원본 파일을 별도로 보관합니다.", "헤더 미리보기에서 열 번호와 인코딩을 확인합니다."],
+        "steps": ["추출을 눌러 감지된 파일을 확인합니다.", "추출할 열, 헤더 제외, 구분자, 인코딩과 언어 필터를 정합니다.", "CSV_로 시작하는 추출 JSON을 확인하고 번역합니다.", "적용할 열과 저장 인코딩을 확인한 뒤 적용합니다.", "적은 파일을 열거나 사용하는 프로그램에서 결과를 확인합니다."],
+        "result": ["선택한 열의 문장만 추출되었는지 확인합니다.", "번역문이 지정한 적용 열에 들어갔는지 확인합니다.", "구분자, 글자 인코딩과 따옴표 형식이 대상 프로그램에서 정상인지 확인합니다."],
+        "notices": [("중요", "TSV는 화면의 구분자 선택과 관계없이 탭을 사용합니다. CSV는 선택한 구분자를 사용합니다."), ("주의", "적용은 원본 표 파일을 수정합니다. AIMT가 적용 전에 백업하고 실패 시 복구하지만, 원본 사본도 따로 보관하세요.")],
+    },
+    "guide/multi-regex-engines/index.html": {
+        "summary": "범용 정규식 엔진 가이드는 Custom, LIGHTVN, GameMaker, Electron, HTML 파일에서 저장한 추출정규식으로 문장을 찾아 번역하고 적용하는 흐름을 설명합니다.",
+        "when": ["전용 엔진 대신 JSON, JS, TXT 또는 HTML 파일을 정규식으로 처리할 때", "기본 패턴으로 필요한 문장이 잡히지 않을 때", "코드와 식별자의 과다 추출을 줄여야 할 때"],
+        "before": ["대상 파일 종류와 검색 위치가 선택한 엔진에 맞는지 확인합니다.", "설정의 추출정규식에서 사용할 패턴을 확인합니다.", "원본 프로젝트를 별도로 보관합니다."],
+        "steps": ["Project Hub에서 대상 엔진과 프로젝트를 선택합니다.", "필요하면 추출정규식의 엔진별 패턴을 수정하고 저장합니다.", "추출을 실행하고 패턴별 JSON과 매핑을 확인합니다.", "필요한 JSON만 번역합니다.", "적용한 뒤 프로젝트를 실행하거나 파일을 열어 결과를 확인합니다."],
+        "result": ["필요한 문장 전체가 추출되었는지 확인합니다.", "코드, 경로와 식별자가 번역 대상에 섞이지 않았는지 확인합니다.", "적용 후 파일 인코딩과 실행 결과가 정상인지 확인합니다."],
+        "notices": [("중요", "저장한 정규식은 다음 추출부터 적용됩니다. 기존 추출 결과는 자동으로 바뀌지 않습니다."), ("권장", "패턴 하나와 적은 파일로 먼저 추출, 번역, 적용을 끝낸 뒤 범위를 넓히세요.")],
     },
     "guide/srpg-studio-unpack/index.html": {
         "summary": "언팩은 SRPG Studio 프로젝트의 패키지 파일을 작업 가능한 형태로 풀어 번역 준비를 돕는 보조 도구입니다.",
@@ -2106,6 +2128,8 @@ def _build_group_articles() -> dict[str, str]:
                 ("guide/livemaker/index.html", "LiveMaker"),
                 ("guide/bakin/index.html", "Bakin"),
                 ("guide/renpy/index.html", "Ren'Py"),
+                ("guide/csv-tsv/index.html", "CSV/TSV"),
+                ("guide/multi-regex-engines/index.html", "HTML·범용 정규식 엔진"),
             ],
         ),
         "guide/features/index.html": _hub_article(
