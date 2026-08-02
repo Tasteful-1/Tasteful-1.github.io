@@ -221,27 +221,25 @@
 <main class="content-shell">
 <article class="guide-content">
 <h1>Extract Python data strings</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.16 계열<br>최종 편집 일시: 2026-07-01</p>
-<h2>이 설정은 무엇인가요?</h2>
-<p>Ren'Py 프로젝트의 Python 데이터 안에 들어 있는 문자열을 번역 대상으로 함께 추출할지 정하는 설정입니다.</p>
-<h2>언제 사용하나요?</h2>
-<ul>
-<li>대사 파일이 아닌 Python 데이터 안의 이름, 설명, UI 문구가 원문으로 남을 때 사용합니다.</li>
-<li>일반 스크립트 추출만으로 누락되는 문장을 확인할 때 사용합니다.</li>
-</ul>
-<h2>기본 사용 순서</h2>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+<p>Ren'Py Python 데이터에 들어 있는 이름, 설명과 UI 문자열을 추가로 추출합니다. 기본값은 OFF입니다.</p>
+<h2>언제 켜나요?</h2>
+<p>일반 Ren'Py 추출 후에도 데이터 파일의 사용자 문장이 원문으로 남을 때만 켭니다.</p>
+<h2>사용 순서</h2>
 <ol>
-<li>설정 화면에서 Ren'Py 그룹을 확인합니다.</li>
-<li>Extract Python data strings를 켜거나 끕니다.</li>
-<li>Ren'Py 추출을 다시 실행합니다.</li>
-<li>추출 결과에서 데이터성 문자열이 의도대로 포함되었는지 확인합니다.</li>
+<li>기본값 OFF로 Extract2를 실행하고 결과를 확인합니다.</li>
+<li>누락된 데이터 문자열이 있으면 이 설정을 켭니다.</li>
+<li>Extract2를 다시 실행합니다.</li>
+<li><code>Renpy_Data_*</code> 결과에서 추가 문장만 확인합니다.</li>
+<li>코드나 식별자가 섞였으면 번역 대상에서 제외합니다.</li>
 </ol>
-<h2>결과 확인 방법</h2>
+<h2>무엇이 다른가요?</h2>
 <ul>
-<li>이름, 설명, UI 문구처럼 누락되던 문자열이 추출 결과에 들어왔는지 확인합니다.</li>
-<li>코드 조각이나 번역하면 안 되는 값이 섞이면 설정을 끄고 결과를 비교합니다.</li>
+<li>일반 대사와 화면 문자열은 기존 <code>Renpy_*</code> 결과에 남습니다.</li>
+<li>Python data literal은 <code>Renpy_Data_*</code> 결과로 분리됩니다.</li>
+<li>함수명, 경로, 키와 코드 조각은 번역하지 않습니다.</li>
 </ul>
-<p><strong></strong><div class="guide-callout" data-callout="warning" role="alert"><div class="guide-callout-title">주의</div><div class="guide-callout-body">Python 데이터 문자열은 실제 코드와 가까울 수 있습니다. 번역 결과를 적용한 뒤 실행 오류가 없는지 확인하세요.</div></div></p>
+<div class="guide-callout" data-callout="warning" role="alert"><div class="guide-callout-title">주의</div><div class="guide-callout-body"><p>Python 데이터는 코드와 가깝습니다. 적용 후 게임 시작, 메뉴와 해당 기능을 직접 시험하세요.</p></div></div>
 </article>
 </main>
 </div>

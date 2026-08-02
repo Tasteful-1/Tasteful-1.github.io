@@ -218,26 +218,36 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>상단부</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.13 계열<br>최종 편집 일시: 2026-06-18</p>
+<article class="guide-content">
+<h1>상단부</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
 <h2>무엇을 할 수 있나요?</h2>
-<p>상단부은 AIMT 사용 중 필요한 작업을 더 정확하게 진행하기 위한 기능입니다.</p>
-<h2>언제 필요한가요?</h2>
-<ul><li>작업 중 이 기능의 역할을 확인해야 할 때</li><li>어떤 항목을 선택해야 하는지 판단해야 할 때</li><li>실행 후 결과가 맞는지 확인할 기준이 필요할 때</li></ul>
-<h2>시작 전에 확인할 것</h2>
-<ul><li>작업 중인 프로젝트가 올바르게 지정되어 있는지 확인합니다.</li><li>이 기능이 현재 작업 흐름에서 필요한 단계인지 확인합니다.</li><li>결과를 되돌려야 할 수 있다면 작업 전 파일을 보관합니다.</li></ul>
-<h2>따라 하기</h2>
-<ol><li>현재 작업 중인 프로젝트와 대상 게임 형식을 확인합니다.</li><li>필요한 설정값이나 선택 항목을 확인합니다.</li><li>기능을 실행합니다.</li><li>화면에 표시되는 완료 메시지, 오류 메시지, 생성 파일을 확인합니다.</li><li>결과가 예상과 다르면 관련 설정을 조정한 뒤 다시 실행합니다.</li></ol>
-<h2>화면과 항목</h2>
-<a href="../../guide/assets/top-area/image.png"><img src="../../guide/assets/top-area/image.png"/></a><p><code>▼MVMZ</code> 부분을 클릭하면 번역할 게임의 엔진을 선택할 수 있습니다.</p><p>선택한 엔진에 따라 추출, 번역, 적용에 사용되는 폴더가 지정되며,</p><p>각 엔진별로 설정된 개인환경에 따라 작업이 진행됩니다.</p><p>엔진을 변경한 이후에는 꼭 <code>새 프로젝트</code>에서 프로젝트 경로를 재확인해주세요.</p><a href="../../guide/project-selection/index.html">새 프로젝트 / 프로젝트 지정</a><a href="../../guide/refresh-file-list/index.html">파일목록 새로고침</a><a href="../../guide/prompt/index.html">프롬프트</a><a href="../../guide/quick-translation/index.html">빠른번역</a><a href="../../guide/settings-screen/index.html">설정</a><a href="../../guide/viewer/index.html">Viewer</a>
-<h2>완료 후 확인</h2>
-<ul><li>화면에 표시되는 완료 메시지와 오류 메시지를 확인합니다.</li><li>생성되거나 수정된 파일이 예상 위치에 있는지 확인합니다.</li><li>번역 결과가 게임 실행 또는 미리보기에서 자연스럽게 보이는지 확인합니다.</li></ul>
-<h2>주의/중요/권장</h2>
-<p><strong>권장:</strong> 이 문서는 사용자가 직접 조작하거나 판단해야 하는 항목을 중심으로 설명합니다.</p>
-<p><strong>권장:</strong> 정규식, 명령 코드, 파일 구조처럼 세밀한 내용은 설정 화면이나 관련 기능 문서에서 확인합니다.</p>
-<p><strong>권장:</strong> 작업 결과가 달라졌다면 최근에 바꾼 설정과 대상 파일을 먼저 확인하세요.</p>
-<h2>자주 헷갈리는 점</h2>
-<h3>설정을 바꿨는데 결과가 바로 바뀌지 않습니다</h3><p>일부 설정은 다음 추출, 다음 번역, 다음 적용 단계부터 반영됩니다. 이미 만들어진 결과 파일은 필요한 경우 다시 생성해야 합니다.</p><h3>어떤 문서를 먼저 읽어야 하나요?</h3><p>처음 사용하는 기능이라면 기본 사용 순서를 먼저 확인하고, 세부 값이 필요한 경우 화면/항목 설명을 이어서 확인하세요.</p>
+<p>상단부에서 게임 엔진을 고르고 Project Hub를 열 수 있습니다.</p>
+<p><a href="../../guide/assets/top-area/image.png"><img alt="AIMT 상단부" src="../../guide/assets/top-area/image.png"></a></p>
+<h2>엔진 선택</h2>
+<ol>
+<li>현재 엔진 이름을 누릅니다.</li>
+<li>게임에 맞는 엔진을 선택합니다.</li>
+<li><strong>새 프로젝트</strong>를 눌러 프로젝트를 등록하거나 엽니다.</li>
+</ol>
+<p>선택할 수 있는 엔진은 MVMZ, VXVXA, WOLF, CTF, CSV/TSV, Tyrano, Kirikiri, PGMMV, SRPG Studio, LiveMaker, Bakin, Ren'Py, LIGHTVN, GameMaker, Electron, HTML, Custom입니다.</p>
+<h2>Project Hub</h2>
+<p><strong>새 프로젝트</strong>를 누르면 Project Hub가 열립니다. 최근 프로젝트를 검색하거나 다시 열고, 새 프로젝트를 등록할 수 있습니다.</p>
+<ul>
+<li>엔진: 프로젝트 형식과 같은 값을 선택합니다.</li>
+<li>프로젝트 폴더: 게임 원본이나 작업용 복사본의 올바른 폴더를 선택합니다.</li>
+<li>이름과 경로: Project Hub에서 나중에 변경할 수 있습니다.</li>
+</ul>
+<h2>자주 쓰는 기능</h2>
+<ul>
+<li><a href="../../guide/project-selection/index.html">새 프로젝트 / 프로젝트 지정</a></li>
+<li><a href="../../guide/refresh-file-list/index.html">파일목록 새로고침</a></li>
+<li><a href="../../guide/prompt/index.html">프롬프트</a></li>
+<li><a href="../../guide/quick-translation/index.html">빠른번역</a></li>
+<li><a href="../../guide/settings-screen/index.html">설정</a></li>
+<li><a href="../../guide/viewer/index.html">Viewer</a></li>
+</ul>
+<div class="guide-callout" data-callout="important" role="alert"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>엔진을 바꾼 뒤에는 Project Hub에서 프로젝트와 엔진이 맞는지 다시 확인하세요.</p></div></div>
 </article>
 </main>
   </div>

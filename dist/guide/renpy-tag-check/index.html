@@ -219,29 +219,26 @@
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
 <article class="guide-content">
-  <h1>태그 검사</h1>
-  <p class="doc-version">문서 기준: AIMT PRO 1.16 계열<br>최종 편집 일시: 2026-07-01</p>
-  <h2>이 도구는 무엇인가요?</h2>
-  <p>Ren'Py 번역 결과에서 태그, 변수, 서식 표기가 원문과 같은 구조로 남아 있는지 확인할 때 쓰는 문서입니다.</p>
-  <h2>화면 참고 이미지</h2>
-  <h2>
-    <p><img src="../../guide/assets/renpy-tag-check/image.png" alt=""></p>
-  </h2>
-  <h2>언제 사용하나요?</h2>
-  <ul>
-    <li>Ren'Py 번역 후 번역 결과를 검수할 때</li>
-  </ul>
-  <h2>사용 전 확인할 것</h2>
-  <ul>
-    <li>현재 프로젝트가 Ren'Py 계열인지 확인합니다.</li>
-    <li>번역된 결과물이 현재 추출폴더의 파일들로부터 비롯된 것인지 확인합니다.</li>
-  </ul>
-  <h2>기본 사용 순서</h2>
-  <ol>
-    <li>작업 도구에서 태그 검사를 엽니다.</li>
-    <li>검사 결과로 출력된 각 원문과 번역문들을 비교하고 누락태그를 보완하여 저장합니다.</li>
-    <li>모든 문장의 검수가 끝나면 닫기를 눌러 태그 검사를 종료합니다.</li>
-  </ol>
+<h1>Ren'Py 태그 검사</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+<p><img alt="Ren'Py 태그 검사" src="../../guide/assets/renpy-tag-check/image.png"></p>
+<p>원문과 번역문의 Ren'Py 태그와 변수 표기가 같은지 검사합니다.</p>
+<h2>검사 대상</h2>
+<ul>
+<li>텍스트 태그: <code>{b}</code>, <code>{color=...}</code> 등</li>
+<li>문자열 보간: <code>[player_name]</code> 등</li>
+<li>printf 토큰: <code>%s</code>, <code>%d</code> 등</li>
+</ul>
+<h2>사용 순서</h2>
+<ol>
+<li>Ren'Py 번역을 완료합니다.</li>
+<li>작업 도구에서 <strong>태그 검사</strong>를 엽니다.</li>
+<li>문제가 표시된 원문과 번역문을 비교합니다.</li>
+<li>한 항목의 번역문을 고치고 <strong>저장</strong>을 누릅니다.</li>
+<li>해결됨으로 바뀌는지 확인합니다.</li>
+<li>남은 문제가 없을 때 적용합니다.</li>
+</ol>
+<div class="guide-callout" data-callout="important" role="alert"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>태그 위치는 문장에 맞게 옮길 수 있지만, 태그 이름과 열고 닫는 구조는 유지하세요.</p></div></div>
 </article>
 </main>
   </div>

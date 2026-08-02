@@ -219,104 +219,35 @@
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
 <article class="guide-content">
-  <h1>CTF 2차 추출 제외 필터</h1>
-  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
-
-  <h2>무엇을 하는 기능인가요?</h2>
-  <p><strong>CTF 2차 추출 제외 필터</strong>는 ClickTeam Fusion 계열 프로젝트에서 2차 추출 대상으로 삼을 텍스트를 규칙으로 선별하는 기능입니다. TextId, Context, Value 같은 조건을 조합해 필요한 텍스트만 번역 대상으로 남기고 싶을 때 사용합니다.</p>
-
-  <div class="guide-callout" data-callout="important">
-    <div class="guide-callout-title">중요</div>
-    <div class="guide-callout-body">
-      <p>필터 편집은 앞으로 만들 2차 추출 결과에 영향을 줍니다. 이미 만들어진 추출/번역 결과를 자동으로 다시 고치지는 않습니다.</p>
-    </div>
-  </div>
-
-  <h2>언제 사용하나요?</h2>
-  <ul>
-    <li>CTF 2차 추출 결과에 필요 없는 값이 많이 섞일 때</li>
-    <li>특정 역할, 카테고리, 식별자에 해당하는 텍스트만 골라내고 싶을 때</li>
-    <li>TextId, Context, Value 패턴으로 번역 대상을 세밀하게 조정하고 싶을 때</li>
-    <li>프리셋을 바탕으로 프로젝트별 예외 규칙을 만들고 싶을 때</li>
-  </ul>
-
-  <h2>사용 전 확인할 것</h2>
-  <ul>
-    <li>CTF 프로젝트의 1차 추출 결과가 준비되어 있어야 합니다.</li>
-    <li>현재 2차 추출 결과에서 어떤 항목이 과다 추출되거나 누락되는지 먼저 확인합니다.</li>
-    <li>정규식 조건은 작은 범위로 시험한 뒤 전체 작업에 적용합니다.</li>
-  </ul><h2>화면</h2><div><p><img src="../../guide/assets/ctf-secondary-exclusion-filter/image%202.png" alt=""></p></div>
-
-  <h2>기본 사용 순서</h2>
-  <ol>
-    <li>CTF 2차 추출 제외 필터 화면을 엽니다.</li>
-    <li>필요하면 <code>preset</code>으로 기본 규칙을 불러옵니다.</li>
-    <li>사용할 규칙만 활성화합니다.</li>
-    <li>카테고리, Role, Source Kind, Identifier 조건을 확인합니다.</li>
-    <li>TextId, Context, Value 정규식을 필요한 만큼 조정합니다.</li>
-    <li>저장 후 2차 추출을 다시 실행하고 결과를 확인합니다.</li>
-  </ol>
-
-  <h2>화면에서 보게 되는 항목</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>항목</th>
-        <th>의미</th>
-        <th>확인 기준</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>활성</code>, <code>규칙 이름</code></td>
-        <td>규칙 사용 여부와 표시 이름입니다.</td>
-        <td>임시로 제외할 규칙은 비활성으로 두고 이름은 용도 중심으로 적습니다.</td>
-      </tr>
-      <tr>
-        <td><code>카테고리</code>, <code>Role</code></td>
-        <td>텍스트의 성격이나 역할 기준으로 대상을 나눕니다.</td>
-        <td>대사, UI, 설명문처럼 결과를 구분하고 싶을 때 확인합니다.</td>
-      </tr>
-      <tr>
-        <td><code>Source Kind</code>, <code>Identifier</code></td>
-        <td>원본 데이터 종류와 식별자 조건입니다.</td>
-        <td>특정 리소스나 항목만 잡히는지 확인합니다.</td>
-      </tr>
-      <tr>
-        <td><code>Default Apply Policy</code></td>
-        <td>규칙이 맞을 때 기본 적용 방식을 정합니다.</td>
-        <td>번역 대상으로 둘지, 제외할지 기준을 확인합니다.</td>
-      </tr>
-      <tr>
-        <td><code>TextId 정규식</code>, <code>Context 정규식</code>, <code>Value 정규식</code></td>
-        <td>식별자, 주변 정보, 실제 값의 패턴으로 대상을 고릅니다.</td>
-        <td>정규식 수정 후 누락과 과다 추출을 모두 확인합니다.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>설정을 바꾼 뒤 무엇을 다시 해야 하나요?</h2>
-  <ul>
-    <li>2차 추출을 다시 실행합니다.</li>
-    <li>결과 파일에서 규칙이 의도대로 적용되었는지 확인합니다.</li>
-    <li>추출 결과가 바뀌었다면 필요한 범위를 다시 번역합니다.</li>
-    <li>이미 적용까지 했다면 바뀐 결과를 다시 적용하고 게임에서 확인합니다.</li>
-  </ul>
-
-  <h2>자주 헷갈리는 점</h2>
-  <h3>2차 적용에도 영향을 주나요?</h3>
-  <p>필터는 주로 2차 추출 대상을 정하는 데 영향을 줍니다. 추출 결과가 바뀌면 이후 번역과 적용 결과도 달라질 수 있습니다.</p>
-
-  <h3>TextId와 Value 중 무엇을 먼저 봐야 하나요?</h3>
-  <p>특정 항목을 고르고 싶다면 TextId나 Identifier를 먼저 보고, 실제 문장 내용으로 거르고 싶다면 Value 조건을 봅니다.</p>
-
-  <h3>정규식이 어렵습니다.</h3>
-  <p>처음에는 프리셋을 기준으로 사용하고, 꼭 필요한 조건 하나만 조금씩 수정하세요.</p>
-
-  <h2>주의/중요/권장</h2>
-  <p><strong>주의:</strong> 조건을 너무 좁히면 필요한 대사가 빠질 수 있습니다.</p>
-  <p><strong>중요:</strong> 저장 후 기존 결과가 자동 갱신되지는 않습니다. 2차 추출을 다시 실행하세요.</p>
-  <p><strong>권장:</strong> 규칙을 수정한 뒤에는 추출 항목 수와 실제 샘플 문장을 함께 확인하세요.</p>
+<h1>CTF 2차 추출 제외 필터</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+<p><img alt="CTF 2차 추출 필터" src="../../guide/assets/ctf-secondary-exclusion-filter/image.png"></p>
+<p>Extract1에서 만든 <code>ctf_project.json</code> 항목 중 Extract2에 보낼 텍스트를 규칙으로 선별합니다.</p>
+<h2>설정 순서</h2>
+<ol>
+<li>CTF Extract1을 완료합니다.</li>
+<li>설정에서 <strong>CTF 2차 추출 제외 필터</strong>를 엽니다.</li>
+<li>프리셋을 고르거나 규칙을 추가합니다.</li>
+<li>Category, Role, Source Kind와 Identifier를 먼저 정합니다.</li>
+<li>필요할 때만 TextId, Context, Value 정규식을 추가합니다.</li>
+<li>저장 후 <strong>Extract2</strong>를 다시 실행합니다.</li>
+</ol>
+<h2>주요 조건</h2>
+<ul>
+<li><strong>Category</strong>: frame event, object text, global string을 구분합니다.</li>
+<li><strong>Role</strong>: 화면 표시용 등 항목의 역할을 구분합니다.</li>
+<li><strong>Source Kind</strong>: paragraph, formatted text처럼 원본 종류를 구분합니다.</li>
+<li><strong>Identifier</strong>: 특정 오브젝트나 항목을 좁힙니다.</li>
+<li><strong>TextId·Context·Value</strong>: 정규식으로 더 세밀하게 고릅니다.</li>
+</ul>
+<h2>결과 확인</h2>
+<p>Extract2 결과는 용도에 따라 <code>display.json</code>, <code>paragraph.json</code>, <code>formatted.json</code>, <code>alterable.json</code>으로 나뉩니다.</p>
+<ul>
+<li>필요한 문장이 올바른 파일에 들어갔습니다.</li>
+<li>메타데이터와 비번역 값은 빠졌습니다.</li>
+<li>규칙 변경 전 결과는 자동으로 바뀌지 않았습니다.</li>
+</ul>
+<p><strong>권장:</strong> 프리셋으로 시작하고 조건을 하나씩 추가하세요. 저장할 때마다 Extract2를 다시 실행해 항목 수와 샘플을 비교합니다.</p>
 </article>
 </main>
   </div>

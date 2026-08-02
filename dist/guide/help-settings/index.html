@@ -218,10 +218,29 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content"><h1>도움말</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
-<h2>화면</h2>
-<p><img src="../../guide/assets/help-settings/image%202.png" alt=""></p><h2>이 탭은 무엇인가요?</h2><p><code>도움말</code>은 필요한 안내나 외부 페이지들을 모아놓은 공간입니다.</p><h2>각 버튼은 무엇을 하나요?</h2><h3><code>사용 가이드</code></h3><p>현재 버전에서는 <code>사용 가이드</code> 버튼은 앱 안 문서가 아니라 외부 가이드 페이지를 브라우저로 엽니다.</p><p>즉, 이 버튼을 누르면 별도 도움말 모달 안에서 내용을 넘겨보는 방식이 아니라, 브라우저에서 가이드를 확인하는 흐름입니다.</p><p>F1 을 눌러도 동일한 기능을 수행합니다.</p><h3><code>ABOUT</code></h3><p><code>ABOUT</code>는 앱 안의 통합 도움말 모달을 열고 <code>ABOUT</code> 탭을 바로 보여 줍니다.</p><p>여기에는 현재 버전에서는:</p><ul><li>AIMT 소개</li></ul><ul><li>지원 언어</li></ul><ul><li>지원 엔진 개요</li></ul><ul><li>추출 / 번역 / 적용 / 유틸리티 같은 주요 기능 설명</li></ul><p>같은 안내가 들어 있습니다.</p><p>즉, <code>ABOUT</code>는 사용법 상세 매뉴얼이라기보다 <code>이 프로그램이 어떤 도구인지</code>를 요약해서 보는 영역에 가깝습니다.</p><h3><code>LICENSE</code></h3><p><code>LICENSE</code>도 같은 통합 도움말 모달을 열지만, 시작 위치만 <code>LICENSE</code> 탭으로 바뀝니다.</p><p>여기에는 AIMT 자체 라이선스 안내와 함께, 현재 포함된 여러 서드파티 패키지와 라이선스 고지문이 길게 들어 있습니다.</p><p>즉, 일반 사용 흐름 설명보다는 <code>배포/구성 요소 고지</code>를 확인하는 용도라고 보면 됩니다.</p><h3><code>Patreon</code>, <code>디스코드</code>, <code>커뮤니티</code></h3><p>이 버튼들은 앱 안 모달이 아니라 외부 페이지를 브라우저로 엽니다.</p><p>현재 버전에서는:</p><ul><li><code>Patreon</code>은 Patreon</li></ul><ul><li><code>디스코드</code>는 Discord</li></ul><ul><li><code>커뮤니티</code>는 arca.live AIMT 채널</li></ul><p>으로 연결됩니다.</p><p>브라우저 실행이 막혀 있거나 환경 문제로 열기에 실패하면, 링크가 바로 안 열릴 수 있습니다.</p><h3><code>UPDATE</code></h3><p><code>UPDATE</code>는 새 버전을 <code>자동 설치</code>하는 버튼이 아닙니다.</p><p>현재 버전에서는:</p><ol start="1" type="1"><li>현재 앱 버전을 읽고</li></ol><ol start="2" type="1"><li>원격 버전 정보를 확인한 뒤</li></ol><ol start="3" type="1"><li>더 새 버전이 있으면 확인창을 띄우고</li></ol><ol start="4" type="1"><li>사용자가 동의하면 다운로드 페이지를 브라우저로 엽니다</li></ol><p>즉, 이 버튼은 <code>업데이트 검사 + 다운로드 페이지 이동</code>에 가깝습니다.</p><p>이미 최신 버전이면 최신 버전 사용 중이라는 알림만 나오고, 원격 확인에 실패하면 실패 알림이 나올 수 있습니다.</p><h3><code>NOTICE</code></h3><p><code>NOTICE</code>는 통합 도움말 모달을 열고 <code>NOTICE</code> 탭을 바로 보여 줍니다.</p><p>이 탭은 정적인 안내문이 아니라, 공지 목록을 불러와서 보여 주는 영역입니다.</p><p>즉, <code>ABOUT</code>나 <code>LICENSE</code>처럼 미리 박혀 있는 고정 텍스트와는 성격이 다릅니다.</p><h2><code>NOTICE</code>는 어떻게 불러오나요?</h2><p>현재 버전에서는 공지는 <code>캐시</code>와 <code>원격 데이터</code>를 함께 쓰는 구조입니다.</p><p>앱 초기화 때 먼저 로컬에 저장된 공지 캐시를 읽어 바로 표시할 수 있게 준비하고, 그 뒤 백그라운드에서 원격 공지 데이터를 다시 확인합니다.</p><p>그래서 사용자 입장에서는:</p><ul><li>이미 받아 둔 공지가 있으면 비교적 빨리 목록이 보일 수 있고</li></ul><ul><li>뒤에서 더 새 공지가 확인되면 목록이 갱신될 수 있으며</li></ul><ul><li>네트워크 상태가 좋지 않으면 캐시된 내용만 보이거나 비어 보일 수도 있습니다</li></ul><p>즉, <code>NOTICE</code>를 눌렀다고 해서 항상 그 순간 실시간 새 공지만 강제로 다시 받아 오는 구조로 보면 안 됩니다.</p><h2><code>NOTICE</code> 안에서 새로고침을 누르면 어떻게 되나요?</h2><p><code>NOTICE</code> 상단의 새로고침 버튼은 강제로 원격 공지를 다시 확인하는 쪽에 가깝습니다.</p><p>성공하면 <code>최신 공지를 불러왔습니다</code> 알림이 나오고, 목록도 새 기준으로 다시 그려집니다.</p><p>다만 원격 조회에 실패해도 이미 들고 있던 공지 목록이 있으면 그 목록을 계속 보여 줄 수 있습니다.</p><p>즉, 새로고침은 <code>항상 새 목록 확보 보장</code>이라기보다 <code>원격 공지 재확인 시도</code>로 이해하는 편이 맞습니다.</p><h2>공지를 누르면 어떻게 되나요?</h2><p>공지 한 줄을 누르면 해당 공지 링크를 브라우저로 열려고 시도합니다.</p><p>동시에 현재 버전에서는 <code>읽음 처리</code>도 함께 저장해서, 해당 공지가 새 공지였다면 <code>NEW</code> 표시가 바로 사라집니다.</p><p>공지 수가 많으면 페이지 버튼으로 나뉘어 보일 수 있고, 고정 공지는 위쪽에 먼저 정렬됩니다.</p>
+<article class="guide-content">
+<h1>도움말</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+<p><img alt="도움말 설정" src="../../guide/assets/help-settings/image%202.png"></p>
+<p>도움말 탭에서 가이드, 프로그램 정보, 라이선스, 공지, 커뮤니티와 업데이트 확인 기능을 엽니다.</p>
+<h2>버튼 안내</h2>
+<ul>
+<li><strong>사용 가이드</strong>: 이 사용자 가이드를 브라우저로 엽니다. <strong>F1</strong>도 같은 기능입니다.</li>
+<li><strong>ABOUT</strong>: 현재 버전과 주요 지원 기능을 확인합니다.</li>
+<li><strong>LICENSE</strong>: AIMT와 포함된 구성 요소의 라이선스를 확인합니다.</li>
+<li><strong>NOTICE</strong>: 공지 목록을 엽니다. 새로고침을 누르면 최신 공지를 다시 확인합니다.</li>
+<li><strong>Patreon·디스코드·커뮤니티</strong>: 각 외부 페이지를 브라우저로 엽니다.</li>
+</ul>
+<h2>업데이트 확인</h2>
+<ol>
+<li><strong>UPDATE</strong>를 누릅니다.</li>
+<li>새 버전 안내가 나오면 내용을 확인합니다.</li>
+<li>다운로드에 동의하면 브라우저에서 다운로드 페이지가 열립니다.</li>
+</ol>
+<p><strong>UPDATE</strong>는 자동 설치 기능이 아닙니다. AIMT PRO 1.17.0.0보다 최신 버전이 있는지 확인하고 다운로드 페이지를 여는 기능입니다.</p>
+<h2>공지 확인</h2>
+<p>저장된 공지가 먼저 보인 뒤 새 공지가 확인되면 목록이 갱신될 수 있습니다. 공지를 누르면 링크가 열리고 읽음 상태가 저장됩니다.</p>
+<div class="guide-callout" data-callout="important" role="alert"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>업데이트와 공지는 인터넷 연결이 필요합니다. 열리지 않으면 연결 상태와 기본 브라우저를 확인하세요.</p></div></div>
 </article>
 </main>
   </div>
