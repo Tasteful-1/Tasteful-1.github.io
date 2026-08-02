@@ -220,26 +220,23 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content">
-<h1>언팩/리팩</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-<h2>이 도구는 무엇인가요?</h2><p>WOLF 게임 아카이브를 풀고, 번역 적용 후 다시 묶을 때 사용하는 도구입니다.</p>
-<h2>언제 사용하나요?</h2>
-<ul><li>해당 엔진의 일반 작업만으로 결과가 맞지 않을 때</li><li>파일 변환, 패치, 검수 같은 보조 작업이 필요할 때</li><li>엔진별 가이드에서 이 도구를 안내할 때</li></ul>
-<h2>사용 전 확인할 것</h2>
-<ul><li>현재 게임 형식이 WOLF 계열인지 확인합니다.</li><li>원본 파일과 현재 작업본을 구분해 둡니다.</li><li>적용이나 변환이 필요한 도구는 실행 전 백업을 준비합니다.</li></ul>
-<h2>기본 사용 순서</h2>
-<ol><li>작업 도구에서 언팩/리팩을 엽니다.</li><li>대상 프로젝트, 파일, 폴더가 맞는지 확인합니다.</li><li>화면에 표시된 옵션을 필요한 범위로만 조정합니다.</li><li>실행 버튼을 누르고 완료 메시지를 확인합니다.</li><li>게임 실행 또는 결과 파일로 정상 반영 여부를 확인합니다.</li></ol>
-<h2>화면/항목 설명</h2>
-<table><tbody><tr><th>도구 위치</th><td>작업 도구</td></tr><tr><th>대상</th><td>WOLF 아카이브와 작업 폴더</td></tr><tr><th>실행 기준</th><td>WOLF 전용 보조 도구입니다.</td></tr><tr><th>결과</th><td>아카이브가 풀리거나, 수정 결과가 다시 묶입니다.</td></tr></tbody></table>
-<h2>결과 확인 방법</h2>
-<ul><li>완료 메시지나 결과 목록을 확인합니다.</li><li>아카이브가 풀리거나, 수정 결과가 다시 묶입니다.</li><li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li></ul>
+<article class="guide-content"><h1>언팩/리팩</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+<h2>무엇을 할 수 있나요?</h2>
+<p>WOLF 아카이브의 내부 디렉터리를 선택해 풀거나, 작업 폴더를 지정한 버전과 확장자로 다시 묶는 도구입니다.</p>
+<h2>언제 필요한가요?</h2>
+<ul><li>게임 데이터가 .wolf나 .assets 같은 아카이브로 묶여 있을 때</li><li>수정한 폴더를 WOLF 아카이브로 다시 만들 때</li></ul>
+<h2>시작 전에 확인할 것</h2>
+<ul><li>Project Hub에서 올바른 WOLF 게임 폴더를 선택합니다.</li><li>원본 아카이브를 별도로 보관합니다.</li><li>게임과 편집기에서 대상 파일을 닫습니다.</li></ul>
+<h2>따라 하기</h2>
+<ol><li>작업 도구의 WOLF에서 언팩을 엽니다.</li><li>아카이브와 모드를 확인하고 풀 디렉터리를 선택합니다.</li><li>언팩을 실행하고 생성된 Data 구조를 확인합니다.</li><li>리팩이 필요하면 작업 도구의 WOLF에서 리팩을 엽니다.</li><li>대상 폴더, 원본 버전, 출력 확장자를 선택합니다.</li><li>보호 키가 필요한 경우에만 키 참조 파일을 선택합니다.</li><li>리팩을 실행하고 출력 경로와 검증 로그를 확인합니다.</li></ol>
+<h2>화면과 항목</h2>
+<table><thead><tr><th>항목</th><th>선택 기준</th></tr></thead><tbody><tr><td>언팩 대상</td><td>미리보기에서 풀 디렉터리만 선택합니다.</td></tr><tr><td>리팩 대상 폴더</td><td>아카이브로 만들 폴더를 선택합니다.</td></tr><tr><td>버전</td><td>2.01, 2.10, 2.20, 2.225, 3.00, 3.14, 3.31, 3.50 중 원본과 맞는 값을 선택합니다.</td></tr><tr><td>출력 확장자</td><td>.wolf, .data, .pak, .bin, .assets, .content, .res, .resource 중 선택합니다.</td></tr><tr><td>키 참조 파일</td><td>보호된 아카이브에서 원본 키가 필요할 때만 선택합니다.</td></tr></tbody></table>
+<h2>완료 후 확인</h2>
+<ul><li>언팩 후 선택한 디렉터리의 파일이 정상적으로 열리는지 확인합니다.</li><li>리팩 결과는 대상 폴더 옆에 같은 이름과 선택한 확장자로 생성됩니다.</li><li>게임을 실행해 아카이브를 정상적으로 읽는지 확인합니다.</li></ul>
 <h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>리팩 전에는 게임이 실행 중이지 않은지 확인하고 원본 아카이브를 따로 보관하세요.</p></div></div>
-<div class="guide-callout" data-callout="tip"><div class="guide-callout-title">권장</div><div class="guide-callout-body"><p>파일을 직접 바꾸는 도구는 작업 전후 파일을 비교할 수 있도록 원본을 보관해 두세요.</p></div></div>
-<h2>자주 헷갈리는 점</h2>
-<h3>실행했는데 화면이 바로 달라지지 않아요</h3><p>파일을 직접 바꾸거나 외부 프로그램을 여는 도구는 AIMT 화면에서 새로고침이나 재확인이 필요할 수 있습니다.</p>
-<h3>전체 파일에 바로 적용해도 되나요?</h3><p>처음에는 작은 범위로 실행해 결과를 확인한 뒤 필요한 범위를 넓히는 편이 안전합니다.</p>
+<p><strong>중요:</strong> 리팩 버전이 원본과 다르면 게임이 아카이브를 읽지 못할 수 있습니다.</p>
+<p><strong>주의:</strong> 같은 이름의 출력 아카이브가 이미 있으면 리팩이 중단됩니다. 기존 파일을 확인한 뒤 다시 실행하세요.</p>
 </article>
 </main>
   </div>

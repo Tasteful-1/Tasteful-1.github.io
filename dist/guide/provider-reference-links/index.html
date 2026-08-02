@@ -197,26 +197,12 @@
 </div></details>
       </nav></aside><div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div><main class="content-shell">
 <article class="guide-content"><h1>제공자별 참고 링크</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-19</p>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
 <h2>이 참고 문서의 범위</h2>
 <p>API 키 발급, 제공자별 문서, 이미지 출처처럼 AIMT 설정 과정에서 함께 확인하기 좋은 외부 자료를 모은 문서입니다.</p>
 <h2>변경 전 확인할 중요 사항</h2>
 <p><strong>중요:</strong> 외부 사이트의 화면과 정책은 바뀔 수 있습니다. API 키를 만들거나 결제 정보를 확인할 때는 각 제공자의 최신 안내를 함께 확인하세요.</p>
 <h2>참고 내용</h2>
-<ul><li><a href="https://aistudio.google.com/app/apikey">Gemini API 키</a> - Google AI Studio에서 Gemini API 키를 만들거나 확인합니다.</li><li><a href="https://ai.google.dev/gemini-api/docs/api-key">Gemini API 키 문서</a> - Gemini API 키 사용 방법과 인증 방식을 확인합니다.</li><li><a href="https://platform.openai.com/api-keys">OpenAI API Keys</a> - OpenAI API 키를 만들고 관리합니다.</li><li><a href="https://developers.openai.com/api/docs/quickstart">OpenAI API Quickstart</a> - OpenAI API 키 준비와 첫 요청 흐름을 확인합니다.</li><li><a href="https://platform.claude.com/">Claude Console</a> - Claude API 사용을 위한 콘솔에 접속합니다.</li><li><a href="https://openrouter.ai/settings/keys">OpenRouter API Keys</a> - OpenRouter API 키를 만들고 사용량 제한을 관리합니다.</li><li><a href="https://openrouter.ai/docs/api/reference/authentication">OpenRouter 인증 문서</a> - OpenRouter API 키와 Bearer 인증 방식을 확인합니다.</li><li><a href="https://platform.deepseek.com/api_keys">DeepSeek API Keys</a> - DeepSeek API 키를 만들고 관리합니다.</li><li><a href="https://api-docs.deepseek.com/api/deepseek-api">DeepSeek 인증 문서</a> - DeepSeek API 인증과 호출 방식을 확인합니다.</li><li><a href="https://developers.deepl.com/docs/getting-started/auth">DeepL 인증 문서</a> - DeepL API 인증 키 확인 위치와 보안 주의사항을 확인합니다.</li><li><a href="https://developers.deepl.com/docs/getting-started/managing-api-keys">DeepL API 키 관리</a> - DeepL API 키 생성, 사용량, 제한 설정을 확인합니다.</li><li><a href="https://docs.litellm.ai/docs/providers">LiteLLM Providers</a> - 제공자별 모델 연결 방식과 표기 방식을 확인합니다.</li><li><a href="https://litellm.vercel.app/docs/providers/openai">LiteLLM OpenAI 제공자 문서</a> - OpenAI 제공자 관련 이미지나 설명의 출처로 참고합니다.</li></ul>
-  <h2>간단 팁소개</h2>
-  <p>번역할 텍스트만을 추려내고자 하는데 종종 불필요한 항목들이 너무 많은 경우가 있습니다.</p>
-  <p>이럴 때 번역할 텍스트가 일정한 구조를 가지고 있다면 예외정규식을 활용할 수 있습니다.</p>
-  <a href="../../guide/assets/exclude-exception-regex/image%202.png"><img src="../../guide/assets/exclude-exception-regex/image%202.png"></a>
-  <p>우선, 처리하고자 하는 탭의 제외 정규식에 .* 을 추가합니다.</p>
-  <p>이는 존재하는 모든 추출 대상 텍스트들을 제외시키겠다는 의미입니다.</p>
-  <p>그 후 우상단의 화살표를 클릭해 예외설정으로 진입합니다.</p>
-  <a href="../../guide/assets/exclude-exception-regex/image%203.png"><img src="../../guide/assets/exclude-exception-regex/image%203.png"></a>
-  <p>이 곳에선 제외 정규식이나, 언어패턴설정과 무관하게 항상 추출해야만 하는 항목들을 설정해둘 수 있습니다.</p>
-  <p>이 방식으로 설정값을 조정하면 꼭 추출하고 싶은 부분들만 추출되도록 할 수 있습니다.</p>
-  <p>다만, 이 방식은 이후 다른 게임을 번역할 때,</p>
-  <p>번역이 필요한 부분들까지 제외시킬 리스크가 있기에 번역이 끝나면 꼭 뒷정리를 해줘야 합니다.</p>
-  <a href="../../guide/assets/exclude-exception-regex/image%204.png"><img src="../../guide/assets/exclude-exception-regex/image%204.png"></a>
-  <p>사용을 마친 .* 는 OFF 로 하는 걸 잊지 말아주세요.</p>
+<ul><li><a href="https://aistudio.google.com/app/apikey">Gemini API 키</a> - Google AI Studio에서 Gemini API 키를 만들거나 확인합니다.</li><li><a href="https://ai.google.dev/gemini-api/docs/api-key">Gemini API 키 문서</a> - Gemini API 키 사용 방법과 인증 방식을 확인합니다.</li><li><a href="https://cloud.google.com/docs/authentication/provide-credentials-adc">Vertex AI 인증</a> - Vertex AI에서 사용할 Google 인증 환경을 준비합니다.</li><li><a href="https://platform.openai.com/api-keys">OpenAI API Keys</a> - OpenAI API 키를 만들고 관리합니다.</li><li><a href="https://developers.openai.com/api/docs/quickstart">OpenAI API Quickstart</a> - OpenAI API 키 준비와 첫 요청 흐름을 확인합니다.</li><li><a href="https://platform.claude.com/">Claude Console</a> - Claude API 사용을 위한 콘솔에 접속합니다.</li><li><a href="https://console.x.ai/">xAI Console</a> - xAI API 키와 사용량을 관리합니다.</li><li><a href="https://docs.x.ai/docs/overview">xAI API 문서</a> - xAI API의 인증과 모델 사용 방법을 확인합니다.</li><li><a href="https://openrouter.ai/settings/keys">OpenRouter API Keys</a> - OpenRouter API 키를 만들고 사용량 제한을 관리합니다.</li><li><a href="https://openrouter.ai/docs/api/reference/authentication">OpenRouter 인증 문서</a> - OpenRouter API 키와 Bearer 인증 방식을 확인합니다.</li><li><a href="https://platform.deepseek.com/api_keys">DeepSeek API Keys</a> - DeepSeek API 키를 만들고 관리합니다.</li><li><a href="https://api-docs.deepseek.com/api/deepseek-api">DeepSeek 인증 문서</a> - DeepSeek API 인증과 호출 방식을 확인합니다.</li><li><a href="https://developers.deepl.com/docs/getting-started/auth">DeepL 인증 문서</a> - DeepL API 인증 키 확인 위치와 보안 주의사항을 확인합니다.</li><li><a href="https://developers.deepl.com/docs/getting-started/managing-api-keys">DeepL API 키 관리</a> - DeepL API 키 생성, 사용량, 제한 설정을 확인합니다.</li></ul>
 </article>
 </main></div><script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script></body></html>

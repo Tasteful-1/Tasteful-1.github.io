@@ -745,6 +745,15 @@ def _ol(items: list[str]) -> str:
     return "<ol>" + "".join(f"<li>{_escape(item)}</li>" for item in items) + "</ol>"
 
 
+def _table(headers: tuple[str, ...], rows: list[tuple[str, ...]]) -> str:
+    head = "".join(f"<th>{_escape(value)}</th>" for value in headers)
+    body = "".join(
+        "<tr>" + "".join(f"<td>{_escape(value)}</td>" for value in row) + "</tr>"
+        for row in rows
+    )
+    return f"<table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table>"
+
+
 def _doc_version() -> str:
     return f'<p class="doc-version">{DOC_VERSION}</p>'
 
@@ -1300,9 +1309,9 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "confusion": [("번역 결과 파일을 검사하나요?", "이 도구는 현재 프로젝트의 data 계열 JSON을 기준으로 검사합니다. 일반적인 번역 결과 JSON 전체를 대상으로 직접 수정하는 도구로 이해하면 안 됩니다."), ("비율이 0이면 검수가 끝난 건가요?", "아닙니다. 일본어 문자 기준으로 남은 항목이 없다는 뜻일 뿐입니다. 오역, 누락, 코드 손상은 별도로 확인해야 합니다.")],
     },
     "guide/api-key-settings/index.html": {
-        "summary": "API KEY 설정은 Gemini, OpenAI, Claude, DeepSeek, OpenRouter, DeepL 같은 번역 제공자에 접속하기 위한 인증 정보를 등록하고 관리하는 화면입니다.",
+        "summary": "API KEY 설정은 Gemini, Vertex, OpenAI, Claude, xAI, DeepSeek, OpenRouter, DeepL 같은 번역 제공자의 인증 정보를 관리하는 화면입니다.",
         "when": ["AI 번역 또는 DeepL 번역을 처음 준비할 때", "기존 키를 새 키로 교체할 때", "번역 요청이 인증 오류로 실패할 때", "여러 키의 사용 여부를 켜거나 끌 때"],
-        "before": ["API 키는 각 제공자 계정에서 직접 발급해야 합니다.", "어떤 모델을 쓸지는 AI-MODEL 또는 번역 설정에서 따로 선택합니다.", "무료 키를 여러 개 동시에 사용하는 경우 제공자의 이용 약관과 할당량 정책을 먼저 확인하세요."],
+        "before": ["API 키는 각 제공자 계정에서 직접 발급해야 합니다.", "어떤 모델을 쓸지는 AI-MODEL 또는 번역 설정에서 따로 선택합니다."],
         "steps": ["제공자 종류를 선택합니다.", "키 입력 영역에 발급받은 값을 붙여 넣습니다.", "사용할 키의 ON/OFF 상태를 확인합니다.", "저장합니다.", "빠른번역이나 일반 번역으로 정상 동작을 확인합니다."],
         "result": ["저장 후 오류 메시지가 없는지 확인합니다.", "빠른번역에서 짧은 문장을 번역해 키가 정상인지 확인합니다.", "실패하면 키 값, 제공자 선택, 모델 선택, 네트워크 상태를 순서대로 확인합니다."],
         "notices": [("주의", "API 키는 개인 인증 정보입니다. 공개 문서, 스크린샷, 커뮤니티 글에 그대로 노출하지 마세요.")],
@@ -1663,17 +1672,18 @@ def _external_reference_content() -> str:
     links = [
         ("https://aistudio.google.com/app/apikey", "Gemini API 키", "Google AI Studio에서 Gemini API 키를 만들거나 확인합니다."),
         ("https://ai.google.dev/gemini-api/docs/api-key", "Gemini API 키 문서", "Gemini API 키 사용 방법과 인증 방식을 확인합니다."),
+        ("https://cloud.google.com/docs/authentication/provide-credentials-adc", "Vertex AI 인증", "Vertex AI에서 사용할 Google 인증 환경을 준비합니다."),
         ("https://platform.openai.com/api-keys", "OpenAI API Keys", "OpenAI API 키를 만들고 관리합니다."),
         ("https://developers.openai.com/api/docs/quickstart", "OpenAI API Quickstart", "OpenAI API 키 준비와 첫 요청 흐름을 확인합니다."),
         ("https://platform.claude.com/", "Claude Console", "Claude API 사용을 위한 콘솔에 접속합니다."),
+        ("https://console.x.ai/", "xAI Console", "xAI API 키와 사용량을 관리합니다."),
+        ("https://docs.x.ai/docs/overview", "xAI API 문서", "xAI API의 인증과 모델 사용 방법을 확인합니다."),
         ("https://openrouter.ai/settings/keys", "OpenRouter API Keys", "OpenRouter API 키를 만들고 사용량 제한을 관리합니다."),
         ("https://openrouter.ai/docs/api/reference/authentication", "OpenRouter 인증 문서", "OpenRouter API 키와 Bearer 인증 방식을 확인합니다."),
         ("https://platform.deepseek.com/api_keys", "DeepSeek API Keys", "DeepSeek API 키를 만들고 관리합니다."),
         ("https://api-docs.deepseek.com/api/deepseek-api", "DeepSeek 인증 문서", "DeepSeek API 인증과 호출 방식을 확인합니다."),
         ("https://developers.deepl.com/docs/getting-started/auth", "DeepL 인증 문서", "DeepL API 인증 키 확인 위치와 보안 주의사항을 확인합니다."),
         ("https://developers.deepl.com/docs/getting-started/managing-api-keys", "DeepL API 키 관리", "DeepL API 키 생성, 사용량, 제한 설정을 확인합니다."),
-        ("https://docs.litellm.ai/docs/providers", "LiteLLM Providers", "제공자별 모델 연결 방식과 표기 방식을 확인합니다."),
-        ("https://litellm.vercel.app/docs/providers/openai", "LiteLLM OpenAI 제공자 문서", "OpenAI 제공자 관련 이미지나 설명의 출처로 참고합니다."),
     ]
     return "<ul>" + "".join(_external_link(url, label, description) for url, label, description in links) + "</ul>"
 
@@ -2027,6 +2037,105 @@ def _screen_area_article() -> str:
         ])
     parts.append("</article>")
     return "\n".join(parts)
+
+
+def _api_key_article() -> str:
+    path = "guide/api-key-settings/index.html"
+    details = _image_block(DIST_ROOT / path, "guide/assets/api-key-settings/image.png", "API KEY 설정 화면")
+    details += _table(
+        ("제공자", "입력값"),
+        [
+            ("Gemini, OpenAI, OpenAI-compatible, Claude", "각 제공자가 발급한 API 키"),
+            ("xAI, DeepSeek, OpenRouter, DeepL", "각 제공자가 발급한 API 키"),
+            ("Vertex", "Google Cloud Project ID"),
+        ],
+    )
+    details += _p("Vertex는 Project ID와 함께 Google 인증 환경과 번역 설정의 리전이 준비되어 있어야 합니다. Google Translate와 Papago는 이 화면에서 키를 등록하지 않습니다.")
+    details += _p("키는 그룹으로 정리하거나 Ungrouped에 둘 수 있습니다. ON인 키만 사용 후보가 되며, 그룹을 삭제해도 키는 Ungrouped로 이동합니다.")
+    return _render_article_body(path, "API KEY 설정", "feature", PAGE_METADATA[path], details)
+
+
+def _cache_management_article() -> str:
+    path = "guide/cache-management/index.html"
+    prompt_link = _link("guide/prompt/index.html", "프롬프트의 DB 사전 캐시 관리", DIST_ROOT / path)
+    details = _table(
+        ("항목", "삭제되는 내용"),
+        [
+            ("백업", "AIMT가 만든 작업 백업"),
+            ("추출·번역·매핑", "재작업과 적용에 쓰는 결과"),
+            ("로그·체크", "오류 기록과 검사 결과"),
+            ("엔진별 항목", "해당 엔진의 중간 상태"),
+        ],
+    )
+    details += f"<p>MVMZ 자동 사전의 프로젝트별 세션을 보고 내보내거나 가져오려면 {prompt_link}를 사용합니다. 이 페이지의 캐시 삭제와는 다른 기능입니다.</p>"
+    return _render_article_body(path, "캐시 관리", "feature", PAGE_METADATA[path], details)
+
+
+def _wolf_rpg_editor_article() -> str:
+    path = "guide/wolf-rpg-editor/index.html"
+    details = _table(
+        ("단계", "결과"),
+        [
+            ("추출1", "BasicData와 MapData를 1차 작업 데이터로 변환합니다."),
+            ("추출2", "필터를 적용해 AIMT_Extract에 번역용 JSON을 만듭니다."),
+            ("적용1", "번역 JSON을 1차 작업 상태에 반영합니다."),
+            ("적용2", "반영된 데이터를 게임의 Data 폴더에 씁니다."),
+        ],
+    )
+    details += f'<p>아카이브 준비가 필요하면 {_link("guide/wolf-unpack-repack/index.html", "WOLF 언팩/리팩", DIST_ROOT / path)}을 먼저 확인합니다. 추출 범위를 바꾸려면 {_link("guide/wolf-secondary-exclusion-filter/index.html", "WOLF 2차 추출 제외 필터", DIST_ROOT / path)}를 사용합니다.</p>'
+    metadata = {
+        "summary": "WOLF RPG Editor 게임의 아카이브 준비부터 추출1, 추출2, 번역, 적용1, 적용2까지 이어지는 작업 흐름입니다.",
+        "when": ["WOLF 게임을 처음 번역할 때", "추출1·2와 적용1·2의 순서를 확인할 때", "적용2 전에 필요한 확인 사항을 찾을 때"],
+        "before": ["Project Hub에서 WOLF 엔진과 게임 폴더를 선택합니다.", "원본 게임을 별도로 보관합니다.", "Data가 아카이브로 묶여 있으면 먼저 언팩합니다."],
+        "steps": ["추출1을 실행합니다.", "필요하면 WOLF 2차 추출 제외 필터를 조정합니다.", "추출2를 실행하고 AIMT_Extract의 JSON을 확인합니다.", "필요한 파일을 번역하고 일관성·이스케이프·빈칸을 검수합니다.", "적용1을 실행합니다.", "적용2를 실행하고 표시되는 파일명·인코딩 확인을 처리합니다.", "게임을 실행해 대사, 메뉴, 파일 로딩을 확인합니다."],
+        "result": ["필요한 대사와 메뉴가 번역되었는지 확인합니다.", "글자 깨짐, 누락 파일, 로딩 오류가 없는지 확인합니다.", "문제가 있으면 같은 프로젝트에서 추출2부터 범위를 좁혀 다시 진행합니다."],
+        "notices": [("중요", "추출한 프로젝트와 적용할 프로젝트가 같아야 합니다."), ("주의", "적용2에서 CP949 저장 불가 파일을 건너뛰면 해당 파일에는 번역이 반영되지 않습니다."), ("권장", "처음에는 적은 파일로 적용2와 게임 실행까지 확인한 뒤 범위를 넓히세요.")],
+    }
+    return _render_article_body(path, "WOLF RPG Editor", "engine", metadata, details)
+
+
+def _wolf_archive_article() -> str:
+    path = "guide/wolf-unpack-repack/index.html"
+    details = _table(
+        ("항목", "선택 기준"),
+        [
+            ("언팩 대상", "미리보기에서 풀 디렉터리만 선택합니다."),
+            ("리팩 대상 폴더", "아카이브로 만들 폴더를 선택합니다."),
+            ("버전", "2.01, 2.10, 2.20, 2.225, 3.00, 3.14, 3.31, 3.50 중 원본과 맞는 값을 선택합니다."),
+            ("출력 확장자", ".wolf, .data, .pak, .bin, .assets, .content, .res, .resource 중 선택합니다."),
+            ("키 참조 파일", "보호된 아카이브에서 원본 키가 필요할 때만 선택합니다."),
+        ],
+    )
+    metadata = {
+        "summary": "WOLF 아카이브의 내부 디렉터리를 선택해 풀거나, 작업 폴더를 지정한 버전과 확장자로 다시 묶는 도구입니다.",
+        "when": ["게임 데이터가 .wolf나 .assets 같은 아카이브로 묶여 있을 때", "수정한 폴더를 WOLF 아카이브로 다시 만들 때"],
+        "before": ["Project Hub에서 올바른 WOLF 게임 폴더를 선택합니다.", "원본 아카이브를 별도로 보관합니다.", "게임과 편집기에서 대상 파일을 닫습니다."],
+        "steps": ["작업 도구의 WOLF에서 언팩을 엽니다.", "아카이브와 모드를 확인하고 풀 디렉터리를 선택합니다.", "언팩을 실행하고 생성된 Data 구조를 확인합니다.", "리팩이 필요하면 작업 도구의 WOLF에서 리팩을 엽니다.", "대상 폴더, 원본 버전, 출력 확장자를 선택합니다.", "보호 키가 필요한 경우에만 키 참조 파일을 선택합니다.", "리팩을 실행하고 출력 경로와 검증 로그를 확인합니다."],
+        "result": ["언팩 후 선택한 디렉터리의 파일이 정상적으로 열리는지 확인합니다.", "리팩 결과는 대상 폴더 옆에 같은 이름과 선택한 확장자로 생성됩니다.", "게임을 실행해 아카이브를 정상적으로 읽는지 확인합니다."],
+        "notices": [("중요", "리팩 버전이 원본과 다르면 게임이 아카이브를 읽지 못할 수 있습니다."), ("주의", "같은 이름의 출력 아카이브가 이미 있으면 리팩이 중단됩니다. 기존 파일을 확인한 뒤 다시 실행하세요.")],
+    }
+    return _render_article_body(path, "언팩/리팩", "feature", metadata, details)
+
+
+REVIEWED_VERSION_ONLY_PATHS: set[str] = {
+    "guide/features-screen/index.html",
+    "guide/quick-translation/index.html",
+    "guide/project-conversion/index.html",
+    "guide/wolf-secondary-exclusion-filter/index.html",
+    "guide/srpg-secondary-extraction-filter/index.html",
+    "guide/srpg-studio-manual-build/index.html",
+    "guide/srpg-studio-unpack/index.html",
+    "guide/translation-consistency/index.html",
+}
+
+
+def _replace_doc_version(article: str) -> str:
+    return re.sub(
+        r'(?is)<p\b[^>]*class=["\'][^"\']*doc-version[^"\']*["\'][^>]*>.*?</p>',
+        _doc_version(),
+        article,
+        count=1,
+    )
 
 
 def _links_from_paths(paths: set[str]) -> list[tuple[str, str]]:
@@ -2607,6 +2716,13 @@ def main() -> int:
     _remove_deleted_pages()
     entries = edit_guide.get_nav_entries(DIST_ROOT)
     group_articles = _build_group_articles()
+    reviewed_articles = {
+        "guide/api-key-settings/index.html": _api_key_article(),
+        "guide/cache-management/index.html": _cache_management_article(),
+        "guide/provider-reference-links/index.html": group_articles["guide/provider-reference-links/index.html"],
+        "guide/wolf-rpg-editor/index.html": _wolf_rpg_editor_article(),
+        "guide/wolf-unpack-repack/index.html": _wolf_archive_article(),
+    }
     all_paths = {entry["path"] for entry in edit_guide.list_files(DIST_ROOT, include_unlisted=True) if not entry.get("virtual")}
 
     for path in sorted(all_paths):
@@ -2619,11 +2735,11 @@ def main() -> int:
         except ValueError:
             continue
         title = TITLE_OVERRIDES.get(path, edit_guide.parse_title(title_source_text, html_path.parent.name))
-        article = (
-            original_article
-            if uses_current_article
-            else group_articles.get(path) or _render_article(path, title, original_article)
-        )
+        article = reviewed_articles.get(path)
+        if article is None:
+            article = original_article if uses_current_article else group_articles.get(path) or _render_article(path, title, original_article)
+        if path in REVIEWED_VERSION_ONLY_PATHS:
+            article = _replace_doc_version(article)
         updated = _replace_article_safe(text, article)
         updated = re.sub(r"(?is)<title>.*?</title>", f"<title>{_escape(title)} · AIMT Guide</title>", updated, count=1)
         edit_guide.write_text(html_path, updated)
