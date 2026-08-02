@@ -237,7 +237,7 @@
   <p><strong>Extract2</strong>는 patch JSON을 AIMT 번역 JSON으로 바꿉니다. speaker 같은 보조 정보와 실제 번역 문장을 구분해 결과를 확인합니다.</p>
   <p>추출 범위를 바꾸려면 <a href="../../guide/srpg-secondary-extraction-filter/index.html">SRPG 2차 추출 필터</a>를 조정한 뒤 Extract2를 다시 실행합니다. 이 필터는 제외가 아니라 <strong>포함할 대상</strong>을 고릅니다.</p>
   <h2>3. 번역</h2>
-  <p>이벤트 대사, 이름·설명, StringTable을 적은 범위로 먼저 번역합니다. JavaScript plugin의 코드와 식별자는 번역하지 않습니다.</p>
+  <p>이벤트 대사, 이름·설명, StringTable을 번역합니다. JavaScript plugin의 코드와 식별자는 번역하지 않습니다.</p>
   <h2>4. Apply1</h2>
   <p><strong>Apply1</strong>은 번역 JSON을 translated patch로 만들고 작업 공간의 StringTable과 plugin 자료에 반영합니다. 번역 항목이 없거나 patch가 맞지 않으면 중단하고 Extract2부터 확인합니다.</p>
   <h2>5. Apply2</h2>
