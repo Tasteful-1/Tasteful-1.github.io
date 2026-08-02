@@ -221,67 +221,30 @@
 <main class="content-shell">
 <article class="guide-content">
 <h1>기본폰트설정</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
-<p><img src="../../guide/assets/default-font-settings/image%202.png" alt=""></p>
-<h2>무엇을 조정하는 설정인가요?</h2>
-<p>기본폰트설정은 MVMZ 적용 시 사용할 메인 폰트, 숫자 폰트, 폰트 크기를 프리셋으로 관리하는 설정입니다.</p><p><div class="guide-callout" data-callout="important" role="note"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>이 설정은 게임 엔진에 따라 적용 방식이 다릅니다.</p><p>MV : 번역 완료 후 적용 단계에서 프로젝트 경로의 gamefont.css 를 설정한 프리셋에 따라 수정합니다.<br>따라서 gamefont.css 가 아닌 플러그인으로 직접 폰트를 지정하는 경우엔 반영되지 않을 수 있습니다.</p><p>MZ : 추출 단계에서 system_term.json 에 출력되는 폰트 관련 영역을 설정한 프리셋에 따라 수정 후 저장합니다.<br>이후&nbsp;system_term.json 를 프로젝트에 적용할 때서야 비로소 그 값이 반영되게 됩니다.<br>때문에 번역 과정 중 system_term.json 가 한번도 적용 대상이 되지 못한다면 게임에 반영되지 않습니다.<br>또한 MV 와 마찬가지로 system.json 이 아닌 플러그인으로 직접 폰트를 지정하는 경우엔 정상적으로 반영되지 않을 수 있습니다.</p><p>MVMZ 양쪽 모두 플러그인으로 폰트를 처리할 경우엔 plugins.js 또는 code_356 / code_357 에서 제어할 가능성이 높으니<br>만약 폰트 변경이 의도대로 이루어지지 않는다면 위 세 파일을 살펴보심을 권장드립니다.</p></div></div></p>
-<h2>언제 사용하나요?</h2>
-<ul>
-<li>MVMZ 적용 후 한글이 깨지거나 네모로 보일 때</li>
-<li>게임 분위기에 맞는 한글 폰트를 지정하고 싶을 때</li>
-<li>숫자만 다른 폰트로 표시하거나 폰트 크기를 조정해야 할 때</li>
-</ul>
-<h2>사용 전 확인할 것</h2>
-<ul>
-<li>한글 글리프가 포함된 폰트를 준비합니다.</li>
-<li>상업적 배포나 공유가 필요한 작업이라면 폰트 라이선스를 먼저 확인합니다.</li>
-<li>폰트 변경은 번역문 내용이 아니라 게임 화면의 글자 표시 방식에 영향을 줍니다.</li>
-</ul>
-<h2>기본 사용 순서</h2>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+<p>MV/MZ 적용에 사용할 메인 폰트, 숫자 폰트와 글자 크기를 프리셋으로 관리합니다.</p>
+<h2>프리셋 선택</h2>
 <ol>
-<li>설정 화면에서 MVMZ 영역의 기본폰트설정을 엽니다.</li>
-<li>기존 프리셋을 선택하거나 새 프리셋을 만듭니다.</li>
-<li>메인 폰트와 숫자 폰트를 시스템 폰트 또는 파일 선택으로 지정합니다.</li>
-<li>폰트 크기를 확인하고 저장합니다.</li>
-<li>MVMZ 번역을 진행합니다.</li>
-<li>번역이 끝나면 게임을 실행해 실제 대사창, 메뉴, 숫자 표시를 확인합니다.</li>
+<li>설정의 MVMZ 영역에서 <strong>기본폰트설정</strong>을 엽니다.</li>
+<li>기존 프리셋을 선택하거나 <strong>새 프리셋</strong>을 만듭니다.</li>
+<li>메인 폰트, 숫자 폰트와 글자 크기를 확인합니다.</li>
+<li>현재 프로젝트에 사용할 프리셋을 선택하고 창을 닫습니다.</li>
+<li>번역 적용 후 게임을 실행해 확인합니다.</li>
 </ol>
-<h2>화면/항목 설명</h2>
-<table>
-<thead><tr><th>항목</th><th>이해 방법</th></tr></thead>
-<tbody>
-<tr><td>폰트 프리셋</td><td>메인 폰트, 숫자 폰트, 폰트 크기를 묶어 저장한 선택지입니다.</td></tr>
-<tr><td>새 프리셋</td><td>새 폰트 조합을 추가합니다.</td></tr>
-<tr><td>수정</td><td>현재 프리셋의 폰트 경로와 크기를 바꿉니다.</td></tr>
-<tr><td>메인 폰트</td><td>대사, 메뉴 등 일반 텍스트에 사용할 기본 폰트입니다.</td></tr>
-<tr><td>숫자 폰트</td><td>수치 표시를 별도 폰트로 다루고 싶을 때 지정합니다.</td></tr>
-<tr><td>폰트 크기</td><td>적용 후 화면에 표시될 기본 크기 기준입니다.</td></tr>
-</tbody>
-</table>
-<h2>결과 확인 방법</h2>
+<p>기본 프리셋을 선택하면 프로젝트의 기존 폰트 설정을 사용합니다.</p>
+<h2>언제 적용되나요?</h2>
 <ul>
-<li>게임 실행 후 한글이 정상 표시되는지 확인합니다.</li>
-<li>대사창, 메뉴, 전투 화면처럼 글자 위치가 다른 화면을 함께 확인합니다.</li>
-<li>숫자 폭이나 줄바꿈이 어색하면 숫자 폰트와 폰트 크기를 다시 조정합니다.</li>
+<li><strong>MV</strong>: 번역 적용 시 현재 프리셋을 기준으로 <code>gamefont.css</code>와 폰트 파일을 반영합니다.</li>
+<li><strong>MZ</strong>: 적용 대상에 <code>system_terms.json</code>이 있을 때 현재 프리셋을 반영합니다.</li>
+<li><strong>번역 가져오기</strong>: Font Settings를 선택하면 이전 프로젝트의 폰트가 아니라 현재 선택한 프리셋을 적용합니다.</li>
 </ul>
-<h2>주의/중요/권장</h2>
-<div class="guide-callout" data-callout="warning">
-<div class="guide-callout-title">주의</div>
-<div class="guide-callout-body">
-<p>폰트가 바뀌면 글자 폭과 줄바꿈도 달라질 수 있습니다. 적용 후 실제 게임 화면에서 반드시 확인하세요.</p>
-</div>
-</div>
-<div class="guide-callout" data-callout="tip">
-<div class="guide-callout-title">권장</div>
-<div class="guide-callout-body">
-<p>폰트를 적용하고나면 꼭 게임을 직접 실행해서 테스트 해보시는 것을 권장드립니다.</p>
-</div>
-</div>
-<h2>자주 헷갈리는 점</h2>
+<h2>완료 후 확인</h2>
 <ul>
-<li><strong>기본 창에서 바로 값을 고치는 건가요?</strong><br>기본 창은 현재 프리셋 확인과 선택에 가깝습니다. 실제 값 편집은 새 프리셋 또는 수정 창에서 진행합니다.</li>
-<li><strong>폰트만 바꾸면 번역문도 바뀌나요?</strong><br>아닙니다. 폰트 설정은 표시 방식에 영향을 주며, 번역문 내용 자체를 바꾸지는 않습니다.</li>
+<li>한글과 숫자가 모두 표시됩니다.</li>
+<li>대사창과 메뉴에서 글자가 잘리지 않습니다.</li>
+<li>폰트 파일의 배포 라이선스를 확인했습니다.</li>
 </ul>
+<div class="guide-callout" data-callout="important" role="alert"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>플러그인이 폰트를 직접 지정하면 프리셋보다 플러그인 설정이 우선할 수 있습니다. 이 경우 <code>plugins.js</code>와 플러그인 명령을 확인하세요.</p></div></div>
 </article>
 </main>
 </div>

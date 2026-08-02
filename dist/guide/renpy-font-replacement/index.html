@@ -219,29 +219,23 @@
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
 <article class="guide-content">
-  <h1>폰트 교체</h1>
-  <p class="doc-version">문서 기준: AIMT PRO 1.16 계열<br>최종 편집 일시: 2026-07-01</p>
-  <h2>이 도구는 무엇인가요?</h2>
-  <p>Ren'Py 적용 후 한글이 깨지거나 글자가 어색할 때 폰트를 교체하고 확인하는 흐름을 정리하는 문서입니다.</p>
-  <h2>화면 참고 이미지</h2>
-  <h2>
-    <p><img src="../../guide/assets/renpy-font-replacement/image.png" alt=""></p>
-  </h2>
-  <h2>언제 사용하나요?</h2>
-  <ul>
-    <li>Ren'Py 번역 적용 후 폰트가 깨졌을 때</li>
-  </ul>
-  <h2>사용 전 확인할 것</h2>
-  <ul>
-    <li>현재 프로젝트가 Ren'Py 계열인지 확인합니다.</li>
-    <li>게임에 적용할 폰트 파일에 이상이 없는지 확인합니다.</li>
-  </ul>
-  <h2>기본 사용 순서</h2>
-  <ol>
-    <li>작업 도구에서 폰트 교체를 엽니다.</li>
-    <li>게임에 적용할 폰트를 선택합니다.</li>
-    <li>적용을 누릅니다.</li>
-  </ol>
+<h1>Ren'Py 폰트 교체</h1>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+<p><img alt="Ren'Py 폰트 교체" src="../../guide/assets/renpy-font-replacement/image.png"></p>
+<p>선택한 폰트를 <code>game/gui</code>에 복사하고 <code>gui.rpy</code>의 폰트 정의를 바꿉니다.</p>
+<h2>지원 파일</h2>
+<p><code>ttf</code>, <code>otf</code>, <code>woff</code>, <code>woff2</code>, <code>ttc</code>를 지원합니다.</p>
+<h2>사용 순서</h2>
+<ol>
+<li>프로젝트와 원본 <code>gui.rpy</code>를 백업합니다.</li>
+<li>작업 도구에서 <strong>폰트 교체</strong>를 엽니다.</li>
+<li>한글을 포함한 폰트 파일을 선택합니다.</li>
+<li><strong>적용</strong>을 누릅니다.</li>
+<li>컴파일과 아카이브 리팩 완료 메시지를 확인합니다.</li>
+<li>게임의 대사, 메뉴와 숫자를 확인합니다.</li>
+</ol>
+<p>AIMT는 literal <code>gui.*_font</code> 정의를 변경합니다. <code>gui.rpy</code>가 RPA 안에 있으면 수정 후 해당 아카이브를 다시 묶습니다.</p>
+<div class="guide-callout" data-callout="important" role="alert"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>변수나 함수로 폰트를 정한 프로젝트는 자동 교체 대상이 없을 수 있습니다. 이 경우 <code>gui.rpy</code>의 폰트 정의를 직접 확인하세요.</p></div></div>
 </article>
 </main>
   </div>
