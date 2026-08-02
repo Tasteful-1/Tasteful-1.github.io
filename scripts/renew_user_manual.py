@@ -940,6 +940,7 @@ PAGE_TYPE_TEMPLATES: dict[str, tuple[str, ...]] = {
 
 PAGE_TYPE_BY_PATH: dict[str, str] = {
     "guide/index.html": "home",
+    "guide/basic-workflow/index.html": "workflow",
     "guide/faq/index.html": "troubleshooting",
     "guide/rpg-maker-command-code-reference/index.html": "command_reference",
     "guide/exclude-exception-regex/index.html": "feature",
@@ -1000,6 +1001,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
             ("guide/multi-regex-engines/index.html", "HTML·범용 정규식 엔진"),
         ],
         "frequent_links": [
+            ("guide/basic-workflow/index.html", "기본 작업 흐름"),
             ("guide/api-key-settings/index.html", "API KEY 설정"),
             ("guide/ai-model/index.html", "AI-MODEL"),
             ("guide/translation-settings/index.html", "번역 설정"),
@@ -1009,6 +1011,42 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
             ("guide/faq/index.html", "자주 나오는 질문"),
         ],
         "notices": [("주의", "게임 형식마다 추출 가능한 텍스트와 적용 방식이 다릅니다. 처음 작업하는 형식은 엔진별 가이드를 먼저 확인하세요.")],
+    },
+    "guide/basic-workflow/index.html": {
+        "summary": "AIMT로 처음 번역할 때 필요한 전체 순서입니다. 프로젝트를 고른 뒤 추출, 번역, 적용을 거쳐 게임에서 결과를 확인합니다.",
+        "when": [
+            "AIMT로 새 번역 작업을 시작할 때",
+            "현재 작업이 어느 단계인지 헷갈릴 때",
+            "엔진별 가이드를 읽기 전에 전체 순서를 먼저 익히고 싶을 때",
+        ],
+        "before": [
+            "번역할 게임의 엔진을 확인합니다.",
+            "원본 게임 폴더를 복사해 작업본을 준비합니다.",
+            "AI 번역을 쓰려면 API 키와 모델을 설정합니다.",
+            "해당 엔진의 가이드에서 필요한 준비 사항을 확인합니다.",
+        ],
+        "steps": [
+            "Project Hub에서 새 프로젝트를 만들거나 기존 프로젝트를 엽니다.",
+            "게임 엔진과 프로젝트 경로가 맞는지 확인합니다.",
+            "추출을 실행하고 번역할 파일과 문장이 제대로 들어왔는지 확인합니다.",
+            "필요한 파일만 선택해 번역합니다.",
+            "번역 결과를 살펴본 뒤 게임에 적용합니다.",
+            "게임을 실행해 대사, 메뉴, 선택지, 글자 표시와 줄바꿈을 확인합니다.",
+            "문제가 없으면 작업 범위를 넓혀 같은 순서를 반복합니다.",
+        ],
+        "result": [
+            "AIMT 프로젝트에 추출 결과와 번역 결과가 생성됩니다.",
+            "게임 화면에 번역문이 반영됩니다.",
+            "대사, 메뉴, 선택지에 빠진 문장이 없고 글자가 깨지지 않습니다.",
+        ],
+        "details_title": "단계별 안내",
+        "links": [
+            ("guide/project-selection/index.html", "Project Hub"),
+            ("guide/extraction/index.html", "추출"),
+            ("guide/translation/index.html", "번역"),
+            ("guide/apply-and-instant-apply/index.html", "적용과 즉시적용"),
+            ("guide/faq/index.html", "자주 나오는 질문"),
+        ],
     },
     "guide/workspace-tools/index.html": {
         "summary": "작업 도구는 번역 작업 중 텍스트를 정리하거나 결과를 점검할 때 쓰는 보조 기능을 모은 화면입니다.",
@@ -1931,7 +1969,7 @@ def _render_template_section(
             heading = "진행 순서" if page_type in {"workflow", "engine"} else "따라 하기"
             return _section(heading, _ol(list(metadata["steps"])))
         case "details":
-            return _section("화면과 항목", content)
+            return _section(str(metadata.get("details_title", "화면과 항목")), content)
         case "verification":
             return _section("완료 후 확인", _ul(list(metadata["result"])))
         case "done_definition":
@@ -2201,17 +2239,15 @@ def _remove_deleted_pages() -> None:
 
 
 def _build_group_articles() -> dict[str, str]:
+    basic_workflow_path = "guide/basic-workflow/index.html"
+    basic_workflow_metadata = _metadata_for(basic_workflow_path, "기본 작업 흐름", "workflow")
     return {
-        "guide/basic-workflow/index.html": _hub_article(
-            "guide/basic-workflow/index.html",
+        basic_workflow_path: _render_article_body(
+            basic_workflow_path,
             "기본 작업 흐름",
-            "프로젝트를 지정한 뒤 추출, 번역, 적용, 확인까지 이어지는 일반적인 작업 순서입니다.",
-            [
-                ("guide/project-selection/index.html", "Project Hub"),
-                ("guide/extraction/index.html", "추출"),
-                ("guide/translation/index.html", "번역"),
-                ("guide/apply-and-instant-apply/index.html", "적용과 즉시적용"),
-            ],
+            "workflow",
+            basic_workflow_metadata,
+            _render_links(list(basic_workflow_metadata["links"]), DIST_ROOT / basic_workflow_path),
         ),
         "guide/engine-guides/index.html": _hub_article(
             "guide/engine-guides/index.html",
