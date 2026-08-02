@@ -27,7 +27,7 @@
 <a class="nav-link" href="../../guide/rpg-maker-mvmz/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
 <a class="nav-link" href="../../guide/rpg-maker-vxvxa/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
 <a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="2">WOLF RPG Editor</a>
-<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">Clickteam Fusion 번역 가이드</a>
 <a class="nav-link" href="../../guide/tyranobuilder-tyranoscript/index.html" data-depth="2">TyranoBuilder/TyranoScript (개정1)</a>
 <a class="nav-link" href="../../guide/pixel-game-maker-mv/index.html" data-depth="2">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
 <a class="nav-link" href="../../guide/srpg-studio/index.html" data-depth="2">SRPG Studio 번역 가이드</a>
@@ -38,7 +38,7 @@
 <details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
 <details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">Project Hub</a>
 <a class="nav-link" href="../../guide/refresh-file-list/index.html" data-depth="4">파일목록 새로고침</a>
 <a class="nav-link" href="../../guide/view-switching/index.html" data-depth="4">화면전환</a>
 <a class="nav-link" href="../../guide/prompt/index.html" data-depth="4">프롬프트</a>
@@ -90,7 +90,7 @@
 <a class="nav-link" href="../../guide/cmd-122-secondary-duplicate-handling/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 추출과 적용</a>
 <a class="nav-link" href="../../guide/ctf-secondary-exclusion-filter/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
@@ -104,7 +104,7 @@
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/extract-python-data-strings/index.html" data-depth="4">Extract Python data strings</a>
-<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Include tl translations</a>
+<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Ren'Py TL 준비와 기존 번역 사용</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/log-management/index.html" data-depth="4">로그 관리</a>
@@ -196,7 +196,7 @@
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ttc-build/index.html" data-depth="4">TTC 빌드</a>
-<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">세이브 에디터</a>
+<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">Save Editor</a>
 <a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
 </div></details>
 </div></details>
@@ -220,53 +220,50 @@
     <main class="content-shell">
 <article class="guide-content">
   <h1>llama-server</h1>
-  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
-  <h2>이 도구는 무엇인가요?</h2>
-  <p>로컬 모델을 사용할 때 필요한 llama-server 실행과 연결 상태를 확인하는 참고 도구입니다.</p>
-  <h2>언제 사용하나요?</h2>
-  <ul>
-    <li>인터넷 API 대신 로컬 모델을 쓰고 싶을 때</li><li>AIMT 에 입력한 모델 및 설정으로 서버를 열어 다른 프로그램에서 이용하고 싶을 때</li>
-    <li>로컬 번역 서버 연결이 실패할 때</li>
-    <li>모델 파일과 서버 상태를 확인해야 할 때</li></ul><ul>
-  </ul>
-  <h2>기본 사용 순서</h2>
+  <p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+  <p>GGUF 로컬 모델을 AIMT에서 실행해 번역할 때 사용합니다.</p>
+  <h2>1. 런타임 준비</h2>
   <ol>
-    <li>작업 도구에서 llama-server을 엽니다.</li>
-    <li>로컬 번역 서버에 연결할 로컬 모델을 선택합니다.</li>
-    <li>필요한 옵션을 확인합니다.</li>
-    <li>시작 버튼을 누릅니다.</li>
-    <li>결과 목록, 수정 내용, 오류 메시지를 확인합니다.</li>
+    <li><strong>설정 → AI-MODEL → Llama</strong>를 엽니다.</li>
+    <li>설치 안내가 나오면 사용할 런타임을 고릅니다.</li>
+    <li>NVIDIA GPU는 <strong>CUDA</strong>, 그 밖의 환경은 <strong>Vulkan</strong>으로 시작합니다.</li>
+    <li>다운로드와 설치가 끝날 때까지 AIMT를 종료하지 않습니다.</li>
   </ol>
-  <h2>화면/항목 설명</h2>
-  <table>
-    <tbody>
-      <tr>
-        <th>도구 위치</th>
-        <td>작업 도구</td>
-      </tr>
-      <tr>
-        <th>대상</th>
-        <td>로컬 모델 서버와 AIMT의 연결 설정</td>
-      </tr>
-      <tr>
-        <th>실행 기준</th>
-        <td>작업 도구 화면에서 실행하는 보조 기능입니다.</td>
-      </tr>
-    </tbody>
-  </table>
-  <h2>결과 확인 방법</h2>
-  <ul>
-    <li>완료 메시지나 결과 목록을 확인합니다.</li>
-    <li>AIMT가 로컬 모델 서버에 요청할 수 있는 상태인지 확인합니다.</li>
-    <li>게임 실행 결과나 대상 파일을 열어 의도한 변화가 맞는지 확인합니다.</li>
-  </ul>
-  <h2>주의/중요/권장</h2>
+  <p>런타임은 llama.cpp의 Windows용 GitHub Releases 파일을 사용합니다. 설치에는 인터넷 연결과 여유 디스크 공간이 필요합니다.</p>
+  <h2>2. 모델 등록</h2>
+  <ol>
+    <li>Llama 목록에서 <strong>모델 추가</strong>를 누릅니다.</li>
+    <li>표시 이름을 입력합니다.</li>
+    <li>이미 받은 모델은 <strong>Local Model Path</strong>에 <code>.gguf</code> 파일 경로를 입력합니다.</li>
+    <li>원격 모델은 <strong>Hugging Face Repo ID</strong>와 <strong>Filename</strong>을 입력합니다.</li>
+    <li>저장한 모델을 선택합니다.</li>
+  </ol>
+  <p>GPU Layers와 Context Length는 기본값으로 먼저 시험하세요. 메모리 부족이 발생하면 GPU Layers 또는 Context Length를 낮춥니다.</p>
+  <h2>3. 서버 실행과 종료</h2>
+  <ol>
+    <li><strong>도구 → 기타 → llama-server</strong>를 누릅니다.</li>
+    <li>열린 번역 설정에서 Llama 모델과 값을 확인합니다.</li>
+    <li>서버를 시작합니다.</li>
+    <li>버튼이 <strong>llama-server 종료</strong>로 바뀌면 실행 중입니다.</li>
+    <li>적은 문장으로 시험 번역합니다.</li>
+  </ol>
+  <p>작업이 끝나면 같은 버튼으로 서버를 종료할 수 있습니다.</p>
+  <h2>런타임 업데이트</h2>
+  <p>Llama 목록 아래의 <strong>Llama 업데이트</strong>를 누르고 CUDA 또는 Vulkan을 선택합니다. 실행 중인 서버를 종료한 뒤 기존 런타임을 최신 GitHub 빌드로 다시 설치합니다.</p>
   <div class="guide-callout" data-callout="warning">
     <div class="guide-callout-title">중요</div>
     <div class="guide-callout-body">
-      <p>로컬 모델은 PC 성능과 모델 크기에 따라 속도와 품질 차이가 큽니다.</p>
+      <p>업데이트 중 AIMT를 종료하지 마세요. 모델 파일은 별도 경로에 보관하고, 다운로드 실패 시 네트워크와 저장 공간을 확인한 뒤 다시 실행합니다.</p>
     </div>
   </div>
+  <h2>실행되지 않을 때</h2>
+  <ul>
+    <li><strong>런타임 없음</strong>: Llama 탭에서 설치 또는 업데이트를 다시 실행합니다.</li>
+    <li><strong>모델 없음</strong>: Local Model Path 또는 Repo ID와 Filename을 확인합니다.</li>
+    <li><strong>CUDA 오류</strong>: 드라이버를 확인하거나 Vulkan 런타임으로 시험합니다.</li>
+    <li><strong>메모리 부족</strong>: 더 작은 GGUF 양자화 모델을 사용하고 GPU Layers와 Context Length를 낮춥니다.</li>
+    <li><strong>응답 없음</strong>: 서버 상태와 번역 설정의 Timeout을 확인합니다.</li>
+  </ul>
 </article>
 </main>
   </div>

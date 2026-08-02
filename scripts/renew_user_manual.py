@@ -13,8 +13,8 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 
 DIST_ROOT = edit_guide.DIST_ROOT
 GUIDE_ROOT = DIST_ROOT / "guide"
-RENEWED_AT = "2026-06-22"
-DOC_VERSION = f"문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: {RENEWED_AT}"
+RENEWED_AT = "2026-08-02"
+DOC_VERSION = f"문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: {RENEWED_AT}"
 ADVANCED_INTRO = "이 문서는 일반 작업 순서에서 벗어나, 값을 직접 확인하거나 세밀하게 조정해야 할 때 참고하는 자료입니다."
 SHORT_ARTICLE_FALLBACK = "아직 세부 설명이 충분하지 않은 문서입니다. 먼저 기능의 위치와 실행 결과를 확인하고, 필요한 경우 관련 상위 문서를 함께 확인하세요."
 
@@ -118,7 +118,9 @@ TITLE_OVERRIDES = {
     "guide/index.html": "AIMT 사용설명서",
     "guide/workspace-tools/index.html": "작업 도구",
     "guide/settings-screen/index.html": "설정 화면",
-    "guide/clickteam-fusion-coming-soon/index.html": "ClickTeam Fusion 준비 중",
+    "guide/project-selection/index.html": "Project Hub",
+    "guide/clickteam-fusion-coming-soon/index.html": "Clickteam Fusion 번역 가이드",
+    "guide/ctf-fast-image-extraction/index.html": "CTF 이미지 추출과 적용",
     "guide/renpy/index.html": "Ren'Py 번역 가이드",
     "guide/livemaker/index.html": "LiveMaker 번역 가이드",
     "guide/srpg-studio/index.html": "SRPG Studio 번역 가이드",
@@ -149,7 +151,8 @@ TITLE_OVERRIDES = {
     "guide/srpg-studio-manual-build/index.html": "수동 빌드",
     "guide/srk-crypter/index.html": "SRK 크립터",
     "guide/extract-python-data-strings/index.html": "Extract Python data strings",
-    "guide/include-tl-translations/index.html": "Include tl translations",
+    "guide/include-tl-translations/index.html": "Ren'Py TL 준비와 기존 번역 사용",
+    "guide/save-editor/index.html": "Save Editor",
 }
 
 RENAMED_PAGE_PATHS = {
@@ -204,7 +207,7 @@ SCREEN_AREA_SECTIONS: tuple[tuple[str, str, str, tuple[tuple[str, str], ...]], .
         "프로젝트 지정, 파일 목록 갱신, 프롬프트, 빠른번역, 설정, 화면 전환처럼 작업을 시작하거나 화면 상태를 바꾸는 영역입니다.",
         "guide/assets/top-area/image.png",
         (
-            ("guide/project-selection/index.html", "새 프로젝트 / 프로젝트 지정"),
+            ("guide/project-selection/index.html", "Project Hub"),
             ("guide/refresh-file-list/index.html", "파일목록 새로고침"),
             ("guide/view-switching/index.html", "화면전환"),
             ("guide/prompt/index.html", "프롬프트"),
@@ -1466,12 +1469,12 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("주의", "이 문서의 122는 RPG Maker 명령 코드가 아니라 WOLF의 SET_STRING 명령 ID입니다.")],
     },
     "guide/ctf-fast-image-extraction/index.html": {
-        "summary": "CTF 이미지 고속 추출은 CTF 이미지 추출 시 PNG 저장을 1 worker로 처리할지 2 worker로 병렬 처리할지 정하는 설정입니다.",
-        "when": ["CTF 이미지 추출 시간이 오래 걸릴 때", "이미지가 많아 PNG 저장 단계가 병목처럼 느껴질 때", "CPU, 메모리, 디스크 여유가 있어 병렬 저장을 시도할 때"],
-        "before": ["현재 프로젝트 형식이 CTF 계열인지 확인합니다.", "2 worker 사용 시 CPU, 메모리, 디스크 사용량이 늘 수 있습니다.", "저장 장치가 느리거나 다른 작업이 많다면 1 worker가 더 안정적일 수 있습니다."],
-        "steps": ["CTF 이미지 고속 추출 옵션을 켜거나 끕니다.", "CTF 이미지 추출을 실행합니다.", "추출 시간과 시스템 부하를 확인합니다.", "결과 이미지 샘플을 확인합니다.", "부하가 크면 1 worker 기준으로 다시 비교합니다."],
-        "result": ["PNG 저장 처리 속도와 시스템 부하를 함께 확인합니다.", "결과가 의심되면 1 worker와 2 worker 결과를 비교합니다."],
-        "notices": [("중요", "이 설정은 추출 범위를 바꾸는 기능이 아니라 이미지 저장 worker 수를 바꾸는 기능입니다.")],
+        "summary": "CTF 이미지 추출과 적용은 DAT, CCN, EXE에서 PNG를 꺼내고 교체 이미지를 원래 slot에 다시 넣는 흐름입니다.",
+        "when": ["CTF 게임의 이미지를 확인하거나 교체할 때", "투명 PNG를 편집해 다시 적용할 때"],
+        "before": ["원본 DAT, CCN, EXE를 백업합니다.", "추출 폴더의 image_manifest.json을 유지합니다."],
+        "steps": ["도구의 CTF Crypter에서 이미지를 엽니다.", "추출과 source를 선택합니다.", "PNG를 편집하되 파일명과 alpha를 유지합니다.", "같은 source에 교체 PNG를 적용합니다.", "게임을 실행해 결과를 확인합니다."],
+        "result": ["교체 이미지와 투명 영역을 확인합니다.", "오류가 나면 원본 PNG와 manifest로 되돌립니다."],
+        "notices": [("중요", "기존 worker 수 기반 고속 추출 설정은 제거됐습니다.")],
     },
     "guide/ctf-secondary-exclusion-filter/index.html": {
         "summary": "CTF 2차 추출 제외 필터는 ClickTeam Fusion 계열 프로젝트에서 2차 추출 대상으로 삼을 텍스트를 규칙으로 선별하는 화면입니다.",
@@ -1514,12 +1517,12 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("주의", "Python 데이터 문자열은 실제 코드와 가까울 수 있습니다. 번역 결과를 적용한 뒤 실행 오류가 없는지 확인하세요.")],
     },
     "guide/include-tl-translations/index.html": {
-        "summary": "Include tl translations는 Ren'Py의 tl 번역 블록에 있는 문장을 추출 대상에 포함할지 정하는 설정입니다.",
-        "when": ["이미 tl 블록이 있는 프로젝트에서 기존 번역문도 함께 검토해야 할 때", "원문 스크립트와 tl 영역의 번역 상태를 비교하고 싶을 때", "기존 번역본을 기반으로 재번역하거나 검수할 때"],
-        "before": ["현재 프로젝트가 Ren'Py 계열인지 확인합니다.", "tl 블록은 이미 번역된 문장을 포함할 수 있으므로 원문과 번역문을 구분해 확인합니다.", "설정을 바꾼 뒤에는 Ren'Py 추출을 다시 실행해야 합니다."],
-        "steps": ["설정 화면에서 Ren'Py 그룹을 확인합니다.", "Include tl translations를 켜거나 끕니다.", "Ren'Py 추출을 다시 실행합니다.", "tl 블록의 문장이 추출 결과에 포함되는지 확인합니다."],
-        "result": ["기존 tl 번역문이 필요한 만큼 추출되었는지 확인합니다.", "중복 번역 대상이 늘었다면 설정을 끄고 일반 추출 결과와 비교합니다."],
-        "notices": [("권장", "새 번역을 처음 만드는 경우에는 tl 블록 포함 여부가 필요한지 먼저 작은 범위로 확인하세요.")],
+        "summary": "Ren'Py TL 준비는 대상 언어의 TL을 새로 만들거나 기존 TL을 복제하고 번역 데이터를 추출하는 흐름입니다.",
+        "when": ["game/tl 아래에 새 번역 언어를 만들 때", "기존 TL을 복제해 재번역할 때", "기존 TL에서 번역 데이터만 다시 추출할 때"],
+        "before": ["Ren'Py Extract1로 RAW를 준비합니다.", "대상 언어 이름과 기존 TL 교체 여부를 확인합니다."],
+        "steps": ["도구에서 Ren'Py TL 준비를 엽니다.", "새 TL 준비 또는 기존 TL 재추출을 고릅니다.", "대상 언어와 원본을 선택합니다.", "언어 적용 방법을 선택하고 실행합니다.", "생성된 번역 데이터를 확인합니다."],
+        "result": ["game/tl/<대상 언어>와 추출 JSON을 확인합니다.", "Preferences 또는 시작 언어 적용을 게임에서 확인합니다."],
+        "notices": [("주의", "기존 대상 TL은 AIMT 작업 백업에 보관한 뒤 교체됩니다.")],
     },
     "guide/extraction/index.html": {
         "summary": "추출은 게임 파일에서 번역할 수 있는 텍스트를 찾아 작업용 파일로 준비하는 단계입니다.",
@@ -2082,7 +2085,7 @@ def _build_group_articles() -> dict[str, str]:
             "기본 작업 흐름",
             "프로젝트를 지정한 뒤 추출, 번역, 적용, 확인까지 이어지는 일반적인 작업 순서입니다.",
             [
-                ("guide/project-selection/index.html", "새 프로젝트 / 프로젝트 지정"),
+                ("guide/project-selection/index.html", "Project Hub"),
                 ("guide/extraction/index.html", "추출"),
                 ("guide/translation/index.html", "번역"),
                 ("guide/apply-and-instant-apply/index.html", "적용과 즉시적용"),

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CTF 이미지 고속 추출 · AIMT Guide</title>
+  <title>CTF 이미지 추출과 적용 · AIMT Guide</title>
   <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
   <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
   <link rel="stylesheet" href="../../guide/static/styles.css">
@@ -27,7 +27,7 @@
 <a class="nav-link" href="../../guide/rpg-maker-mvmz/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
 <a class="nav-link" href="../../guide/rpg-maker-vxvxa/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
 <a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="2">WOLF RPG Editor</a>
-<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">Clickteam Fusion 번역 가이드</a>
 <a class="nav-link" href="../../guide/tyranobuilder-tyranoscript/index.html" data-depth="2">TyranoBuilder/TyranoScript (개정1)</a>
 <a class="nav-link" href="../../guide/pixel-game-maker-mv/index.html" data-depth="2">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
 <a class="nav-link" href="../../guide/srpg-studio/index.html" data-depth="2">SRPG Studio 번역 가이드</a>
@@ -38,7 +38,7 @@
 <details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
 <details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">Project Hub</a>
 <a class="nav-link" href="../../guide/refresh-file-list/index.html" data-depth="4">파일목록 새로고침</a>
 <a class="nav-link" href="../../guide/view-switching/index.html" data-depth="4">화면전환</a>
 <a class="nav-link" href="../../guide/prompt/index.html" data-depth="4">프롬프트</a>
@@ -90,7 +90,7 @@
 <a class="nav-link" href="../../guide/cmd-122-secondary-duplicate-handling/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 추출과 적용</a>
 <a class="nav-link" href="../../guide/ctf-secondary-exclusion-filter/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
@@ -104,7 +104,7 @@
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/extract-python-data-strings/index.html" data-depth="4">Extract Python data strings</a>
-<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Include tl translations</a>
+<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Ren'Py TL 준비와 기존 번역 사용</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/log-management/index.html" data-depth="4">로그 관리</a>
@@ -196,7 +196,7 @@
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ttc-build/index.html" data-depth="4">TTC 빌드</a>
-<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">세이브 에디터</a>
+<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">Save Editor</a>
 <a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
 </div></details>
 </div></details>
@@ -219,78 +219,48 @@
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
 <article class="guide-content">
-  <h1>CTF 이미지 고속 추출</h1>
-  <p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-21</p>
-
-  <h2>무엇을 하는 기능인가요?</h2>
-  <p><strong>CTF 이미지 고속 추출</strong>은 ClickTeam Fusion 계열 프로젝트에서 이미지를 추출할 때 PNG 저장 작업을 <strong>1 worker</strong>로 처리할지, <strong>2 worker</strong>로 병렬 처리할지 정하는 설정입니다.</p>
-  <p>이 옵션을 켜면 CTF 이미지 추출 시 PNG 저장을 2 worker로 병렬 처리합니다. 끄면 1 worker 기준으로 처리합니다.</p>
-
-  <div class="guide-callout" data-callout="important">
-    <div class="guide-callout-title">중요</div>
+  <h1>CTF 이미지 추출과 적용</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+  <p>CTF의 DAT, CCN, EXE에서 이미지를 PNG로 꺼내고 교체한 이미지를 다시 넣습니다.</p>
+  <h2>이미지 추출</h2>
+  <ol>
+    <li>Project Hub에서 CTF 프로젝트를 엽니다.</li>
+    <li><strong>도구 → CTF → Crypter → 이미지</strong>를 누릅니다.</li>
+    <li><strong>추출</strong>을 선택합니다.</li>
+    <li>DAT, CCN, EXE 중 실제 source를 선택합니다.</li>
+    <li>완료 로그의 저장 위치를 엽니다.</li>
+  </ol>
+  <p>추출 폴더에는 PNG와 <code>image_manifest.json</code>이 만들어집니다. manifest는 이미지 번호와 alpha 처리 정보를 보관하므로 삭제하거나 수정하지 않습니다.</p>
+  <h2>이미지 편집</h2>
+  <ul>
+    <li>교체할 PNG의 파일명은 유지합니다.</li>
+    <li>투명 영역이 있는 이미지는 alpha 채널을 보존합니다.</li>
+    <li>색상 모드나 크기를 바꿨다면 먼저 한두 장만 적용해 확인합니다.</li>
+    <li>원본 PNG와 manifest를 별도 폴더에 복사해 둡니다.</li>
+  </ul>
+  <h2>이미지 적용</h2>
+  <ol>
+    <li><strong>도구 → CTF → Crypter → 이미지</strong>를 다시 엽니다.</li>
+    <li><strong>적용</strong>을 선택합니다.</li>
+    <li>추출 때 사용한 것과 같은 DAT, CCN, EXE source를 선택합니다.</li>
+    <li>교체할 PNG를 선택합니다. 여러 파일을 한 번에 고를 수 있습니다.</li>
+    <li>완료된 결과물로 게임을 실행합니다.</li>
+  </ol>
+  <p>AIMT는 PNG 옆의 manifest를 확인해 각 이미지를 원래 slot에 넣고 alpha 형식에 맞춰 다시 인코딩합니다.</p>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">기존 고속 추출 설정은 없습니다</div>
     <div class="guide-callout-body">
-      <p>이 설정은 “이미지를 더 많이 추출하는 옵션”이 아니라 “이미지 저장 처리 방식을 1 worker 또는 2 worker로 바꾸는 옵션”입니다.</p>
+      <p>worker 수를 켜고 끄는 설정은 제거됐습니다. 현재는 이 페이지의 추출·편집·적용 순서만 사용합니다.</p>
     </div>
   </div>
-
-  <h2>언제 사용하나요?</h2>
+  <h2>오류가 날 때</h2>
   <ul>
-    <li>CTF 프로젝트에서 이미지 추출 시간이 오래 걸릴 때</li>
-    <li>이미지가 많아 PNG 저장 단계가 병목처럼 느껴질 때</li>
-    <li>CPU, 메모리, 디스크 여유가 있어 병렬 저장을 시도해도 괜찮을 때</li>
+    <li><strong>manifest 오류</strong>: 원래 추출 폴더의 <code>image_manifest.json</code>과 PNG를 함께 사용합니다.</li>
+    <li><strong>지원하지 않는 이미지 형식</strong>: 해당 이미지는 원본으로 되돌리고 다른 이미지만 적용합니다.</li>
+    <li><strong>alpha가 이상함</strong>: 편집 프로그램에서 PNG를 straight alpha로 다시 저장해 시험합니다.</li>
+    <li><strong>source 불일치</strong>: 추출에 사용한 DAT, CCN, EXE를 다시 선택합니다.</li>
   </ul>
-
-  <h2>사용 전 확인할 것</h2>
-  <ul>
-    <li>현재 프로젝트 형식이 CTF 계열인지 확인합니다.</li>
-    <li>추출할 이미지가 많을수록 효과를 체감하기 쉽습니다.</li>
-    <li>2 worker 사용 시 CPU, 메모리, 디스크 사용량이 늘 수 있습니다.</li>
-    <li>저장 장치가 느리거나 다른 작업이 많다면 1 worker가 더 안정적일 수 있습니다.</li>
-  </ul>
-
-  <h2>기본 사용 순서</h2>
-  <ol>
-    <li>CTF 이미지 고속 추출 옵션을 켭니다.</li>
-    <li>CTF 이미지 추출을 실행합니다.</li>
-    <li>추출 시간과 시스템 부하를 확인합니다.</li>
-    <li>결과 이미지가 정상적으로 생성되었는지 샘플을 확인합니다.</li>
-    <li>부하가 크거나 결과 확인이 불안하면 옵션을 끄고 다시 비교합니다.</li>
-  </ol>
-
-  <h2>켜짐/꺼짐을 어떻게 이해하나요?</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>상태</th>
-        <th>처리 방식</th>
-        <th>적합한 상황</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>꺼짐</td>
-        <td>PNG 저장을 1 worker로 처리합니다.</td>
-        <td>안정성을 우선하거나 시스템 여유가 적을 때</td>
-      </tr>
-      <tr>
-        <td>켜짐</td>
-        <td>PNG 저장을 2 worker로 병렬 처리합니다.</td>
-        <td>이미지가 많고 추출 시간을 줄이고 싶을 때</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>문제가 생기면 어떻게 하나요?</h2>
-  <ul>
-    <li>추출 중 시스템이 버겁다면 옵션을 끄고 1 worker로 다시 실행합니다.</li>
-    <li>추출 결과가 의심되면 같은 범위를 1 worker와 2 worker로 비교합니다.</li>
-    <li>디스크 사용량이 높게 유지되면 다른 무거운 작업을 잠시 중단합니다.</li>
-  </ul>
-
-  <h2>주의/중요/권장</h2>
-  <p><strong>주의:</strong> 2 worker는 속도에 도움이 될 수 있지만, 항상 더 안정적인 것은 아닙니다.</p>
-  <p><strong>중요:</strong> 이 설정은 텍스트 추출이나 번역 품질을 바꾸지 않습니다.</p>
-  <p><strong>권장:</strong> 처음에는 꺼진 상태와 켜진 상태를 작은 범위로 비교한 뒤 프로젝트에 맞는 값을 선택하세요.</p>
+  <p><strong>권장:</strong> 한 장 적용 → 게임 실행 → 여러 장 적용 순서로 범위를 늘리세요.</p>
 </article>
 </main>
   </div>
