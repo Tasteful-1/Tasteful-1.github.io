@@ -401,10 +401,10 @@
       /guide/guide/ai-model/index.html
       -> /guide/ai-model/index.html
 
-      /guide/basic-workflow/guide/ai-model/index.html
+      /guide/archive/guide/ai-model/index.html
       -> /guide/ai-model/index.html
 
-      /docs/guide/basic-workflow/guide/ai-model/index.html
+      /docs/guide/archive/guide/ai-model/index.html
       -> /docs/guide/ai-model/index.html
     */
     const marker = "/guide/";

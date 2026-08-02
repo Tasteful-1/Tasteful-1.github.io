@@ -19,14 +19,17 @@ ADVANCED_INTRO = "이 문서는 일반 작업 순서에서 벗어나, 값을 직
 SHORT_ARTICLE_FALLBACK = "아직 세부 설명이 충분하지 않은 문서입니다. 먼저 기능의 위치와 실행 결과를 확인하고, 필요한 경우 관련 상위 문서를 함께 확인하세요."
 
 GROUP_PAGES: dict[str, str] = {
-    "guide/basic-workflow/index.html": "기본 작업 흐름",
     "guide/engine-guides/index.html": "엔진별 가이드",
     "guide/features/index.html": "기능별 설명",
     "guide/troubleshooting/index.html": "문제 해결",
     "guide/advanced-reference/index.html": "참고 자료",
 }
 
-VIRTUAL_GROUP_PAGES: set[str] = set(GROUP_PAGES) - {"guide/basic-workflow/index.html"}
+VIRTUAL_GROUP_PAGES: set[str] = set(GROUP_PAGES)
+
+REMOVED_PAGE_PATHS: set[str] = {
+    "guide/basic-workflow/index.html",
+}
 
 ADVANCED_SUBGROUP_PAGES: dict[str, str] = {}
 
@@ -75,7 +78,7 @@ TROUBLESHOOTING_PATHS = {
     "guide/faq/index.html",
 }
 
-EXCLUDE_FROM_NAV_PATHS = VIRTUAL_GROUP_PAGES | {
+EXCLUDE_FROM_NAV_PATHS = VIRTUAL_GROUP_PAGES | REMOVED_PAGE_PATHS | {
     "guide/start/index.html",
     "guide/features-quickslot/index.html",
     "guide/용어사전/index.html",
@@ -100,7 +103,7 @@ EXCLUDE_FROM_NAV_PATHS = VIRTUAL_GROUP_PAGES | {
     "guide/escape-diff-viewer/index.html",
 }
 
-DELETE_DIST_PATHS = EXCLUDE_FROM_NAV_PATHS | VIRTUAL_GROUP_PAGES
+DELETE_DIST_PATHS = EXCLUDE_FROM_NAV_PATHS | VIRTUAL_GROUP_PAGES | REMOVED_PAGE_PATHS
 
 ADVANCED_KEYWORDS = (
     "code:",
@@ -125,6 +128,8 @@ ADVANCED_KEYWORDS = (
 
 TITLE_OVERRIDES = {
     "guide/index.html": "AIMT 사용설명서",
+    "guide/rpg-maker-mvmz/index.html": "RPG Maker MV/MZ",
+    "guide/rpg-maker-vxvxa/index.html": "RPG MAKER VXVXA",
     "guide/workspace-tools/index.html": "작업 도구",
     "guide/settings-screen/index.html": "설정 화면",
     "guide/project-selection/index.html": "Project Hub",
@@ -948,7 +953,6 @@ PAGE_TYPE_TEMPLATES: dict[str, tuple[str, ...]] = {
 
 PAGE_TYPE_BY_PATH: dict[str, str] = {
     "guide/index.html": "home",
-    "guide/basic-workflow/index.html": "workflow",
     "guide/faq/index.html": "troubleshooting",
     "guide/rpg-maker-command-code-reference/index.html": "command_reference",
     "guide/exclude-exception-regex/index.html": "feature",
@@ -1007,7 +1011,6 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
             ("guide/multi-regex-engines/index.html", "HTML·범용 정규식 엔진"),
         ],
         "frequent_links": [
-            ("guide/basic-workflow/index.html", "기본 작업 흐름"),
             ("guide/api-key-settings/index.html", "API KEY 설정"),
             ("guide/ai-model/index.html", "AI-MODEL"),
             ("guide/translation-settings/index.html", "번역 설정"),
@@ -1018,41 +1021,6 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         ],
         "notices": [("주의", "게임 형식마다 추출 가능한 텍스트와 적용 방식이 다릅니다. 처음 작업하는 형식은 엔진별 가이드를 먼저 확인하세요.")],
     },
-    "guide/basic-workflow/index.html": {
-        "summary": "AIMT로 처음 번역할 때 필요한 전체 순서입니다. 프로젝트를 고른 뒤 추출, 번역, 적용을 거쳐 게임에서 결과를 확인합니다.",
-        "when": [
-            "AIMT로 새 번역 작업을 시작할 때",
-            "현재 작업이 어느 단계인지 헷갈릴 때",
-            "엔진별 가이드를 읽기 전에 전체 순서를 먼저 익히고 싶을 때",
-        ],
-        "before": [
-            "번역할 게임의 엔진을 확인합니다.",
-            "원본 게임 폴더를 복사해 작업본을 준비합니다.",
-            "AI 번역을 쓰려면 API 키와 모델을 설정합니다.",
-            "해당 엔진의 가이드에서 필요한 준비 사항을 확인합니다.",
-        ],
-        "steps": [
-            "Project Hub에서 새 프로젝트를 만들거나 기존 프로젝트를 엽니다.",
-            "게임 엔진과 프로젝트 경로가 맞는지 확인합니다.",
-            "추출을 실행하고 번역할 파일과 문장이 제대로 들어왔는지 확인합니다.",
-            "필요한 파일만 선택해 번역합니다.",
-            "번역 결과를 살펴본 뒤 게임에 적용합니다.",
-            "게임을 실행해 대사, 메뉴, 선택지, 글자 표시와 줄바꿈을 확인합니다.",
-        ],
-        "result": [
-            "AIMT 프로젝트에 추출 결과와 번역 결과가 생성됩니다.",
-            "게임 화면에 번역문이 반영됩니다.",
-            "대사, 메뉴, 선택지에 빠진 문장이 없고 글자가 깨지지 않습니다.",
-        ],
-        "details_title": "단계별 안내",
-        "links": [
-            ("guide/project-selection/index.html", "Project Hub"),
-            ("guide/extraction/index.html", "추출"),
-            ("guide/translation/index.html", "번역"),
-            ("guide/apply-and-instant-apply/index.html", "적용과 즉시적용"),
-            ("guide/faq/index.html", "자주 나오는 질문"),
-        ],
-    },
     "guide/workspace-tools/index.html": {
         "summary": "작업 도구는 번역 작업 중 텍스트를 정리하거나 결과를 점검할 때 쓰는 보조 기능을 모은 화면입니다.",
         "when": ["번역 결과를 점검하거나 정리할 때", "사용자사전, 일관성, 코드 복원처럼 보조 기능이 필요할 때", "엔진별 보조 도구로 이동해야 할 때"],
@@ -1061,7 +1029,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
     },
     "guide/livemaker/index.html": {
         "summary": "LiveMaker 번역 가이드는 LiveMaker 게임을 AIMT에서 추출, 번역, 적용할 때 확인해야 할 흐름을 정리한 문서입니다.",
-        "when": ["LiveMaker 게임을 처음 번역할 때", "적용 후 한글 폰트나 표시 문제가 있는지 확인해야 할 때", "LiveMaker 전용 설정과 기본 작업 흐름을 함께 봐야 할 때"],
+        "when": ["LiveMaker 게임을 처음 번역할 때", "적용 후 한글 폰트나 표시 문제가 있는지 확인해야 할 때", "LiveMaker 전용 설정과 전체 작업 순서를 함께 봐야 할 때"],
         "before": ["작업할 게임이 LiveMaker 계열인지 확인합니다.", "원본 파일과 작업본을 분리해 보관합니다.", "한글 표시를 확인할 수 있도록 게임을 실행할 준비를 합니다."],
         "steps": ["AIMT에서 프로젝트를 지정합니다.", "LiveMaker 형식으로 추출을 진행합니다.", "추출 결과를 열어 대사, 선택지, UI 문구가 들어왔는지 확인합니다.", "필요한 번역 설정을 확인하고 번역합니다.", "적용 후 게임을 실행해 글자 표시와 줄바꿈을 확인합니다."],
         "result": ["대사와 메뉴가 게임 화면에서 정상적으로 표시되는지 확인합니다.", "한글이 깨지거나 네모로 보이면 LiveMaker 폰트 설정을 확인합니다.", "누락 문장이 있으면 추출 범위와 원본 파일 상태를 다시 확인합니다."],
@@ -2101,29 +2069,6 @@ def _cache_management_article() -> str:
     return _render_article_body(path, "캐시 관리", "feature", PAGE_METADATA[path], details)
 
 
-def _wolf_rpg_editor_article() -> str:
-    path = "guide/wolf-rpg-editor/index.html"
-    details = _table(
-        ("단계", "결과"),
-        [
-            ("추출1", "BasicData와 MapData를 1차 작업 데이터로 변환합니다."),
-            ("추출2", "필터를 적용해 AIMT_Extract에 번역용 JSON을 만듭니다."),
-            ("적용1", "번역 JSON을 1차 작업 상태에 반영합니다."),
-            ("적용2", "반영된 데이터를 게임의 Data 폴더에 씁니다."),
-        ],
-    )
-    details += f'<p>아카이브 준비가 필요하면 {_link("guide/wolf-unpack-repack/index.html", "WOLF 언팩/리팩", DIST_ROOT / path)}을 먼저 확인합니다. 추출 범위를 바꾸려면 {_link("guide/wolf-secondary-exclusion-filter/index.html", "WOLF 2차 추출 제외 필터", DIST_ROOT / path)}를 사용합니다.</p>'
-    metadata = {
-        "summary": "WOLF RPG Editor 게임의 아카이브 준비부터 추출1, 추출2, 번역, 적용1, 적용2까지 이어지는 작업 흐름입니다.",
-        "when": ["WOLF 게임을 처음 번역할 때", "추출1·2와 적용1·2의 순서를 확인할 때", "적용2 전에 필요한 확인 사항을 찾을 때"],
-        "before": ["Project Hub에서 WOLF 엔진과 게임 폴더를 선택합니다.", "원본 게임을 별도로 보관합니다.", "Data가 아카이브로 묶여 있으면 먼저 언팩합니다."],
-        "steps": ["추출1을 실행합니다.", "필요하면 WOLF 2차 추출 제외 필터를 조정합니다.", "추출2를 실행하고 AIMT_Extract의 JSON을 확인합니다.", "필요한 파일을 번역하고 일관성·이스케이프·빈칸을 검수합니다.", "적용1을 실행합니다.", "적용2를 실행하고 표시되는 파일명·인코딩 확인을 처리합니다.", "게임을 실행해 대사, 메뉴, 파일 로딩을 확인합니다."],
-        "result": ["필요한 대사와 메뉴가 번역되었는지 확인합니다.", "글자 깨짐, 누락 파일, 로딩 오류가 없는지 확인합니다.", "문제가 있으면 같은 프로젝트에서 추출2부터 다시 진행합니다."],
-        "notices": [("중요", "추출한 프로젝트와 적용할 프로젝트가 같아야 합니다."), ("주의", "적용2에서 CP949 저장 불가 파일을 건너뛰면 해당 파일에는 번역이 반영되지 않습니다.")],
-    }
-    return _render_article_body(path, "WOLF RPG Editor", "engine", metadata, details)
-
-
 def _wolf_archive_article() -> str:
     path = "guide/wolf-unpack-repack/index.html"
     details = _table(
@@ -2240,16 +2185,7 @@ def _remove_deleted_pages() -> None:
 
 
 def _build_group_articles() -> dict[str, str]:
-    basic_workflow_path = "guide/basic-workflow/index.html"
-    basic_workflow_metadata = _metadata_for(basic_workflow_path, "기본 작업 흐름", "workflow")
     return {
-        basic_workflow_path: _render_article_body(
-            basic_workflow_path,
-            "기본 작업 흐름",
-            "workflow",
-            basic_workflow_metadata,
-            _render_links(list(basic_workflow_metadata["links"]), DIST_ROOT / basic_workflow_path),
-        ),
         "guide/engine-guides/index.html": _hub_article(
             "guide/engine-guides/index.html",
             "엔진별 가이드",
@@ -2538,7 +2474,6 @@ def _make_nav(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
     root["title"] = TITLE_OVERRIDES["guide/index.html"]
 
     buckets: dict[str, list[dict[str, Any]]] = {
-        "guide/basic-workflow/index.html": [],
         "guide/engine-guides/index.html": [],
         "guide/features/index.html": [],
         "guide/troubleshooting/index.html": [],
@@ -2696,13 +2631,6 @@ def _flatten_nested_card_styles() -> None:
         "pre,.code{color:#7ee787}"
         "pre code,.code code{padding:0;border-radius:0;background:transparent;color:inherit}"
     )
-    basic_workflow_nav_style = (
-        ".nav-single-group>summary{cursor:default;pointer-events:none}"
-        ".nav-single-group>summary .nav-link{cursor:pointer;pointer-events:auto}"
-        ".nav-caret.nav-caret-static:before{content:\"\" !important;display:block;width:3px;height:3px;border-radius:999px;background:var(--muted);opacity:.72}"
-        ".nav-single-group[open]>summary .nav-caret-static{transform:none}"
-        ".nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current=\"page\"]) .nav-caret-static{color:var(--muted)}"
-    )
     guide_callout_style = (
         ".guide-callout{--callout-color:#2563eb;--callout-bg:#eff6ff;--callout-border:#bfdbfe;--callout-title:#1d4ed8;--callout-text:#1e3a8a;--callout-shadow:rgba(30,58,138,.10);display:block;margin:18px 0;padding:16px 18px;border:1px solid var(--callout-border);border-radius:12px;background:var(--callout-bg);color:var(--callout-text);box-shadow:0 8px 24px var(--callout-shadow)}.guide-callout:before{content:none}.guide-callout-title{margin:0 0 6px;color:var(--callout-title);font-size:16px;font-weight:800;line-height:1.35}.guide-callout-body{min-width:0;color:var(--callout-text);font-size:14px;line-height:1.6}.guide-callout-body>:first-child{margi"
         "n-top:0}.guide-callout-body>:last-child{margin-bottom:0}.guide-callout[data-callout=\"abstract\"],.guide-callout[data-callout=\"summary\"],.guide-callout[data-callout=\"tldr\"],.guide-callout[data-callout=\"tip\"],.guide-callout[data-callout=\"hint\"],.guide-callout[data-callout=\"important\"]{--callout-color:#0891b2;--callout-bg:#ecfeff;--callout-border:#a5f3fc;--callout-title:#0e7490;--callout-text:#164e63;--callout-shadow:rgba(14,116,144,.10)}.guide-callout[data-callout=\"success\"],.guide-callout[data-callout=\"check\"],.guide-callout[data-callout=\"done\"]{--callout-color:#16a34a;--callout-bg:#f0fdf4;--callout-border:#bbf7d0;--callout-title:#15803d;--callout-text:#14532d;--callout-shadow:rgba(21,128,61,.10)}.guide-callout[data-callout=\"question\"],.guide-callout[data-callout=\"help\"],.guide-callout[data-callout=\"faq\"],.guide-callout[data-callout=\"warning\"],.guide-callout[data-callout=\"caution\"],.guide-"
@@ -2722,20 +2650,12 @@ def _flatten_nested_card_styles() -> None:
         ".bookmark{display:flex;width:100%;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none}": ".bookmark{display:flex;width:100%;align-items:stretch;border:0;border-radius:0;overflow:visible;text-decoration:none}",
         ".bookmark-info{padding:12px 14px}": ".bookmark-info{padding:0}",
         ".selected-value{display:inline-block;padding:0 .5em;background:var(--soft);border-radius:3px;margin:.3em .5em .3em 0}": ".selected-value{display:inline;font-weight:700;background:transparent;border-radius:0;margin:0 .25em 0 0}",
-        '.nav-list>.nav-link[href$="guide/basic-workflow/index.html"]{position:relative;padding-left:33px}.nav-list>.nav-link[href$="guide/basic-workflow/index.html"]:before{content:"";position:absolute;left:11px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:999px;background:var(--muted);opacity:.75}.nav-list>.nav-link[href$="guide/basic-workflow/index.html"]:hover:before,.nav-list>.nav-link[href$="guide/basic-workflow/index.html"][aria-current="page"]:before{background:var(--accent);opacity:1}': "",
-        '.nav-list .nav-link[href$="guide/basic-workflow/index.html"]{position:relative;padding-left:33px}.nav-list .nav-link[href$="guide/basic-workflow/index.html"]:before{content:"";position:absolute;left:11px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:999px;background:var(--muted);opacity:.75}.nav-list .nav-link[href$="guide/basic-workflow/index.html"]:hover:before,.nav-list .nav-link[href$="guide/basic-workflow/index.html"][aria-current="page"]:before{background:var(--accent);opacity:1}': "",
         '.nav-workflow-link{display:flex;align-items:center;gap:10px;padding-left:11px}.nav-workflow-link .nav-dot{width:7px;height:7px;flex:0 0 7px;border-radius:999px;background:var(--muted);opacity:.78}.nav-workflow-link:hover .nav-dot,.nav-workflow-link[aria-current="page"] .nav-dot{background:var(--accent);opacity:1}': "",
-        '.nav-single{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;margin:2px 0;border-radius:10px}.nav-single .nav-link{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis}.nav-caret-static:before{content:"•";font-size:18px;line-height:1}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
-        '.nav-single-group>summary{cursor:default}.nav-single-group>summary .nav-link{cursor:pointer}.nav-caret-static:before{content:"•";font-size:18px;line-height:1}.nav-single-group[open]>summary .nav-caret-static{transform:none}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
-        '.nav-single-group>summary{cursor:default;pointer-events:none}.nav-single-group>summary .nav-link{cursor:pointer;pointer-events:auto}.nav-caret-static:before{content:"";display:block;width:5px;height:5px;border-radius:999px;background:currentColor}.nav-single-group[open]>summary .nav-caret-static{transform:none}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
-        '.nav-single-group>summary{cursor:default;pointer-events:none}.nav-single-group>summary .nav-link{cursor:pointer;pointer-events:auto}.nav-caret.nav-caret-static:before{content:"" !important;display:block;width:5px;height:5px;border-radius:999px;background:currentColor}.nav-single-group[open]>summary .nav-caret-static{transform:none}.nav-basic-workflow-row:hover .nav-caret-static,.nav-basic-workflow-row:has(.nav-link[aria-current="page"]) .nav-caret-static{color:var(--accent)}': "",
     }
     for old, new in replacements.items():
         text = text.replace(old, new)
     if code_block_style not in text:
         text = text.rstrip() + "\n" + code_block_style + "\n"
-    if basic_workflow_nav_style not in text:
-        text = text.rstrip() + "\n" + basic_workflow_nav_style + "\n"
     if guide_callout_style not in text:
         text = text.rstrip() + "\n" + guide_callout_style + "\n"
     edit_guide.write_text(css_path, text)
@@ -2750,7 +2670,6 @@ def main() -> int:
         "guide/api-key-settings/index.html": _api_key_article(),
         "guide/cache-management/index.html": _cache_management_article(),
         "guide/provider-reference-links/index.html": group_articles["guide/provider-reference-links/index.html"],
-        "guide/wolf-rpg-editor/index.html": _wolf_rpg_editor_article(),
         "guide/wolf-unpack-repack/index.html": _wolf_archive_article(),
     }
     all_paths = {entry["path"] for entry in edit_guide.list_files(DIST_ROOT, include_unlisted=True) if not entry.get("virtual")}
