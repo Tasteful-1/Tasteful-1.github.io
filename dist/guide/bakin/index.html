@@ -28,7 +28,7 @@
 <a class="nav-link" href="../../guide/rpg-maker-mvmz/index.html" data-depth="2">RPG MAKER MVMZ (개정1)</a>
 <a class="nav-link" href="../../guide/rpg-maker-vxvxa/index.html" data-depth="2">RPG MAKER VXVXA (개정1)</a>
 <a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="2">WOLF RPG Editor</a>
-<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">ClickTeam Fusion 준비 중</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">Clickteam Fusion 번역 가이드</a>
 <a class="nav-link" href="../../guide/tyranobuilder-tyranoscript/index.html" data-depth="2">TyranoBuilder/TyranoScript (개정1)</a>
 <a class="nav-link" href="../../guide/pixel-game-maker-mv/index.html" data-depth="2">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
 <a class="nav-link" href="../../guide/srpg-studio/index.html" data-depth="2">SRPG Studio 번역 가이드</a>
@@ -39,7 +39,7 @@
 <details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
 <details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">새 프로젝트 / 프로젝트 지정</a>
+<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">Project Hub</a>
 <a class="nav-link" href="../../guide/refresh-file-list/index.html" data-depth="4">파일목록 새로고침</a>
 <a class="nav-link" href="../../guide/view-switching/index.html" data-depth="4">화면전환</a>
 <a class="nav-link" href="../../guide/prompt/index.html" data-depth="4">프롬프트</a>
@@ -91,7 +91,7 @@
 <a class="nav-link" href="../../guide/cmd-122-secondary-duplicate-handling/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 고속 추출</a>
+<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 추출과 적용</a>
 <a class="nav-link" href="../../guide/ctf-secondary-exclusion-filter/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
@@ -105,7 +105,7 @@
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/extract-python-data-strings/index.html" data-depth="4">Extract Python data strings</a>
-<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Include tl translations</a>
+<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Ren'Py TL 준비와 기존 번역 사용</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/log-management/index.html" data-depth="4">로그 관리</a>
@@ -197,7 +197,7 @@
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/ttc-build/index.html" data-depth="4">TTC 빌드</a>
-<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">세이브 에디터</a>
+<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">Save Editor</a>
 <a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
 </div></details>
 </div></details>
@@ -220,31 +220,50 @@
 <div aria-label="사이드바 너비 조절" aria-orientation="vertical" class="sidebar-resizer" id="sidebarResizer" role="separator" tabindex="0"></div>
 <main class="content-shell">
 <article class="guide-content">
-<h1>Bakin 번역 가이드</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.16 계열<br/>최종 편집 일시: 2026-07-03</p>
-<h2>이 엔진은 무엇인가요?</h2>
-<p>Bakin 게임의 추출, 2차 추출 제외 필터, 번역 적용 후 확인 흐름을 정리한 문서입니다.</p>
-<h2>작업 전 확인할 것</h2>
-<ul>
-<li>작업할 게임이 Bakin 계열인지 확인합니다.</li>
-<li>원본과 작업본을 분리해 보관합니다.</li>
-<li>2차 추출 제외 필터는 조건과 일치하는 후보를 제외하는 설정임을 확인합니다.</li>
-</ul>
-<h2>기본 작업 흐름</h2>
-<ol>
-<li>AIMT에서 프로젝트를 지정합니다.</li>
-<li>Bakin 형식으로 1차 추출을 진행합니다.</li>
-<li>필요하면 Bakin 2차 추출 제외 필터에서 제외 대상을 조정합니다.</li>
-<li>2차 추출 결과에서 필요한 문장이 남아 있는지 확인합니다.</li>
-<li>번역과 적용을 진행한 뒤 게임 실행 화면에서 결과를 확인합니다.</li>
-</ol>
-<h2>결과 확인 방법</h2>
-<ul>
-<li>필요한 문장이 추출 결과에 남아 있는지 확인합니다.</li>
-<li>불필요한 항목이 많으면 제외 필터 조건을 좁혀 다시 추출합니다.</li>
-<li>필요한 문장이 빠지면 제외 조건이 너무 넓지 않은지 확인합니다.</li>
-</ul>
-<p><strong>주의:</strong> Bakin 2차 추출 제외 필터는 조건과 일치하는 항목을 빼는 방식입니다. 필요한 문장이 함께 제외되지 않도록 작은 범위로 먼저 확인하세요.</p>
+  <h1>Bakin 번역 가이드</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
+  <p>Bakin 게임의 <code>data.rbpack</code>을 준비하고 문장을 번역한 뒤 <code>dic.txt</code>로 적용하는 흐름입니다.</p>
+  <h2>작업 전 확인</h2>
+  <ul>
+    <li>게임 폴더의 <code>data</code> 안에 <code>data.rbpack</code>과 <code>common.dll</code>이 있는지 확인합니다.</li>
+    <li>원본 게임 폴더를 복사해 작업본을 만듭니다.</li>
+    <li>Project Hub에서 엔진을 <strong>Bakin</strong>으로 선택합니다.</li>
+  </ul>
+  <h2>1. Extract1</h2>
+  <p><strong>Extract1</strong>은 <code>data.rbpack</code>을 AIMT 작업 공간에 풉니다. 원본 archive 구조와 다시 만들 때 필요한 정보도 함께 준비합니다.</p>
+  <p>완료 후에만 Extract2로 이동하세요. archive 또는 Bakin 도구를 찾지 못했다는 오류가 나오면 적용까지 진행하지 않습니다.</p>
+  <h2>2. Extract2</h2>
+  <ol>
+    <li><strong>Extract2</strong>를 실행합니다.</li>
+    <li>AIMT가 Bakin 데이터를 문장으로 변환하고 번역 JSON과 매핑을 만듭니다.</li>
+    <li>결과 파일을 열어 대사와 이름이 들어 있는지 확인합니다.</li>
+    <li>불필요한 이벤트가 많으면 <a href="../../guide/bakin-secondary-exclusion-filter/index.html">Bakin 2차 추출 제외 필터</a>를 조정한 뒤 Extract2를 다시 실행합니다.</li>
+  </ol>
+  <div class="guide-callout" data-callout="warning">
+    <div class="guide-callout-title">필터는 제외 규칙입니다</div>
+    <div class="guide-callout-body">
+      <p>규칙에 맞는 항목은 결과에서 빠집니다. 필요한 문장까지 사라지지 않았는지 적은 범위로 확인하세요.</p>
+    </div>
+  </div>
+  <h2>3. 번역</h2>
+  <p>필요한 JSON만 선택해 번역합니다. 이름, 선택지, 짧은 UI 문구를 먼저 시험하고 게임에서 표시되는지 확인한 뒤 범위를 늘립니다.</p>
+  <h2>4. Apply1</h2>
+  <p><strong>Apply1</strong>은 번역 JSON과 Extract2 매핑을 확인하고 BakinTranslate용 <code>dic.txt</code> 작업본을 만듭니다.</p>
+  <p>프로젝트나 추출 결과가 바뀌었다면 이전 매핑을 재사용하지 말고 Extract1과 Extract2부터 다시 실행합니다.</p>
+  <h2>5. Apply2</h2>
+  <p><strong>Apply2</strong>는 player override를 준비하고 완성된 사전을 게임의 <code>data/dic.txt</code>에 설치합니다. 완료 후 게임을 실행해 대사, 선택지, 메뉴를 확인합니다.</p>
+  <p>적용 실패 시 AIMT가 기존 파일을 복구합니다. 새로 만든 <code>dic.txt</code>도 실패한 적용에서는 제거됩니다.</p>
+  <h2>archive와 폰트 도구</h2>
+  <ul>
+    <li><strong>rbpack 다시 만들기</strong>: Extract1 작업 공간을 archive로 다시 만들고 원본을 백업한 뒤 교체합니다.</li>
+    <li><strong>폰트 교체</strong>: 작업 공간의 폰트를 바꿉니다. 게임에 반영하려면 이어서 rbpack 다시 만들기를 실행해야 합니다.</li>
+  </ul>
+  <div class="guide-callout" data-callout="tip">
+    <div class="guide-callout-title">권장 확인 순서</div>
+    <div class="guide-callout-body">
+      <p>Extract2 결과 확인 → 소량 번역 → Apply1 → Apply2 → 게임 실행 순서로 시험하세요.</p>
+    </div>
+  </div>
 </article>
 </main>
 </div>
