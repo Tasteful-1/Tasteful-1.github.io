@@ -37,7 +37,9 @@ EXTERNAL_REFERENCE_PAGES: dict[str, str] = {
     "guide/provider-reference-links/index.html": "제공자별 참고 링크",
 }
 
-NAV_ONLY_EXCLUDE_PATHS: set[str] = set()
+NAV_ONLY_EXCLUDE_PATHS: set[str] = {
+    "guide/extract-python-data-strings/index.html",
+}
 
 WORKFLOW_PATHS = {
     "guide/project-selection/index.html",
@@ -152,7 +154,6 @@ TITLE_OVERRIDES = {
     "guide/srpg-studio-unpack/index.html": "언팩",
     "guide/srpg-studio-manual-build/index.html": "수동 빌드",
     "guide/srk-crypter/index.html": "SRK 크립터",
-    "guide/extract-python-data-strings/index.html": "Extract Python data strings",
     "guide/include-tl-translations/index.html": "Ren'Py TL 준비와 기존 번역 사용",
     "guide/save-editor/index.html": "Save Editor",
     "guide/csv-tsv/index.html": "CSV/TSV 번역 가이드",
@@ -373,7 +374,6 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "renpy",
         "Ren'Py",
         (
-            "guide/extract-python-data-strings/index.html",
             "guide/include-tl-translations/index.html",
         ),
     ),
@@ -956,7 +956,6 @@ PAGE_TYPE_BY_PATH: dict[str, str] = {
     "guide/flatten-mode/index.html": "feature",
     "guide/include-text-type/index.html": "feature",
     "guide/include-speaker-name/index.html": "feature",
-    "guide/extract-python-data-strings/index.html": "feature",
     "guide/include-tl-translations/index.html": "feature",
     "guide/401-block-unit-for-consistency-duplicate/index.html": "feature",
 }
@@ -1034,12 +1033,12 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "notices": [("중요", "SRPG 2차 추출 필터는 기본적으로 포함할 대상을 지정합니다. 다른 엔진의 제외 필터처럼 이해하지 않도록 주의하세요.")],
     },
     "guide/bakin/index.html": {
-        "summary": "Bakin 번역 가이드는 Bakin 게임의 추출, 2차 추출 제외 필터, 번역 적용 후 확인 흐름을 정리한 문서입니다.",
-        "when": ["Bakin 게임을 처음 번역할 때", "2차 추출 결과에 불필요한 후보가 많이 섞일 때", "추출 파일, domain, RBR 경로, 원문 패턴을 기준으로 번역 범위를 조정해야 할 때"],
-        "before": ["작업할 게임이 Bakin 계열인지 확인합니다.", "원본과 작업본을 분리해 보관합니다.", "2차 추출 제외 필터는 조건과 일치하는 후보를 제외하는 설정임을 확인합니다."],
-        "steps": ["AIMT에서 프로젝트를 지정합니다.", "Bakin 형식으로 1차 추출을 진행합니다.", "필요하면 Bakin 2차 추출 제외 필터에서 제외 대상을 조정합니다.", "2차 추출 결과에서 필요한 문장이 남아 있는지 확인합니다.", "번역과 적용을 진행한 뒤 게임 실행 화면에서 결과를 확인합니다."],
-        "result": ["필요한 문장이 추출 결과에 남아 있는지 확인합니다.", "불필요한 항목이 많으면 제외 필터 조건을 좁혀 다시 추출합니다.", "필요한 문장이 빠지면 제외 조건이 너무 넓지 않은지 확인합니다."],
-        "notices": [("주의", "Bakin 2차 추출 제외 필터는 조건과 일치하는 항목을 빼는 방식입니다. 필요한 문장이 함께 제외되지 않도록 작은 범위로 먼저 확인하세요.")],
+        "summary": "Bakin 번역 가이드는 RBR 직접 번역과 dic.txt 사전 방식을 나누어 추출, 번역, 적용 순서를 설명합니다.",
+        "when": ["Bakin 게임을 처음 번역할 때", "RBR 직접 번역과 사전 방식 중 작업 경로를 정할 때", "2차 추출 결과에 불필요한 후보가 많이 섞일 때"],
+        "before": ["작업할 게임이 Bakin 계열인지 확인합니다.", "원본과 작업본을 분리해 보관합니다.", "RBR 직접 번역과 dic.txt 사전 방식 중 사용할 방식을 정합니다.", "2차 추출 제외 필터는 조건과 일치하는 후보를 제외하는 설정임을 확인합니다."],
+        "steps": ["Project Hub에서 Bakin 프로젝트를 엽니다.", "Extract1과 Extract2를 실행하고 필요한 문장을 확인합니다.", "필요한 JSON을 번역하고 검수합니다.", "RBR 직접 번역에서 필요하면 Apply1 전에 폰트를 교체합니다.", "선택한 방식에 맞춰 Apply1과 Apply2를 실행합니다.", "게임을 실행해 번역과 폰트 표시를 확인합니다."],
+        "result": ["필요한 문장이 번역되었는지 확인합니다.", "RBR 직접 번역에서는 data.rbpack과 폰트 표시를 확인합니다.", "사전 방식에서는 dic.txt와 player override 적용을 확인합니다."],
+        "notices": [("중요", "dic.txt는 사전 방식에서만 사용합니다."), ("주의", "Bakin 2차 추출 제외 필터는 조건과 일치하는 항목을 빼는 방식입니다. 필요한 문장이 함께 제외되지 않도록 작은 범위로 먼저 확인하세요.")],
     },
     "guide/csv-tsv/index.html": {
         "summary": "CSV/TSV 번역 가이드는 프로젝트 아래의 표 형식 파일에서 지정한 열을 추출하고 번역 결과를 원하는 열에 적용하는 흐름을 설명합니다.",
@@ -1165,11 +1164,11 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
     "guide/import-translation/index.html": {
         "summary": "번역 가져오기는 이전 작업의 원본 폴더와 번역된 폴더를 비교해 번역 대응표를 만들고, 현재 MVMZ 프로젝트에서 같은 원문을 찾으면 기존 번역을 가져오는 도구입니다.",
         "when": ["같은 게임의 새 작업본에 이전 번역을 최대한 재사용하고 싶을 때", "업데이트판이나 재추출 프로젝트에 기존 번역을 옮기고 싶을 때", "대사, 선택지, DB, 시스템, 노트 등 필요한 영역만 골라 가져오고 싶을 때"],
-        "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "이전 작업의 원본 data 폴더와 이전 작업의 번역 완료 data 폴더를 모두 준비합니다.", "가져올 대상 프리셋을 필요한 범위로만 선택합니다.", "게임 버전이 크게 다르면 일치하지 않는 항목이 늘어날 수 있습니다."],
-        "steps": ["작업 도구의 MVMZ 영역에서 번역 가져오기를 엽니다.", "가져올 대상 프리셋을 선택합니다. 필요하면 코드나 카테고리를 직접 입력합니다.", "이전 작업의 원본 data 폴더를 선택합니다.", "이전 작업의 번역 완료 data 폴더를 선택합니다.", "AIMT가 이전 원문과 이전 번역을 비교해 현재 프로젝트에 일치하는 항목을 반영합니다.", "완료 메시지에서 일치, 미일치, 처리 파일 수를 확인합니다."],
-        "result": ["완료 메시지의 matched, unmatched, processed files 값을 확인합니다.", "미일치가 많은 경우 이전 원본과 현재 프로젝트의 버전 차이 또는 추출 범위를 확인합니다.", "가져온 번역이 적용된 장면, DB 이름, 시스템 용어, 노트 기반 표시를 실제 게임에서 확인합니다."],
+        "before": ["현재 프로젝트가 RPG Maker MV/MZ 계열인지 확인합니다.", "이전 작업의 원본 data 폴더와 이전 작업의 번역 완료 data 폴더를 모두 준비합니다.", "Font Settings를 가져오려면 이전 프로젝트의 폰트 설정과 파일도 확인합니다.", "가져올 대상 프리셋을 필요한 범위로만 선택합니다.", "게임 버전이 크게 다르면 일치하지 않는 항목이 늘어날 수 있습니다."],
+        "steps": ["작업 도구의 MVMZ 영역에서 번역 가져오기를 엽니다.", "가져올 대상 프리셋을 선택합니다. 필요하면 코드나 카테고리를 직접 입력합니다.", "이전 작업의 원본 data 폴더를 선택합니다.", "이전 작업의 번역 완료 data 폴더를 선택합니다.", "Font Settings를 선택했다면 이전 프로젝트 폰트를 가져올 대상인지 확인합니다.", "AIMT가 이전 원문과 이전 번역을 비교해 현재 프로젝트에 일치하는 항목을 반영합니다.", "완료 메시지에서 일치, 미일치, 처리 파일 수를 확인합니다."],
+        "result": ["완료 메시지의 matched, unmatched, processed files 값을 확인합니다.", "미일치가 많은 경우 이전 원본과 현재 프로젝트의 버전 차이 또는 추출 범위를 확인합니다.", "가져온 번역이 적용된 장면, DB 이름, 시스템 용어, 노트 기반 표시를 실제 게임에서 확인합니다.", "Font Settings를 선택했다면 이전 프로젝트의 폰트 설정과 파일이 반영됐는지 확인합니다."],
         "notices": [("중요", "번역 가져오기는 같은 원문을 기준으로 이전 번역을 재사용합니다. 현재 프로젝트에서 문맥이 달라진 항목은 가져온 뒤 반드시 검수하세요."), ("권장", "처음에는 Message나 Choice처럼 확인하기 쉬운 범위부터 가져오고, 결과가 안정적이면 DB와 System 범위로 넓히세요.")],
-        "confusion": [("이전 번역 파일 하나만 있으면 되나요?", "아닙니다. 이전 원본과 이전 번역본이 모두 있어야 어떤 원문이 어떤 번역으로 바뀌었는지 비교할 수 있습니다."), ("빈 번역이나 코드만 있는 줄도 가져오나요?", "빈 번역은 가져오지 않습니다. 이벤트 대사 쪽에서는 제어코드만 있는 줄도 불필요한 치환을 피하기 위해 건너뛸 수 있습니다."), ("맵 표시 이름이 왜 안 바뀌나요?", "현재 프로젝트의 맵 표시 이름이 이전 원본과 다르면 같은 항목으로 보기 어려워 건너뛸 수 있습니다. 현재 원문과 이전 원문이 같은지 확인하세요.")],
+        "confusion": [("이전 번역 파일 하나만 있으면 되나요?", "아닙니다. 이전 원본과 이전 번역본이 모두 있어야 어떤 원문이 어떤 번역으로 바뀌었는지 비교할 수 있습니다."), ("Font Settings는 현재 프리셋을 적용하나요?", "아닙니다. 이전 번역 프로젝트의 폰트 설정과 파일을 가져오는 것이 기준 동작입니다. AIMT 1.17.0.0 구현은 현재 프리셋을 적용할 수 있어 결과 확인이 필요합니다."), ("빈 번역이나 코드만 있는 줄도 가져오나요?", "빈 번역은 가져오지 않습니다. 이벤트 대사 쪽에서는 제어코드만 있는 줄도 불필요한 치환을 피하기 위해 건너뛸 수 있습니다."), ("맵 표시 이름이 왜 안 바뀌나요?", "현재 프로젝트의 맵 표시 이름이 이전 원본과 다르면 같은 항목으로 보기 어려워 건너뛸 수 있습니다. 현재 원문과 이전 원문이 같은지 확인하세요.")],
     },
     "guide/escape-data/index.html": {
         "summary": "이스케이프 (data)는 원본 data 폴더와 현재 프로젝트 data 폴더의 주요 명령 파라미터를 비교해, 이스케이프 코드나 특수 표기가 번역 과정에서 깨졌는지 검사하고 수정 후보를 만드는 도구입니다.",
@@ -1538,14 +1537,6 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "steps": ["설정 화면에서 LiveMaker 탭을 엽니다.", "AIMT_LiveMaker_KR.ttf 생성용 폰트 항목을 확인합니다.", "System Fonts 또는 Select File로 사용할 폰트를 선택합니다.", "현재 선택 항목이 바뀌었는지 확인합니다.", "LiveMaker 적용을 다시 진행하고 게임에서 한글 표시를 확인합니다."],
         "result": ["게임 실행 시 한글이 정상적으로 보이는지 확인합니다.", "필요하면 LiveMaker FontMod 로그 확인으로 로드된 폰트와 요청된 폰트를 비교합니다."],
         "notices": [("주의", "폰트가 선택되어도 게임 화면 폭, 줄바꿈, 글리프 지원 여부는 실제 실행 화면에서 반드시 확인해야 합니다.")],
-    },
-    "guide/extract-python-data-strings/index.html": {
-        "summary": "Extract Python data strings는 Ren'Py 프로젝트의 Python 데이터 안에 들어 있는 문자열을 번역 대상으로 함께 추출할지 정하는 설정입니다.",
-        "when": ["대사 파일이 아닌 Python 데이터 안의 이름, 설명, UI 문구가 원문으로 남을 때", "Ren'Py 추출 결과에 데이터성 문자열을 포함해야 할 때", "일반 스크립트 추출만으로 누락되는 문장을 확인할 때"],
-        "before": ["현재 프로젝트가 Ren'Py 계열인지 확인합니다.", "Python 데이터 문자열은 코드와 가까운 위치에 있을 수 있으므로 추출 후 샘플을 꼭 확인합니다.", "설정을 바꾸면 기존 추출 결과가 자동으로 바뀌지 않으므로 다시 추출해야 합니다."],
-        "steps": ["설정 화면에서 Ren'Py 그룹을 확인합니다.", "Extract Python data strings를 켜거나 끕니다.", "Ren'Py 추출을 다시 실행합니다.", "추출 결과에서 데이터성 문자열이 의도대로 포함되었는지 확인합니다."],
-        "result": ["이름, 설명, UI 문구처럼 누락되던 문자열이 추출 결과에 들어왔는지 확인합니다.", "코드 조각이나 번역하면 안 되는 값이 섞이면 설정을 끄고 결과를 비교합니다."],
-        "notices": [("주의", "Python 데이터 문자열은 실제 코드와 가까울 수 있습니다. 번역 결과를 적용한 뒤 실행 오류가 없는지 확인하세요.")],
     },
     "guide/include-tl-translations/index.html": {
         "summary": "Ren'Py TL 준비는 대상 언어의 TL을 새로 만들거나 기존 TL을 복제하고 번역 데이터를 추출하는 흐름입니다.",
