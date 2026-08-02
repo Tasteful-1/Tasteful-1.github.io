@@ -19,7 +19,6 @@ DOC_VERSION = "문서 기준: AIMT PRO 1.13 계열"
 
 GROUP_PAGES = {
     "guide/index.html",
-    "guide/basic-workflow/index.html",
     "guide/engine-guides/index.html",
     "guide/features/index.html",
     "guide/troubleshooting/index.html",
@@ -332,7 +331,6 @@ def build_nav(entries: list[dict[str, Any]], html_path: Path, dist_root: Path = 
             lines.append("</div></details>")
             stack.pop()
         title = html.escape(str(entry["title"]), quote=False)
-        is_basic_workflow = str(entry["path"]) == "guide/basic-workflow/index.html"
         if bool(entry.get("virtual", False)):
             anchor = f'<span class="nav-link nav-label" data-depth="{depth}">{title}</span>'
         else:
@@ -343,9 +341,6 @@ def build_nav(entries: list[dict[str, Any]], html_path: Path, dist_root: Path = 
             nav_key = html.escape(str(entry["path"]), quote=True)
             lines.append(f'<details class="nav-group" data-depth="{depth}" data-nav-key="{nav_key}"{open_attr}><summary><span class="nav-caret" aria-hidden="true"></span>{anchor}</summary><div class="nav-children">')
             stack.append(depth)
-        elif is_basic_workflow:
-            nav_key = html.escape(str(entry["path"]), quote=True)
-            lines.append(f'<details class="nav-group nav-single-group nav-basic-workflow-row" data-depth="{depth}" data-nav-key="{nav_key}"><summary><span class="nav-caret nav-caret-static" aria-hidden="true"></span>{anchor}</summary></details>')
         else:
             lines.append(anchor)
     while stack:
