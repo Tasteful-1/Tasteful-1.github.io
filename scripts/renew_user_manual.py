@@ -38,6 +38,7 @@ EXTERNAL_REFERENCE_PAGES: dict[str, str] = {
 }
 
 REFERENCE_PAGES: dict[str, str] = {
+    "guide/bakin-command-tag-reference/index.html": "Bakin 커맨드 및 태그 참고",
     "guide/bakin-event-code-reference/index.html": "Bakin 이벤트 코드 참고",
 }
 
@@ -133,6 +134,7 @@ TITLE_OVERRIDES = {
     "guide/livemaker/index.html": "LiveMaker 번역 가이드",
     "guide/srpg-studio/index.html": "SRPG Studio 번역 가이드",
     "guide/bakin/index.html": "Bakin 번역 가이드",
+    "guide/bakin-command-tag-reference/index.html": "Bakin 커맨드 및 태그 참고",
     "guide/bakin-event-code-reference/index.html": "Bakin 이벤트 코드 참고",
     "guide/rpg-maker-command-code-reference/index.html": "RPG Maker 명령 코드 참고",
     "guide/advanced-reference/index.html": "참고 자료",
@@ -187,6 +189,7 @@ ADVANCED_AI_PATHS = {
 }
 
 ADVANCED_DIRECT_PATHS = {
+    "guide/bakin-command-tag-reference/index.html",
     "guide/bakin-event-code-reference/index.html",
     "guide/rpg-maker-command-code-reference/index.html",
     "guide/extraction-files-reference/index.html",
@@ -2301,6 +2304,7 @@ def _build_group_articles() -> dict[str, str]:
             "AIMT에서 함께 참고하기 좋은 외부 사이트, API 제공자 문서, 출처 링크를 모은 영역입니다.",
             [
                 ("guide/rpg-maker-command-code-reference/index.html", "RPG Maker 명령 코드 참고"),
+                ("guide/bakin-command-tag-reference/index.html", "Bakin 커맨드 및 태그 참고"),
                 ("guide/bakin-event-code-reference/index.html", "Bakin 이벤트 코드 참고"),
                 ("guide/extraction-files-reference/index.html", "추출 파일별 설명"),
                 ("guide/external-utilities/index.html", "외부 유틸리티"),
