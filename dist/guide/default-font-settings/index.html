@@ -106,7 +106,6 @@
 <a class="nav-link" href="../../guide/bakin-secondary-exclusion-filter/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/extract-python-data-strings/index.html" data-depth="4">Extract Python data strings</a>
 <a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Ren'Py TL 준비와 기존 번역 사용</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
@@ -238,8 +237,9 @@
 <ul>
 <li><strong>MV</strong>: 번역 적용 시 현재 프리셋을 기준으로 <code>gamefont.css</code>와 폰트 파일을 반영합니다.</li>
 <li><strong>MZ</strong>: 적용 대상에 <code>system_terms.json</code>이 있을 때 현재 프리셋을 반영합니다.</li>
-<li><strong>번역 가져오기</strong>: Font Settings를 선택하면 이전 프로젝트의 폰트가 아니라 현재 선택한 프리셋을 적용합니다.</li>
+<li><strong>번역 가져오기</strong>: Font Settings를 선택하면 이전 번역 프로젝트의 폰트 설정과 파일을 현재 프로젝트에 가져오는 것이 기준 동작입니다. 현재 기본 프리셋을 적용하는 옵션이 아닙니다.</li>
 </ul>
+<div class="guide-callout" data-callout="warning" role="alert"><div class="guide-callout-title">AIMT 1.17.0.0 확인 필요</div><div class="guide-callout-body"><p>현재 구현은 번역 가져오기에서 현재 프리셋을 적용할 수 있습니다. 수정 전까지 Font Settings 결과를 확인하고, 이전 프로젝트 폰트가 필요한 작업은 별도로 다시 적용하세요.</p></div></div>
 <h2>완료 후 확인</h2>
 <ul>
 <li>한글과 숫자가 모두 표시됩니다.</li>

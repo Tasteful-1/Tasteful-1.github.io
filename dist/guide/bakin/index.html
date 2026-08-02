@@ -106,7 +106,6 @@
 <a class="nav-link" href="../../guide/bakin-secondary-exclusion-filter/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
-<a class="nav-link" href="../../guide/extract-python-data-strings/index.html" data-depth="4">Extract Python data strings</a>
 <a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Ren'Py TL 준비와 기존 번역 사용</a>
 </div></details>
 <details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
@@ -224,22 +223,30 @@
 <article class="guide-content">
   <h1>Bakin 번역 가이드</h1>
   <p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
-  <p>Bakin 게임의 <code>data.rbpack</code>을 준비하고 문장을 번역한 뒤 <code>dic.txt</code>로 적용하는 흐름입니다.</p>
+  <p>Bakin 번역은 RBR 데이터를 직접 바꾸는 방식과 <code>dic.txt</code> 사전을 사용하는 방식으로 나뉩니다. 먼저 적용 방식을 정한 뒤 해당 순서만 진행하세요.</p>
   <h2>작업 전 확인</h2>
   <ul>
     <li>게임 폴더의 <code>data</code> 안에 <code>data.rbpack</code>과 <code>common.dll</code>이 있는지 확인합니다.</li>
     <li>원본 게임 폴더를 복사해 작업본을 만듭니다.</li>
     <li>Project Hub에서 엔진을 <strong>Bakin</strong>으로 선택합니다.</li>
+    <li><strong>RBR 직접 번역</strong>과 <strong>사전 방식</strong> 중 사용할 방식을 정합니다.</li>
   </ul>
-  <h2>1. Extract1</h2>
-  <p><strong>Extract1</strong>은 <code>data.rbpack</code>을 AIMT 작업 공간에 풉니다. 원본 archive 구조와 다시 만들 때 필요한 정보도 함께 준비합니다.</p>
-  <p>완료 후에만 Extract2로 이동하세요. archive 또는 Bakin 도구를 찾지 못했다는 오류가 나오면 적용까지 진행하지 않습니다.</p>
-  <h2>2. Extract2</h2>
+  <h2>방식 선택</h2>
+  <table>
+    <thead><tr><th>방식</th><th>적용 결과</th><th>알아둘 점</th></tr></thead>
+    <tbody>
+      <tr><td>RBR 직접 번역</td><td>RBR 작업 데이터에 번역을 반영하고 <code>data.rbpack</code>을 다시 만듭니다.</td><td><code>dic.txt</code>를 사용하지 않습니다. 한글 번역에서는 폰트 교체가 필요한 경우가 많습니다.</td></tr>
+      <tr><td>사전 방식</td><td>번역 결과를 BakinTranslate 호환 <code>dic.txt</code>로 만들고 player override와 함께 설치합니다.</td><td><code>dic.txt</code> 설명은 이 방식에만 해당합니다.</td></tr>
+    </tbody>
+  </table>
+  <h2>RBR 직접 번역 순서</h2>
   <ol>
-    <li><strong>Extract2</strong>를 실행합니다.</li>
-    <li>AIMT가 Bakin 데이터를 문장으로 변환하고 번역 JSON과 매핑을 만듭니다.</li>
-    <li>결과 파일을 열어 대사와 이름이 들어 있는지 확인합니다.</li>
-    <li>불필요한 이벤트가 많으면 <a href="../../guide/bakin-secondary-exclusion-filter/index.html">Bakin 2차 추출 제외 필터</a>를 조정한 뒤 Extract2를 다시 실행합니다.</li>
+    <li><strong>Extract1</strong>으로 <code>data.rbpack</code>을 작업 공간에 풉니다.</li>
+    <li><strong>Extract2</strong>를 실행하고 번역 JSON과 RBR 매핑을 확인합니다. 불필요한 이벤트가 많으면 <a href="../../guide/bakin-secondary-exclusion-filter/index.html">Bakin 2차 추출 제외 필터</a>를 조정한 뒤 다시 실행합니다.</li>
+    <li>필요한 JSON을 번역하고 대사, 이름, 선택지를 검수합니다.</li>
+    <li><strong>기본 글꼴 바꾸기</strong>로 작업 공간의 폰트를 교체합니다. 기존 폰트가 번역 언어를 정상 지원하면 이 단계는 생략할 수 있습니다.</li>
+    <li><strong>Apply1</strong>로 번역 JSON을 RBR 작업 데이터에 반영합니다.</li>
+    <li><strong>Apply2</strong>로 <code>data.rbpack</code>을 다시 만들고 게임에 적용합니다.</li>
   </ol>
   <div class="guide-callout" data-callout="warning">
     <div class="guide-callout-title">필터는 제외 규칙입니다</div>
@@ -247,23 +254,27 @@
       <p>규칙에 맞는 항목은 결과에서 빠집니다. 필요한 문장까지 사라지지 않았는지 적은 범위로 확인하세요.</p>
     </div>
   </div>
-  <h2>3. 번역</h2>
-  <p>필요한 JSON만 선택해 번역합니다. 이름, 선택지, 짧은 UI 문구를 먼저 시험하고 게임에서 표시되는지 확인한 뒤 범위를 늘립니다.</p>
-  <h2>4. Apply1</h2>
-  <p><strong>Apply1</strong>은 번역 JSON과 Extract2 매핑을 확인하고 BakinTranslate용 <code>dic.txt</code> 작업본을 만듭니다.</p>
-  <p>프로젝트나 추출 결과가 바뀌었다면 이전 매핑을 재사용하지 말고 Extract1과 Extract2부터 다시 실행합니다.</p>
-  <h2>5. Apply2</h2>
-  <p><strong>Apply2</strong>는 player override를 준비하고 완성된 사전을 게임의 <code>data/dic.txt</code>에 설치합니다. 완료 후 게임을 실행해 대사, 선택지, 메뉴를 확인합니다.</p>
-  <p>적용 실패 시 AIMT가 기존 파일을 복구합니다. 새로 만든 <code>dic.txt</code>도 실패한 적용에서는 제거됩니다.</p>
-  <h2>archive와 폰트 도구</h2>
+  <h3>폰트 교체는 선택 단계입니다</h3>
+  <p>한글 글리프가 없는 기본 폰트를 쓰는 게임에서는 사실상 필요한 경우가 많습니다. 기존 폰트가 한글을 지원하거나 별도 폰트 처리가 끝난 게임이라면 건너뛰어도 됩니다. 현재 도구는 TTF 폰트를 사용하며, Apply1 전에 실행해야 같은 작업본에 함께 반영됩니다.</p>
+  <h2>사전 방식 순서</h2>
+  <ol>
+    <li><strong>Extract1</strong>으로 Bakin 작업 공간을 준비합니다.</li>
+    <li><strong>Extract2</strong>로 BakinTranslate 사전 항목을 번역 JSON과 매핑으로 만듭니다.</li>
+    <li>필요한 JSON을 번역하고 검수합니다.</li>
+    <li><strong>Apply1</strong>로 BakinTranslate 호환 <code>dic.txt</code> 작업본을 만듭니다.</li>
+    <li><strong>Apply2</strong>로 player override를 준비하고 사전을 게임의 <code>data/dic.txt</code>에 설치합니다.</li>
+  </ol>
+  <p>프로젝트나 추출 결과가 바뀌었다면 이전 매핑을 재사용하지 말고 Extract1과 Extract2부터 다시 실행합니다. 적용 실패 시 AIMT가 기존 파일을 복구하며, 실패한 적용에서 새로 만든 <code>dic.txt</code>도 제거됩니다.</p>
+  <h2>완료 후 확인</h2>
   <ul>
-    <li><strong>rbpack 다시 만들기</strong>: Extract1 작업 공간을 archive로 다시 만들고 원본을 백업한 뒤 교체합니다.</li>
-    <li><strong>폰트 교체</strong>: 작업 공간의 폰트를 바꿉니다. 게임에 반영하려면 이어서 rbpack 다시 만들기를 실행해야 합니다.</li>
+    <li>게임을 실행해 대사, 선택지와 메뉴가 번역되었는지 확인합니다.</li>
+    <li>RBR 직접 번역에서 폰트를 바꿨다면 한글 표시와 줄바꿈을 함께 확인합니다.</li>
+    <li>선택한 방식과 다른 방식의 산출물이 섞이지 않았는지 확인합니다.</li>
   </ul>
   <div class="guide-callout" data-callout="tip">
     <div class="guide-callout-title">권장 확인 순서</div>
     <div class="guide-callout-body">
-      <p>Extract2 결과 확인 → 소량 번역 → Apply1 → Apply2 → 게임 실행 순서로 시험하세요.</p>
+      <p>처음에는 소량만 번역해 선택한 방식의 Apply1, Apply2와 게임 실행까지 끝낸 뒤 범위를 넓히세요.</p>
     </div>
   </div>
 </article>
