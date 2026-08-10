@@ -1,0 +1,205 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CTF 폰트 변경 관련 팁 · AIMT Guide</title><script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script><style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style><link rel="stylesheet" href="../../guide/static/styles.css"></head><body>  <div id="searchOverlay" class="search-overlay" hidden>    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">      <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>      <input id="guideSearch" class="search-input" type="search" placeholder="검색어 입력" autocomplete="off">      <div id="searchResults" class="search-results" hidden></div>    </section>  </div><button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button><div class="site-shell"><aside class="sidebar"><div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div><nav class="nav-list" aria-label="문서 목록">
+<details class="nav-group" data-depth="0" data-nav-key="guide/index.html" open><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/index.html" data-depth="0">AIMT 사용설명서</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="1" data-nav-key="guide/engine-guides/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">엔진별 가이드</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/rpg-maker-mvmz/index.html" data-depth="2">RPG Maker MV/MZ</a>
+<a class="nav-link" href="../../guide/rpg-maker-vxvxa/index.html" data-depth="2">RPG MAKER VXVXA</a>
+<a class="nav-link" href="../../guide/wolf-rpg-editor/index.html" data-depth="2">WOLF RPG Editor</a>
+<a class="nav-link" href="../../guide/clickteam-fusion-coming-soon/index.html" data-depth="2">Clickteam Fusion 번역 가이드</a>
+<a class="nav-link" href="../../guide/tyranobuilder-tyranoscript/index.html" data-depth="2">TyranoBuilder/TyranoScript (개정1)</a>
+<a class="nav-link" href="../../guide/pixel-game-maker-mv/index.html" data-depth="2">Pixel Game Maker MV ( アクションゲームツクール MV)</a>
+<a class="nav-link" href="../../guide/srpg-studio/index.html" data-depth="2">SRPG Studio 번역 가이드</a>
+<a class="nav-link" href="../../guide/livemaker/index.html" data-depth="2">LiveMaker 번역 가이드</a>
+<a class="nav-link" href="../../guide/bakin/index.html" data-depth="2">Bakin 번역 가이드</a>
+<a class="nav-link" href="../../guide/renpy/index.html" data-depth="2">Ren'Py 번역 가이드</a>
+<a class="nav-link" href="../../guide/csv-tsv/index.html" data-depth="2">CSV/TSV 번역 가이드</a>
+<a class="nav-link" href="../../guide/multi-regex-engines/index.html" data-depth="2">범용 정규식 엔진 가이드</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/features/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">기능별 설명</span></summary><div class="nav-children">
+<details class="nav-group" data-depth="2" data-nav-key="guide/features-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/features-screen/index.html" data-depth="2">화면 영역</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-sidebar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역1 사이드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/project-selection/index.html" data-depth="4">Project Hub</a>
+<a class="nav-link" href="../../guide/refresh-file-list/index.html" data-depth="4">파일목록 새로고침</a>
+<a class="nav-link" href="../../guide/view-switching/index.html" data-depth="4">화면전환</a>
+<a class="nav-link" href="../../guide/prompt/index.html" data-depth="4">프롬프트</a>
+<a class="nav-link" href="../../guide/quick-translation/index.html" data-depth="4">빠른번역</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-mainview"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역2 메인뷰</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/viewer/index.html" data-depth="4">Viewer</a>
+<a class="nav-link" href="../../guide/console/index.html" data-depth="4">Console</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/screen-commandbar"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">영역3 커맨드바</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/extraction/index.html" data-depth="4">추출</a>
+<a class="nav-link" href="../../guide/translation/index.html" data-depth="4">번역</a>
+<a class="nav-link" href="../../guide/apply-and-instant-apply/index.html" data-depth="4">적용과 즉시적용</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/settings-screen/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/settings-screen/index.html" data-depth="2">설정 화면</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-general"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">일반</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/theme/index.html" data-depth="4">테마</a>
+<a class="nav-link" href="../../guide/extraction-regex/index.html" data-depth="4">추출정규식</a>
+<a class="nav-link" href="../../guide/escape-patterns/index.html" data-depth="4">이스케이프패턴</a>
+<a class="nav-link" href="../../guide/language-pattern-settings/index.html" data-depth="4">언어패턴설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="guide/translation-settings/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/translation-settings/index.html" data-depth="3">번역 설정</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ai-model/index.html" data-depth="4">AI-MODEL</a>
+<a class="nav-link" href="../../guide/api-key-settings/index.html" data-depth="4">API KEY 설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-mvmz"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/exclude-exception-regex/index.html" data-depth="4">제외정규식 / 예외정규식</a>
+<a class="nav-link" href="../../guide/replacement-terms/index.html" data-depth="4">치환용어설정</a>
+<a class="nav-link" href="../../guide/default-font-settings/index.html" data-depth="4">기본폰트설정</a>
+<a class="nav-link" href="../../guide/title-text/index.html" data-depth="4">타이틀텍스트</a>
+<a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/mapinfos-registered-maps-only/index.html" data-depth="4">MapInfos 등록 맵만 추출</a>
+<a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
+<a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
+<a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
+<a class="nav-link" href="../../guide/merge-101-401/index.html" data-depth="4">merge 101-401</a>
+<a class="nav-link" href="../../guide/apply-exclude-regex-to-401-block/index.html" data-depth="4">Apply exclude regex to 401 block</a>
+<a class="nav-link" href="../../guide/401-extract-mode/index.html" data-depth="4">401-Extract Mode</a>
+<a class="nav-link" href="../../guide/flatten-mode/index.html" data-depth="4">Flatten Mode</a>
+<a class="nav-link" href="../../guide/include-text-type/index.html" data-depth="4">Include text type</a>
+<a class="nav-link" href="../../guide/include-speaker-name/index.html" data-depth="4">Include speaker name</a>
+<a class="nav-link" href="../../guide/401-block-unit-for-consistency-duplicate/index.html" data-depth="4">401 Block Unit for Consistency/Duplicate</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-vxvxa"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-message-block-unit/index.html" data-depth="4">Message Block Unit</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-wolf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/wolf-secondary-exclusion-filter/index.html" data-depth="4">WOLF 2차 추출 제외 필터</a>
+<a class="nav-link" href="../../guide/cmd-122-secondary-duplicate-handling/index.html" data-depth="4">Cmd 122 2차 추출 중복처리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-ctf"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ctf-fast-image-extraction/index.html" data-depth="4">CTF 이미지 추출과 적용</a>
+<a class="nav-link" href="../../guide/ctf-secondary-exclusion-filter/index.html" data-depth="4">CTF 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-srpgstudio"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-secondary-extraction-filter/index.html" data-depth="4">SRPG 2차 추출 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-livemaker"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">LiveMaker</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/livemaker-font-settings/index.html" data-depth="4">LiveMaker 폰트 설정</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-bakin"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Bakin</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-secondary-exclusion-filter/index.html" data-depth="4">Bakin 2차 추출 제외 필터</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-renpy"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">Ren'Py</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/include-tl-translations/index.html" data-depth="4">Ren'Py TL 준비와 기존 번역 사용</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-log-backup"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">로그/백업</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/log-management/index.html" data-depth="4">로그 관리</a>
+<a class="nav-link" href="../../guide/backup-management/index.html" data-depth="4">백업 관리</a>
+<a class="nav-link" href="../../guide/cache-management/index.html" data-depth="4">캐시 관리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-help"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">도움말</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/help-settings/index.html" data-depth="4">도움말</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/settings-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/misc-settings/index.html" data-depth="4">기타</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/workspace-tools/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/workspace-tools/index.html" data-depth="2">작업 도구</a></summary><div class="nav-children">
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-utilities"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">유틸리티</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/fill-blanks/index.html" data-depth="4">빈칸채우기</a>
+<a class="nav-link" href="../../guide/user-dictionary-prepost/index.html" data-depth="4">사용자사전 &amp; 전후처리</a>
+<a class="nav-link" href="../../guide/undo-apply/index.html" data-depth="4">적용취소</a>
+<a class="nav-link" href="../../guide/translation-consistency/index.html" data-depth="4">번역일관성</a>
+<a class="nav-link" href="../../guide/extraction-duplicates/index.html" data-depth="4">추출 중복</a>
+<a class="nav-link" href="../../guide/escape-check/index.html" data-depth="4">이스케이프</a>
+<a class="nav-link" href="../../guide/final-consonant-cleanup/index.html" data-depth="4">받침정리</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-shortcuts"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">바로가기</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vscode/index.html" data-depth="4">VSCODE</a>
+<a class="nav-link" href="../../guide/notepad/index.html" data-depth="4">NOTEPAD++</a>
+<a class="nav-link" href="../../guide/appdata/index.html" data-depth="4">APPDATA</a>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-engine-tools"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">엔진별 보조 도구</span></summary><div class="nav-children">
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-mvmz-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">MVMZ</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/line-maker-mvmz/index.html" data-depth="5">라인메이커 (MVMZ)</a>
+<a class="nav-link" href="../../guide/add-plugin/index.html" data-depth="5">플러그인추가</a>
+<a class="nav-link" href="../../guide/401-merge-split/index.html" data-depth="5">401 병합 &amp; 분할</a>
+<a class="nav-link" href="../../guide/402-sync/index.html" data-depth="5">402 동기화</a>
+<a class="nav-link" href="../../guide/name-consistency/index.html" data-depth="5">이름 일관성</a>
+<a class="nav-link" href="../../guide/integrated-consistency/index.html" data-depth="5">통합 일관성</a>
+<a class="nav-link" href="../../guide/japanese-check/index.html" data-depth="5">일본어체크</a>
+<a class="nav-link" href="../../guide/code-restore/index.html" data-depth="5">코드 복원</a>
+<a class="nav-link" href="../../guide/import-translation/index.html" data-depth="5">번역 가져오기</a>
+<a class="nav-link" href="../../guide/escape-data/index.html" data-depth="5">이스케이프 (data)</a>
+<a class="nav-link" href="../../guide/mvmz-media-crypter/index.html" data-depth="5">크립터 (이미지 / 오디오)</a>
+<a class="nav-link" href="../../guide/data-decryption/index.html" data-depth="5">Data 복호화</a>
+<a class="nav-link" href="../../guide/project-conversion/index.html" data-depth="5">프로젝트 변환</a>
+<a class="nav-link" href="../../guide/enigma-unpack/index.html" data-depth="5">에니그마 언팩</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-vxvxa-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">VXVXA</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/vxvxa-unpack/index.html" data-depth="5">언팩</a>
+<a class="nav-link" href="../../guide/title-change-vxvxa/index.html" data-depth="5">타이틀변경 (VXVXA)</a>
+<a class="nav-link" href="../../guide/line-maker-vxvxa/index.html" data-depth="5">라인메이커 (VXVXA)</a>
+<a class="nav-link" href="../../guide/dedicated-extraction/index.html" data-depth="5">전용추출</a>
+<a class="nav-link" href="../../guide/imbook-bbtext-missions-patch/index.html" data-depth="5">imbook패치, bbtext패치, missions패치</a>
+<a class="nav-link" href="../../guide/mv-conversion/index.html" data-depth="5">MV변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-wolf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">WOLF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/wolf-unpack-repack/index.html" data-depth="5">언팩/리팩</a>
+<a class="nav-link" href="../../guide/integrated-replacement/index.html" data-depth="5">통합 치환</a>
+<a class="nav-link" href="../../guide/exe-patch/index.html" data-depth="5">EXE 패치</a>
+<a class="nav-link" href="../../guide/raw-filename-replacement/index.html" data-depth="5">RAW/파일명 치환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-ctf-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">CTF</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/metadata-check/index.html" data-depth="5">메타정보 확인</a>
+<a class="nav-link" href="../../guide/title-change-ctf/index.html" data-depth="5">타이틀 변경 (CTF)</a>
+<a class="nav-link" href="../../guide/language-change/index.html" data-depth="5">언어 변경</a>
+<a class="nav-link" href="../../guide/ctf-crypter/index.html" data-depth="5">크립터 (CTF)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-tyrano-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Tyrano</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar-tyrano/index.html" data-depth="5">ASAR (Tyrano 계열)</a>
+<a class="nav-link" href="../../guide/title-change-tyrano/index.html" data-depth="5">타이틀 변경 (Tyrano)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-kirikiri-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Kirikiri</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/utf-16le-conversion/index.html" data-depth="5">UTF-16LE 변환</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-pgmmv-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">PGMMV</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/pgmmv-crypter/index.html" data-depth="5">크립터 (PGMMV)</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-srpg-studio-tools-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">SRPG Studio</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/srpg-studio-unpack/index.html" data-depth="5">언팩</a>
+<a class="nav-link" href="../../guide/srpg-studio-manual-build/index.html" data-depth="5">수동 빌드</a>
+<a class="nav-link" href="../../guide/srk-crypter/index.html" data-depth="5">SRK 크립터</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-renpy-tools-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Ren'Py</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/renpy-crypter/index.html" data-depth="5">크립터 (Ren'Py)</a>
+<a class="nav-link" href="../../guide/renpy-tag-check/index.html" data-depth="5">태그 검사</a>
+<a class="nav-link" href="../../guide/renpy-font-replacement/index.html" data-depth="5">폰트 교체</a>
+</div></details>
+<details class="nav-group" data-depth="4" data-nav-key="__nav_group__/guide-electron-index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="4">Electron</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/asar/index.html" data-depth="5">ASAR (Electron)</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="3" data-nav-key="__nav_group__/workspace-etc"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="3">기타</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/ttc-build/index.html" data-depth="4">TTC 빌드</a>
+<a class="nav-link" href="../../guide/save-editor/index.html" data-depth="4">Save Editor</a>
+<a class="nav-link" href="../../guide/llama-server/index.html" data-depth="4">llama-server</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="2" data-nav-key="guide/quickslot/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><a class="nav-link" href="../../guide/quickslot/index.html" data-depth="2">퀵슬롯</a></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/memo/index.html" data-depth="3">메모장</a>
+</div></details>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/troubleshooting/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">문제 해결</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/faq/index.html" data-depth="2">자주 나오는 질문</a>
+</div></details>
+<details class="nav-group" data-depth="1" data-nav-key="guide/advanced-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">참고 자료</span></summary><div class="nav-children">
+<a class="nav-link" href="../../guide/bakin-event-code-reference/index.html" data-depth="2">Bakin 이벤트 코드 참고</a>
+<a class="nav-link" href="../../guide/bakin-command-tag-reference/index.html" data-depth="2">Bakin 커맨드 및 태그 참고</a>
+<a class="nav-link" href="../../guide/ctf-font-change-tips/index.html" data-depth="2">CTF 폰트 변경 관련 팁</a>
+<a class="nav-link" href="../../guide/external-utilities/index.html" data-depth="2">외부 유틸리티</a>
+<a class="nav-link" href="../../guide/provider-reference-links/index.html" data-depth="2">제공자별 참고 링크</a>
+<a class="nav-link" href="../../guide/extraction-files-reference/index.html" data-depth="2">추출 파일별 설명</a>
+<a class="nav-link" href="../../guide/rpg-maker-command-code-reference/index.html" data-depth="2">RPG Maker 명령 코드 참고</a>
+</div></details>
+</div></details>
+      </nav></aside><div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div><main class="content-shell">
+<article class="guide-content">
+  <h1>CTF 폰트 변경 관련 팁</h1>
+  <p class="doc-version">문서 기준: AIMT PRO 1.17.1.0<br>최종 편집 일시: 2026-08-10</p>
+<p>요청에 따라 CTF (클릭팀퓨전) 번역 과정 중 폰트 변경에 관해 간략하게 적습니다.</p><p>총 세 가지 경우로 구분되어 서술하였으니 필요한 부분만 읽어주셔도 좋습니다.</p><p>이 글이 부디 CTF 번역에 작은 도움이 되시길 바랍니다.</p><hr/><p><span style="font-size:18px"><strong>1. 번역했더니 대사가 ????? 로 나와요</strong></span><br/>(참고: <a href="https://arca.live/b/aimt/178181189" target="_blank">https://arca.live/b/aimt/178181189</a> )</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-01.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/0f79b20f31de53f003bca249ee092587f851984750c5925db32f02bb7b8ac268.png?expires=1786333376&amp;key=kMe5viF2PRcTiUAYFzn4nw&amp;type=orig" height="1069" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-01.webp" style="width:964px" width="1839"/></a></p><p><a href="../../guide/assets/ctf-font-change-tips/image-02.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/df4b4717c5d5b26ff8bac28e2e95b0d45020780bfc4b16a88f0407eb033f3a66.png?expires=1786333376&amp;key=CISBzySuhH02sKvR6jWuvA&amp;type=orig" height="1064" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-02.webp" style="width:965px" width="1837"/></a></p><p><br/></p><p>개발된 지 오래된 게임들에서 발견되는 문제 유형입니다.</p><p>CTF 도구의 "언어 변경"을 통해 게임 파일의 언어환경(로케일)을 변경하면 정상적으로 출력됩니다.</p><hr/><p><span style="font-size:18px"><strong>2. 번역했더니 글자가 네모네모로 나와요</strong></span></p><p><span><strong><a href="../../guide/assets/ctf-font-change-tips/image-03.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/399c53dad3666ba3e8bcd03d71df4e46f5b8eb52880671baf2803225ac3800ca.png?expires=1786333376&amp;key=NZfPtzWC0h6Y0u-PBIwu-w&amp;type=orig" height="1235" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-03.webp" style="width:375px" width="1105"/></a></strong></span></p><p><br/></p><p>게임 내에서 사용하는 폰트가 따로 지정되어 있을 경우, 해당 폰트는 높은 확률로 한글을 지원하지 않습니다.</p><p>따라서 이 네모네모를 정상적으로 출력시키기 위해선 폰트를 교체해줄 필요가 있습니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-04.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/1cebda00d16e41e3efda270265aa77679fbc2c8a06168380c39fc668a1614301.png?expires=1786333376&amp;key=jatx9WkA5lh3f0c44gULiQ&amp;type=orig" height="1067" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-04.webp" width="1837"/></a></p><p><br/></p><p>CTF 도구의 크립터 - 폰트를 활용해 게임의 폰트 설정을 추출합니다.</p><p>추출된 결과는 지정된 게임 프로젝트 폴더 속 _Extract\font 에 저장됩니다.</p><p>여기서부터는 두 가지 경우로 대응이 갈리니 상황에 맞춰 따라가 봅시다.</p><hr/><p><span style="font-size:18px"><strong>2.1. font 폴더에 logFontInfo.json 만 존재하는 경우</strong></span></p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-05.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/84151b963c6ee4468612fc4f0d60562c3cbf81f4c44d6ac00e980d75eaf2685c.png?expires=1786333376&amp;key=9fbwT1df9gYKyukvHA0dWw&amp;type=orig" height="803" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-05.webp" style="width:874px" width="1491"/></a></p><p><br/></p><p>json 파일을 열어보면 내장된 폰트 설정들의 상세가 기록되어 있습니다.</p><p>여기서 주요하게 볼 부분은 name 과 weight 정도가 되겠네요.</p><p>name 은 폰트 이름, weight 는 굵기를 의미합니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-06.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/1cea61a6d04e1df1ae2b3d20fe28269639a936967d2303d8c31d2829b6259156.png?expires=1786333376&amp;key=T2Pv7qEa5t2dsWb-5oiAlQ&amp;type=orig" height="435" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-06.webp" style="width:646px" width="1319"/></a></p><p><br/></p><p>MS Windows 기준, 폰트파일을 열어보면 위처럼 상단에 글꼴 이름이 적힌 부분이 있습니다.</p><p>name 부분에 저 글꼴 이름을 적어주시면 입력한 폰트를 게임 텍스트 출력에 사용할 수 있습니다.</p><p>대부분 게임들에서 폰트 설정을 뽑아보면 2.1의 첫번째 스샷 속 덩어리가 하나보다 많을텐데,</p><p>대체로 모든 name 들이 하나로 통일되어 있으니 변경할 때도 각자 사용하는 텍스트 에디터의 "모두 바꾸기"를 활용하시면 편리합니다.</p><p>물론 만약 통일이 안되어 있다면 임의로 통일시켜도 괜찮겠고, 원본 폰트들의 느낌을 살려 서로 다른 폰트를 지정해도 좋습니다.</p><p>이런 부분은 아무래도 개개인의 재량에 따른 매력포인트가 될 수 있을 지도 모르겠네요.</p><p><br/></p><p>잘 변경했다면 다시 AIMT 로 되돌아가서 폰트를 적용하시면 되겠습니다.</p><p><br/></p><p>※ 주의 !!</p><p>단, 여기서 변경한 폰트는 게임을 플레이하시는 분들의 PC 에 설치되어 있어야 정상적으로 동작합니다.</p><p>Windows 내장 기본 폰트가 아니고 번역한 게임을 다른 분들과 함께하고자 하신다면,</p><p>.ttf 또는 .otf 폰트파일을 꼭 게임과 함께 배포하거나 따로 언급을 해주셔야 불필요한 마찰을 줄일 수 있습니다.</p><hr/><p>2.2. font 폴더에 truetypeFontBank.ttc, truetypeFontInfo.json 가 존재하는 경우</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-07.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/1d7ad4efe7d6f6301c095c003726f1b510f4dd37d5ba5adc7a957324915051c8.png?expires=1786333376&amp;key=8xyTzKnuT6uFMHQ1fWncJQ&amp;type=orig" height="239" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-07.webp" style="width:395px" width="546"/></a></p><p><br/></p><p>일부 게임들은 폰트를 추출했을 때 logFontInfo.json 이외에 truetypeFontBank.ttc, truetypeFontInfo.json 도 존재하는 경우가 왕왕 있습니다.</p><p>이 때는 logFontInfo.json 보다 다른 두 파일이 더 우선적으로 사용되며, 따라서 폰트 변경 역시 이 두 파일을 통해 진행됩니다.</p><p>앞선 2.1. 의 경우와의 차이는 역시 폰트파일을 게임 자체에 내장시키는지 아닌지 라고 할 수 있겠네요.</p><p>폰트 파일이 게임에 내장되는 방식이기에 배포 시 따로 폰트를 설치하게 한다거나 첨부할 필요가 없습니다.</p><p><br/></p><p>폰트를 교체하기 위해선 우선은 번역에 사용할 ttc 를 새로 만들어야 합니다.</p><p>기존의 ttc 파일은 한글을 지원하지 않을테니 한글폰트를 담은 것으로 교체해줄 필요가 있습니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-08.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/b001ffff850fc4e04bb53665e5e674b6911dcc0609260a8cdd16915c2a3e0e41.png?expires=1786333376&amp;key=1MrO1YBNRYYWLsrf8NImLA&amp;type=orig" height="1065" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-08.webp" width="1837"/></a></p><p><br/></p><p>도구 기타 TTC 빌드를 열어봅시다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-09.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/d157aafce50860d8491852265103f708c2599d0d9d79a6eebae68d776da122f7.png?expires=1786333376&amp;key=8iwuOAgbTKgNEdWH9DVLCw&amp;type=orig" height="1058" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-09.webp" width="1835"/></a></p><p><br/></p><p>ttc 파일은 여러가지 폰트들을 묶어놓은 일종의 꾸러미 입니다.</p><p>게임 번역에 사용하고 싶은 폰트들을 자유롭게 담아봅시다.</p><p>ttf 나 otf 를 따로 어딘가에 챙겨두셨다면 파일 선택을 활용하시고, PC에 설치된 폰트를 쓰고 싶다면 시스템 폰트를 활용합니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-10.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/95dc517a0d22a946c8e74217fca92aabb3409c51e6e04a24a1f7b40a5fffaa42.png?expires=1786333376&amp;key=2q18ofx5kFZ3oJD0SsLRsg&amp;type=orig" height="1065" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-10.webp" width="1828"/></a></p><p><br/></p><p>개인적으로 자주 쓰지는 않지만 편의상 나눔고딕을 선택해봤습니다.</p><p>이 때 굵은 글씨로 쓰여있는 부분이 2.1. 에서의 글꼴 이름에 해당하니 미리 잘 기억해둡니다.</p><p>폰트는 여러개 담을 수 있지만 필수는 아닙니다. 전부 하나로 통일시킬 것이라면 하나만 담고 빌드해도 괜찮습니다.</p><p>선택을 눌러 폰트를 담아냈다면 다음은 하단의 "출력 선택"을 클릭합니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-11.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/12f5aabd557eaa3d1bbb40d610974d224347c1880d7e1f7801496d75b225781c.png?expires=1786333376&amp;key=xLzDIxQNml1-N5FTwTN-hg&amp;type=orig" height="785" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-11.webp" style="width:766px" width="1564"/></a></p><p><br/></p><p>어차피 교체할거니까 truetypeFontBank.ttc 를 직접 지정했습니다.</p><p>미연의 사태를 대비해 백업을 남겨두고 싶으시다면 자유롭게 하셔도 좋습니다. 단, 그러한 백업 파일은 font 폴더 외의 다른 위치로 옮겨주세요.</p><p>또한 최종적으론 새로 빌드한 ttc 파일의 이름이 원본대로 truetypeFontBank.ttc 가 되어야한다는 것을 명심해주세요.</p><p><br/></p><p>그 후 "빌드" 버튼을 누르면 ttc 준비는 끝입니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-12.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/35b56753535c9ee74063da5bc09cd4861a8bee372db6ebe9ea58e8fc1b40d64b.png?expires=1786333376&amp;key=RUvaFAEDqyy6VQ9z7GI8aQ&amp;type=orig" height="385" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-12.webp" style="width:530px" width="810"/></a></p><p><br/></p><p>ttc 파일을 실행해보니 나눔고딕이 잘 들어가 있네요. 아주 좋습니다.</p><p><br/></p><p>이번엔 truetypeFontInfo.json 를 열어봅시다. logFontInfo.json 는 이번 경우와는 무관하니 눈길도 주지 말고 제껴둡니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-13.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/fcfe38a6719248ff08a5090217befe3b452b56178de6112489c40f6f71ecef90.png?expires=1786333376&amp;key=b8dux1s7n78kQ9Qs-QshAA&amp;type=orig" height="1310" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-13.webp" style="width:532px" width="1265"/></a></p><p><br/></p><p>내용은 조금 다를지언정 name 부분이 수정할 대상이라는 것은 누가봐도 직관적으로 알 수 있게 생겼습니다.</p><p>위 스샷처럼 다른 폰트가 섞여 있을 수도 있으니 가볍게 훑어봐주는 것이 깔끔합니다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-14.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/3913548aca92e50bc706b1c4f92093921340b297e90dde8e9d6a85f5c9aa842d.png?expires=1786333376&amp;key=BcrGQRYCQuck6S95zN5Dng&amp;type=orig" height="507" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-14.webp" style="width:478px" width="1015"/></a></p><p><br/></p><p>마찬가지로 name 을 잘 수정했다면 거의 다 왔습니다.</p><p><br/></p><p>이제 다시 AIMT 로 되돌아가서 CTF 도구의 "폰트"로 적용해주면 길고 길었던 폰트 변경이 마무리 됩니다.</p><p>이후엔 잘 변경 되었는지 꼭 게임을 실행해서 직접 눈으로 확인하도록 합시다.</p><p><br/></p><p><a href="../../guide/assets/ctf-font-change-tips/image-15.webp" target="_blank"><img data-originalurl="https://ac-o.arca.live/20260809sac/ec21f68092c424ea221599e8f476b984d1c9b4ec99265a3a025a1dd60e54a6bb.png?expires=1786333376&amp;key=s-AL6fuMfBhZ_GzFjjEj0w&amp;type=orig" height="816" loading="lazy" src="../../guide/assets/ctf-font-change-tips/image-15.webp" style="width:427px" width="1035"/></a></p><p><br/></p><p>문제 없이 적용되면 이처럼 한글이 정상적으로 표시됩니다.</p><p><br/></p><p>끝</p>
+</article>
+</main></div><script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script></body></html>

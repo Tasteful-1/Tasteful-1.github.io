@@ -43,6 +43,7 @@ EXTERNAL_REFERENCE_PAGES: dict[str, str] = {
 REFERENCE_PAGES: dict[str, str] = {
     "guide/bakin-command-tag-reference/index.html": "Bakin 커맨드 및 태그 참고",
     "guide/bakin-event-code-reference/index.html": "Bakin 이벤트 코드 참고",
+    "guide/ctf-font-change-tips/index.html": "CTF 폰트 변경 관련 팁",
 }
 
 NAV_ONLY_EXCLUDE_PATHS: set[str] = {
@@ -142,6 +143,7 @@ TITLE_OVERRIDES = {
     "guide/bakin/index.html": "Bakin 번역 가이드",
     "guide/bakin-command-tag-reference/index.html": "Bakin 커맨드 및 태그 참고",
     "guide/bakin-event-code-reference/index.html": "Bakin 이벤트 코드 참고",
+    "guide/ctf-font-change-tips/index.html": "CTF 폰트 변경 관련 팁",
     "guide/rpg-maker-command-code-reference/index.html": "RPG Maker 명령 코드 참고",
     "guide/advanced-reference/index.html": "참고 자료",
     "guide/external-utilities/index.html": "외부 유틸리티",
@@ -197,6 +199,7 @@ ADVANCED_AI_PATHS = {
 ADVANCED_DIRECT_PATHS = {
     "guide/bakin-command-tag-reference/index.html",
     "guide/bakin-event-code-reference/index.html",
+    "guide/ctf-font-change-tips/index.html",
     "guide/rpg-maker-command-code-reference/index.html",
     "guide/extraction-files-reference/index.html",
     "guide/external-utilities/index.html",
@@ -2254,6 +2257,7 @@ def _build_group_articles() -> dict[str, str]:
                 ("guide/rpg-maker-command-code-reference/index.html", "RPG Maker 명령 코드 참고"),
                 ("guide/bakin-command-tag-reference/index.html", "Bakin 커맨드 및 태그 참고"),
                 ("guide/bakin-event-code-reference/index.html", "Bakin 이벤트 코드 참고"),
+                ("guide/ctf-font-change-tips/index.html", "CTF 폰트 변경 관련 팁"),
                 ("guide/extraction-files-reference/index.html", "추출 파일별 설명"),
                 ("guide/external-utilities/index.html", "외부 유틸리티"),
                 ("guide/provider-reference-links/index.html", "제공자별 참고 링크"),
