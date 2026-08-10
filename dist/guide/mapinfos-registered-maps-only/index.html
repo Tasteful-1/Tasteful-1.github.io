@@ -2,14 +2,13 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>폰트 교체 · AIMT Guide</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MapInfos 등록 맵만 추출 · AIMT Guide</title>
   <script>(function(){document.documentElement.dataset.navRestoring="1";try{var theme=localStorage.getItem("aimt-guide-theme");if(theme==="light"||theme==="dark")document.documentElement.dataset.theme=theme;if(localStorage.getItem("aimt-guide-sidebar-collapsed")==="1")document.documentElement.dataset.sidebar="collapsed";}catch(_){}})();</script>
   <style id="navRestoreStyle">:root[data-nav-restoring="1"] .nav-list{visibility:hidden}:root[data-nav-restoring="1"] .nav-caret{transition:none}</style>
   <link rel="stylesheet" href="../../guide/static/styles.css">
 </head>
 <body>
-  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
   <div id="searchOverlay" class="search-overlay" hidden>
     <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
       <div class="search-header"><h2 id="searchTitle">문서 검색</h2><button id="searchClose" class="search-close" type="button" aria-label="검색 닫기" title="검색 닫기">×</button></div>
@@ -17,6 +16,7 @@
       <div id="searchResults" class="search-results" hidden></div>
     </section>
   </div>
+  <button id="sidebarExpand" class="sidebar-expand sidebar-toggle" type="button" aria-label="사이드바 열기" title="사이드바 열기">☰</button>
   <div class="site-shell">
     <aside class="sidebar">
       <div class="brand-row"><a class="brand" href="../../guide/index.html">AIMT GUIDE</a><button id="searchOpen" class="sidebar-toggle" type="button" aria-label="문서 검색" title="문서 검색">⌕</button><button id="themeToggle" class="theme-toggle" type="button" aria-label="테마 변경" title="테마 변경">◐</button><button id="sidebarCollapse" class="sidebar-toggle" type="button" aria-label="사이드바 닫기" title="사이드바 닫기">←</button></div>
@@ -221,26 +221,58 @@
     </aside>
     <div id="sidebarResizer" class="sidebar-resizer" role="separator" aria-label="사이드바 너비 조절" aria-orientation="vertical" tabindex="0"></div>
     <main class="content-shell">
-<article class="guide-content">
-<h1>Ren'Py 폰트 교체</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: 2026-08-02</p>
-<p><img alt="Ren'Py 폰트 교체" src="../../guide/assets/renpy-font-replacement/image.png"></p>
-<p>선택한 폰트를 <code>game/gui</code>에 복사하고 <code>gui.rpy</code>의 폰트 정의를 바꿉니다.</p>
-<h2>지원 파일</h2>
-<p><code>ttf</code>, <code>otf</code>, <code>woff</code>, <code>woff2</code>, <code>ttc</code>를 지원합니다.</p>
-<h2>사용 순서</h2>
-<ol>
-<li>프로젝트와 원본 <code>gui.rpy</code>를 백업합니다.</li>
-<li>작업 도구에서 <strong>폰트 교체</strong>를 엽니다.</li>
-<li>한글을 포함한 폰트 파일을 선택합니다.</li>
-<li><strong>적용</strong>을 누릅니다.</li>
-<li>컴파일과 아카이브 리팩 완료 메시지를 확인합니다.</li>
-<li>게임의 대사, 메뉴와 숫자를 확인합니다.</li>
-</ol>
-<p>AIMT는 literal <code>gui.*_font</code> 정의를 변경합니다. <code>gui.rpy</code>가 RPA 안에 있으면 수정 후 해당 아카이브를 다시 묶습니다.</p>
-<div class="guide-callout" data-callout="important" role="alert"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>변수나 함수로 폰트를 정한 프로젝트는 자동 교체 대상이 없을 수 있습니다. 이 경우 <code>gui.rpy</code>의 폰트 정의를 직접 확인하세요.</p></div></div>
-</article>
-</main>
+      <article class="guide-content">
+        <h1>MapInfos 등록 맵만 추출</h1>
+        <p class="doc-version">문서 기준: AIMT PRO 1.17.1.0<br>최종 편집 일시: 2026-08-10</p>
+        <p><a href="../../guide/assets/settings-screen/image%2014.png"><img src="../../guide/assets/settings-screen/image%2014.png" alt="MVMZ 설정의 MapInfos Registered Maps Only 항목"></a></p>
+        <h2>무엇을 할 수 있나요?</h2>
+        <p><code>MapInfos.json</code>에 등록되어 있고 실제 파일도 존재하는 맵만 MVMZ 추출 대상으로 사용합니다.</p>
+        <h2>언제 필요한가요?</h2>
+        <ul>
+          <li>RPG Maker 편집기에서 삭제했지만 <code>data</code> 폴더에 맵 파일이 남아 있을 때</li>
+          <li>편집기에 등록하지 않은 임시 맵을 추출 대상에서 빼고 싶을 때</li>
+        </ul>
+        <h2>시작 전에 확인할 것</h2>
+        <ul>
+          <li>기본값은 꺼짐입니다.</li>
+          <li>이 설정은 개별 <code>MapNNN.json</code> 파일의 추출 대상만 좁힙니다.</li>
+          <li>플러그인이 <code>MapInfos.json</code>에 등록되지 않은 맵 파일을 직접 불러오면 끈 상태로 둡니다.</li>
+        </ul>
+        <h2>따라 하기</h2>
+        <ol>
+          <li><strong>설정</strong>에서 <strong>MVMZ</strong> 탭을 엽니다.</li>
+          <li><strong>MapInfos Registered Maps Only</strong>를 켭니다.</li>
+          <li>설정을 저장합니다.</li>
+          <li>MVMZ 추출을 실행합니다.</li>
+          <li>미등록 맵의 텍스트가 추출 결과에서 빠졌는지 확인합니다.</li>
+        </ol>
+        <h2>필터 기준</h2>
+        <table>
+          <thead><tr><th><code>MapInfos.json</code> 등록</th><th>맵 파일 존재</th><th>추출 대상</th></tr></thead>
+          <tbody>
+            <tr><td>등록됨</td><td>있음</td><td>포함</td></tr>
+            <tr><td>등록됨</td><td>없음</td><td>제외</td></tr>
+            <tr><td>미등록</td><td>있음</td><td>제외</td></tr>
+          </tbody>
+        </table>
+        <p><code>Map001.json</code>과 <code>Map1000.json</code>처럼 맵 번호 자릿수와 관계없이 같은 기준을 적용합니다.</p>
+        <h2>완료 후 확인</h2>
+        <ul>
+          <li><code>MapInfos.json</code>에 등록되고 실제 파일도 있는 맵이 추출 대상에 포함되는지 확인합니다.</li>
+          <li>삭제 후 남은 맵과 편집기 미등록 임시 맵이 제외되는지 확인합니다.</li>
+          <li>필요한 플러그인 전용 맵이 빠지면 설정을 끄고 다시 추출합니다.</li>
+        </ul>
+        <h2>주의/중요/권장</h2>
+        <div class="guide-callout" data-callout="important" role="note"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>플러그인이 <code>MapInfos.json</code>에 없는 맵 파일을 직접 읽는 프로젝트에서는 이 설정을 끄세요.</p></div></div>
+        <h2>자주 헷갈리는 점</h2>
+        <h3><code>MapInfos.json</code> 자체를 추출에서 빼는 설정인가요?</h3>
+        <p>아닙니다. <code>MapInfos.json</code>을 기준으로 개별 <code>MapNNN.json</code> 파일을 고르는 설정입니다.</p>
+        <h3>맵 번호가 세 자리를 넘으면 제외되나요?</h3>
+        <p>아닙니다. <code>Map1000.json</code>처럼 번호가 네 자리 이상인 맵도 지원합니다.</p>
+        <h3>켜면 모든 미등록 맵을 지워 주나요?</h3>
+        <p>아닙니다. 원본 파일은 건드리지 않고 추출 대상에서만 제외합니다.</p>
+      </article>
+    </main>
   </div>
   <script src="../../guide/static/main.js?v=search-url-cache-fix-2026-06-22-02"></script>
 </body>
