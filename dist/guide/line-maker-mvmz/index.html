@@ -72,6 +72,7 @@
 <a class="nav-link" href="../../guide/default-font-settings/index.html" data-depth="4">기본폰트설정</a>
 <a class="nav-link" href="../../guide/title-text/index.html" data-depth="4">타이틀텍스트</a>
 <a class="nav-link" href="../../guide/multiline-db/index.html" data-depth="4">Multiline-DB</a>
+<a class="nav-link" href="../../guide/mapinfos-registered-maps-only/index.html" data-depth="4">MapInfos 등록 맵만 추출</a>
 <a class="nav-link" href="../../guide/extract-troop-names/index.html" data-depth="4">Extract Troop Names</a>
 <a class="nav-link" href="../../guide/extract-names/index.html" data-depth="4">Extract Names</a>
 <a class="nav-link" href="../../guide/dbdic-include-extract-names/index.html" data-depth="4">DBdic include Extract Names</a>
@@ -210,6 +211,7 @@
 <details class="nav-group" data-depth="1" data-nav-key="guide/advanced-reference/index.html"><summary><span class="nav-caret" aria-hidden="true"></span><span class="nav-link nav-label" data-depth="1">참고 자료</span></summary><div class="nav-children">
 <a class="nav-link" href="../../guide/bakin-event-code-reference/index.html" data-depth="2">Bakin 이벤트 코드 참고</a>
 <a class="nav-link" href="../../guide/bakin-command-tag-reference/index.html" data-depth="2">Bakin 커맨드 및 태그 참고</a>
+<a class="nav-link" href="../../guide/ctf-font-change-tips/index.html" data-depth="2">CTF 폰트 변경 관련 팁</a>
 <a class="nav-link" href="../../guide/external-utilities/index.html" data-depth="2">외부 유틸리티</a>
 <a class="nav-link" href="../../guide/provider-reference-links/index.html" data-depth="2">제공자별 참고 링크</a>
 <a class="nav-link" href="../../guide/extraction-files-reference/index.html" data-depth="2">추출 파일별 설명</a>
@@ -222,7 +224,7 @@
     <main class="content-shell">
 <article class="guide-content">
 <h1>라인메이커 (MVMZ)</h1>
-<p class="doc-version">문서 기준: AIMT PRO 1.15 계열<br>최종 편집 일시: 2026-06-22</p>
+<p class="doc-version">문서 기준: AIMT PRO 1.17.1.0<br>최종 편집 일시: 2026-08-10</p>
 <h2>이 도구는 무엇인가요?</h2><p>라인메이커 (MVMZ)는 RPG Maker MV/MZ 프로젝트의 <code>data</code> JSON 파일과 <code>plugins.js</code>를 AIMT가 다루기 쉬운 줄 구성으로 다시 정리하는 도구입니다. 번역문을 새로 만들거나 대사를 자동 줄바꿈하는 기능이 아니라, JSON 내부 구조를 읽고 검수하기 쉬운 형태로 정리합니다. 단순히 코드 가독성 향상을 위한 도구 정도로 생각하셔도 무방합니다.</p><p><div class="guide-callout" data-callout="info" role="note"><div class="guide-callout-title">정보</div><div class="guide-callout-body"><p>이 기능은 MVMZ 추출 또는 적용 시에 자동으로 실행되기에 번역 중이거나 번역을 마친 게임은 이미 줄정리가 끝나있는 상태라고 보심이 좋습니다.</p><p>도구에 있는 라인메이커 버튼은 주로 게임을 버전업시킬 때나 굳이 번역하고 싶진 않지만 한번쯤 데이터를 뜯어보고 싶을 때 사용되곤 합니다.</p></div></div></p>
 <h2>언제 사용하나요?</h2>
 <ul><li>MVMZ 적용이나 수동 편집 후 JSON이 한 줄로 길게 붙어 있어 확인하기 어려울 때</li><li>Map, CommonEvents, Troops, Scenario 같은 이벤트 명령 목록을 줄 단위로 보기 좋게 정리하고 싶을 때</li><li><code>plugins.js</code>의 플러그인 목록과 parameters 구조를 다시 정리해야 할 때</li><li>적용 결과를 비교하거나 문제 위치를 찾기 전에 파일 구조를 보기 좋게 맞추고 싶을 때</li></ul>
@@ -231,7 +233,7 @@
 <h2>기본 사용 순서</h2>
 <ol><li>작업 도구의 MVMZ 영역에서 Line Maker를 실행합니다.</li><li>AIMT가 현재 프로젝트의 <code>data</code> 폴더를 검사합니다.</li><li>Actors, Armors, Classes, CommonEvents, Enemies, Items, MapInfos, Skills, States, System, Troops, Weapons, Scenario, Map 파일을 대상으로 처리합니다.</li><li>전체 실행에서는 <code>js/plugins.js</code>가 있으면 함께 정리합니다.</li><li>필요한 JSON 파일을 열어 이벤트 명령과 항목 구성이 읽기 쉬운 줄로 정리되었는지 확인합니다.</li></ol>
 <h2>화면/항목 설명</h2>
-<table><tbody><tr><th>data JSON</th><td>주요 데이터베이스 파일, Map 파일, Scenario 파일을 정리합니다.</td></tr><tr><th>Map 파일</th><td><code>Map001.json</code>처럼 세 자리 번호를 가진 맵 파일을 처리합니다.</td></tr><tr><th>Scenario.json</th><td>시나리오 섹션별 명령 목록을 줄 단위로 정리합니다.</td></tr><tr><th>plugins.js</th><td>플러그인 배열과 parameters를 보기 쉬운 형태로 정리합니다. 구조가 복잡하면 간단 정리 방식으로 처리될 수 있습니다.</td></tr><tr><th>실패 파일</th><td>읽기/쓰기 또는 JSON 파싱 실패가 난 파일은 CMD 로그에 표시됩니다.</td></tr></tbody></table>
+<table><tbody><tr><th>data JSON</th><td>주요 데이터베이스 파일, Map 파일, Scenario 파일을 정리합니다.</td></tr><tr><th>Map 파일</th><td><code>Map001.json</code>, <code>Map1000.json</code>처럼 세 자리 이상의 번호를 가진 맵 파일을 처리합니다.</td></tr><tr><th>Scenario.json</th><td>시나리오 섹션별 명령 목록을 줄 단위로 정리합니다.</td></tr><tr><th>plugins.js</th><td>플러그인 배열과 parameters를 보기 쉬운 형태로 정리합니다. 구조가 복잡하면 간단 정리 방식으로 처리될 수 있습니다.</td></tr><tr><th>실패 파일</th><td>읽기/쓰기 또는 JSON 파싱 실패가 난 파일은 CMD 로그에 표시됩니다.</td></tr></tbody></table>
 <h2>주의/중요/권장</h2>
 <div class="guide-callout" data-callout="important"><div class="guide-callout-title">중요</div><div class="guide-callout-body"><p>라인메이커는 대상 파일을 같은 위치에 다시 저장합니다.</p></div></div>
 <div class="guide-callout" data-callout="warning"><div class="guide-callout-title">주의</div><div class="guide-callout-body"><p>라인메이커는 게임 화면의 대사 줄 길이를 자동으로 맞추는 도구가 아닙니다. 실제 표시 줄바꿈은 게임 실행 화면에서 별도로 확인해야 합니다.</p></div></div>

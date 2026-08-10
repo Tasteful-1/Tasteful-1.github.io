@@ -13,8 +13,8 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 
 DIST_ROOT = edit_guide.DIST_ROOT
 GUIDE_ROOT = DIST_ROOT / "guide"
-RENEWED_AT = "2026-08-02"
-DOC_VERSION = f"문서 기준: AIMT PRO 1.17.0.0<br>최종 편집 일시: {RENEWED_AT}"
+RENEWED_AT = "2026-08-10"
+DOC_VERSION = f"문서 기준: AIMT PRO 1.17.1.0<br>최종 편집 일시: {RENEWED_AT}"
 ADVANCED_INTRO = "이 문서는 일반 작업 순서에서 벗어나, 값을 직접 확인하거나 세밀하게 조정해야 할 때 참고하는 자료입니다."
 SHORT_ARTICLE_FALLBACK = "아직 세부 설명이 충분하지 않은 문서입니다. 먼저 기능의 위치와 실행 결과를 확인하고, 필요한 경우 관련 상위 문서를 함께 확인하세요."
 
@@ -43,6 +43,7 @@ EXTERNAL_REFERENCE_PAGES: dict[str, str] = {
 REFERENCE_PAGES: dict[str, str] = {
     "guide/bakin-command-tag-reference/index.html": "Bakin 커맨드 및 태그 참고",
     "guide/bakin-event-code-reference/index.html": "Bakin 이벤트 코드 참고",
+    "guide/ctf-font-change-tips/index.html": "CTF 폰트 변경 관련 팁",
 }
 
 NAV_ONLY_EXCLUDE_PATHS: set[str] = {
@@ -132,6 +133,7 @@ TITLE_OVERRIDES = {
     "guide/rpg-maker-vxvxa/index.html": "RPG MAKER VXVXA",
     "guide/workspace-tools/index.html": "작업 도구",
     "guide/settings-screen/index.html": "설정 화면",
+    "guide/mapinfos-registered-maps-only/index.html": "MapInfos 등록 맵만 추출",
     "guide/project-selection/index.html": "Project Hub",
     "guide/clickteam-fusion-coming-soon/index.html": "Clickteam Fusion 번역 가이드",
     "guide/ctf-fast-image-extraction/index.html": "CTF 이미지 추출과 적용",
@@ -141,6 +143,7 @@ TITLE_OVERRIDES = {
     "guide/bakin/index.html": "Bakin 번역 가이드",
     "guide/bakin-command-tag-reference/index.html": "Bakin 커맨드 및 태그 참고",
     "guide/bakin-event-code-reference/index.html": "Bakin 이벤트 코드 참고",
+    "guide/ctf-font-change-tips/index.html": "CTF 폰트 변경 관련 팁",
     "guide/rpg-maker-command-code-reference/index.html": "RPG Maker 명령 코드 참고",
     "guide/advanced-reference/index.html": "참고 자료",
     "guide/external-utilities/index.html": "외부 유틸리티",
@@ -196,6 +199,7 @@ ADVANCED_AI_PATHS = {
 ADVANCED_DIRECT_PATHS = {
     "guide/bakin-command-tag-reference/index.html",
     "guide/bakin-event-code-reference/index.html",
+    "guide/ctf-font-change-tips/index.html",
     "guide/rpg-maker-command-code-reference/index.html",
     "guide/extraction-files-reference/index.html",
     "guide/external-utilities/index.html",
@@ -328,6 +332,7 @@ SETTINGS_NAV_GROUPS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
             "guide/default-font-settings/index.html",
             "guide/title-text/index.html",
             "guide/multiline-db/index.html",
+            "guide/mapinfos-registered-maps-only/index.html",
             "guide/extract-troop-names/index.html",
             "guide/extract-names/index.html",
             "guide/dbdic-include-extract-names/index.html",
@@ -960,6 +965,7 @@ PAGE_TYPE_BY_PATH: dict[str, str] = {
     "guide/default-font-settings/index.html": "feature",
     "guide/title-text/index.html": "feature",
     "guide/multiline-db/index.html": "feature",
+    "guide/mapinfos-registered-maps-only/index.html": "feature",
     "guide/extract-troop-names/index.html": "feature",
     "guide/extract-names/index.html": "feature",
     "guide/dbdic-include-extract-names/index.html": "feature",
@@ -1177,7 +1183,7 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "steps": ["작업 도구의 MVMZ 영역에서 번역 가져오기를 엽니다.", "가져올 대상 프리셋을 선택합니다. 필요하면 코드나 카테고리를 직접 입력합니다.", "이전 작업의 원본 data 폴더를 선택합니다.", "이전 작업의 번역 완료 data 폴더를 선택합니다.", "Font Settings를 선택했다면 이전 프로젝트 폰트를 가져올 대상인지 확인합니다.", "AIMT가 이전 원문과 이전 번역을 비교해 현재 프로젝트에 일치하는 항목을 반영합니다.", "완료 메시지에서 일치, 미일치, 처리 파일 수를 확인합니다."],
         "result": ["완료 메시지의 matched, unmatched, processed files 값을 확인합니다.", "미일치가 많은 경우 이전 원본과 현재 프로젝트의 버전 차이 또는 추출 범위를 확인합니다.", "가져온 번역이 적용된 장면, DB 이름, 시스템 용어, 노트 기반 표시를 실제 게임에서 확인합니다.", "Font Settings를 선택했다면 이전 프로젝트의 폰트 설정과 파일이 반영됐는지 확인합니다."],
         "notices": [("중요", "번역 가져오기는 같은 원문을 기준으로 이전 번역을 재사용합니다. 현재 프로젝트에서 문맥이 달라진 항목은 가져온 뒤 반드시 검수하세요.")],
-        "confusion": [("이전 번역 파일 하나만 있으면 되나요?", "아닙니다. 이전 원본과 이전 번역본이 모두 있어야 어떤 원문이 어떤 번역으로 바뀌었는지 비교할 수 있습니다."), ("Font Settings는 현재 프리셋을 적용하나요?", "아닙니다. 이전 번역 프로젝트의 폰트 설정과 파일을 가져오는 것이 기준 동작입니다. AIMT 1.17.0.0 구현은 현재 프리셋을 적용할 수 있어 결과 확인이 필요합니다."), ("빈 번역이나 코드만 있는 줄도 가져오나요?", "빈 번역은 가져오지 않습니다. 이벤트 대사 쪽에서는 제어코드만 있는 줄도 불필요한 치환을 피하기 위해 건너뛸 수 있습니다."), ("맵 표시 이름이 왜 안 바뀌나요?", "현재 프로젝트의 맵 표시 이름이 이전 원본과 다르면 같은 항목으로 보기 어려워 건너뛸 수 있습니다. 현재 원문과 이전 원문이 같은지 확인하세요.")],
+        "confusion": [("이전 번역 파일 하나만 있으면 되나요?", "아닙니다. 이전 원본과 이전 번역본이 모두 있어야 어떤 원문이 어떤 번역으로 바뀌었는지 비교할 수 있습니다."), ("Font Settings는 현재 프리셋을 적용하나요?", "아닙니다. 이전 번역 프로젝트의 폰트 설정과 파일을 가져오는 것이 기준 동작입니다. AIMT 1.17.1.0 구현은 현재 프리셋을 적용할 수 있어 결과 확인이 필요합니다."), ("빈 번역이나 코드만 있는 줄도 가져오나요?", "빈 번역은 가져오지 않습니다. 이벤트 대사 쪽에서는 제어코드만 있는 줄도 불필요한 치환을 피하기 위해 건너뛸 수 있습니다."), ("맵 표시 이름이 왜 안 바뀌나요?", "현재 프로젝트의 맵 표시 이름이 이전 원본과 다르면 같은 항목으로 보기 어려워 건너뛸 수 있습니다. 현재 원문과 이전 원문이 같은지 확인하세요.")],
     },
     "guide/escape-data/index.html": {
         "summary": "이스케이프 (data)는 원본 data 폴더와 현재 프로젝트 data 폴더의 주요 명령 파라미터를 비교해, 이스케이프 코드나 특수 표기가 번역 과정에서 깨졌는지 검사하고 수정 후보를 만드는 도구입니다.",
@@ -1392,6 +1398,15 @@ PAGE_METADATA: dict[str, dict[str, Any]] = {
         "result": ["추출 결과에서 설명문이 줄 단위로 나뉘었는지 또는 한 항목으로 유지되는지 확인합니다.", "게임 적용 후 설명창의 줄바꿈이 원래 의도와 맞는지 확인합니다.", "문맥이 끊겨 번역 품질이 떨어지면 끈 상태도 비교합니다."],
         "notices": [("중요", "이 설정은 추출 단위를 바꿉니다. 이미 번역한 뒤 바꾸면 기존 결과와 맞지 않을 수 있으므로 작업 초반에 정하는 편이 좋습니다."), ("권장", "설명이 짧고 줄마다 의미가 분명하면 켜짐, 긴 문단 흐름이 중요하면 꺼짐을 비교해 보세요.")],
         "confusion": [("대사 401도 이 설정의 영향을 받나요?", "아닙니다. 이벤트 대사는 401-Extract Mode, Flatten Mode, merge 101-401 같은 설정에서 다룹니다."), ("켜면 줄바꿈이 사라지나요?", "아닙니다. 줄바꿈을 어떻게 추출 단위로 볼지 정하는 설정이며, 적용 후 화면 줄바꿈은 별도로 확인해야 합니다.")],
+    },
+    "guide/mapinfos-registered-maps-only/index.html": {
+        "summary": "MapInfos 등록 맵만 추출은 MapInfos.json에 등록되어 있고 실제 파일도 존재하는 맵만 MVMZ 추출 대상으로 사용하는 설정입니다.",
+        "when": ["RPG Maker 편집기에서 삭제했지만 data 폴더에 맵 파일이 남아 있을 때", "편집기에 등록하지 않은 임시 맵을 추출 대상에서 빼고 싶을 때"],
+        "before": ["기본값은 꺼짐입니다.", "이 설정은 개별 MapNNN.json 파일의 추출 대상만 좁힙니다.", "플러그인이 MapInfos.json에 등록되지 않은 맵 파일을 직접 불러오면 끈 상태로 둡니다."],
+        "steps": ["설정에서 MVMZ 탭을 엽니다.", "MapInfos Registered Maps Only를 켭니다.", "설정을 저장합니다.", "MVMZ 추출을 실행합니다.", "미등록 맵의 텍스트가 추출 결과에서 빠졌는지 확인합니다."],
+        "result": ["MapInfos.json에 등록되고 실제 파일도 있는 맵이 추출 대상에 포함되는지 확인합니다.", "삭제 후 남은 맵과 편집기 미등록 임시 맵이 제외되는지 확인합니다.", "필요한 플러그인 전용 맵이 빠지면 설정을 끄고 다시 추출합니다."],
+        "notices": [("중요", "플러그인이 MapInfos.json에 없는 맵 파일을 직접 읽는 프로젝트에서는 이 설정을 끄세요."), ("참고", "Map001.json과 Map1000.json처럼 맵 번호 자릿수와 관계없이 같은 기준을 적용합니다.")],
+        "confusion": [("MapInfos.json 자체를 추출에서 빼는 설정인가요?", "아닙니다. MapInfos.json을 기준으로 개별 MapNNN.json 파일을 고르는 설정입니다."), ("맵 번호가 세 자리를 넘으면 제외되나요?", "아닙니다. Map1000.json처럼 번호가 네 자리 이상인 맵도 지원합니다."), ("켜면 모든 미등록 맵을 지워 주나요?", "아닙니다. 원본 파일은 건드리지 않고 추출 대상에서만 제외합니다.")],
     },
     "guide/extract-troop-names/index.html": {
         "summary": "Extract Troop Names는 MVMZ 데이터베이스의 Troops.name, 즉 전투 그룹 이름을 추출과 적용 대상에 포함할지 정하는 설정입니다.",
@@ -2242,6 +2257,7 @@ def _build_group_articles() -> dict[str, str]:
                 ("guide/rpg-maker-command-code-reference/index.html", "RPG Maker 명령 코드 참고"),
                 ("guide/bakin-command-tag-reference/index.html", "Bakin 커맨드 및 태그 참고"),
                 ("guide/bakin-event-code-reference/index.html", "Bakin 이벤트 코드 참고"),
+                ("guide/ctf-font-change-tips/index.html", "CTF 폰트 변경 관련 팁"),
                 ("guide/extraction-files-reference/index.html", "추출 파일별 설명"),
                 ("guide/external-utilities/index.html", "외부 유틸리티"),
                 ("guide/provider-reference-links/index.html", "제공자별 참고 링크"),
