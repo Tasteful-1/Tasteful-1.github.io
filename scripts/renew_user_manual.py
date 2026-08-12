@@ -131,6 +131,7 @@ TITLE_OVERRIDES = {
     "guide/index.html": "AIMT 사용설명서",
     "guide/rpg-maker-mvmz/index.html": "RPG Maker MV/MZ",
     "guide/rpg-maker-vxvxa/index.html": "RPG MAKER VXVXA",
+    "guide/tyranobuilder-tyranoscript/index.html": "TyranoBuilder/TyranoScript",
     "guide/workspace-tools/index.html": "작업 도구",
     "guide/settings-screen/index.html": "설정 화면",
     "guide/mapinfos-registered-maps-only/index.html": "MapInfos 등록 맵만 추출",
